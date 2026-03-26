@@ -4,6 +4,8 @@ import TeamCard from '../components/TeamCard.astro';
 import ContactForm from '../components/ContactForm.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import SchemaMarkup from '../components/SchemaMarkup.astro';
+import StatsBar from '../components/StatsBar.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
 
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -42,52 +44,61 @@ const organizationSchema = {
 >
   <SchemaMarkup schema={organizationSchema} />
 
-  <!-- Hero -->
   <section class="page-header">
     <h1>About Us</h1>
   </section>
 
   <Breadcrumbs items={[{ name: "Home", url: "https://airdamien.com/" }, { name: "About Us", url: "https://airdamien.com/about-us/" }]} />
 
-  <!-- Photo Grid -->
-  <section class="section section--white">
+  <!-- Meet Damien -->
+  <section class="section">
     <div class="container">
-      <div class="about-photos grid-3 animate-in">
-        <div class="card__image"><img src="/images/Damion2.jpg" alt="Damien Mitchell preparing for a paragliding flight" width="800" height="600" loading="lazy" /></div>
-        <div class="card__image"><img src="/images/Damion5.jpg" alt="Paragliding over Valle de Bravo mountains" width="800" height="600" loading="lazy" /></div>
-        <div class="card__image"><img src="/images/coaching 1.jpg" alt="Damien coaching a pilot at the landing zone" width="800" height="600" loading="lazy" /></div>
-        <div class="card__image"><img src="/images/gaggle.jpg" alt="Gaggle of paragliders thermalling over El Penon" width="1024" height="683" loading="lazy" /></div>
-        <div class="card__image"><img src="/images/valle 1.jpg" alt="Valle de Bravo lakeside town and mountains" width="800" height="450" loading="lazy" /></div>
-        <div class="card__image"><img src="/images/cross.jpg" alt="Hiking the volcanic ridge near Valle de Bravo" width="800" height="800" loading="lazy" /></div>
+      <div class="about-hero animate-in">
+        <div class="about-hero__image">
+          <img src="/images/Damion3.jpg" alt="Damien Mitchell paragliding over the green mountains of Valle de Bravo" width="600" height="600" loading="eager" />
+        </div>
+        <div class="about-hero__text">
+          <h2>Meet Damien "Vampiro" Mitchell</h2>
+          <p class="about-hero__hook">People call me Vampiro.</p>
+          <p>Only a few people know the story behind the nickname.</p>
+          <p>About 10 years ago, I landed out on the top of Crazy Thermal Mesa. I was faced with a three-mile hike to the nearest road with 40 pounds of gear. I came across a young boy. He offered to carry some of my gear to make some extra money.</p>
+          <p>On the hike out we got about a mile. And wham, he was bitten by a rattlesnake.</p>
+          <p>With few options, I applied a tourniquet to his leg, then began sucking the venom out of his wound. It was a bush fix, but it bought us enough time to get him to the hospital.</p>
+          <p>He was ok, but the legend began. The kids still tell the story of Vampiro, a man who flies out of the sky and saves young children.</p>
+          <p>And so the name stuck.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Our Story -->
-  <section class="section section--cream">
-    <div class="container">
-      <div class="about-story animate-in">
-        <h2>Our Story</h2>
-        <p>People call me Vampiro. Only a few people know the story behind the nickname.</p>
-        <p>About 10-years ago, I landed out on the top of Crazy Thermal Mesa. I was faced with a three-mile hike to the nearest road with 40 pounds of gear. I came across a young boy. He offered to carry some of my gear to make some extra money.</p>
-        <p>On the hike out we got about a mile. And wham, he was bitten by a rattlesnake.</p>
-        <p>With few options, I applied a tourniquet to his leg, then began sucking the venom out of his wound. It was a bush fix, but it bought us enough time to get him to the hospital.</p>
-        <p>He was ok, but the legend began. The kids still tell the story of Vampiro, a man flies out of the sky and saves young children.</p>
-        <p>And so the name stuck.</p>
-      </div>
-    </div>
-  </section>
+  <!-- Stats -->
+  <StatsBar />
 
   <!-- Mission -->
-  <section class="section section--sky text-center">
+  <section class="section section--purple text-center">
     <div class="container animate-in">
       <h2>Our Mission</h2>
       <p class="mission-text">Learn to fly safe. Leave with a smile.</p>
     </div>
   </section>
 
+  <!-- Photo Gallery Strip -->
+  <section class="section section--alt">
+    <div class="container">
+      <p class="gallery-strip__label animate-in">Life at El Penon</p>
+      <div class="gallery-strip animate-in">
+        <div class="gallery-strip__item"><img src="/images/gaggle.jpg" alt="Gaggle of paragliders thermalling over El Penon" width="800" height="600" loading="lazy" /></div>
+        <div class="gallery-strip__item"><img src="/images/coaching 1.jpg" alt="Damien coaching a pilot at the landing zone" width="800" height="600" loading="lazy" /></div>
+        <div class="gallery-strip__item"><img src="/images/Damion5.jpg" alt="Paragliding over Valle de Bravo mountains" width="800" height="600" loading="lazy" /></div>
+        <div class="gallery-strip__item"><img src="/images/valle 1.jpg" alt="Valle de Bravo lakeside town and mountains" width="800" height="450" loading="lazy" /></div>
+        <div class="gallery-strip__item"><img src="/images/sitting 1.jpg" alt="Pilots relaxing after a day of flying" width="800" height="600" loading="lazy" /></div>
+        <div class="gallery-strip__item"><img src="/images/cross.jpg" alt="Hiking the volcanic ridge near Valle de Bravo" width="800" height="800" loading="lazy" /></div>
+      </div>
+    </div>
+  </section>
+
   <!-- Team -->
-  <section class="section section--white">
+  <section class="section">
     <div class="container">
       <div class="section__heading animate-in">
         <h2>Meet the Team</h2>
@@ -97,8 +108,8 @@ const organizationSchema = {
           name="Damien Mitchell"
           role="Advanced Instructor"
           bio="Damien will be your 'Instructor-in-your-ear' as you launch, climb out, and land."
-          image="/images/damien 1.jpg"
-          imageAlt="Damien Mitchell coaching a student at launch"
+          image="/images/damion.jpg"
+          imageAlt="Damien Mitchell, USHPA Advanced Instructor"
         />
         <TeamCard
           name="Alondra Mejia"
@@ -118,66 +129,151 @@ const organizationSchema = {
     </div>
   </section>
 
-  <!-- Careers -->
-  <section class="section section--cream">
-    <div class="container">
-      <div class="section__heading animate-in">
-        <h2>Careers With Us</h2>
-        <p>We are a growing team and need full and part-time help to keep up with the demand.</p>
+  <!-- CTA Section -->
+  <section class="section section--alt">
+    <div class="container text-center">
+      <div class="about-cta animate-in">
+        <h2>Ready to Fly with Us?</h2>
+        <p>Whether you're looking to master thermalling or go on your first cross-country flight, we'll build a trip around your skill level and schedule.</p>
+        <div class="about-cta__buttons">
+          <a href="/paragliding-clinics-mexico/" class="btn btn--primary">View Our Clinics</a>
+          <a href="/contact/" class="btn btn--secondary">Contact Damien</a>
+        </div>
       </div>
-      <div class="grid-2 animate-in">
-        <div class="card">
-          <div class="card__body">
-            <h4>Shuttle Drivers</h4>
-            <p>We work 7-days a week and are always looking for drivers. Full-time and part-time.</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card__body">
-            <h4>Tour Guides</h4>
-            <p>We need English speaking tour guides who are familiar with all the signature tourist destinations in Valle de Bravo.</p>
-          </div>
-        </div>
+      <div class="about-cta__testimonial animate-in">
+        <TestimonialCard
+          quote="For many years Damien has been an invaluable source of knowledge and wisdom regarding everything paragliding and an absolute mainstay to our trips to Valle de Bravo. He really knows the place like no other."
+          author="Bianca Heinrich"
+          role="Comp Pilot"
+        />
       </div>
     </div>
   </section>
 
   <!-- Contact -->
-  <section class="section section--white">
+  <section class="section">
     <div class="container">
       <div class="section__heading animate-in">
-        <h3>Contact Us</h3>
+        <h2>Have Questions? Reach Out.</h2>
       </div>
       <div class="animate-in">
-        <ContactForm formName="about-contact" showPhone={false} messageLabel="Question / Comment" />
+        <ContactForm formName="about-contact" />
       </div>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .about-photos .card__image {
-    border-radius: 8px;
-    min-height: 200px;
+  /* Meet Damien two-column */
+  .about-hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: start;
   }
 
-  .about-story {
-    max-width: 800px;
-    margin: 0 auto;
+  @media (min-width: 768px) {
+    .about-hero {
+      grid-template-columns: 1fr 1.2fr;
+    }
   }
 
-  .about-story h2 {
+  .about-hero__image img {
+    width: 100%;
+    height: auto;
+    min-height: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  .about-hero__text h2 {
     margin-bottom: 1.5rem;
   }
 
-  .about-story p {
+  .about-hero__hook {
+    font-size: 1.5rem;
+    font-weight: 500;
+    font-family: var(--font-display);
+    color: var(--color-text);
+    font-style: italic;
+    margin-bottom: 0.75rem;
+  }
+
+  .about-hero__text p {
     font-size: 1.05rem;
     line-height: 1.8;
   }
 
+  /* Mission */
   .mission-text {
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 500;
     margin-top: 1rem;
+    color: var(--color-text-on-dark);
+  }
+
+  /* Gallery strip */
+  .gallery-strip__label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-primary-muted);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .gallery-strip {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.75rem;
+  }
+
+  .gallery-strip__item {
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .gallery-strip__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+
+  .gallery-strip__item:hover img {
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 768px) {
+    .gallery-strip {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .gallery-strip {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* CTA section */
+  .about-cta p {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    color: var(--color-text-body);
+  }
+
+  .about-cta__buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+  }
+
+  .about-cta__testimonial {
+    max-width: 650px;
+    margin: 0 auto;
   }
 </style>
