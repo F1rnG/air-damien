@@ -9,7 +9,80 @@ const breadcrumbs = [
   { name: 'Blog', url: 'https://airdamien.com/blog/' }
 ];
 
+const guides = [
+  {
+    title: "Paragliding in Valle de Bravo: The Complete Guide",
+    url: "/paragliding-valle-de-bravo/",
+    description: "Everything you need to know about paragliding Valle de Bravo. Launch sites, thermal cycles, seasonal conditions, gear, logistics, and how to plan your trip.",
+    date: "2024-01-15",
+    readingTime: "18 min read",
+    image: "/images/GOOD.JPG",
+    imageAlt: "Paraglider soaring over El Penon in Valle de Bravo"
+  },
+  {
+    title: "Paragliding in Roldanillo, Colombia: The Complete Guide",
+    url: "/paragliding-roldanillo-colombia/",
+    description: "The complete guide to paragliding Roldanillo. El Aguila launch, XC conditions, thermal strength, travel logistics, and how to plan your trip.",
+    date: "2024-01-15",
+    readingTime: "16 min read",
+    imageAlt: "Roldanillo paragliding guide"
+  },
+  {
+    title: "Paragliding Governador Valadares, Brazil: The Complete Guide",
+    url: "/paragliding-governador-valadares-brazil/",
+    description: "The complete guide to paragliding GV. Pico da Ibituruna launch, thermal conditions, XC routes along the Rio Doce, and trip planning.",
+    date: "2024-01-15",
+    readingTime: "15 min read",
+    image: "/images/pico.jpg",
+    imageAlt: "Pico da Ibituruna launch in Governador Valadares"
+  },
+  {
+    title: "Paragliding the Dolomites, Italy: The Complete Guide",
+    url: "/paragliding-dolomites-italy/",
+    description: "The complete guide to paragliding the Dolomites. Val di Fassa, alpine thermal techniques, launch sites, summer conditions, and trip planning.",
+    date: "2024-01-15",
+    readingTime: "15 min read",
+    imageAlt: "Alpine paragliding in the Dolomites"
+  }
+];
+
 const posts = [
+  {
+    title: "Best Paragliding Destinations from the US: Where to Fly Next",
+    url: "/best-paragliding-destinations-from-us/",
+    description: "The top paragliding destinations accessible from the US. Mexico, Colombia, Brazil, Europe, and more - with season timing and skill requirements.",
+    date: "2024-01-15",
+    readingTime: "14 min read",
+    image: "/images/feet.jpg",
+    imageAlt: "POV from a paraglider cockpit over mountains"
+  },
+  {
+    title: "Valle de Bravo vs Roldanillo: Which Paragliding Destination is Right for You?",
+    url: "/valle-de-bravo-vs-roldanillo-paragliding/",
+    description: "Comparing two of the best paragliding destinations in the Americas. Conditions, XC potential, logistics, and which to choose.",
+    date: "2024-01-15",
+    readingTime: "12 min read",
+    image: "/images/gaggle.jpg",
+    imageAlt: "Paragliders thermalling over mountains"
+  },
+  {
+    title: "Paragliding Valle de Bravo in November: Conditions, Weather, and Trip Planning",
+    url: "/paragliding-valle-de-bravo-november/",
+    description: "November is peak paragliding season in Valle de Bravo. Consistent thermals, comfortable temperatures, and reliable conditions.",
+    date: "2024-01-15",
+    readingTime: "9 min read",
+    image: "/images/val6.jpg",
+    imageAlt: "Paraglider over El Penon in November"
+  },
+  {
+    title: "Paragliding Valle de Bravo in December: Peak Season Conditions",
+    url: "/paragliding-valle-de-bravo-december/",
+    description: "December delivers the strongest, most consistent paragliding conditions in Valle de Bravo at El Penon.",
+    date: "2024-01-15",
+    readingTime: "8 min read",
+    image: "/images/valle 1.jpg",
+    imageAlt: "Valle de Bravo in peak December conditions"
+  },
   {
     title: "The Best Months for Paragliding in Valle de Bravo, Mexico: Why November and December Reign Supreme",
     url: "/best-months-to-paraglide-mexico/",
@@ -123,8 +196,34 @@ const posts = [
     </div>
   </section>
 
+  <!-- Destination Guides (pinned) -->
   <section class="section">
     <div class="container">
+      <div class="section__heading">
+        <h2>Destination Guides</h2>
+      </div>
+      <div class="blog-grid">
+        {guides.map(guide => (
+          <BlogCard
+            title={guide.title}
+            url={guide.url}
+            description={guide.description}
+            date={guide.date}
+            readingTime={guide.readingTime}
+            image={guide.image}
+            imageAlt={guide.imageAlt}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- All Posts -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__heading">
+        <h2>All Articles</h2>
+      </div>
       <div class="blog-grid">
         {posts.map(post => (
           <BlogCard
