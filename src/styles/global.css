@@ -4,25 +4,72 @@
 
 /* --- CSS Variables --- */
 :root {
-  --color-sky: #1a4b7a;
-  --color-sky-light: #2563a0;
-  --color-sky-dark: #0f2d4a;
-  --color-sunset: #e8732a;
-  --color-sunset-light: #f09050;
-  --color-sunset-dark: #c45e1e;
-  --color-cream: #f8f6f2;
-  --color-charcoal: #1a1a1a;
-  --color-gray: #555;
-  --color-gray-light: #888;
-  --color-gray-lighter: #ddd;
-  --color-white: #ffffff;
+  /* Primary purple ramp */
+  --color-primary: #3b3160;
+  --color-primary-dark: #2a2050;
+  --color-primary-light: #4e4580;
+  --color-primary-muted: #5a5570;
+  --color-primary-subtle: #a99cc4;
 
+  /* Accent orange */
+  --color-accent: #e07730;
+  --color-accent-hover: #c86520;
+
+  /* Backgrounds */
+  --color-bg: #ffffff;
+  --color-bg-warm: #f9f7f3;
+  --color-bg-lavender: #f4f2fa;
+
+  /* Text */
+  --color-text: #2a2050;
+  --color-text-body: #5a5570;
+  --color-text-on-dark: #ffffff;
+  --color-text-on-dark-muted: #c4b8e0;
+
+  /* Utility */
+  --color-success: #2d7a4f;
+  --color-border: #d8d4e0;
+
+  /* Legacy aliases (for components that still reference old names) */
+  --color-sky: #3b3160;
+  --color-sky-light: #4e4580;
+  --color-sky-dark: #2a2050;
+  --color-sunset: #e07730;
+  --color-sunset-light: #f09050;
+  --color-sunset-dark: #c86520;
+  --color-cream: #f9f7f3;
+  --color-charcoal: #2a2050;
+  --color-gray: #5a5570;
+  --color-gray-light: #a99cc4;
+  --color-gray-lighter: #d8d4e0;
+  --color-white: #ffffff;
+  --color-bg-off: #f9f7f3;
+
+  /* Typography */
   --font-display: 'Plus Jakarta Sans', sans-serif;
   --font-body: 'Plus Jakarta Sans', sans-serif;
 
+  /* Spacing scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+
   --nav-height: 72px;
   --max-width: 1200px;
-  --section-padding: 5rem 1.5rem;
+  --section-padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 4vw, 2rem);
 }
 
 /* --- Reset --- */
@@ -43,8 +90,8 @@ body {
   font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.7;
-  color: var(--color-charcoal);
-  background: var(--color-cream);
+  color: var(--color-text-body);
+  background: var(--color-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -56,13 +103,13 @@ img {
 }
 
 a {
-  color: var(--color-sky);
+  color: var(--color-primary-light);
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color var(--transition-fast);
 }
 
 a:hover {
-  color: var(--color-sunset);
+  color: var(--color-accent);
 }
 
 ul, ol {
@@ -71,15 +118,15 @@ ul, ol {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1.2;
-  color: var(--color-charcoal);
+  color: var(--color-text);
 }
 
-h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); }
-h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); }
-h3 { font-size: clamp(1.4rem, 3vw, 2rem); }
-h4 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
+h1 { font-size: clamp(2rem, 4vw, 3rem); }
+h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
+h3 { font-size: clamp(1.25rem, 2.5vw, 1.75rem); }
+h4 { font-size: 1.125rem; }
 
 p {
   margin-bottom: 1rem;
@@ -96,34 +143,42 @@ p {
   padding: var(--section-padding);
 }
 
-.section--sky {
-  background: var(--color-sky);
-  color: var(--color-white);
+.section--alt {
+  background: var(--color-bg-warm);
+}
+
+.section--sky,
+.section--purple {
+  background: var(--color-primary);
+  color: var(--color-text-on-dark);
 }
 
 .section--sky h2,
 .section--sky h3,
-.section--sky h4 {
-  color: var(--color-white);
+.section--sky h4,
+.section--purple h2,
+.section--purple h3,
+.section--purple h4 {
+  color: var(--color-text-on-dark);
 }
 
 .section--charcoal {
-  background: var(--color-charcoal);
-  color: var(--color-cream);
+  background: var(--color-primary-dark);
+  color: var(--color-text-on-dark);
 }
 
 .section--charcoal h2,
 .section--charcoal h3,
 .section--charcoal h4 {
-  color: var(--color-white);
+  color: var(--color-text-on-dark);
 }
 
 .section--cream {
-  background: var(--color-cream);
+  background: var(--color-bg-warm);
 }
 
 .section--white {
-  background: var(--color-white);
+  background: var(--color-bg);
 }
 
 .text-center {
@@ -145,14 +200,14 @@ p {
 /* --- Buttons --- */
 .btn {
   display: inline-block;
-  padding: 0.85rem 2rem;
+  padding: 12px 28px;
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 500;
   font-size: 1rem;
   border: none;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
+  transition: background var(--transition-fast), transform var(--transition-fast);
   text-align: center;
 }
 
@@ -161,34 +216,35 @@ p {
 }
 
 .btn--primary {
-  background: var(--color-sunset);
-  color: var(--color-white);
+  background: var(--color-accent);
+  color: var(--color-text-on-dark);
 }
 
 .btn--primary:hover {
-  background: var(--color-sunset-dark);
-  color: var(--color-white);
+  background: var(--color-accent-hover);
+  color: var(--color-text-on-dark);
 }
 
 .btn--secondary {
-  background: var(--color-sky);
-  color: var(--color-white);
+  background: transparent;
+  color: var(--color-primary);
+  border: 1.5px solid var(--color-primary-light);
 }
 
 .btn--secondary:hover {
-  background: var(--color-sky-dark);
-  color: var(--color-white);
+  background: var(--color-bg-lavender);
+  color: var(--color-primary);
 }
 
 .btn--outline {
   background: transparent;
-  color: var(--color-white);
-  border: 2px solid var(--color-white);
+  color: var(--color-text-on-dark);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
 }
 
 .btn--outline:hover {
-  background: var(--color-white);
-  color: var(--color-sky);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-text-on-dark);
 }
 
 /* --- Hero --- */
@@ -199,7 +255,7 @@ p {
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: var(--color-white);
+  color: var(--color-text-on-dark);
   overflow: hidden;
 }
 
@@ -225,7 +281,7 @@ img.hero__bg {
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(74, 65, 104, 0.55) 0%, rgba(54, 47, 78, 0.65) 100%);
+  background: linear-gradient(170deg, rgba(74, 63, 114, 0.6) 0%, rgba(53, 43, 94, 0.7) 50%, rgba(42, 32, 80, 0.75) 100%);
   z-index: 1;
 }
 
@@ -237,7 +293,7 @@ img.hero__bg {
 }
 
 .hero__content h1 {
-  color: var(--color-white);
+  color: var(--color-text-on-dark);
   margin-bottom: 1rem;
 }
 
@@ -249,11 +305,11 @@ img.hero__bg {
 
 /* --- Cards --- */
 .card {
-  background: var(--color-white);
-  border-radius: 12px;
+  background: var(--color-bg);
+  border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
 .card:hover {
@@ -264,11 +320,11 @@ img.hero__bg {
 .card__image {
   width: 100%;
   aspect-ratio: 16 / 10;
-  background: var(--color-sky-light);
+  background: var(--color-primary-light);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-white);
+  color: var(--color-text-on-dark);
   font-size: 0.9rem;
   padding: 1rem;
   text-align: center;
@@ -336,6 +392,7 @@ img.hero__bg {
   font-weight: 600;
   margin-bottom: 0.4rem;
   font-size: 0.95rem;
+  color: var(--color-text);
 }
 
 .form__input,
@@ -344,16 +401,18 @@ img.hero__bg {
   padding: 0.75rem 1rem;
   font-family: var(--font-body);
   font-size: 1rem;
-  border: 2px solid var(--color-gray-lighter);
-  border-radius: 6px;
-  background: var(--color-white);
-  transition: border-color 0.2s;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  transition: border-color var(--transition-fast);
+  color: var(--color-text);
 }
 
 .form__input:focus,
 .form__textarea:focus {
   outline: none;
-  border-color: var(--color-sky);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(59, 49, 96, 0.1);
 }
 
 .form__textarea {
@@ -363,11 +422,11 @@ img.hero__bg {
 
 /* --- Testimonials --- */
 .testimonial {
-  background: var(--color-white);
-  border-radius: 12px;
+  background: var(--color-bg);
+  border-radius: var(--radius-lg);
   padding: 2rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  border-left: 4px solid var(--color-sunset);
+  border-left: 3px solid var(--color-accent);
 }
 
 .testimonial__quote {
@@ -375,16 +434,17 @@ img.hero__bg {
   font-size: 1.05rem;
   margin-bottom: 1rem;
   line-height: 1.8;
+  color: var(--color-text-body);
 }
 
 .testimonial__author {
   font-weight: 700;
-  color: var(--color-sky);
+  color: var(--color-accent);
 }
 
 .testimonial__role {
   font-size: 0.85rem;
-  color: var(--color-gray-light);
+  color: var(--color-primary-subtle);
 }
 
 /* --- Section Headings --- */
@@ -401,7 +461,7 @@ img.hero__bg {
 .section__heading p {
   max-width: 600px;
   margin: 0 auto;
-  color: var(--color-gray);
+  color: var(--color-text-body);
 }
 
 /* --- Scroll Animations --- */
@@ -418,14 +478,14 @@ img.hero__bg {
 
 /* --- Page Header (non-homepage) --- */
 .page-header {
-  background: linear-gradient(135deg, var(--color-sky-dark) 0%, var(--color-sky) 100%);
-  color: var(--color-white);
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+  color: var(--color-text-on-dark);
   padding: calc(var(--nav-height) + 3rem) 1.5rem 3rem;
   text-align: center;
 }
 
 .page-header h1 {
-  color: var(--color-white);
+  color: var(--color-text-on-dark);
 }
 
 /* --- Checklist --- */
@@ -437,19 +497,20 @@ img.hero__bg {
 .checklist li {
   padding: 0.5rem 0 0.5rem 2rem;
   position: relative;
+  color: var(--color-text-body);
 }
 
 .checklist li::before {
   content: "\2713";
   position: absolute;
   left: 0;
-  color: var(--color-sunset);
+  color: var(--color-accent);
   font-weight: 700;
 }
 
 /* --- Stars (reviews) --- */
 .stars {
-  color: var(--color-sunset);
+  color: #f5a623;
   font-size: 1.2rem;
   letter-spacing: 2px;
 }
@@ -457,7 +518,6 @@ img.hero__bg {
 /* --- Responsive --- */
 @media (max-width: 768px) {
   :root {
-    --section-padding: 3rem 1rem;
     --nav-height: 60px;
   }
 

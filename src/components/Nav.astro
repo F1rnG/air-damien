@@ -113,19 +113,19 @@ const currentPath = Astro.url.pathname;
 
   .nav__list a,
   .nav__dropdown-trigger {
-    color: var(--color-white);
+    color: var(--color-text-on-dark-muted, #c4b8e0);
     padding: 0.5rem 0.7rem;
     font-size: 0.9rem;
     font-weight: 500;
     border-radius: 4px;
-    transition: background 0.2s;
+    transition: background 0.2s, color 0.2s;
     white-space: nowrap;
   }
 
   .nav__list a:hover,
   .nav__dropdown-trigger:hover {
     background: rgba(255, 255, 255, 0.1);
-    color: var(--color-white);
+    color: var(--color-text-on-dark, #ffffff);
   }
 
   .nav__list a.active {
