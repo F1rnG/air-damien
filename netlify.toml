@@ -37,6 +37,11 @@
   to = "/waiver/"
   status = 301
 
+[[redirects]]
+  from = "/tours/brazil-paragliding/"
+  to = "/tours/brazil-paragliding-governador-valadares/"
+  status = 301
+
 # Redirect www to non-www
 [[redirects]]
   from = "https://www.airdamien.com/*"

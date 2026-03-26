@@ -1,0 +1,852 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import SchemaMarkup from '../../components/SchemaMarkup.astro';
+import TestimonialCard from '../../components/TestimonialCard.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+
+const tripSchema = {
+  "@context": "https://schema.org",
+  "@type": "TouristTrip",
+  "name": "Paraglide the Dolomites, Italy - Val di Fassa Alpine Flying",
+  "description": "Alpine paragliding in the Italian Dolomites. Guided trips to Val di Fassa with mountain flying instruction from a 25-year veteran. Summer season.",
+  "touristType": "Paragliding enthusiasts",
+  "provider": {
+    "@type": "Organization",
+    "name": "Air Damien",
+    "url": "https://airdamien.com"
+  },
+  "itinerary": {
+    "@type": "ItemList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Arrive in Val di Fassa, Trentino-Alto Adige" },
+      { "@type": "ListItem", "position": 2, "name": "Daily guided alpine paragliding flights" },
+      { "@type": "ListItem", "position": 3, "name": "Mountain flying instruction and radio coaching" },
+      { "@type": "ListItem", "position": 4, "name": "Hike-and-fly opportunities" }
+    ]
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "When does the Dolomites trip run?", "acceptedAnswer": { "@type": "Answer", "text": "Summer, typically June through September. Contact Damien for exact dates for the upcoming season." } },
+    { "@type": "Question", "name": "How do I get there?", "acceptedAnswer": { "@type": "Answer", "text": "Fly into Verona (VRN) or Venice (VCE) for the closest Italian airports. Innsbruck (INN) and Munich (MUC) also work. Val di Fassa is about 2-3 hours drive from any of these. We coordinate transport." } },
+    { "@type": "Question", "name": "Do I need a visa?", "acceptedAnswer": { "@type": "Answer", "text": "US citizens can visit Italy (Schengen area) for up to 90 days without a visa. Valid passport required." } },
+    { "@type": "Question", "name": "What rating do I need?", "acceptedAnswer": { "@type": "Answer", "text": "P3 (Intermediate) or above recommended. Mountain flying requires solid thermal skills and good decision-making." } },
+    { "@type": "Question", "name": "Is mountain flying dangerous?", "acceptedAnswer": { "@type": "Answer", "text": "Alpine flying has specific hazards - rotor, valley winds, rapid weather changes. That is exactly why you fly with a guide. Damien's briefings and radio coaching are focused on keeping you safe in mountain terrain." } },
+    { "@type": "Question", "name": "Can I do hike-and-fly?", "acceptedAnswer": { "@type": "Answer", "text": "Some launch sites involve a hike, which is part of the alpine experience. If you are specifically interested in hike-and-fly, talk to Damien about incorporating it into your trip." } },
+    { "@type": "Question", "name": "What if the weather is bad?", "acceptedAnswer": { "@type": "Answer", "text": "Mountain weather can shut down flying for a day. Rest days in the Dolomites are not a hardship - hike, eat, explore the villages, take the cable cars up for views." } },
+    { "@type": "Question", "name": "Can I combine this with other trips?", "acceptedAnswer": { "@type": "Answer", "text": "The Dolomites run in summer, Mexico in winter, Colombia and Brazil in spring. Many pilots book multiple trips across the year." } }
+  ]
+};
+
+const faqItems = [
+  { question: "When does the Dolomites trip run?", answer: "Summer, typically June through September. Contact Damien for exact dates for the upcoming season." },
+  { question: "How do I get there?", answer: "Fly into Verona (VRN) or Venice (VCE) for the closest Italian airports. Innsbruck (INN) and Munich (MUC) also work. Val di Fassa is about 2-3 hours drive from any of these. We coordinate transport." },
+  { question: "Do I need a visa?", answer: "US citizens can visit Italy (Schengen area) for up to 90 days without a visa. Valid passport required." },
+  { question: "What rating do I need?", answer: "P3 (Intermediate) or above recommended. Mountain flying requires solid thermal skills and good decision-making." },
+  { question: "Is mountain flying dangerous?", answer: "Alpine flying has specific hazards - rotor, valley winds, rapid weather changes. That is exactly why you fly with a guide. Damien's briefings and radio coaching are focused on keeping you safe in mountain terrain." },
+  { question: "Can I do hike-and-fly?", answer: "Some launch sites involve a hike, which is part of the alpine experience. If you are specifically interested in hike-and-fly, talk to Damien about incorporating it into your trip." },
+  { question: "What if the weather is bad?", answer: "Mountain weather can shut down flying for a day. Rest days in the Dolomites are not a hardship - hike, eat, explore the villages, take the cable cars up for views." },
+  { question: "Can I combine this with other trips?", answer: "The Dolomites run in summer, Mexico in winter, Colombia and Brazil in spring. Many pilots book multiple trips across the year." }
+];
+---
+
+<BaseLayout
+  title="Paraglide the Dolomites, Italy - Val di Fassa Alpine Flying | Air Damien"
+  description="Alpine paragliding in the Italian Dolomites. Guided trips to Val di Fassa with mountain flying instruction from a 25-year veteran. Summer season."
+  canonicalUrl="https://airdamien.com/tours/italy-paragliding-dolomites/"
+>
+  <SchemaMarkup schema={tripSchema} />
+  <SchemaMarkup schema={faqSchema} />
+
+  <!-- 1. Hero -->
+  <section class="dolomites-hero">
+    <div class="dolomites-hero__placeholder" aria-label="Placeholder for Dolomites hero image - paraglider flying above jagged limestone peaks in Val di Fassa">
+      <span class="dolomites-hero__img-label">[ Photo: Paraglider above Dolomites peaks, Val di Fassa ]</span>
+    </div>
+    <div class="dolomites-hero__overlay"></div>
+    <div class="dolomites-hero__content">
+      <h1 class="dolomites-hero__title">Paraglide the Dolomites, Italy</h1>
+      <p class="dolomites-hero__location">Val di Fassa, Trentino-Alto Adige</p>
+      <p class="dolomites-hero__sub">Fly above some of the most dramatic mountain scenery on earth. Alpine paragliding in the heart of the Italian Dolomites.</p>
+      <div class="dolomites-hero__ctas">
+        <a href="#booking-form" class="btn btn--primary">Reserve Your Spot</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Breadcrumbs -->
+  <Breadcrumbs items={[
+    { name: "Home", url: "https://airdamien.com/" },
+    { name: "Tours", url: "https://airdamien.com/tours/" },
+    { name: "Italy", url: "https://airdamien.com/tours/italy-paragliding-dolomites/" }
+  ]} />
+
+  <!-- 3. Hook (white) -->
+  <section class="section">
+    <div class="container">
+      <div class="pitch-grid animate-in">
+        <div class="pitch-grid__text">
+          <h2>There is no scenery like this in the air</h2>
+          <p>The Dolomites are unlike any mountain range on earth. Jagged limestone towers rise straight out of green alpine valleys, their pale rock faces glowing gold and pink in the shifting light. From the air, the scale of it is almost impossible to process - you are thermalling alongside cliff walls that were ancient seabeds 250 million years ago, watching your shadow cross meadows a thousand meters below.</p>
+          <p>Val di Fassa sits at the crossroads of some of the most iconic peaks in the range - Marmolada, the Sella massif, the Catinaccio group. The valley funnels reliable alpine thermals, offers ridge soaring along dramatic rock faces, and provides generous landing zones on the valley floor. Damien leads guided trips here because it is one of the best places in Europe to experience true mountain flying with a safety net - expert briefings, live radio coaching, and a guide who has flown these valleys extensively.</p>
+        </div>
+        <div class="pitch-grid__image">
+          <div class="placeholder-image" aria-label="Placeholder for Val di Fassa valley view">
+            <span class="placeholder-image__label">[ Photo: Val di Fassa valley with Dolomite peaks ]</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Why Dolomites (cream) -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Why pilots choose the Dolomites</h2>
+      </div>
+      <div class="grid-3 animate-in">
+        <div class="skill-card">
+          <h4>Scenery</h4>
+          <p>There is no paragliding destination on earth that looks like this. Pale limestone spires, emerald valleys, glaciers, and wildflower meadows - all from the air. Every flight is a postcard you could never take from the ground.</p>
+        </div>
+        <div class="skill-card">
+          <h4>Alpine Flying Skills</h4>
+          <p>Mountain flying is a discipline unto itself. Valley winds, rotor, convergence zones, rapid weather shifts - the Dolomites will teach you things about reading terrain and air that flatland flying never will.</p>
+        </div>
+        <div class="skill-card">
+          <h4>Val di Fassa</h4>
+          <p>A proper flying valley with established launches, well-known thermal triggers, and accessible landing zones. The infrastructure is there without losing the wild mountain feel.</p>
+        </div>
+        <div class="skill-card">
+          <h4>European Flying Culture</h4>
+          <p>Fly alongside Italian, Austrian, and German pilots. Paragliding is deeply embedded in Alpine culture - cable cars serve as launch shuttles, landing fields are marked, and the local pilots are welcoming.</p>
+        </div>
+        <div class="skill-card">
+          <h4>Italian Experience</h4>
+          <p>This is not just a flying trip. It is Italy - real espresso, mountain rifugio meals, Ladin culture, dolomite sunsets over wine. The rest days are as good as the flying days.</p>
+        </div>
+        <div class="skill-card">
+          <h4>Summer Flying</h4>
+          <p>The Dolomites complete the year-round flying calendar. Mexico runs in winter, Colombia and Brazil in spring, and Italy fills the summer months. Fly all year with Air Damien.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Typical day (white) -->
+  <section class="section">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>A day in Val di Fassa</h2>
+      </div>
+      <div class="timeline animate-in">
+        <div class="timeline__item">
+          <span class="timeline__time">7:30 AM</span>
+          <span class="timeline__label">Breakfast at the hotel - espresso, pastries, fresh fruit</span>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__time">8:30 AM</span>
+          <span class="timeline__label">Weather briefing and flight planning - wind models, thermal forecast, airspace review</span>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__time">10:00 AM</span>
+          <span class="timeline__label">Drive or cable car to launch - gear up with views of the peaks</span>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__time">11:00 AM</span>
+          <span class="timeline__label">Launch and fly with live radio coaching from Damien</span>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__time">1:30 PM</span>
+          <span class="timeline__label">Land in the valley, retrieve, regroup</span>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__time">2:30 PM</span>
+          <span class="timeline__label">Lunch at a local trattoria - flight debrief over pasta</span>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__time">4:30 PM</span>
+          <span class="timeline__label">Optional second flight if conditions allow, or free time to explore</span>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__time">7:30 PM</span>
+          <span class="timeline__label">Group dinner - local Trentino cuisine, track review, plan for tomorrow</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. What you will experience (cream) -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>What you will experience</h2>
+      </div>
+      <div class="grid-3 animate-in">
+        <div class="skill-card">
+          <h4>Mountain Flying Fundamentals</h4>
+          <p>Learn to read valley winds, identify rotor zones, and use terrain to your advantage. Damien breaks down the specific hazards and opportunities of alpine flying before every flight and coaches in real time on the radio.</p>
+        </div>
+        <div class="skill-card">
+          <h4>Reading Alpine Weather</h4>
+          <p>Mountain weather changes fast. You will learn to read cumulus development over ridgelines, spot the signs of valley wind cycles, and understand when conditions are building versus shutting down.</p>
+        </div>
+        <div class="skill-card">
+          <h4>Scenic Flying</h4>
+          <p>Not every flight needs to be a training exercise. Some flights in the Dolomites are purely about soaking in the view - ridge soaring along massive rock faces, gliding over alpine meadows, landing with a smile.</p>
+        </div>
+        <div class="skill-card">
+          <h4>European Airspace</h4>
+          <p>Flying in the Alps means understanding European airspace classifications, NOTAM procedures, and how to share the sky with other aircraft in a busy mountain environment. Damien covers this in every briefing.</p>
+        </div>
+        <div class="skill-card">
+          <h4>Hike-and-Fly Intro</h4>
+          <p>Some of the best launches in the Dolomites require a hike. Carrying your wing up a mountain trail and launching from a remote ridgeline is a uniquely rewarding way to fly - and the Dolomites are the perfect place to try it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Everything included (white) -->
+  <section class="section">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Everything included</h2>
+      </div>
+      <div class="included-grid animate-in">
+        <div class="included-grid__item">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span>Accommodation in Val di Fassa</span>
+        </div>
+        <div class="included-grid__item">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          <span>Breakfast and dinners daily</span>
+        </div>
+        <div class="included-grid__item">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5a1 1 0 0 1-1 1h-2"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          <span>Transport - car and cable car to launches</span>
+        </div>
+        <div class="included-grid__item">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 18.5a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13Z"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span>Mountain flying instruction and radio coaching</span>
+        </div>
+        <div class="included-grid__item">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Retrieve service from landing zones</span>
+        </div>
+        <div class="included-grid__item">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>Airport coordination - VRN, VCE, INN, or MUC</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Who this is for (cream) -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Who this trip is for</h2>
+      </div>
+      <div class="grid-3 animate-in">
+        <div class="profile-card">
+          <h4>You want to fly the Alps</h4>
+          <p>You have seen the photos and videos. You know what Dolomite flying looks like from the air and you want to experience it yourself. This trip puts you there with a guide who knows the terrain.</p>
+        </div>
+        <div class="profile-card">
+          <h4>You want to develop mountain skills</h4>
+          <p>You are a competent thermal pilot but you have mostly flown flatland or coastal sites. You want to add alpine flying to your skill set with proper instruction, not trial and error.</p>
+        </div>
+        <div class="profile-card">
+          <h4>You want a flying trip and a vacation</h4>
+          <p>The Dolomites deliver on both. The flying is world-class, and the rest - the food, the hiking, the villages, the scenery from the ground - makes it a trip your non-flying travel partner would enjoy too.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Your guide (white) -->
+  <section class="section">
+    <div class="container">
+      <div class="instructor-grid animate-in">
+        <div class="instructor-grid__image">
+          <div class="placeholder-image placeholder-image--square" aria-label="Placeholder for Damien Mitchell photo">
+            <span class="placeholder-image__label">[ Photo: Damien Mitchell ]</span>
+          </div>
+        </div>
+        <div class="instructor-grid__text">
+          <h2>Your Guide: Damien "Vampiro" Mitchell</h2>
+          <p>Damien has been flying paragliders for over 25 years and holds a USHPA Advanced Instructor rating with over 10,000 flights logged. He runs guided trips and clinics in Mexico, Colombia, Brazil, and the Italian Dolomites - building a year-round flying calendar that keeps pilots progressing across different terrain and conditions.</p>
+          <p>In the Dolomites, Damien's role shifts from instructor to mountain guide. Alpine flying demands a different kind of attention - reading valley wind cycles, identifying safe launch windows, knowing when to fly and when to wait. His briefings are thorough, his radio coaching is constant, and his priority is always keeping you safe while making sure you have the flights of your life.</p>
+          <p>He knows the Val di Fassa terrain, the local pilots, the cable car schedules, and which rifugio serves the best polenta. Flying with Damien in the Dolomites means you get the full experience - not just the airtime.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. First form (cream) -->
+  <section class="section section--alt" id="booking-form">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Join the Dolomites Trip</h2>
+        <p>Tell us your dates and experience level. We will get back to you within 24 hours with availability and next steps.</p>
+      </div>
+      <div class="animate-in">
+        <ContactForm formName="italy-booking" messagePlaceholder="I'm interested in the Dolomites trip. My rating is P3/P4 and my preferred dates are..." buttonText="Reserve Your Spot" />
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. Beyond flying (white) -->
+  <section class="section">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Beyond the flying</h2>
+      </div>
+      <div class="grid-3 animate-in">
+        <div class="beyond-card">
+          <div class="placeholder-image placeholder-image--short" aria-label="Placeholder for hiking and via ferrata photo">
+            <span class="placeholder-image__label">[ Photo: Hiking via ferrata in the Dolomites ]</span>
+          </div>
+          <div class="beyond-card__body">
+            <h4>Hiking and Via Ferrata</h4>
+            <p>The Dolomites are one of the great hiking destinations in the world. Iron-rung via ferrata routes climb directly up cliff faces. Marked trails connect rifugio mountain huts across high passes. Rest days are never wasted here.</p>
+          </div>
+        </div>
+        <div class="beyond-card">
+          <div class="placeholder-image placeholder-image--short" aria-label="Placeholder for Italian food and wine photo">
+            <span class="placeholder-image__label">[ Photo: Italian mountain cuisine and local wine ]</span>
+          </div>
+          <div class="beyond-card__body">
+            <h4>Food and Wine</h4>
+            <p>Trentino cuisine blends Italian and Austrian traditions. Think fresh pasta, venison, polenta, strudel, and local wines from the Adige valley. Every meal in the Dolomites is worth savoring.</p>
+          </div>
+        </div>
+        <div class="beyond-card">
+          <div class="placeholder-image placeholder-image--short" aria-label="Placeholder for Dolomites village culture photo">
+            <span class="placeholder-image__label">[ Photo: Traditional Ladin village in Val di Fassa ]</span>
+          </div>
+          <div class="beyond-card__body">
+            <h4>Culture</h4>
+            <p>Val di Fassa is the heartland of Ladin culture - a distinct Alpine community with its own language, architecture, and traditions. The villages are charming, the people are welcoming, and the pace of life is exactly what you need after a day in the air.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. Testimonials (cream) -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>What Pilots Say About Flying with Damien</h2>
+      </div>
+      <div class="grid-3 animate-in">
+        <TestimonialCard
+          quote="I saw my flying mentality and my piloting skills improve drastically over the course of the week."
+          author="Ryan"
+          role="Feb 2023"
+        />
+        <TestimonialCard
+          quote="The combination of ground school, launch support, and in-sky coaching provided an incredibly valuable learning experience."
+          author="Jim"
+          role="Jan 2023"
+        />
+        <TestimonialCard
+          quote="Great instruction, local knowledge, small groups, no attitude or pressure just great flying and even better times."
+          author="Pete"
+          role="Jan 2024"
+        />
+      </div>
+      <p class="reviews-note animate-in">Dolomites-specific reviews coming soon as this is a newer destination. The testimonials above are from pilots who have flown with Damien on other trips.</p>
+    </div>
+  </section>
+
+  <!-- 13. FAQ (white) -->
+  <section class="section">
+    <div class="container animate-in">
+      <FaqAccordion title="Common Questions About the Dolomites Trip" items={faqItems} />
+    </div>
+  </section>
+
+  <!-- 14. Cross-links (cream) -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Fly Year-Round with Air Damien</h2>
+      </div>
+      <div class="crosslink-grid animate-in">
+        <a href="/tour/10-day-paraglide-mexico-package/" class="crosslink-card">
+          <div class="crosslink-card__placeholder" aria-label="Mexico trip link">
+            <span class="crosslink-card__img-label">[ Photo: Paragliding Valle de Bravo, Mexico ]</span>
+          </div>
+          <div class="crosslink-card__body">
+            <h4>Mexico - Valle de Bravo</h4>
+            <p>Winter season. The most consistent thermal flying in North America. Ten-day all-inclusive packages with instruction, housing, and transport.</p>
+          </div>
+        </a>
+        <a href="/tours/colombia-paragliding-roldanillo/" class="crosslink-card">
+          <div class="crosslink-card__placeholder" aria-label="Colombia trip link">
+            <span class="crosslink-card__img-label">[ Photo: Paragliding Roldanillo, Colombia ]</span>
+          </div>
+          <div class="crosslink-card__body">
+            <h4>Colombia - Roldanillo</h4>
+            <p>Spring season. World-class XC flying in the Cauca Valley. Strong, consistent thermals and long cross-country routes.</p>
+          </div>
+        </a>
+        <a href="/tours/brazil-paragliding/" class="crosslink-card">
+          <div class="crosslink-card__placeholder" aria-label="Brazil trip link">
+            <span class="crosslink-card__img-label">[ Photo: Paragliding Brazil ]</span>
+          </div>
+          <div class="crosslink-card__body">
+            <h4>Brazil</h4>
+            <p>Spring season. Incredible flying terrain, vibrant culture, and some of the best conditions in South America.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Second form (white) -->
+  <section class="section">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Ready to Fly the Dolomites</h2>
+        <p>Have questions or ready to book? Send us a message and we will help you plan your trip to Val di Fassa.</p>
+      </div>
+      <div class="animate-in">
+        <ContactForm formName="italy-booking-bottom" messagePlaceholder="I'd like to know more about the Dolomites trip..." />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ========================================
+     DOLOMITES HERO
+     ======================================== */
+  .dolomites-hero {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .dolomites-hero__placeholder {
+    position: absolute;
+    inset: 0;
+    background: #7a9eb8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dolomites-hero__img-label {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1rem;
+    font-style: italic;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .dolomites-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.55) 100%);
+    z-index: 1;
+  }
+
+  .dolomites-hero__content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+    padding: 2rem 1.5rem;
+    max-width: 800px;
+  }
+
+  .dolomites-hero__title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+  }
+
+  .dolomites-hero__location {
+    font-size: 1.3rem;
+    font-weight: 500;
+    opacity: 0.9;
+    margin-top: 0.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .dolomites-hero__sub {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    opacity: 0.92;
+    max-width: 600px;
+    margin: 0 auto 1.5rem;
+  }
+
+  .dolomites-hero__ctas {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* ========================================
+     PLACEHOLDER IMAGES
+     ======================================== */
+  .placeholder-image {
+    background: #7a9eb8;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    width: 100%;
+  }
+
+  .placeholder-image--square {
+    aspect-ratio: 1;
+    min-height: unset;
+  }
+
+  .placeholder-image--short {
+    min-height: 200px;
+  }
+
+  .placeholder-image__label {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    font-style: italic;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  /* ========================================
+     PITCH GRID (two-column)
+     ======================================== */
+  .pitch-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .pitch-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .pitch-grid__text h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  .pitch-grid__text p {
+    margin-bottom: 1rem;
+    line-height: 1.8;
+  }
+
+  .pitch-grid__image {
+    width: 100%;
+  }
+
+  /* ========================================
+     SKILL CARDS
+     ======================================== */
+  .skill-card {
+    background: var(--color-white, #fff);
+    border: 1px solid var(--color-border, #e5e2ea);
+    border-radius: 12px;
+    padding: 1.75rem;
+    transition: box-shadow 0.2s;
+  }
+
+  .skill-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  .skill-card h4 {
+    color: var(--color-accent, #e07730);
+    margin-bottom: 0.75rem;
+  }
+
+  .skill-card p {
+    line-height: 1.7;
+    color: var(--color-text-body, #5a5570);
+  }
+
+  /* ========================================
+     TIMELINE
+     ======================================== */
+  .timeline {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    padding-left: 1rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 2px;
+    background: var(--color-border, #d8d4e0);
+  }
+
+  .timeline__item {
+    display: flex;
+    gap: 1.25rem;
+    padding: 0.75rem 0 0.75rem 1.5rem;
+    position: relative;
+  }
+
+  .timeline__item::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 1.1rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-accent, #e07730);
+  }
+
+  .timeline__time {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-text, #2a2050);
+    white-space: nowrap;
+    min-width: 80px;
+  }
+
+  .timeline__label {
+    color: var(--color-text-body, #5a5570);
+    font-size: 0.95rem;
+  }
+
+  /* ========================================
+     INCLUDED GRID
+     ======================================== */
+  .included-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 2rem;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 768px) {
+    .included-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .included-grid__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .included-grid__item svg {
+    color: var(--color-accent, #e07730);
+  }
+
+  .included-grid__item span {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-text-body, #5a5570);
+    line-height: 1.4;
+  }
+
+  /* ========================================
+     PROFILE CARDS (Who this is for)
+     ======================================== */
+  .profile-card {
+    background: var(--color-white, #fff);
+    border: 1px solid var(--color-border, #e5e2ea);
+    border-radius: 12px;
+    padding: 1.75rem;
+    transition: box-shadow 0.2s;
+  }
+
+  .profile-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  .profile-card h4 {
+    color: var(--color-accent, #e07730);
+    margin-bottom: 0.75rem;
+  }
+
+  .profile-card p {
+    line-height: 1.7;
+    color: var(--color-text-body, #5a5570);
+  }
+
+  /* ========================================
+     INSTRUCTOR GRID
+     ======================================== */
+  .instructor-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 768px) {
+    .instructor-grid {
+      grid-template-columns: 350px 1fr;
+    }
+  }
+
+  .instructor-grid__text h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  .instructor-grid__text p {
+    margin-bottom: 1rem;
+    line-height: 1.8;
+  }
+
+  /* ========================================
+     BEYOND CARDS
+     ======================================== */
+  .beyond-card {
+    background: var(--color-white, #fff);
+    border: 1px solid var(--color-border, #e5e2ea);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+
+  .beyond-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  .beyond-card__body {
+    padding: 1.5rem;
+  }
+
+  .beyond-card__body h4 {
+    color: var(--color-accent, #e07730);
+    margin-bottom: 0.5rem;
+  }
+
+  .beyond-card__body p {
+    line-height: 1.7;
+    color: var(--color-text-body, #5a5570);
+    font-size: 0.95rem;
+  }
+
+  /* ========================================
+     REVIEWS NOTE
+     ======================================== */
+  .reviews-note {
+    text-align: center;
+    font-style: italic;
+    color: var(--color-text-body, #5a5570);
+    margin-top: 2rem;
+    font-size: 0.9rem;
+  }
+
+  /* ========================================
+     CROSS-LINK CARDS
+     ======================================== */
+  .crosslink-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .crosslink-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .crosslink-card {
+    display: block;
+    background: var(--color-white, #fff);
+    border: 1px solid var(--color-border, #e5e2ea);
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .crosslink-card:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .crosslink-card__placeholder {
+    background: #7a9eb8;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .crosslink-card__img-label {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+    font-style: italic;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .crosslink-card__body {
+    padding: 1.5rem;
+  }
+
+  .crosslink-card__body h4 {
+    color: var(--color-accent, #e07730);
+    margin-bottom: 0.5rem;
+  }
+
+  .crosslink-card__body p {
+    color: var(--color-text-body, #5a5570);
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  /* ========================================
+     GRID LAYOUTS
+     ======================================== */
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .grid-3 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

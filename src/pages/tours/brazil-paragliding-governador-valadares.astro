@@ -1,0 +1,817 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import SchemaMarkup from '../../components/SchemaMarkup.astro';
+import TestimonialCard from '../../components/TestimonialCard.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+
+const tripSchema = {
+  "@context": "https://schema.org",
+  "@type": "TouristTrip",
+  "name": "Paraglide Governador Valadares, Brazil",
+  "description": "Guided paragliding trip to Governador Valadares, Brazil - fly from Pico da Ibituruna, the capital of free flight.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Air Damien",
+    "url": "https://airdamien.com"
+  },
+  "touristType": "Paragliding enthusiasts",
+  "includesAttraction": [
+    {
+      "@type": "TouristAttraction",
+      "name": "Pico da Ibituruna",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Governador Valadares",
+        "addressRegion": "Minas Gerais",
+        "addressCountry": "BR"
+      }
+    }
+  ]
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "When does the Brazil trip run?", "acceptedAnswer": { "@type": "Answer", "text": "Contact Damien for current season dates. Brazilian flying conditions are good most of the year, with peak thermal activity from September through March." } },
+    { "@type": "Question", "name": "How do I get there?", "acceptedAnswer": { "@type": "Answer", "text": "Fly into Governador Valadares (GVR) directly, or fly into Confins/Belo Horizonte (CNF) and drive approximately 4 hours. We coordinate ground transport." } },
+    { "@type": "Question", "name": "Do I need a visa for Brazil?", "acceptedAnswer": { "@type": "Answer", "text": "US citizens do not need a visa for tourist stays under 90 days. You need a valid passport with at least 6 months validity." } },
+    { "@type": "Question", "name": "What rating do I need?", "acceptedAnswer": { "@type": "Answer", "text": "P2+ for guided flying, P3+ recommended for XC. The thermals at Ibituruna are strong - you should be comfortable in active air." } },
+    { "@type": "Question", "name": "Is it safe?", "acceptedAnswer": { "@type": "Answer", "text": "Governador Valadares has a long history of hosting international pilots. The flying infrastructure is excellent and the community is very welcoming to visitors." } },
+    { "@type": "Question", "name": "Can I combine this with other Air Damien trips?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Many pilots combine Brazil with Colombia or Mexico depending on the season. Talk to Damien about building a multi-destination season." } }
+  ]
+};
+
+const faqItems = [
+  { question: "When does the Brazil trip run?", answer: "Contact Damien for current season dates. Brazilian flying conditions are good most of the year, with peak thermal activity from September through March." },
+  { question: "How do I get there?", answer: "Fly into Governador Valadares (GVR) directly, or fly into Confins/Belo Horizonte (CNF) and drive approximately 4 hours. We coordinate ground transport." },
+  { question: "Do I need a visa for Brazil?", answer: "US citizens do not need a visa for tourist stays under 90 days. You need a valid passport with at least 6 months validity." },
+  { question: "What rating do I need?", answer: "P2+ for guided flying, P3+ recommended for XC. The thermals at Ibituruna are strong - you should be comfortable in active air." },
+  { question: "Is it safe?", answer: "Governador Valadares has a long history of hosting international pilots. The flying infrastructure is excellent and the community is very welcoming to visitors." },
+  { question: "Can I combine this with other Air Damien trips?", answer: "Yes. Many pilots combine Brazil with Colombia or Mexico depending on the season. Talk to Damien about building a multi-destination season." }
+];
+---
+
+<BaseLayout
+  title="Paraglide Governador Valadares, Brazil - Pico da Ibituruna | Air Damien"
+  description="Fly from Pico da Ibituruna in Governador Valadares, Brazil - the capital of free flight. Guided paragliding trips with a 25-year veteran instructor."
+  canonicalUrl="https://airdamien.com/tours/brazil-paragliding-governador-valadares/"
+>
+  <SchemaMarkup schema={tripSchema} />
+  <SchemaMarkup schema={faqSchema} />
+
+  <!-- 1. Hero -->
+  <section class="hero hero--full">
+    <div class="hero__placeholder" aria-label="Placeholder: Aerial view of Pico da Ibituruna and the Rio Doce valley in Governador Valadares, Brazil"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <h1 class="hero__title">Paraglide Governador Valadares, Brazil</h1>
+      <p class="hero__location">The capital of free flight</p>
+      <p class="hero__sub">Fly from Pico da Ibituruna, one of the most iconic launches in the world, at the birthplace of Brazilian paragliding.</p>
+      <div class="hero__ctas">
+        <a href="#booking-form" class="btn btn--primary">Reserve Your Spot</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Breadcrumbs -->
+  <Breadcrumbs items={[
+    { name: "Home", url: "https://airdamien.com/" },
+    { name: "Tours", url: "https://airdamien.com/tours/" },
+    { name: "Brazil", url: "https://airdamien.com/tours/brazil-paragliding-governador-valadares/" }
+  ]} />
+
+  <!-- 3. Hook (white) -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="pitch-grid animate-in">
+        <div class="pitch-grid__text">
+          <h2>The city that was built to fly</h2>
+          <p>Governador Valadares is not just a place where people paraglide. It is the city where Brazilian free flight was born. Pico da Ibituruna rises 1,123 meters above the Rio Doce valley, generating thermals that have drawn pilots from around the world for decades. The city itself revolves around flying - the launch is visible from nearly everywhere in town, and the landing zone is right in the city center.</p>
+          <p>Damien leads guided trips to GV for pilots who want to experience one of the great flying sites on the planet. Whether you are looking to log flights from a bucket-list launch, push your XC distance along the Rio Doce, or simply soak in the energy of a city that lives and breathes paragliding, this trip delivers.</p>
+        </div>
+        <div class="pitch-grid__image">
+          <div class="image-placeholder" aria-label="Placeholder: View from Pico da Ibituruna launch looking over Governador Valadares and the Rio Doce valley">
+            <span>Pico da Ibituruna launch overlooking GV</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Why GV (cream) -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Why pilots choose GV</h2>
+      </div>
+      <div class="grid-3 animate-in">
+        <div class="feature-card">
+          <h4>Capital of Free Flight</h4>
+          <p>Governador Valadares earned this title for good reason. The city has hosted international competitions for decades and flying is woven into the local culture.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Pico da Ibituruna</h4>
+          <p>One of the most recognized launches on the planet. At 1,123m, Ibituruna offers a massive vertical drop and consistent thermal triggers along its ridgeline.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Consistent Conditions</h4>
+          <p>Strong, reliable thermals throughout most of the year. The Rio Doce valley acts as a thermal engine, producing predictable cycles that make planning flights straightforward.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Massive Landing Zone</h4>
+          <p>The main LZ sits right in the city, wide open and easy to reach. You can see it from launch and there is plenty of room to set up your approach.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Competition Heritage</h4>
+          <p>GV has hosted Brazilian nationals, pre-PWC events, and international competitions. The airspace, launch logistics, and flying infrastructure are built for serious pilots.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Brazilian Vibe</h4>
+          <p>The local flying community is warm, welcoming, and passionate about the sport. Expect cold beers at the LZ, barbecue after flying, and new friends from around the world.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Typical Day (white) -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>A day in Governador Valadares</h2>
+      </div>
+      <div class="timeline animate-in">
+        <div class="timeline__item">
+          <div class="timeline__time">7:00 AM</div>
+          <div class="timeline__desc">Breakfast at the house. Coffee, fruit, and a look at the sky.</div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__time">8:30 AM</div>
+          <div class="timeline__desc">Weather briefing and flight planning. Review wind data, thermal forecasts, and set goals for the day.</div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__time">10:00 AM</div>
+          <div class="timeline__desc">Drive up Ibituruna. Gear up at launch and watch the first cycles come through.</div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__time">11:00 AM</div>
+          <div class="timeline__desc">Launch and climb out. Thermals typically start cycling by mid-morning with consistent lift along the ridge.</div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__time">12:00 PM</div>
+          <div class="timeline__desc">Peak thermal hours. Fly XC along the Rio Doce valley or work thermals over the mountain with radio guidance.</div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__time">2:00 PM</div>
+          <div class="timeline__desc">Retrieve and return to the LZ. Compare tracks and debrief on the day's flights.</div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__time">4:30 PM</div>
+          <div class="timeline__desc">Rest, repack, or take a glass-off flight if conditions allow. Free time in town.</div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__time">7:00 PM</div>
+          <div class="timeline__desc">Dinner together. Brazilian food, flight stories, and planning for tomorrow.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. What You Will Experience (cream) -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>What this trip gives you</h2>
+      </div>
+      <div class="grid-3 animate-in">
+        <div class="skill-card">
+          <h3>Bucket-List Launch</h3>
+          <p>Fly from Pico da Ibituruna, one of the most famous paragliding launches in the world. The view alone is worth the trip - the flying makes it unforgettable.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Strong Thermal Flying</h3>
+          <p>GV thermals are powerful and well-defined. You will build confidence flying in strong, organized lift and learn to read the valley's thermal patterns.</p>
+        </div>
+        <div class="skill-card">
+          <h3>XC in the Rio Doce Valley</h3>
+          <p>The valley stretches for hundreds of kilometers, creating natural XC corridors. With radio guidance and retrieve support, you can push your distance safely.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Competition-Site Experience</h3>
+          <p>Fly the same airspace used for Brazilian nationals and international competitions. Learn what it feels like to fly a world-class site with proper infrastructure.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Brazilian Flying Culture</h3>
+          <p>Immerse yourself in one of the most passionate flying communities on earth. The pilots, the energy at the LZ, the barbecue after landing - it all adds up to something special.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Everything Included (white) -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Just bring your wing and your passport</h2>
+      </div>
+      <div class="included-grid animate-in">
+        <div class="included-item">
+          <svg class="included-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <h4>Housing</h4>
+          <p>Comfortable accommodations near the flying site. Stay close to the action and the local pilot community.</p>
+        </div>
+        <div class="included-item">
+          <svg class="included-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          <h4>Breakfast and Dinners</h4>
+          <p>Start the day fueled up and end it with a proper Brazilian meal. Lunch is on your own so you can explore the town.</p>
+        </div>
+        <div class="included-item">
+          <svg class="included-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          <h4>Transport to Launch</h4>
+          <p>Daily shuttles up Ibituruna. No rental car needed - just grab your gear and go.</p>
+        </div>
+        <div class="included-item">
+          <svg class="included-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          <h4>Instruction and Radio</h4>
+          <p>Guided flying with radio support from Damien. Weather briefings, flight planning, and post-flight debriefs every day.</p>
+        </div>
+        <div class="included-item">
+          <svg class="included-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <h4>Retrieve Service</h4>
+          <p>Our ground crew tracks your position and picks you up wherever you land. Push your XC distance without worrying about getting back.</p>
+        </div>
+        <div class="included-item">
+          <svg class="included-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <h4>Airport Coordination</h4>
+          <p>We help coordinate your arrival and ground transport from GVR or Belo Horizonte so you can focus on getting here.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Who This Is For (cream) -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Who this trip is for</h2>
+      </div>
+      <div class="grid-3 animate-in">
+        <div class="profile-card">
+          <h4>The Bucket-Lister</h4>
+          <p>You have heard about Ibituruna for years and it is time to go. P2 or above, you want to fly one of the great launches of the world with someone who knows it well.</p>
+        </div>
+        <div class="profile-card">
+          <h4>The XC Pilot</h4>
+          <p>P3+ with thermal experience, you want to push your distance in a valley built for cross-country flying. Strong thermals, long glides, and retrieve support to back you up.</p>
+        </div>
+        <div class="profile-card">
+          <h4>The Culture Seeker</h4>
+          <p>You want more than just flying. You want to experience the Brazilian paragliding scene - the energy, the community, the food, and the lifestyle that comes with it.</p>
+        </div>
+      </div>
+      <div class="cta-block animate-in">
+        <p>Not sure if this trip is right for you? Call Damien and talk it through.</p>
+        <a href="tel:+18018887325" class="btn btn--outline">Call (801) 888-7325</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Your Guide (white) -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="instructor-grid animate-in">
+        <div class="instructor-grid__image">
+          <img src="/images/damion.jpg" alt="Damien Mitchell, USHPA Advanced Instructor" width="600" height="600" loading="lazy" />
+        </div>
+        <div class="instructor-grid__text">
+          <h2>Your Guide</h2>
+          <h3>Damien "Vampiro" Mitchell</h3>
+          <p>25+ years of flying. Over 10,000 flights. USHPA Advanced Instructor. Damien has been flying Ibituruna for years and knows the thermals, the terrain, and the local community inside and out.</p>
+          <p>In Governador Valadares, he connects you with the best the site has to offer - from optimal launch timing to the XC routes that make the Rio Doce valley legendary. On the radio during your flights, he coaches your thermal decisions and keeps you flying safely in strong Brazilian air.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. First Form (cream) -->
+  <section class="section section--alt" id="booking-form">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Join the Next Brazil Trip</h2>
+      </div>
+      <div class="animate-in form-container">
+        <ContactForm
+          formName="brazil-booking"
+          messagePlaceholder="I'm interested in the Governador Valadares trip. My rating is..."
+          buttonText="Reserve Your Spot"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. Beyond Flying (white) -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Beyond the flying</h2>
+      </div>
+      <div class="grid-3 animate-in">
+        <div class="beyond-card">
+          <div class="image-placeholder image-placeholder--card" aria-label="Placeholder: Downtown Governador Valadares with views of Pico da Ibituruna">
+            <span>The city of Governador Valadares</span>
+          </div>
+          <div class="beyond-card__body">
+            <h4>The City</h4>
+            <p>GV is a real Brazilian city, not a tourist bubble. Explore the markets, eat at local restaurants, and experience daily life in Minas Gerais. The people are genuinely friendly and curious about visiting pilots.</p>
+          </div>
+        </div>
+        <div class="beyond-card">
+          <div class="image-placeholder image-placeholder--card" aria-label="Placeholder: Scenic day trip destinations near Governador Valadares">
+            <span>Day trips from GV</span>
+          </div>
+          <div class="beyond-card__body">
+            <h4>Day Trips</h4>
+            <p>On non-flying days, explore the surrounding region. Waterfalls, hiking trails on Ibituruna, and small towns in the Minas Gerais countryside offer plenty to see beyond the LZ.</p>
+          </div>
+        </div>
+        <div class="beyond-card">
+          <div class="image-placeholder image-placeholder--card" aria-label="Placeholder: Rio Doce river flowing through the valley near Governador Valadares">
+            <span>The Rio Doce</span>
+          </div>
+          <div class="beyond-card__body">
+            <h4>The River</h4>
+            <p>The Rio Doce runs through the heart of the valley and shapes the flying conditions. On rest days, the river and its surroundings offer a peaceful contrast to the intensity of thermal flying.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. Testimonials (cream) -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>What Pilots Say About Flying with Damien</h2>
+      </div>
+      <div class="grid-3 animate-in">
+        <TestimonialCard
+          quote="I saw my flying mentality and my piloting skills improve drastically over the course of the week."
+          author="Ryan"
+          role="Feb 2023"
+        />
+        <TestimonialCard
+          quote="The combination of ground school, launch support, and in-sky coaching provided an incredibly valuable learning experience. The accommodations and hospitality made for a great overall experience."
+          author="Jim"
+          role="Jan 2023"
+        />
+        <TestimonialCard
+          quote="Great instruction, local knowledge, small groups, no attitude or pressure just great flying and even better times."
+          author="Pete"
+          role="Jan 2024"
+        />
+      </div>
+      <p class="testimonial-note animate-in">Brazil-specific reviews coming soon. These reviews are from pilots who have flown with Damien on other trips.</p>
+    </div>
+  </section>
+
+  <!-- 13. FAQ (white) -->
+  <section class="section section--white">
+    <div class="container animate-in">
+      <FaqAccordion title="Common Questions About the Brazil Trip" items={faqItems} />
+    </div>
+  </section>
+
+  <!-- 14. Cross-links (cream) -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Explore Other Destinations</h2>
+      </div>
+      <div class="grid-3 animate-in">
+        <div class="cross-link-card">
+          <h3>Mexico - Valle de Bravo</h3>
+          <p>The Hair Dryer at El Penon. 300+ flyable days a year, clockwork thermals, and a charming lakeside town. The flagship Air Damien destination.</p>
+          <a href="/tour/10-day-paraglide-mexico-package/" class="btn btn--primary">View Mexico Trip</a>
+        </div>
+        <div class="cross-link-card">
+          <h3>Colombia - Roldanillo</h3>
+          <p>Fly the Valle del Cauca with towering cloudbase and XC routes that stretch for over 100km. A world-class site with a laid-back Colombian atmosphere.</p>
+          <a href="/tours/colombia-paragliding-roldanillo/" class="btn btn--primary">View Colombia Trip</a>
+        </div>
+        <div class="cross-link-card">
+          <h3>Italy - Dolomites</h3>
+          <p>Alpine flying in one of the most beautiful mountain ranges on earth. A completely different experience from tropical flying - and worth every flight.</p>
+          <a href="/tours/italy-paragliding-dolomites/" class="btn btn--primary">View Italy Trip</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Second Form (white) -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Ready to Fly Ibituruna?</h2>
+      </div>
+      <div class="animate-in form-container">
+        <ContactForm formName="brazil-booking-bottom" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .hero--full {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+  }
+
+  .hero__placeholder {
+    position: absolute;
+    inset: 0;
+    background: #6b9e6b;
+    z-index: 0;
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.55));
+    z-index: 1;
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 2;
+    padding: 3rem 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero__title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 0.25rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .hero__location {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-weight: 600;
+    color: var(--color-accent, #e8732a);
+    margin-bottom: 0.75rem;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .hero__sub {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    margin-bottom: 2rem;
+    opacity: 0.95;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  .hero__ctas {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Pitch Grid */
+  .pitch-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .pitch-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .pitch-grid__text h2 {
+    margin-bottom: 1.25rem;
+  }
+
+  .pitch-grid__text p {
+    line-height: 1.7;
+    color: var(--color-text-light, #555);
+    margin-bottom: 1rem;
+  }
+
+  .pitch-grid__image img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+
+  /* Image Placeholders */
+  .image-placeholder {
+    background: #e8e4dc;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    padding: 2rem;
+    border: 2px dashed #c4bfb4;
+  }
+
+  .image-placeholder span {
+    color: #777;
+    font-size: 0.9rem;
+    font-style: italic;
+    text-align: center;
+  }
+
+  .image-placeholder--card {
+    min-height: 200px;
+    border-radius: 12px 12px 0 0;
+  }
+
+  /* Feature Cards */
+  .feature-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.75rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  .feature-card h4 {
+    color: var(--color-accent, #e8732a);
+    margin-bottom: 0.75rem;
+  }
+
+  .feature-card p {
+    color: var(--color-text-light, #555);
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
+
+  /* Timeline */
+  .timeline {
+    max-width: 750px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .timeline__item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 1.5rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .timeline__item:last-child {
+    border-bottom: none;
+  }
+
+  .timeline__time {
+    font-weight: 700;
+    color: var(--color-accent, #e8732a);
+    font-size: 0.95rem;
+    white-space: nowrap;
+    padding-top: 0.1rem;
+  }
+
+  .timeline__desc {
+    line-height: 1.7;
+    color: var(--color-text-light, #555);
+  }
+
+  @media (max-width: 600px) {
+    .timeline__item {
+      grid-template-columns: 1fr;
+      gap: 0.25rem;
+    }
+  }
+
+  /* Skill Cards */
+  .skill-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.75rem;
+    border-left: 4px solid var(--color-accent, #e8732a);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  .skill-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary, #4a4168);
+  }
+
+  .skill-card p {
+    color: var(--color-text-light, #555);
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
+
+  /* Included Grid */
+  .included-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 600px) {
+    .included-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 960px) {
+    .included-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .included-item {
+    text-align: center;
+    padding: 1.5rem 1rem;
+  }
+
+  .included-icon {
+    width: 36px;
+    height: 36px;
+    color: var(--color-accent, #e8732a);
+    margin-bottom: 0.75rem;
+  }
+
+  .included-item h4 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary, #4a4168);
+  }
+
+  .included-item p {
+    font-size: 0.9rem;
+    color: var(--color-text-light, #555);
+    line-height: 1.6;
+  }
+
+  /* Profile Cards */
+  .profile-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  .profile-card h4 {
+    color: var(--color-primary, #4a4168);
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+  }
+
+  .profile-card p {
+    color: var(--color-text-light, #555);
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
+
+  /* CTA Block */
+  .cta-block {
+    text-align: center;
+    margin-top: 2.5rem;
+  }
+
+  .cta-block p {
+    margin-bottom: 1rem;
+    color: var(--color-text-light, #555);
+    font-size: 1.05rem;
+  }
+
+  /* Instructor Grid */
+  .instructor-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 768px) {
+    .instructor-grid {
+      grid-template-columns: 300px 1fr;
+    }
+  }
+
+  .instructor-grid__image img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+  }
+
+  .instructor-grid__text h2 {
+    margin-bottom: 0.25rem;
+  }
+
+  .instructor-grid__text h3 {
+    color: var(--color-accent, #e8732a);
+    margin-bottom: 1rem;
+  }
+
+  .instructor-grid__text p {
+    line-height: 1.7;
+    color: var(--color-text-light, #555);
+    margin-bottom: 1rem;
+  }
+
+  /* Form Container */
+  .form-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Beyond Cards */
+  .beyond-card {
+    background: var(--color-bg-warm, #f9f7f3);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  .beyond-card__body {
+    padding: 1.5rem;
+  }
+
+  .beyond-card__body h4 {
+    color: var(--color-primary, #4a4168);
+    margin-bottom: 0.5rem;
+  }
+
+  .beyond-card__body p {
+    color: var(--color-text-light, #555);
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
+
+  /* Testimonial Note */
+  .testimonial-note {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: var(--color-text-light, #777);
+    font-style: italic;
+  }
+
+  /* Cross-link Cards */
+  .cross-link-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    text-align: center;
+  }
+
+  .cross-link-card h3 {
+    margin-bottom: 0.75rem;
+    color: var(--color-primary, #4a4168);
+  }
+
+  .cross-link-card p {
+    color: var(--color-text-light, #555);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Outline Button */
+  .btn--outline {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    border: 2px solid var(--color-accent, #e8732a);
+    color: var(--color-accent, #e8732a);
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .btn--outline:hover {
+    background: var(--color-accent, #e8732a);
+    color: #fff;
+  }
+</style>
