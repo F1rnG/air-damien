@@ -1,0 +1,85 @@
+---
+import SchemaMarkup from './SchemaMarkup.astro';
+
+interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
+interface Props {
+  items: BreadcrumbItem[];
+}
+
+const { items } = Astro.props;
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": items.map((item, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "name": item.name,
+    "item": item.url
+  }))
+};
+---
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <div class="container">
+    <ol class="breadcrumbs__list">
+      {items.map((item, index) => (
+        <li class="breadcrumbs__item">
+          {index < items.length - 1 ? (
+            <a href={item.url.replace('https://airdamien.com', '')}>{item.name}</a>
+          ) : (
+            <span aria-current="page">{item.name}</span>
+          )}
+        </li>
+      ))}
+    </ol>
+  </div>
+</nav>
+
+<SchemaMarkup schema={breadcrumbSchema} />
+
+<style>
+  .breadcrumbs {
+    background: var(--color-bg-off, #f5f5f5);
+    padding: 0.75rem 0;
+    font-size: 0.875rem;
+  }
+
+  .breadcrumbs__list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .breadcrumbs__item {
+    display: flex;
+    align-items: center;
+  }
+
+  .breadcrumbs__item:not(:last-child)::after {
+    content: '/';
+    margin-left: 0.5rem;
+    color: var(--color-text-light, #666);
+  }
+
+  .breadcrumbs__item a {
+    color: var(--color-primary, #4a4168);
+    text-decoration: none;
+  }
+
+  .breadcrumbs__item a:hover {
+    color: var(--color-accent, #e8732a);
+    text-decoration: underline;
+  }
+
+  .breadcrumbs__item span {
+    color: var(--color-text-light, #666);
+  }
+</style>

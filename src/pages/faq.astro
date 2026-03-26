@@ -2,6 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FaqAccordion from '../components/FaqAccordion.astro';
 import ContactForm from '../components/ContactForm.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
 
 const bookingsFaq = [
   {
@@ -99,15 +101,38 @@ const generalFaq = [
     answer: "<p>The Piano is a well-known landing zone in Valle de Bravo located near the lakefront. It is a large, open area that is easy to spot from the air and serves as the primary LZ for most flights from El Penon.</p>"
   }
 ];
+
+function stripHtml(html: string): string {
+  return html.replace(/<[^>]*>/g, '');
+}
+
+const allFaqItems = [...bookingsFaq, ...flyingFaq, ...generalFaq];
+const faqPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": allFaqItems.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": stripHtml(item.answer)
+    }
+  }))
+};
 ---
 
 <BaseLayout
-  title="FAQ - Air Damien Paragliding"
-  description="Frequently asked questions about paragliding with Air Damien in Valle de Bravo, Mexico and Utah. Bookings, flying, safety, and general info."
+  title="FAQ - Paraglide Mexico | Paraglide Utah"
+  description="FAQs for paragliding the famous El Penon launch in Valle de Bravo Mexico and the Point of the Mountain (POTM) in Draper, Utah."
+  canonicalUrl="https://airdamien.com/faq/"
 >
+  <SchemaMarkup schema={faqPageSchema} />
+
   <section class="page-header">
     <h1>FAQ</h1>
   </section>
+
+  <Breadcrumbs items={[{ name: "Home", url: "https://airdamien.com/" }, { name: "FAQ", url: "https://airdamien.com/faq/" }]} />
 
   <section class="section section--white">
     <div class="container">

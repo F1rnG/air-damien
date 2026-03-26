@@ -1,15 +1,42 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactForm from '../../components/ContactForm.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import SchemaMarkup from '../../components/SchemaMarkup.astro';
+
+const courseSchema = {
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "Cross Country (XC) Paragliding Clinic",
+  "description": "Cross-country paragliding clinic at El Penon, Valle de Bravo, Mexico",
+  "provider": {
+    "@type": "Organization",
+    "name": "Air Damien",
+    "url": "https://airdamien.com"
+  },
+  "coursePrerequisites": "Intermediate pilot, consistent thermal identification",
+  "instructor": {
+    "@type": "Person",
+    "name": "Damien Mitchell",
+    "jobTitle": "USHPA Advanced Instructor"
+  }
+};
 ---
 
 <BaseLayout
-  title="Valle De Bravo, Mexico Cross Country (XC) Paragliding Clinics - Air Damien"
-  description="Cross country XC paragliding clinics in Valle de Bravo, Mexico. Designed for intermediate and advanced pilots. Personalized coaching, ground school, and retrieve service."
+  title="Valle De Bravo, Mexico Cross Country (XC) Paragliding Clinics - Paraglide Mexico | Paraglide Utah"
+  description="Join our Cross Country Paragliding Clinic in the stunning Valle De Bravo, Mexico. Learn from experienced instructors, improve your XC skills."
+  canonicalUrl="https://airdamien.com/paragliding-clinics-mexico/mexico-cross-country-xc-paragliding-clinics/"
 >
+  <SchemaMarkup schema={courseSchema} />
   <section class="page-header">
     <h1>Valle De Bravo, Mexico Cross Country (XC) Paragliding Clinics</h1>
   </section>
+  <Breadcrumbs items={[
+    { name: "Home", url: "https://airdamien.com/" },
+    { name: "Clinics", url: "https://airdamien.com/paragliding-clinics-mexico/" },
+    { name: "XC Clinic", url: "https://airdamien.com/paragliding-clinics-mexico/mexico-cross-country-xc-paragliding-clinics/" }
+  ]} />
 
   <!-- About -->
   <section class="section section--white">

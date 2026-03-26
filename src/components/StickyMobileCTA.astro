@@ -1,0 +1,58 @@
+---
+---
+
+<div class="sticky-mobile-cta">
+  <a href="tel:+18012444791" class="sticky-mobile-cta__btn sticky-mobile-cta__btn--call">Call Now</a>
+  <a href="/contact/" class="sticky-mobile-cta__btn sticky-mobile-cta__btn--book">Book a Session</a>
+</div>
+
+<style>
+  .sticky-mobile-cta {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .sticky-mobile-cta {
+      display: flex;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: var(--color-primary-dark, #362f4e);
+      padding: 0.5rem;
+      gap: 0.5rem;
+      box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .sticky-mobile-cta__btn {
+      flex: 1;
+      text-align: center;
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .sticky-mobile-cta__btn--call {
+      background: transparent;
+      color: #fff;
+      border: 2px solid var(--color-accent, #e8732a);
+    }
+
+    .sticky-mobile-cta__btn--book {
+      background: var(--color-accent, #e8732a);
+      color: #fff;
+    }
+
+    .sticky-mobile-cta__btn--call:hover {
+      background: rgba(232, 115, 42, 0.15);
+    }
+
+    .sticky-mobile-cta__btn--book:hover {
+      background: var(--color-accent-hover, #d4621d);
+    }
+  }
+</style>

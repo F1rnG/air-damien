@@ -1,65 +1,157 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import BlogCard from '../components/BlogCard.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://airdamien.com/' },
+  { name: 'Blog', url: 'https://airdamien.com/blog/' }
+];
+
+const posts = [
+  {
+    title: "The Best Months for Paragliding in Valle de Bravo, Mexico: Why November and December Reign Supreme",
+    url: "/best-months-to-paraglide-mexico/",
+    description: "In November and December, Valle de Bravo enjoys mild temperatures ranging from 50F to 75F. During these months the conditions are ideal.",
+    date: "2023-11-15",
+    readingTime: "3 min read"
+  },
+  {
+    title: "An Introduction to Cross-Country Paragliding: Soaring Beyond Limits",
+    url: "/intro-to-cross-country-paragliding/",
+    description: "Cross-country paragliding is a form of free-flight where pilots use paragliders to cover significant distances across diverse terrains.",
+    date: "2023-10-20",
+    readingTime: "4 min read"
+  },
+  {
+    title: "The Art of Thermal in Paragliding: Techniques and Tips",
+    url: "/thermal-in-paragliding-techniques-and-tips/",
+    description: "Master the art of thermaling in paragliding with our in-depth guide. Discover techniques for identifying, entering, and riding thermals.",
+    date: "2023-09-15",
+    readingTime: "4 min read"
+  },
+  {
+    title: "Can I paraglide anywhere?",
+    url: "/can-i-paraglide-anywhere/",
+    description: "The short answer is yes, you have the right to fly a paraglider anywhere, but there are limitations to where you can launch, fly, and land a paraglider.",
+    date: "2023-08-10",
+    readingTime: "8 min read"
+  },
+  {
+    title: "How to land a paraglider?",
+    url: "/how-to-land-a-paraglider/",
+    description: "Learn the top tricks and tips to landing a paraglider from an USHPA Advanced Instructor. Understand flair timing, and what to do if things go wrong.",
+    date: "2023-07-25",
+    readingTime: "9 min read"
+  },
+  {
+    title: "How to launch a paraglider?",
+    url: "/how-to-launch-a-paraglider/",
+    description: "Learn to launch a paraglider by reading this extensive step-by-step guide. You'll learn the top five launch techniques and tips from an Advanced Instructor.",
+    date: "2023-07-10",
+    readingTime: "7 min read"
+  },
+  {
+    title: "How long does it take to learn paragliding?",
+    url: "/how-long-does-it-take-to-learn-paragliding/",
+    description: "The short answer is a week, but the time needed to learn paragliding depends on your physical abilities, mental skills, and training environment.",
+    date: "2023-06-20",
+    readingTime: "16 min read"
+  },
+  {
+    title: "How dangerous is paragliding?",
+    url: "/how-dangerous-is-paragliding/",
+    description: "The short answer is paragliding is extremely safe when statistically compared to other sports like motorcycling.",
+    date: "2023-06-05",
+    readingTime: "10 min read"
+  },
+  {
+    title: "Do you need a license to fly a paraglider?",
+    url: "/do-you-need-a-license-to-fly-a-paraglider/",
+    description: "The short answer is no for certain air sports. You do not need a pilot license to fly a paraglider.",
+    date: "2023-05-20",
+    readingTime: "8 min read"
+  },
+  {
+    title: "How much is a paraglider?",
+    url: "/how-much-is-a-paraglider/",
+    description: "The short answer is a paraglider costs between $2,500 and $4,500 depending on the quality of the equipment and the specific model.",
+    date: "2023-05-01",
+    readingTime: "6 min read"
+  }
+];
 ---
 
 <BaseLayout
-  title="Blog - Air Damien Paragliding"
-  description="Paragliding tips, stories, and insights from Air Damien. Learn about thermalling, cross-country flying, and life in Valle de Bravo."
+  title="Blog - Paraglide Mexico | Paraglide Utah"
+  description="Informative paragliding blogs and articles, written by an USHPA Advanced Instructor, to help to you advance your paragliding skills. A must read!"
+  canonicalUrl="https://airdamien.com/blog/"
 >
-  <section class="page-header">
-    <h1>Blog</h1>
+  <div class="page-header">
+    <div class="container">
+      <h1>Blog</h1>
+    </div>
+  </div>
+
+  <Breadcrumbs items={breadcrumbs} />
+
+  <!-- Featured CTA Banner -->
+  <section class="blog-cta-banner">
+    <div class="container">
+      <p>Looking to put your skills to the test? <a href="/paragliding-clinics-mexico/" class="btn btn--primary btn--sm">Fly with us in Valle de Bravo</a></p>
+    </div>
   </section>
 
-  <section class="section section--white">
-    <div class="container text-center">
-      <div class="blog-placeholder animate-in">
-        <h2>Coming Soon</h2>
-        <p>We are working on bringing you the latest paragliding tips, stories, and insights. Check back soon for new posts.</p>
-        <div class="blog-posts-preview">
-          <h3>Recent Posts</h3>
-          <ul>
-            <li><a href="/best-months-to-paraglide-mexico/">The Best Months for Paragliding in Valle de Bravo, Mexico</a></li>
-            <li><a href="/intro-to-cross-country-paragliding/">An Introduction to Cross-Country Paragliding</a></li>
-            <li><a href="/thermal-in-paragliding-techniques-and-tips/">The Art of Thermal in Paragliding</a></li>
-            <li><a href="/can-i-paraglide-anywhere/">Can I paraglide anywhere?</a></li>
-            <li><a href="/how-to-land-a-paraglider/">How to land a paraglider?</a></li>
-          </ul>
-        </div>
+  <section class="section">
+    <div class="container">
+      <div class="blog-grid">
+        {posts.map(post => (
+          <BlogCard
+            title={post.title}
+            url={post.url}
+            description={post.description}
+            date={post.date}
+            readingTime={post.readingTime}
+          />
+        ))}
       </div>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .blog-placeholder {
-    max-width: 600px;
-    margin: 0 auto;
+  .blog-cta-banner {
+    background: var(--color-primary, #4a4168);
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
   }
 
-  .blog-placeholder h2 {
-    margin-bottom: 1rem;
-  }
-
-  .blog-posts-preview {
-    margin-top: 3rem;
-    text-align: left;
-    background: var(--color-cream);
-    border-radius: 12px;
-    padding: 2rem;
-  }
-
-  .blog-posts-preview h3 {
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-  }
-
-  .blog-posts-preview ul {
+  .blog-cta-banner p {
     display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 0;
+    font-size: 1.05rem;
   }
 
-  .blog-posts-preview a {
-    font-size: 1rem;
+  .btn--sm {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.85rem;
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  @media (max-width: 480px) {
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>

@@ -1,16 +1,31 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactForm from '../components/ContactForm.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
+
+const contactPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact Air Damien",
+  "url": "https://airdamien.com/contact/",
+  "description": "Contact Air Damien for paragliding instruction in Valle de Bravo, Mexico and Utah"
+};
 ---
 
 <BaseLayout
-  title="Contact Us - Air Damien Paragliding"
-  description="Get in touch with Air Damien. Call, text, email, or visit us in Utah or Valle de Bravo, Mexico for paragliding instruction and tours."
+  title="Contact - Paraglide Mexico | Paraglide Utah"
+  description="For paragliding instruction, contact via email, phone, radio, Skype, contact us form, or WhatsApp. Book a half day or a full day session."
+  canonicalUrl="https://airdamien.com/contact/"
 >
+  <SchemaMarkup schema={contactPageSchema} />
+
   <section class="page-header">
     <h1>Contact Us</h1>
     <p>Interested in a session or a custom flying tour? Contact us with your questions.</p>
   </section>
+
+  <Breadcrumbs items={[{ name: "Home", url: "https://airdamien.com/" }, { name: "Contact", url: "https://airdamien.com/contact/" }]} />
 
   <section class="section section--white">
     <div class="container">

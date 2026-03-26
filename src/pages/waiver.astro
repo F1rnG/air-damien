@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://airdamien.com/' },
+  { name: 'Waiver', url: 'https://airdamien.com/waiver/' }
+];
+---
+
+<BaseLayout
+  title="Waiver - Paraglide Mexico | Paraglide Utah"
+  description="Paragliding Waiver - It's a requirement for the sites we fly, and mandatory by USHPA. Download, sign, and bring to your first session."
+  canonicalUrl="https://airdamien.com/waiver/"
+>
+  <div class="page-header">
+    <div class="container">
+      <h1>Waiver</h1>
+    </div>
+  </div>
+
+  <Breadcrumbs items={breadcrumbs} />
+
+  <section class="section">
+    <div class="container content-narrow">
+      <p>Please download and review our waiver before your first session. A signed waiver is a requirement for the sites we fly and is mandatory by USHPA (United States Hang Gliding and Paragliding Association).</p>
+
+      <div class="waiver-download">
+        <div class="waiver-download__icon">&#128196;</div>
+        <h2>Download the Waiver</h2>
+        <p>Download, print, sign, and bring to your first session.</p>
+        <a href="/documents/waiver.pdf" class="btn btn--primary" download>Download Waiver (PDF)</a>
+        <p class="waiver-note">If you are unable to print the waiver, contact us and we can provide a copy at your first session.</p>
+      </div>
+
+      <h2>What the Waiver Covers</h2>
+      <ul>
+        <li>Acknowledgment of the inherent risks of paragliding</li>
+        <li>Release of liability for Air Damien and associated personnel</li>
+        <li>Confirmation that you meet minimum requirements for the activity</li>
+        <li>Emergency contact and medical information</li>
+      </ul>
+
+      <p>If you have questions about the waiver, please <a href="/contact/">contact us</a> before your session.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .content-narrow {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .content-narrow p {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .content-narrow a:not(.btn) {
+    color: var(--color-accent);
+  }
+
+  .content-narrow ul {
+    margin: 1rem 0 1.5rem 1.5rem;
+    line-height: 1.8;
+  }
+
+  .waiver-download {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: var(--color-bg-off);
+    border-radius: 12px;
+    margin: 2rem 0;
+  }
+
+  .waiver-download__icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .waiver-download h2 {
+    margin-bottom: 0.5rem;
+  }
+
+  .waiver-download .btn {
+    margin: 1.5rem 0 1rem;
+  }
+
+  .waiver-note {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    font-style: italic;
+  }
+</style>

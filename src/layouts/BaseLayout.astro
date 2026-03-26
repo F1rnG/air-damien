@@ -1,11 +1,13 @@
 ---
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import StickyMobileCTA from '../components/StickyMobileCTA.astro';
 import '../styles/global.css';
 
 interface Props {
   title: string;
   description?: string;
+  canonicalUrl?: string;
   canonical?: string;
   ogImage?: string;
 }
@@ -13,11 +15,14 @@ interface Props {
 const {
   title,
   description = 'Paragliding instruction in Valle de Bravo, Mexico and Utah. Thermalling clinics, XC clinics, and guided tours with Air Damien.',
+  canonicalUrl,
   canonical,
   ogImage = '/images/og-default.jpg',
 } = Astro.props;
 
-const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site).toString();
+const resolvedCanonical = canonicalUrl || canonical;
+
+const canonicalURL = resolvedCanonical || new URL(Astro.url.pathname, Astro.site).toString();
 ---
 
 <!doctype html>
@@ -62,5 +67,6 @@ const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site).toStri
       <slot />
     </main>
     <Footer />
+    <StickyMobileCTA />
   </body>
 </html>

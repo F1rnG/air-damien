@@ -1,0 +1,237 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import ContactForm from '../components/ContactForm.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://airdamien.com/' },
+  { name: 'Tours', url: 'https://airdamien.com/tours/' }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "TouristTrip",
+  "name": "Valle De Bravo Paragliding Tours",
+  "description": "Paragliding tours of Valle de Bravo, Mexico, the Wasatch Range in Utah and the Dolomites in Italy",
+  "provider": {
+    "@type": "Organization",
+    "name": "Air Damien",
+    "url": "https://airdamien.com"
+  },
+  "touristType": "Paragliding enthusiasts",
+  "includesAttraction": [
+    {
+      "@type": "TouristAttraction",
+      "name": "El Penon Launch",
+      "address": { "@type": "PostalAddress", "addressLocality": "Valle de Bravo", "addressCountry": "MX" }
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Valle De Bravo Paraglide Mexico Tours | Air Damien"
+  description="We offer paragliding tours of Valle de Bravo, Mexico, the Wasatch Range in Utah and the Dolomites in Italy! Book ahead."
+  canonicalUrl="https://airdamien.com/tours/"
+>
+  <SchemaMarkup schema={schema} />
+
+  <div class="page-header">
+    <div class="container">
+      <h1>Valle De Bravo, Mexico Paragliding Tours</h1>
+    </div>
+  </div>
+
+  <Breadcrumbs items={breadcrumbs} />
+
+  <section class="section">
+    <div class="container">
+      <div class="intro-block">
+        <h2>Why Fly With Us</h2>
+        <p>With over 25 years of flying experience and 10,000 flights, you are in good hands. At Air Damien, we invite you to spread your wings over the stunning landscapes of Valle De Bravo, Mexico.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <h2>Our Services</h2>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card__icon">&#9992;</div>
+          <h3>Airport Transport</h3>
+          <p>We pick you up from Mexico City International Airport and bring you directly to Valle de Bravo.</p>
+        </div>
+        <div class="card">
+          <div class="card__icon">&#127968;</div>
+          <h3>Accommodation Connection</h3>
+          <p>We help connect you with comfortable lodging near the flying sites.</p>
+        </div>
+        <div class="card">
+          <div class="card__icon">&#127979;</div>
+          <h3>Paragliding Lessons</h3>
+          <p>One-on-one and small group instruction with a USHPA Advanced Instructor.</p>
+        </div>
+        <div class="card">
+          <div class="card__icon">&#127752;</div>
+          <h3>Tandem Flights</h3>
+          <p>Experience the magic of flight with an experienced tandem pilot over El Penon.</p>
+        </div>
+        <div class="card">
+          <div class="card__icon">&#128197;</div>
+          <h3>Daily Inclusive Rate</h3>
+          <p>All-inclusive daily rates covering transport, instruction, and guided flights.</p>
+        </div>
+        <div class="card">
+          <div class="card__icon">&#127775;</div>
+          <h3>Ten Day Sky Explorer Package</h3>
+          <p>Our most popular package for the complete Valle de Bravo experience.</p>
+          <a href="/tour/10-day-paraglide-mexico-package/" class="btn btn--primary btn--sm">View Package</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Why Fly with Air Damien?</h2>
+      <div class="grid-3">
+        <div class="feature-item">
+          <h3>Experienced Pilots</h3>
+          <p>Over 25 years and 10,000+ flights of real-world experience.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Incredible Valle De Bravo</h3>
+          <p>One of the best paragliding destinations in the world, year-round.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Tailored Experiences</h3>
+          <p>Every session is customized to your skill level and goals.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Fly Different Sites</h3>
+          <p>Access to multiple launch sites and varied terrain for diverse flying.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Learn to Thermal</h3>
+          <p>Master the art of reading thermals in some of the best conditions on earth.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Learn to XC Fly</h3>
+          <p>Push your boundaries with cross-country instruction and retrieve support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="grid-3">
+        <div class="card card--highlight">
+          <h3>Safety First</h3>
+          <p>Every flight starts with a thorough weather and site assessment. We never fly in unsafe conditions.</p>
+        </div>
+        <div class="card card--highlight">
+          <h3>World's Best Guides</h3>
+          <p>USHPA certified instructors who know Valle de Bravo like the back of their hand.</p>
+        </div>
+        <div class="card card--highlight">
+          <h3>Experience of a Lifetime</h3>
+          <p>From soaring over Lake Avandaro to catching thermals off the ancient volcano rim.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Plan Your Trip</h2>
+      <ContactForm formName="tours-inquiry" />
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <h2>What's Included</h2>
+      <div class="grid-3">
+        <div class="included-item">
+          <h3>Rides to Launch</h3>
+          <p>Daily shuttle service to the mountain and back.</p>
+        </div>
+        <div class="included-item">
+          <h3>Expert Training</h3>
+          <p>Instruction from a USHPA Advanced Instructor with 25+ years experience.</p>
+        </div>
+        <div class="included-item">
+          <h3>Gear</h3>
+          <p>Spares of radios, varios, USB chargers, and sunscreen available.</p>
+        </div>
+        <div class="included-item">
+          <h3>Radio Instruction</h3>
+          <p>Real-time coaching while you fly via two-way radio.</p>
+        </div>
+        <div class="included-item">
+          <h3>Water and Snacks</h3>
+          <p>Stay hydrated and fueled at launch and the LZ.</p>
+        </div>
+        <div class="included-item">
+          <h3>Photos and Videos</h3>
+          <p>Capture your flights and review them for learning and memories.</p>
+        </div>
+      </div>
+      <p class="waiver-note">All participants must complete our <a href="/waiver/">waiver</a> before flying.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .intro-block {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .intro-block p {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--color-text-light);
+  }
+
+  .feature-item, .included-item {
+    padding: 1.5rem;
+  }
+
+  .feature-item h3, .included-item h3 {
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  .card__icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .card--highlight {
+    border-left: 4px solid var(--color-accent);
+  }
+
+  .btn--sm {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.85rem;
+    margin-top: 0.75rem;
+    display: inline-block;
+  }
+
+  .waiver-note {
+    text-align: center;
+    margin-top: 2rem;
+    font-style: italic;
+    color: var(--color-text-light);
+  }
+
+  .waiver-note a {
+    color: var(--color-accent);
+  }
+</style>

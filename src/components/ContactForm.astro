@@ -2,15 +2,15 @@
 interface Props {
   formName?: string;
   showPhone?: boolean;
-  showSubject?: boolean;
-  messageLabel?: string;
+  messagePlaceholder?: string;
+  buttonText?: string;
 }
 
 const {
   formName = 'contact',
   showPhone = true,
-  showSubject = true,
-  messageLabel = 'Message',
+  messagePlaceholder = '',
+  buttonText = 'Send Message',
 } = Astro.props;
 ---
 
@@ -62,34 +62,56 @@ const {
     </div>
   )}
 
-  {showSubject && (
-    <div class="form__group">
-      <label class="form__label" for={`${formName}-subject`}>Subject *</label>
-      <input
-        class="form__input"
-        type="text"
-        id={`${formName}-subject`}
-        name="subject"
-        required
-      />
-    </div>
-  )}
-
   <div class="form__group">
-    <label class="form__label" for={`${formName}-message`}>{messageLabel} *</label>
+    <label class="form__label" for={`${formName}-message`}>Message *</label>
     <textarea
       class="form__textarea"
       id={`${formName}-message`}
       name="message"
       required
+      placeholder={messagePlaceholder}
     ></textarea>
   </div>
 
-  <button type="submit" class="btn btn--primary">Send Message</button>
+  <button type="submit" class="btn btn--primary">{buttonText}</button>
 </form>
+
+<div class="form-trust">
+  <p>Or call Damien directly: <a href="tel:+18012444791">801-244-4791</a></p>
+  <a href="/reviews/" class="form-trust__badge">
+    <span class="form-trust__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+    <span>5.0 / 33 reviews</span>
+  </a>
+</div>
 
 <style>
   .form__hidden {
     display: none;
+  }
+
+  .form-trust {
+    text-align: center;
+    margin-top: 1.25rem;
+    font-size: 0.9rem;
+    color: var(--color-text-light, #666);
+  }
+
+  .form-trust a {
+    color: var(--color-accent, #e8732a);
+    font-weight: 600;
+  }
+
+  .form-trust__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    text-decoration: none;
+    font-size: 0.85rem;
+  }
+
+  .form-trust__stars {
+    color: #f5a623;
+    letter-spacing: 1px;
   }
 </style>

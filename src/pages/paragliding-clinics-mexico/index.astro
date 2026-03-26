@@ -1,0 +1,171 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import SchemaMarkup from '../../components/SchemaMarkup.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://airdamien.com/' },
+  { name: 'Clinics', url: 'https://airdamien.com/paragliding-clinics-mexico/' }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Paragliding Clinics in Mexico",
+  "description": "Paragliding thermalling and cross-country clinics at El Penon, Valle de Bravo, Mexico",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "url": "https://airdamien.com/paragliding-clinics-mexico/mexico-cross-country-xc-paragliding-clinics/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "url": "https://airdamien.com/paragliding-clinics-mexico/paragliding-thermalling-clinic-mexico/"
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Paragliding Clinics in Mexico - Paraglide Mexico | Paraglide Utah"
+  description="Experience the thrill of paragliding in Mexico's picturesque skies with our comprehensive Paragliding Clinics. Whether you're a novice or seasoned pilot."
+  canonicalUrl="https://airdamien.com/paragliding-clinics-mexico/"
+>
+  <SchemaMarkup schema={schema} />
+
+  <div class="page-header">
+    <div class="container">
+      <h1>Paragliding Clinics in Mexico</h1>
+    </div>
+  </div>
+
+  <Breadcrumbs items={breadcrumbs} />
+
+  <section class="section">
+    <div class="container">
+      <p class="section-intro">Whether you are looking to master the art of thermalling or push your limits with cross-country flying, our clinics at El Penon in Valle de Bravo, Mexico offer world-class instruction with USHPA Advanced Instructor Damien Mitchell.</p>
+
+      <div class="clinic-cards">
+        <article class="clinic-card">
+          <div class="clinic-card__image">
+            <span>XC Paragliding Clinic - Pilots soaring over Valle de Bravo</span>
+          </div>
+          <div class="clinic-card__body">
+            <h2>Cross Country (XC) Paragliding Clinic</h2>
+            <p>Discover the thrill of cross-country paragliding in the scenic landscapes of Valle De Bravo, Mexico, with our renowned XC Paragliding Clinic. Benefit from comprehensive training, personalized coaching, and ground school sessions under expert guidance, all while experiencing the beauty of the iconic El Penon. Whether you're a novice or seasoned pilot, our clinic will help you elevate your paragliding skills to new heights. Ready to take flight?</p>
+            <a href="/paragliding-clinics-mexico/mexico-cross-country-xc-paragliding-clinics/" class="btn btn--primary">Learn About XC Clinics</a>
+          </div>
+        </article>
+
+        <article class="clinic-card">
+          <div class="clinic-card__image">
+            <span>Thermalling Clinic - Pilot catching thermals over El Penon</span>
+          </div>
+          <div class="clinic-card__body">
+            <h2>Thermalling Paragliding Clinics</h2>
+            <p>Join us for a once-in-a-lifetime Paragliding Thermalling Clinic in Valle de Bravo, Mexico. Over a comprehensive 5-day program, you'll learn to master the art of harnessing thermals, enhancing your flying duration, and ensuring safer flights. With theoretical sessions, practical training, guided flying, and daily debriefs, this clinic caters to both novice and intermediate pilots.</p>
+            <a href="/paragliding-clinics-mexico/paragliding-thermalling-clinic-mexico/" class="btn btn--primary">Learn About Thermalling Clinics</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <h2>Ready to Book Your Clinic?</h2>
+      <p>Contact us to discuss which clinic is right for your skill level and goals.</p>
+      <ContactForm formName="clinics-booking" />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section-intro {
+    font-size: 1.125rem;
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto 3rem;
+    line-height: 1.7;
+    color: var(--color-text-light);
+  }
+
+  .clinic-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .clinic-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  .clinic-card:nth-child(even) {
+    direction: rtl;
+  }
+
+  .clinic-card:nth-child(even) > * {
+    direction: ltr;
+  }
+
+  .clinic-card__image {
+    aspect-ratio: 4 / 3;
+    background: #c4bfd4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    min-height: 300px;
+  }
+
+  .clinic-card__image span {
+    color: #fff;
+    font-size: 0.9rem;
+    text-align: center;
+    opacity: 0.8;
+  }
+
+  .clinic-card__body {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .clinic-card__body h2 {
+    margin-bottom: 1rem;
+  }
+
+  .clinic-card__body p {
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+    color: var(--color-text-light);
+  }
+
+  .clinic-card__body .btn {
+    align-self: flex-start;
+  }
+
+  @media (max-width: 768px) {
+    .clinic-card {
+      grid-template-columns: 1fr;
+    }
+
+    .clinic-card:nth-child(even) {
+      direction: ltr;
+    }
+
+    .clinic-card__body {
+      padding: 1.5rem;
+    }
+  }
+</style>

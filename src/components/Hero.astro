@@ -1,0 +1,131 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  primaryCta?: { text: string; href: string };
+  secondaryCta?: { text: string; href: string };
+  imagePlaceholder?: string;
+  imageFile?: string;
+  compact?: boolean;
+}
+
+const { title, subtitle, primaryCta, secondaryCta, imagePlaceholder = 'Hero Image', imageFile, compact = false } = Astro.props;
+---
+
+<section class={`hero ${compact ? 'hero--compact' : ''}`}>
+  {imageFile ? (
+    <img src={imageFile} alt={imagePlaceholder} class="hero__bg" loading="eager" width="1920" height="1080" />
+  ) : (
+    <div class="hero__placeholder" aria-hidden="true">
+      <span>{imagePlaceholder}</span>
+    </div>
+  )}
+  <div class="hero__overlay"></div>
+  <div class="hero__content container">
+    <h1>{title}</h1>
+    {subtitle && <p class="hero__subtitle">{subtitle}</p>}
+    {(primaryCta || secondaryCta) && (
+      <div class="hero__actions">
+        {primaryCta && <a href={primaryCta.href} class="btn btn--primary">{primaryCta.text}</a>}
+        {secondaryCta && <a href={secondaryCta.href} class="btn btn--outline">{secondaryCta.text}</a>}
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero--compact {
+    min-height: 40vh;
+  }
+
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .hero__placeholder {
+    position: absolute;
+    inset: 0;
+    background: #c4bfd4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 0;
+  }
+
+  .hero__placeholder span {
+    color: #fff;
+    font-size: 1.125rem;
+    font-weight: 500;
+    opacity: 0.8;
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(74, 65, 104, 0.55);
+    z-index: 1;
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+    padding: 2rem 1rem;
+    max-width: 800px;
+  }
+
+  .hero__content h1 {
+    color: #fff;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .hero__subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.35rem);
+    margin-bottom: 2rem;
+    opacity: 0.95;
+    line-height: 1.6;
+  }
+
+  .hero__actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero__actions .btn--outline {
+    border-color: #fff;
+    color: #fff;
+  }
+
+  .hero__actions .btn--outline:hover {
+    background: #fff;
+    color: var(--color-primary, #4a4168);
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      min-height: 55vh;
+    }
+    .hero--compact {
+      min-height: 30vh;
+    }
+  }
+</style>

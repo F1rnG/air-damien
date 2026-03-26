@@ -1,0 +1,108 @@
+---
+interface Props {
+  title: string;
+  url: string;
+  description: string;
+  date: string;
+  readingTime: string;
+  imagePlaceholder?: string;
+}
+
+const { title, url, description, date, readingTime, imagePlaceholder = 'Blog Featured Image' } = Astro.props;
+---
+
+<article class="blog-card">
+  <a href={url} class="blog-card__link">
+    <div class="blog-card__image">
+      <span>{imagePlaceholder}</span>
+    </div>
+    <div class="blog-card__body">
+      <h3 class="blog-card__title">{title}</h3>
+      <div class="blog-card__meta">
+        <span>By Damien Mitchell</span>
+        <span class="blog-card__sep">|</span>
+        <time datetime={date}>{new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span class="blog-card__sep">|</span>
+        <span>{readingTime}</span>
+      </div>
+      <p class="blog-card__excerpt">{description}</p>
+      <span class="blog-card__read-more">Read More</span>
+    </div>
+  </a>
+</article>
+
+<style>
+  .blog-card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .blog-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  }
+
+  .blog-card__link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .blog-card__image {
+    aspect-ratio: 16 / 9;
+    background: #c4bfd4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .blog-card__image span {
+    color: #fff;
+    font-size: 0.875rem;
+    opacity: 0.8;
+  }
+
+  .blog-card__body {
+    padding: 1.25rem;
+  }
+
+  .blog-card__title {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+    color: var(--color-primary, #4a4168);
+  }
+
+  .blog-card__meta {
+    font-size: 0.8rem;
+    color: var(--color-text-light, #666);
+    margin-bottom: 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  .blog-card__sep {
+    opacity: 0.5;
+  }
+
+  .blog-card__excerpt {
+    font-size: 0.9rem;
+    color: var(--color-text, #333);
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .blog-card__read-more {
+    color: var(--color-accent, #e8732a);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+</style>

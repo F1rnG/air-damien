@@ -1,15 +1,31 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import GalleryGrid from '../components/GalleryGrid.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
+
+const gallerySchema = {
+  "@context": "https://schema.org",
+  "@type": "ImageGallery",
+  "name": "Air Damien Photo Gallery",
+  "url": "https://airdamien.com/gallery/",
+  "description": "Paragliding photos from Valle de Bravo, Mexico and Utah"
+};
 ---
 
 <BaseLayout
-  title="Gallery - Air Damien Paragliding"
-  description="Browse photos from our paragliding adventures in Valle de Bravo, Mexico and the Wasatch Mountains, Utah."
+  title="Gallery - Paraglide Mexico | Paraglide Utah"
+  description='Paragliding photos from Valle de Bravo and Point of the Mountain (POTM), Utah. See the best of "Sky Life". Get to see the views pilots see every day.'
+  canonicalUrl="https://airdamien.com/gallery/"
 >
+  <SchemaMarkup schema={gallerySchema} />
   <section class="page-header">
     <h1>Gallery</h1>
   </section>
+  <Breadcrumbs items={[
+    { name: "Home", url: "https://airdamien.com/" },
+    { name: "Gallery", url: "https://airdamien.com/gallery/" }
+  ]} />
 
   <section class="section section--white">
     <div class="container">

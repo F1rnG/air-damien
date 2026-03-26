@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://airdamien.com/' },
+  { name: 'Privacy Policy', url: 'https://airdamien.com/privacy-policy/' }
+];
+---
+
+<BaseLayout
+  title="Privacy Policy - Paraglide Mexico | Paraglide Utah"
+  description="Our privacy policy explains what the data we collect and how we use it."
+  canonicalUrl="https://airdamien.com/privacy-policy/"
+>
+  <div class="page-header">
+    <div class="container">
+      <h1>Privacy Policy</h1>
+    </div>
+  </div>
+
+  <Breadcrumbs items={breadcrumbs} />
+
+  <section class="section">
+    <div class="container content-narrow">
+      <p><strong>Last updated:</strong> January 1, 2024</p>
+
+      <h2>Who We Are</h2>
+      <p>Our website address is: https://airdamien.com. We are Air Damien, a paragliding instruction business operated by Damien Mitchell.</p>
+
+      <h2>What Personal Data We Collect and Why</h2>
+
+      <h3>Contact Forms</h3>
+      <p>When you submit a contact form on our site, we collect the information you provide, including your name, email address, phone number, and message content. This information is used solely to respond to your inquiry and coordinate paragliding sessions.</p>
+
+      <h3>Cookies</h3>
+      <p>This site does not use cookies for tracking purposes. If you leave a review, you may opt-in to saving your name and email in cookies for convenience.</p>
+
+      <h3>Analytics</h3>
+      <p>We may use third-party analytics services to understand how visitors interact with our website. This data is anonymized and used only to improve our site experience.</p>
+
+      <h2>Who We Share Your Data With</h2>
+      <p>We do not sell, trade, or share your personal information with third parties except as necessary to provide our services (e.g., coordinating transportation or accommodation).</p>
+
+      <h2>How Long We Retain Your Data</h2>
+      <p>Contact form submissions are retained for the duration needed to respond to and fulfill your request, typically no longer than one year.</p>
+
+      <h2>What Rights You Have Over Your Data</h2>
+      <p>You can request that we erase any personal data we hold about you. This does not include any data we are obliged to keep for administrative, legal, or security purposes.</p>
+
+      <h2>Contact Information</h2>
+      <p>For any privacy-related questions, contact us at <a href="mailto:Damien@AirDamien.com">Damien@AirDamien.com</a> or call <a href="tel:+18012444791">1-801-244-4791</a>.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .content-narrow {
+    max-width: 750px;
+    margin: 0 auto;
+  }
+
+  .content-narrow h2 {
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .content-narrow h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .content-narrow p {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .content-narrow a {
+    color: var(--color-accent);
+  }
+</style>

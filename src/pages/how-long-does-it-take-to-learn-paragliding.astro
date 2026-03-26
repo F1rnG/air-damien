@@ -1,0 +1,43 @@
+---
+import BlogPostLayout from '../layouts/BlogPostLayout.astro';
+
+const relatedPosts = [
+  {
+    title: "How to launch a paraglider?",
+    url: "/how-to-launch-a-paraglider/",
+    description: "Learn to launch a paraglider by reading this guide...",
+    date: "2023-07-10",
+    readingTime: "7 min read",
+  },
+  {
+    title: "How to land a paraglider?",
+    url: "/how-to-land-a-paraglider/",
+    description: "Learn the top tricks and tips to landing...",
+    date: "2023-07-25",
+    readingTime: "9 min read",
+  },
+  {
+    title: "How dangerous is paragliding?",
+    url: "/how-dangerous-is-paragliding/",
+    description: "The short answer is paragliding is extremely safe...",
+    date: "2023-06-05",
+    readingTime: "10 min read",
+  },
+];
+---
+
+<BlogPostLayout
+  title="How long does it take to learn paragliding?"
+  description="The short answer is a week, but the time needed to learn paragliding depends on your physical abilities, mental skills, and training environment."
+  canonicalUrl="https://airdamien.com/how-long-does-it-take-to-learn-paragliding/"
+  datePublished="2023-06-20"
+  readingTime="16 min read"
+  wordCount={4016}
+  relatedPosts={relatedPosts}
+>
+  <p>The short answer is a week, but the time needed to learn paragliding depends on your physical abilities, mental skills, and training environment.</p>
+
+  <p>Full article content to be added by the site owner.</p>
+
+  <p>For expert paragliding instruction in Valle de Bravo, Mexico or at the Point of the Mountain in Utah, <a href="/contact/">contact Air Damien</a> to book your session with a USHPA Advanced Instructor with over 25 years of experience.</p>
+</BlogPostLayout>

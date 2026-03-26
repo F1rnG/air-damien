@@ -2,16 +2,52 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TeamCard from '../components/TeamCard.astro';
 import ContactForm from '../components/ContactForm.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Air Damien",
+  "url": "https://airdamien.com",
+  "founder": {
+    "@type": "Person",
+    "name": "Damien Mitchell",
+    "jobTitle": "USHPA Advanced Instructor"
+  },
+  "employee": [
+    {
+      "@type": "Person",
+      "name": "Damien Mitchell",
+      "jobTitle": "Advanced Instructor"
+    },
+    {
+      "@type": "Person",
+      "name": "Alondra Mejia",
+      "jobTitle": "Booking Manager"
+    },
+    {
+      "@type": "Person",
+      "name": "Carlos El Conductor",
+      "jobTitle": "Driver and Launch Assistant"
+    }
+  ]
+};
 ---
 
 <BaseLayout
-  title="About Us - Air Damien Paragliding"
-  description="Meet the Air Damien team. Learn about Vampiro's story and our mission to teach safe, fun paragliding in Valle de Bravo, Mexico and Utah."
+  title="About Us - Paraglide Mexico | Paraglide Utah"
+  description="I'm Damien, they call me Vampiro. I teach paragliding to at El Penon in Valle de Bravo, Mexico and at The Point of the Mountain in Utah."
+  canonicalUrl="https://airdamien.com/about-us/"
 >
+  <SchemaMarkup schema={organizationSchema} />
+
   <!-- Hero -->
   <section class="page-header">
     <h1>About Us</h1>
   </section>
+
+  <Breadcrumbs items={[{ name: "Home", url: "https://airdamien.com/" }, { name: "About Us", url: "https://airdamien.com/about-us/" }]} />
 
   <!-- Photo Grid -->
   <section class="section section--white">
@@ -110,7 +146,7 @@ import ContactForm from '../components/ContactForm.astro';
         <h3>Contact Us</h3>
       </div>
       <div class="animate-in">
-        <ContactForm formName="about-contact" showPhone={false} showSubject={false} messageLabel="Question / Comment" />
+        <ContactForm formName="about-contact" showPhone={false} messageLabel="Question / Comment" />
       </div>
     </div>
   </section>

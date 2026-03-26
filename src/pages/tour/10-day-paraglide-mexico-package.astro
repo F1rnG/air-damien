@@ -1,16 +1,38 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactForm from '../../components/ContactForm.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import SchemaMarkup from '../../components/SchemaMarkup.astro';
+
+const tripSchema = {
+  "@context": "https://schema.org",
+  "@type": "TouristTrip",
+  "name": "Ten Day Paraglide Mexico Package",
+  "description": "10-day all-inclusive paragliding adventure in Valle De Bravo, Mexico",
+  "provider": {
+    "@type": "Organization",
+    "name": "Air Damien",
+    "url": "https://airdamien.com"
+  },
+  "touristType": "Paragliding enthusiasts"
+};
 ---
 
 <BaseLayout
-  title="Ten Day Paraglide Mexico Package - Valle De Bravo, Mexico - Air Damien"
-  description="All-inclusive 10-day paragliding package in Valle de Bravo, Mexico. Includes lessons, airport transport, hotel accommodation, and catering."
+  title="Ten Day Paraglide Mexico Package - Valle De Bravo, Mexico - Paraglide Mexico | Paraglide Utah"
+  description="Embark on a 10-day paragliding adventure with Air Damien in Valle De Bravo. Our all-inclusive package features expert lessons, airport transport, and hotel stays."
+  canonicalUrl="https://airdamien.com/tour/10-day-paraglide-mexico-package/"
 >
+  <SchemaMarkup schema={tripSchema} />
   <section class="page-header">
     <h1>Ten Day Paraglide Mexico Package</h1>
     <p class="page-header__sub">Valle De Bravo, Mexico</p>
   </section>
+  <Breadcrumbs items={[
+    { name: "Home", url: "https://airdamien.com/" },
+    { name: "Tours", url: "https://airdamien.com/tours/" },
+    { name: "10 Day Package", url: "https://airdamien.com/tour/10-day-paraglide-mexico-package/" }
+  ]} />
 
   <!-- Intro -->
   <section class="section section--white">

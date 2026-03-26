@@ -1,15 +1,49 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactForm from '../../components/ContactForm.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import SchemaMarkup from '../../components/SchemaMarkup.astro';
+
+const courseSchema = {
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "Paragliding Thermalling Clinic",
+  "description": "5-day thermalling clinic at El Penon, Valle de Bravo, Mexico",
+  "provider": {
+    "@type": "Organization",
+    "name": "Air Damien",
+    "url": "https://airdamien.com"
+  },
+  "coursePrerequisites": "P2 Novice rating or equivalent certification",
+  "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "locationCreated": {
+      "@type": "Place",
+      "name": "El Penon, Valle de Bravo, Mexico"
+    }
+  },
+  "instructor": {
+    "@type": "Person",
+    "name": "Damien Mitchell",
+    "jobTitle": "USHPA Advanced Instructor"
+  }
+};
 ---
 
 <BaseLayout
-  title="Multi-Day Paragliding Thermalling Clinic, Mexico - Air Damien"
-  description="Join our paragliding thermalling clinic in Valle de Bravo, Mexico. Expert instruction, guided flying, daily flight analysis for all skill levels."
+  title="Multi-Day Paragliding Thermalling Clinic, Mexico - Paraglide Mexico | Paraglide Utah"
+  description="Join our Paragliding Thermalling Clinic in Mexico and refine your flying skills like never before. Beginner or intermediate, this clinic has something for everyone."
+  canonicalUrl="https://airdamien.com/paragliding-clinics-mexico/paragliding-thermalling-clinic-mexico/"
 >
+  <SchemaMarkup schema={courseSchema} />
   <section class="page-header">
     <h1>Multi-Day Paragliding Thermalling Clinic, Mexico</h1>
   </section>
+  <Breadcrumbs items={[
+    { name: "Home", url: "https://airdamien.com/" },
+    { name: "Clinics", url: "https://airdamien.com/paragliding-clinics-mexico/" },
+    { name: "Thermalling Clinic", url: "https://airdamien.com/paragliding-clinics-mexico/paragliding-thermalling-clinic-mexico/" }
+  ]} />
 
   <!-- About the Clinic -->
   <section class="section section--white">

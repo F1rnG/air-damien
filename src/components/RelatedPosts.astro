@@ -1,0 +1,53 @@
+---
+import BlogCard from './BlogCard.astro';
+
+interface PostData {
+  title: string;
+  url: string;
+  description: string;
+  date: string;
+  readingTime: string;
+}
+
+interface Props {
+  posts: PostData[];
+}
+
+const { posts } = Astro.props;
+---
+
+{posts.length > 0 && (
+  <section class="related-posts">
+    <h2>Related Articles</h2>
+    <div class="related-posts__grid">
+      {posts.map(post => (
+        <BlogCard
+          title={post.title}
+          url={post.url}
+          description={post.description}
+          date={post.date}
+          readingTime={post.readingTime}
+        />
+      ))}
+    </div>
+  </section>
+)}
+
+<style>
+  .related-posts {
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--color-border, #e0e0e0);
+  }
+
+  .related-posts h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .related-posts__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+</style>

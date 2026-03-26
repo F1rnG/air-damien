@@ -1,15 +1,116 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ReviewCard from '../components/ReviewCard.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
+
+const reviewSchemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    "author": { "@type": "Person", "name": "Pete" },
+    "reviewBody": "Great instruction, local knowledge, small groups, no attitude or pressure just great flying and even better times. Couldn't recommend more.",
+    "datePublished": "2024-01-30",
+    "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 },
+    "itemReviewed": { "@type": "LocalBusiness", "name": "Air Damien" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    "author": { "@type": "Person", "name": "Ryan" },
+    "reviewBody": "Went with only a year of flying and gained confidence I didn't think was possible. Saw my skills improve drastically over the week. The instruction was personalized and the flying was world-class.",
+    "datePublished": "2023-02-27",
+    "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 },
+    "itemReviewed": { "@type": "LocalBusiness", "name": "Air Damien" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    "author": { "@type": "Person", "name": "Jim" },
+    "reviewBody": "Weeklong thermaling clinic was everything I hoped for. Ground school in the morning, launch support, and in-sky coaching via radio. Already looking forward to next year.",
+    "datePublished": "2023-01-24",
+    "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 },
+    "itemReviewed": { "@type": "LocalBusiness", "name": "Air Damien" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    "author": { "@type": "Person", "name": "Charles Walsh" },
+    "reviewBody": "Great experience flying in Utah. Top notch instruction from Damien. He knows the local conditions better than anyone and makes sure every pilot feels comfortable and confident.",
+    "datePublished": "2022-10-08",
+    "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 },
+    "itemReviewed": { "@type": "LocalBusiness", "name": "Air Damien" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    "author": { "@type": "Person", "name": "Dune Flier" },
+    "reviewBody": "Third trip to Utah flying with Damien. Each time I come back I learn something new. Only regret this time was not flying Jupiter. Next year for sure.",
+    "datePublished": "2022-10-06",
+    "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 },
+    "itemReviewed": { "@type": "LocalBusiness", "name": "Air Damien" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    "author": { "@type": "Person", "name": "FlyGirl33" },
+    "reviewBody": "Annual Utah visit, living the van life and flew every opportunity I could. Damien's guidance helped me feel safe pushing my comfort zone. The community here is welcoming and supportive.",
+    "datePublished": "2022-08-14",
+    "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 },
+    "itemReviewed": { "@type": "LocalBusiness", "name": "Air Damien" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    "author": { "@type": "Person", "name": "Blaze" },
+    "reviewBody": "First time paragliding and I could not have asked for a better instructor. Patient, knowledgeable, and answered all my questions without making me feel like a beginner.",
+    "datePublished": "2022-07-24",
+    "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 },
+    "itemReviewed": { "@type": "LocalBusiness", "name": "Air Damien" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    "author": { "@type": "Person", "name": "Kara G" },
+    "reviewBody": "First time flying and it was an awesome experience. Damien was super helpful, made me feel at ease, and the whole team was welcoming. Would do it again in a heartbeat.",
+    "datePublished": "2022-07-23",
+    "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 },
+    "itemReviewed": { "@type": "LocalBusiness", "name": "Air Damien" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    "author": { "@type": "Person", "name": "DirtyBirdy" },
+    "reviewBody": "Incredible day in Utah. The views from above are something you have to experience to understand. Damien was a wonderful guide and made the whole experience feel natural and safe.",
+    "datePublished": "2022-07-17",
+    "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 },
+    "itemReviewed": { "@type": "LocalBusiness", "name": "Air Damien" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    "author": { "@type": "Person", "name": "GR3YGUY" },
+    "reviewBody": "The scariest part of the trip was driving up the switchbacks. Thanks for the doughnuts.",
+    "datePublished": "2022-07-15",
+    "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 },
+    "itemReviewed": { "@type": "LocalBusiness", "name": "Air Damien" }
+  }
+];
 ---
 
 <BaseLayout
-  title="Reviews - Air Damien Paragliding"
-  description="Read reviews from pilots who have flown with Air Damien in Valle de Bravo, Mexico and Utah. 5.0 out of 5 stars from 33 reviews."
+  title="Reviews - Paraglide Mexico | Paraglide Utah"
+  description="Real, authenticated paragliding reviews from new pilots to competition pilots, from Mexico, to Utah. Add your review now."
+  canonicalUrl="https://airdamien.com/reviews/"
 >
+  <SchemaMarkup schema={reviewSchemas} />
   <section class="page-header">
     <h1>Reviews</h1>
   </section>
+  <Breadcrumbs items={[
+    { name: "Home", url: "https://airdamien.com/" },
+    { name: "Reviews", url: "https://airdamien.com/reviews/" }
+  ]} />
 
   <section class="section section--white">
     <div class="container">
@@ -71,6 +172,13 @@ import ReviewCard from '../components/ReviewCard.astro';
           text="The scariest part of the trip was driving up the switchbacks. Thanks for the doughnuts."
         />
       </div>
+    </div>
+  </section>
+
+  <section class="section section--sky text-center">
+    <div class="container animate-in">
+      <h2>Join our next group in Valle de Bravo.</h2>
+      <a href="/contact/" class="btn btn--primary">Get in Touch</a>
     </div>
   </section>
 </BaseLayout>
