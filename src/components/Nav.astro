@@ -55,17 +55,15 @@ const currentPath = Astro.url.pathname;
     right: 0;
     z-index: 1000;
     padding: 0 1.5rem;
-    transition: background 0.3s, box-shadow 0.3s;
-    background: transparent;
+    background: var(--color-primary, #3b3160);
   }
 
   .nav.is-scrolled {
-    background: var(--color-sky-dark);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    background: var(--color-primary, #3b3160);
   }
 
   .nav.is-solid {
-    background: var(--color-sky-dark);
+    background: var(--color-primary, #3b3160);
   }
 
   .nav__inner {
@@ -113,19 +111,19 @@ const currentPath = Astro.url.pathname;
 
   .nav__list a,
   .nav__dropdown-trigger {
-    color: var(--color-text-on-dark-muted, #c4b8e0);
+    color: #ffffff;
     padding: 0.5rem 0.7rem;
     font-size: 0.9rem;
     font-weight: 500;
     border-radius: 4px;
-    transition: background 0.2s, color 0.2s;
+    transition: background 0.2s;
     white-space: nowrap;
   }
 
   .nav__list a:hover,
   .nav__dropdown-trigger:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--color-text-on-dark, #ffffff);
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
   }
 
   .nav__list a.active {
