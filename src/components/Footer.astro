@@ -52,6 +52,33 @@
         </ul>
       </div>
 
+      <!-- Recent Posts -->
+      <div class="footer-col">
+        <h4>Recent Posts</h4>
+        <ul class="footer-posts">
+          <li>
+            <a href="/best-months-to-paraglide-mexico/">The Best Months for Paragliding in Valle de Bravo</a>
+            <span class="footer-post-date">November 15, 2023</span>
+          </li>
+          <li>
+            <a href="/intro-to-cross-country-paragliding/">An Introduction to Cross-Country Paragliding</a>
+            <span class="footer-post-date">October 20, 2023</span>
+          </li>
+          <li>
+            <a href="/thermal-in-paragliding-techniques-and-tips/">The Art of Thermal in Paragliding</a>
+            <span class="footer-post-date">September 15, 2023</span>
+          </li>
+          <li>
+            <a href="/can-i-paraglide-anywhere/">Can I paraglide anywhere?</a>
+            <span class="footer-post-date">August 10, 2023</span>
+          </li>
+          <li>
+            <a href="/how-to-land-a-paraglider/">How to land a paraglider?</a>
+            <span class="footer-post-date">July 25, 2023</span>
+          </li>
+        </ul>
+      </div>
+
       <!-- Contact -->
       <div class="footer-col">
         <h4>Contact</h4>
@@ -109,7 +136,7 @@
 
   .footer-grid {
     display: grid;
-    grid-template-columns: 1.2fr 1fr 1fr;
+    grid-template-columns: 1.3fr 0.8fr 1fr 1fr;
     gap: 2rem;
   }
 
@@ -216,6 +243,32 @@
 
   .footer-bottom a:hover {
     color: #ffffff;
+  }
+
+  .footer-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+
+  .footer-posts a {
+    color: var(--color-text-on-dark-muted, #c4b8e0);
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: color 150ms ease;
+    display: block;
+    line-height: 1.4;
+  }
+
+  .footer-posts a:hover {
+    color: #ffffff;
+  }
+
+  .footer-post-date {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--color-primary-subtle, #a99cc4);
+    margin-top: 0.125rem;
   }
 
   @media (max-width: 768px) {
