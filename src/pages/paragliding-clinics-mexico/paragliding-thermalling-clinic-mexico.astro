@@ -3,31 +3,40 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactForm from '../../components/ContactForm.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import SchemaMarkup from '../../components/SchemaMarkup.astro';
+import StatsBar from '../../components/StatsBar.astro';
+import TestimonialCard from '../../components/TestimonialCard.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
 
 const courseSchema = {
   "@context": "https://schema.org",
   "@type": "Course",
   "name": "Paragliding Thermalling Clinic",
   "description": "5-day thermalling clinic at El Penon, Valle de Bravo, Mexico",
-  "provider": {
-    "@type": "Organization",
-    "name": "Air Damien",
-    "url": "https://airdamien.com"
-  },
+  "provider": { "@type": "Organization", "name": "Air Damien", "url": "https://airdamien.com" },
   "coursePrerequisites": "P2 Novice rating or equivalent certification",
-  "hasCourseInstance": {
-    "@type": "CourseInstance",
-    "locationCreated": {
-      "@type": "Place",
-      "name": "El Penon, Valle de Bravo, Mexico"
-    }
-  },
-  "instructor": {
-    "@type": "Person",
-    "name": "Damien Mitchell",
-    "jobTitle": "USHPA Advanced Instructor"
-  }
+  "hasCourseInstance": { "@type": "CourseInstance", "locationCreated": { "@type": "Place", "name": "El Penon, Valle de Bravo, Mexico" } },
+  "instructor": { "@type": "Person", "name": "Damien Mitchell", "jobTitle": "USHPA Advanced Instructor" }
 };
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "What skill level do I need for the thermalling clinic?", "acceptedAnswer": { "@type": "Answer", "text": "P2 (Novice) rating or equivalent. You should be able to launch, fly, and land independently." } },
+    { "@type": "Question", "name": "How many pilots per clinic?", "acceptedAnswer": { "@type": "Answer", "text": "We keep groups small, typically 4-6 pilots, so everyone gets personal attention and radio time." } },
+    { "@type": "Question", "name": "What if the weather is bad?", "acceptedAnswer": { "@type": "Answer", "text": "Valle de Bravo has 300+ flyable days per year. If a day is unflyable, we do extended ground school and reschedule flying. No-fly days are rare." } },
+    { "@type": "Question", "name": "Do I need my own gear?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, bring your own certified equipment. We have spare radios, varios, and chargers if you forget something." } },
+    { "@type": "Question", "name": "How do I get to Valle de Bravo?", "acceptedAnswer": { "@type": "Answer", "text": "Fly into Mexico City (MEX) or Toluca (TLC). We provide airport pickup and the drive to Valle de Bravo is about 2-3 hours." } }
+  ]
+};
+
+const faqItems = [
+  { question: "What skill level do I need?", answer: "P2 (Novice) rating or equivalent. You should be able to launch, fly, and land independently." },
+  { question: "How many pilots per clinic?", answer: "We keep groups small, typically 4-6 pilots, so everyone gets personal attention and radio time." },
+  { question: "What if the weather is bad?", answer: "Valle de Bravo has 300+ flyable days per year. If a day is unflyable, we do extended ground school and reschedule flying. No-fly days are rare." },
+  { question: "Do I need my own gear?", answer: "Yes, bring your own certified equipment. We have spare radios, varios, and chargers if you forget something." },
+  { question: "How do I get there?", answer: "Fly into Mexico City (MEX) or Toluca (TLC). We provide airport pickup and the drive to Valle de Bravo is about 2-3 hours." }
+];
 ---
 
 <BaseLayout
@@ -35,160 +44,312 @@ const courseSchema = {
   description="Join our Paragliding Thermalling Clinic in Mexico and refine your flying skills like never before. Beginner or intermediate, this clinic has something for everyone."
   canonicalUrl="https://airdamien.com/paragliding-clinics-mexico/paragliding-thermalling-clinic-mexico/"
 >
-  <SchemaMarkup schema={courseSchema} />
-  <section class="page-header">
-    <h1>Multi-Day Paragliding Thermalling Clinic, Mexico</h1>
+  <!-- Hero -->
+  <section class="hero hero--full">
+    <img class="hero__bg" src="/images/gaggle.jpg" alt="Gaggle of paragliders thermalling over Valle de Bravo, Mexico" width="1920" height="1280" loading="eager" />
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <h1 class="hero__title">Multi-Day Paragliding Thermalling Clinic</h1>
+      <p class="hero__location">Valle de Bravo, Mexico</p>
+      <p class="hero__sub">Five days of guided instruction to master thermal flying at one of the best paragliding sites in the world.</p>
+      <div class="hero__ctas">
+        <a href="#booking-form" class="btn btn--primary">Check Availability</a>
+      </div>
+    </div>
   </section>
+
+  <!-- Breadcrumbs -->
   <Breadcrumbs items={[
     { name: "Home", url: "https://airdamien.com/" },
     { name: "Clinics", url: "https://airdamien.com/paragliding-clinics-mexico/" },
     { name: "Thermalling Clinic", url: "https://airdamien.com/paragliding-clinics-mexico/paragliding-thermalling-clinic-mexico/" }
   ]} />
 
-  <!-- About the Clinic -->
-  <section class="section section--white">
+  <!-- Schema -->
+  <SchemaMarkup schema={courseSchema} />
+  <SchemaMarkup schema={faqSchema} />
+
+  <!-- The Pitch -->
+  <section class="section">
     <div class="container">
-      <div class="clinic-intro animate-in">
-        <h2>About the Clinic</h2>
-        <p>Welcome to our Paragliding Thermalling Clinic, a once-in-a-lifetime experience designed for all those paragliding enthusiasts eager to refine their thermalling skills and ride the winds like never before. Hosted in the breathtaking landscapes of Mexico, our clinic merges exhilarating adventure with comprehensive learning under expert guidance.</p>
-        <p>Our goal is to provide you with the necessary skill set, knowledge, and confidence to harness the power of thermals effectively, and ultimately enjoy more fulfilling, longer, and safer flights. Whether you are a beginner looking to start your thermalling journey or an intermediate pilot wanting to brush up your skills, this clinic has something to offer for everyone.</p>
+      <div class="pitch-grid animate-in">
+        <div class="pitch-grid__text">
+          <h2>This is not a ground school with a flight at the end</h2>
+          <p>Most thermalling clinics give you a couple of classroom sessions, point you at the sky, and wish you luck. This one is different. You will fly every day - multiple times if conditions allow - with a USHPA Advanced Instructor talking you through every climb, every transition, and every decision on the radio.</p>
+          <p>We run this clinic at El Penon in Valle de Bravo because the thermals here are among the most consistent and readable on the planet. The famous "Hair Dryer" thermal cycle kicks on like clockwork around 10am every morning, which means you get reliable, repeatable conditions to practice in - not the random lottery you get at most flying sites.</p>
+          <p>By the end of five days, you will not just understand thermals in theory. You will feel them, read the signs before you even launch, and know how to center and climb without white-knuckling it. That is the difference between a clinic that teaches you about thermalling and one that actually makes you a thermal pilot.</p>
+        </div>
+        <div class="pitch-grid__image">
+          <img src="/images/damien 1.jpg" alt="Damien Mitchell coaching a student at El Penon launch" width="800" height="600" loading="lazy" />
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Program Details -->
-  <section class="section section--cream">
+  <!-- A Typical Day -->
+  <section class="section section--alt">
     <div class="container">
       <div class="section__heading animate-in">
-        <h2>5-Day Clinic Program</h2>
+        <h2>A Typical Day at the Clinic</h2>
       </div>
-      <div class="grid-2 animate-in">
-        <div class="card">
-          <div class="card__body">
-            <h4>1. Theoretical Sessions</h4>
-            <p>Understanding thermals, their formation, weather dynamics, risk management, and safety protocols. Build a solid foundation before taking to the sky.</p>
-          </div>
+      <div class="timeline animate-in">
+        <div class="timeline__item">
+          <span class="timeline__time">7:30 AM</span>
+          <span class="timeline__label">Breakfast at the house</span>
         </div>
-        <div class="card">
-          <div class="card__body">
-            <h4>2. Practical Training</h4>
-            <p>Guided by certified professionals in a safe, controlled environment. Ground handling, launch techniques, and progressive skill building.</p>
-          </div>
+        <div class="timeline__item">
+          <span class="timeline__time">8:30 AM</span>
+          <span class="timeline__label">Ground school - weather analysis, thermal theory, flight planning</span>
         </div>
-        <div class="card">
-          <div class="card__body">
-            <h4>3. Guided Flying</h4>
-            <p>Radio support with real-time feedback for thermal soaring techniques. Your instructor will be in your ear every step of the way.</p>
-          </div>
+        <div class="timeline__item">
+          <span class="timeline__time">10:00 AM</span>
+          <span class="timeline__label">Shuttle to El Penon launch (the Hair Dryer kicks on)</span>
         </div>
-        <div class="card">
-          <div class="card__body">
-            <h4>4. Flight Analysis</h4>
-            <p>Daily debriefing sessions with personalized feedback. Review your flights, identify improvements, and set goals for the next day.</p>
-          </div>
+        <div class="timeline__item">
+          <span class="timeline__time">10:30 AM</span>
+          <span class="timeline__label">Launch and fly with live radio coaching</span>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__time">1:00 PM</span>
+          <span class="timeline__label">Retrieve and return to the landing zone</span>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__time">2:00 PM</span>
+          <span class="timeline__label">Lunch and flight debrief - review tracks, discuss decisions</span>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__time">4:30 PM</span>
+          <span class="timeline__label">Glass-off session - optional late afternoon flight</span>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__time">7:00 PM</span>
+          <span class="timeline__label">Dinner in Valle de Bravo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What You Will Learn -->
+  <section class="section">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>What You Will Walk Away With</h2>
+      </div>
+      <div class="grid-3 animate-in">
+        <div class="skill-card">
+          <h4>Reading Thermals</h4>
+          <p>Learn to spot thermal triggers on the ground, read cloud development, and feel the subtle cues in the air before you ever enter a thermal. Stop guessing and start knowing.</p>
+        </div>
+        <div class="skill-card">
+          <h4>Thermal Entry and Centering</h4>
+          <p>The moment you hit lift, what do you do? We drill the entry technique until it becomes automatic - bank, feel, adjust, center. No more flying through the best part of the thermal.</p>
+        </div>
+        <div class="skill-card">
+          <h4>Core Management</h4>
+          <p>Thermals are not perfect columns. They shift, pulse, and tilt. You will learn to stay in the strongest part of the lift even as it moves, without losing your climb rate.</p>
+        </div>
+        <div class="skill-card">
+          <h4>Climb Optimization</h4>
+          <p>Getting up is one thing. Getting up efficiently is another. We work on bank angle, speed-to-fly, and when to leave a thermal for a better one.</p>
+        </div>
+        <div class="skill-card">
+          <h4>Decision Making</h4>
+          <p>When do you stay? When do you go? When do you head for the landing zone? Good thermal pilots make good decisions, and we practice those decisions every single flight.</p>
+        </div>
+        <div class="skill-card">
+          <h4>Flying El Penon's Terrain</h4>
+          <p>Every site has its personality. You will learn El Penon's trigger points, convergence zones, venturi effects, and the specific terrain features that produce the best lift.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Why Valle de Bravo -->
-  <section class="section section--sky">
+  <section class="section section--alt">
+    <div class="container">
+      <div class="destination-grid animate-in">
+        <div class="destination-grid__text">
+          <h2>Why Pilots Choose Valle de Bravo</h2>
+          <p>There is a reason pilots from around the world come back to Valle de Bravo year after year. The flying here is that good.</p>
+          <ul class="bullet-list">
+            <li><strong>Consistent thermals every single day.</strong> El Penon's thermal cycle is one of the most reliable in the world. The lake-valley-mountain combination creates textbook conditions for learning.</li>
+            <li><strong>300+ flyable days per year.</strong> This is not a site where you sit around waiting for weather windows. You fly. Every day.</li>
+            <li><strong>Varied terrain for progressive learning.</strong> From gentle ridge lift to strong thermal climbs to cross-country transitions, Valle de Bravo offers the full spectrum of soaring conditions within a few kilometers.</li>
+            <li><strong>The Hair Dryer.</strong> El Penon's famous thermal cycle kicks on around 10am like someone flipped a switch. You can literally set your watch by it. That predictability is what makes this site perfect for learning - you get the same conditions to practice in day after day.</li>
+          </ul>
+        </div>
+        <div class="destination-grid__image">
+          <img src="/images/val6.jpg" alt="Aerial view of Valle de Bravo lake and town from a paraglider" width="800" height="600" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Your Instructor -->
+  <section class="section">
+    <div class="container">
+      <div class="instructor-grid animate-in">
+        <div class="instructor-grid__image">
+          <img src="/images/damion.jpg" alt="Damien Vampiro Mitchell, USHPA Advanced Instructor" width="800" height="800" loading="lazy" />
+        </div>
+        <div class="instructor-grid__text">
+          <h2>Your Instructor: Damien "Vampiro" Mitchell</h2>
+          <p>Damien has been flying paragliders for over 25 years and teaching for most of that time. He holds a USHPA Advanced Instructor rating and has logged over 10,000 flights. He splits his time between Utah and Valle de Bravo, where he has been running clinics and guiding pilots for years.</p>
+          <p>He knows El Penon the way a surfer knows their home break - every trigger point, every rotor zone, every line through the valley. When he tells you to turn left in 50 meters, there is a reason, and you will feel the lift the moment you get there.</p>
+          <p>Damien's teaching style is direct, patient, and focused on building real skills rather than just logging airtime. He will push you when you are ready and hold you back when conditions are beyond your level. No ego, no pressure - just good instruction from someone who genuinely loves watching pilots improve.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- First Booking Form -->
+  <section class="section section--alt" id="booking-form">
     <div class="container">
       <div class="section__heading animate-in">
-        <h2>Why Valle De Bravo, Mexico?</h2>
+        <h2>Ready to Thermal Like You Mean It?</h2>
+        <p>Tell us your dates and experience level. We will get back to you within 24 hours with availability and next steps.</p>
       </div>
-      <div class="grid-3 animate-in">
-        <div class="feature-card">
-          <h4>Consistent Thermals</h4>
-          <p>Valle de Bravo is renowned for its reliable thermal activity. The unique geography, combined with the lake and surrounding mountains, creates consistent thermal conditions ideal for learning and advancing your skills.</p>
-        </div>
-        <div class="feature-card">
-          <h4>Year-Round Flying Conditions</h4>
-          <p>Unlike many flying destinations, Valle de Bravo offers flyable conditions throughout the year. The mild climate and predictable weather patterns mean you can plan your clinic with confidence.</p>
-        </div>
-        <div class="feature-card">
-          <h4>Varied Terrain</h4>
-          <p>The diverse landscape provides a range of flying experiences, from gentle ridge soaring to strong thermal climbs. This variety is perfect for building well-rounded piloting skills.</p>
-        </div>
-        <div class="feature-card">
-          <h4>Stunning Scenery</h4>
-          <p>Fly above a volcanic lake surrounded by lush forests and charming Mexican architecture. The views from altitude are truly breathtaking and make every flight memorable.</p>
-        </div>
-        <div class="feature-card">
-          <h4>Safety and Infrastructure</h4>
-          <p>Valle de Bravo has a well-established paragliding community with proper launch sites, designated landing zones, and experienced local pilots. The infrastructure supports safe and organized flying operations.</p>
-        </div>
+      <div class="animate-in">
+        <ContactForm formName="thermalling-booking" messagePlaceholder="I'm a P2/P3 pilot interested in the thermalling clinic. My dates are..." buttonText="Check Availability" />
       </div>
     </div>
   </section>
 
-  <!-- Instructor -->
-  <section class="section section--white">
+  <!-- What's Included -->
+  <section class="section">
     <div class="container">
-      <div class="clinic-instructor animate-in">
-        <div class="card__image instructor-photo"><img src="/images/damien 1.jpg" alt="Damien Mitchell coaching at El Penon launch" width="800" height="600" loading="lazy" /></div>
-        <div class="instructor-info">
-          <h2>Your Instructor</h2>
-          <h3>Damien Mitchell</h3>
-          <p>With years of experience flying and teaching in Valle de Bravo, Damien knows the local conditions better than anyone. He will be your personal guide, providing real-time radio coaching during flights and detailed debriefs after each session.</p>
+      <div class="section__heading animate-in">
+        <h2>Everything is Taken Care Of</h2>
+      </div>
+      <div class="included-grid animate-in">
+        <div class="included-grid__item">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span>Housing near the flying site</span>
+        </div>
+        <div class="included-grid__item">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          <span>Breakfast and dinner daily</span>
+        </div>
+        <div class="included-grid__item">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5a1 1 0 0 1-1 1h-2"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          <span>Airport pickup and dropoff</span>
+        </div>
+        <div class="included-grid__item">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          <span>Daily shuttle to launch</span>
+        </div>
+        <div class="included-grid__item">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 18.5a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13Z"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span>Live radio instruction in flight</span>
+        </div>
+        <div class="included-grid__item">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          <span>Evening debriefs and track analysis</span>
+        </div>
+        <div class="included-grid__item">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          <span>Spare radios, varios, and chargers</span>
+        </div>
+        <div class="included-grid__item">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Retrieve service from landing zones</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Booking Form (after sell) -->
+  <!-- What to Bring -->
   <section class="section section--alt">
     <div class="container">
       <div class="section__heading animate-in">
-        <h2>Book Your Thermalling Clinic</h2>
-        <p>Tell us your dates and skill level, and we will get back to you with availability.</p>
+        <h2>What to Bring</h2>
       </div>
-      <div class="animate-in">
-        <ContactForm formName="thermalling-booking" messagePlaceholder="I'm interested in the thermalling clinic. My rating is P_ and my preferred dates are..." buttonText="Book Your Clinic" />
-      </div>
-    </div>
-  </section>
-
-  <!-- Equipment Checklist -->
-  <section class="section section--cream">
-    <div class="container">
-      <div class="section__heading animate-in">
-        <h2>Essential Equipment Checklist</h2>
-      </div>
-      <div class="equipment-list animate-in">
+      <div class="checklist-wrap animate-in">
         <ul class="checklist">
-          <li>Certified Paraglider</li>
-          <li>Certified Harness</li>
-          <li>Reserve Parachute</li>
-          <li>Helmet</li>
-          <li>Dual-Band VHF Radio</li>
-          <li>Vario (recommended)</li>
+          <li>Certified paraglider</li>
+          <li>Harness with reserve</li>
+          <li>Helmet (full-face recommended)</li>
+          <li>Dual-band VHF radio</li>
+          <li>Vario</li>
+          <li>Sunscreen, sunglasses, and sturdy shoes</li>
+          <li>Passport</li>
         </ul>
       </div>
     </div>
   </section>
 
   <!-- Requirements -->
-  <section class="section section--white">
+  <section class="section">
     <div class="container text-center animate-in">
-      <h2>Participant Requirements</h2>
-      <p>P2 (Novice) rating or equivalent certification required.</p>
+      <h2>Requirements</h2>
+      <p class="requirements-text">You need a P2 (Novice) rating or equivalent to join this clinic. If you can launch, fly, and land independently, you are ready.</p>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>What Past Clinic Pilots Say</h2>
+      </div>
+      <div class="grid-3 animate-in">
+        <TestimonialCard
+          quote="I saw my flying mentality and my piloting skills improve drastically over the course of the week."
+          author="Ryan"
+          role="Feb 2023"
+        />
+        <TestimonialCard
+          quote="The combination of ground school, launch support, and in-sky coaching provided an incredibly valuable learning experience."
+          author="Jim"
+          role="Jan 2023"
+        />
+        <TestimonialCard
+          quote="Great instruction, local knowledge, small groups, no attitude or pressure just great flying and even better times."
+          author="Pete"
+          role="Jan 2024"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container animate-in">
+      <FaqAccordion title="Common Questions" items={faqItems} />
     </div>
   </section>
 
   <!-- Cross-links -->
   <section class="section section--alt">
-    <div class="container text-center animate-in">
-      <p>Looking for more advanced instruction? Check out our <a href="/paragliding-clinics-mexico/mexico-cross-country-xc-paragliding-clinics/">Cross Country (XC) Clinic</a>. Or explore our <a href="/tour/10-day-paraglide-mexico-package/">10 Day Mexico Package</a> for a complete flying vacation.</p>
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Looking for Something Different?</h2>
+      </div>
+      <div class="crosslink-grid animate-in">
+        <a href="/paragliding-clinics-mexico/mexico-cross-country-xc-paragliding-clinics/" class="crosslink-card">
+          <div class="crosslink-card__image"><img src="/images/cross.jpg" alt="Cross country paragliding over Valle de Bravo terrain" width="800" height="450" loading="lazy" /></div>
+          <div class="crosslink-card__body">
+            <h4>Cross Country (XC) Clinic</h4>
+            <p>Ready to go beyond the local ridge? Our XC clinic teaches route planning, glide management, and multi-thermal transitions.</p>
+          </div>
+        </a>
+        <a href="/tour/10-day-paraglide-mexico-package/" class="crosslink-card">
+          <div class="crosslink-card__image"><img src="/images/val5.jpg" alt="Paragliding over Valle de Bravo lake" width="800" height="450" loading="lazy" /></div>
+          <div class="crosslink-card__body">
+            <h4>10 Day Paraglide Mexico Package</h4>
+            <p>The full experience. Ten days of flying, instruction, housing, food, and transport. Everything handled so you just show up and fly.</p>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- Bottom Booking Form -->
+  <!-- Second Booking Form -->
   <section class="section">
     <div class="container">
       <div class="section__heading animate-in">
-        <h2>Reserve Your Place</h2>
-        <p>Have more questions? Reach out and we will help you plan your trip.</p>
+        <h2>Book Your Thermalling Clinic</h2>
+        <p>Have questions? Send us a message and we will help you plan your trip.</p>
       </div>
       <div class="animate-in">
         <ContactForm formName="thermalling-booking-bottom" />
@@ -198,73 +359,305 @@ const courseSchema = {
 </BaseLayout>
 
 <style>
-  .clinic-intro {
-    max-width: 800px;
-    margin: 0 auto;
+  /* Hero location subtitle */
+  .hero__location {
+    font-size: 1.3rem;
+    font-weight: 500;
+    opacity: 0.9;
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
   }
 
-  .clinic-intro h2 {
+  /* Pitch Grid - two column */
+  .pitch-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .pitch-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .pitch-grid__text h2 {
     margin-bottom: 1.5rem;
   }
 
-  .feature-card {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 1.5rem;
+  .pitch-grid__text p {
+    margin-bottom: 1rem;
+    line-height: 1.8;
   }
 
-  .feature-card h4 {
-    color: var(--color-sunset-light);
+  .pitch-grid__image img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+
+  /* Timeline */
+  .timeline {
+    max-width: 550px;
+    margin: 0 auto;
+    position: relative;
+    padding-left: 1rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 2px;
+    background: var(--color-border, #d8d4e0);
+  }
+
+  .timeline__item {
+    display: flex;
+    gap: 1.25rem;
+    padding: 0.75rem 0 0.75rem 1.5rem;
+    position: relative;
+  }
+
+  .timeline__item::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 1.1rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-accent, #e07730);
+  }
+
+  .timeline__time {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-text, #2a2050);
+    white-space: nowrap;
+    min-width: 75px;
+  }
+
+  .timeline__label {
+    color: var(--color-text-body, #5a5570);
+    font-size: 0.95rem;
+  }
+
+  /* Skill Cards */
+  .skill-card {
+    background: var(--color-white, #fff);
+    border: 1px solid var(--color-border, #e5e2ea);
+    border-radius: 12px;
+    padding: 1.75rem;
+    transition: box-shadow 0.2s;
+  }
+
+  .skill-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  .skill-card h4 {
+    color: var(--color-accent, #e07730);
     margin-bottom: 0.75rem;
   }
 
-  .feature-card p {
-    opacity: 0.9;
+  .skill-card p {
+    line-height: 1.7;
+    color: var(--color-text-body, #5a5570);
   }
 
-  .clinic-instructor {
+  /* Destination Grid */
+  .destination-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  @media (min-width: 768px) {
+    .destination-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .destination-grid__text h2 {
+    margin-bottom: 1rem;
+  }
+
+  .destination-grid__text p {
+    margin-bottom: 1.25rem;
+    line-height: 1.7;
+  }
+
+  .destination-grid__image img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+
+  .bullet-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .bullet-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.7;
+    color: var(--color-text-body, #5a5570);
+  }
+
+  .bullet-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-accent, #e07730);
+  }
+
+  .bullet-list li strong {
+    color: var(--color-text, #2a2050);
+  }
+
+  /* Instructor Grid */
+  .instructor-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
     align-items: center;
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
   }
 
   @media (min-width: 768px) {
-    .clinic-instructor {
-      grid-template-columns: 300px 1fr;
+    .instructor-grid {
+      grid-template-columns: 350px 1fr;
     }
   }
 
-  .instructor-photo {
-    border-radius: 12px;
-    min-height: 300px;
-  }
-
-  .instructor-photo img {
+  .instructor-grid__image img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
     border-radius: 12px;
+    object-fit: cover;
+    aspect-ratio: 1;
   }
 
-  .instructor-info h2 {
-    margin-bottom: 0.25rem;
+  .instructor-grid__text h2 {
+    margin-bottom: 1.5rem;
   }
 
-  .instructor-info h3 {
-    color: var(--color-sunset);
+  .instructor-grid__text p {
     margin-bottom: 1rem;
+    line-height: 1.8;
   }
 
-  .equipment-list {
+  /* Included Grid */
+  .included-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 2rem;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 768px) {
+    .included-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .included-grid__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .included-grid__item svg {
+    color: var(--color-accent, #e07730);
+  }
+
+  .included-grid__item span {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-text-body, #5a5570);
+    line-height: 1.4;
+  }
+
+  /* Checklist wrap */
+  .checklist-wrap {
     max-width: 500px;
     margin: 0 auto;
   }
 
-  .cta-text {
-    font-size: 1.15rem;
-    margin-bottom: 1.5rem;
+  /* Requirements */
+  .requirements-text {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  /* Cross-link Cards */
+  .crosslink-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .crosslink-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .crosslink-card {
+    display: block;
+    background: var(--color-white, #fff);
+    border: 1px solid var(--color-border, #e5e2ea);
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .crosslink-card:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .crosslink-card__image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .crosslink-card__body {
+    padding: 1.5rem;
+  }
+
+  .crosslink-card__body h4 {
+    color: var(--color-accent, #e07730);
+    margin-bottom: 0.5rem;
+  }
+
+  .crosslink-card__body p {
+    color: var(--color-text-body, #5a5570);
+    line-height: 1.6;
+    font-size: 0.95rem;
   }
 </style>

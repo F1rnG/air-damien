@@ -3,24 +3,37 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactForm from '../../components/ContactForm.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import SchemaMarkup from '../../components/SchemaMarkup.astro';
+import StatsBar from '../../components/StatsBar.astro';
+import TestimonialCard from '../../components/TestimonialCard.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
 
 const courseSchema = {
   "@context": "https://schema.org",
   "@type": "Course",
   "name": "Cross Country (XC) Paragliding Clinic",
   "description": "Cross-country paragliding clinic at El Penon, Valle de Bravo, Mexico",
-  "provider": {
-    "@type": "Organization",
-    "name": "Air Damien",
-    "url": "https://airdamien.com"
-  },
+  "provider": { "@type": "Organization", "name": "Air Damien", "url": "https://airdamien.com" },
   "coursePrerequisites": "Intermediate pilot, consistent thermal identification",
-  "instructor": {
-    "@type": "Person",
-    "name": "Damien Mitchell",
-    "jobTitle": "USHPA Advanced Instructor"
-  }
+  "instructor": { "@type": "Person", "name": "Damien Mitchell", "jobTitle": "USHPA Advanced Instructor" }
 };
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "What if I have never flown XC before?", "acceptedAnswer": { "@type": "Answer", "text": "That is exactly what this clinic is for. If you can thermal consistently, you are ready to learn XC. We start with short transitions and build from there." } },
+    { "@type": "Question", "name": "How far will I fly?", "acceptedAnswer": { "@type": "Answer", "text": "That depends on conditions and your skill level. First-timers typically cover 10-20km. Experienced XC pilots regularly fly 40km+ routes from El Penon." } },
+    { "@type": "Question", "name": "What happens if I land in the middle of nowhere?", "acceptedAnswer": { "@type": "Answer", "text": "Our retrieve team tracks everyone via live GPS. Wherever you land, they will find you and bring you back. Land with confidence." } },
+    { "@type": "Question", "name": "Can I do both the thermalling and XC clinic?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. Many pilots do the thermalling clinic first to sharpen their thermal skills, then stay for the XC clinic. Talk to Damien about combining them." } }
+  ]
+};
+
+const faqItems = [
+  { question: "What if I have never flown XC before?", answer: "That is exactly what this clinic is for. If you can thermal consistently, you are ready to learn XC. We start with short transitions and build from there." },
+  { question: "How far will I fly?", answer: "That depends on conditions and your skill level. First-timers typically cover 10-20km. Experienced XC pilots regularly fly 40km+ routes from El Penon." },
+  { question: "What happens if I land in the middle of nowhere?", answer: "Our retrieve team tracks everyone via live GPS. Wherever you land, they will find you and bring you back. Land with confidence." },
+  { question: "Can I do both the thermalling and XC clinic?", answer: "Absolutely. Many pilots do the thermalling clinic first to sharpen their thermal skills, then stay for the XC clinic. Talk to Damien about combining them." }
+];
 ---
 
 <BaseLayout
@@ -29,116 +42,311 @@ const courseSchema = {
   canonicalUrl="https://airdamien.com/paragliding-clinics-mexico/mexico-cross-country-xc-paragliding-clinics/"
 >
   <SchemaMarkup schema={courseSchema} />
-  <section class="page-header">
-    <h1>Valle De Bravo, Mexico Cross Country (XC) Paragliding Clinics</h1>
+  <SchemaMarkup schema={faqSchema} />
+
+  <!-- Hero -->
+  <section class="hero hero--full">
+    <img class="hero__bg" src="/images/pg 1.jpg" alt="Two paragliders flying cross-country over the mountains near Valle de Bravo, Mexico" width="1920" height="1280" loading="eager" />
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <h1 class="hero__title">Cross Country Paragliding Clinic</h1>
+      <p class="hero__location">Valle de Bravo, Mexico</p>
+      <p class="hero__sub">Learn to plan, execute, and enjoy cross-country flights with guided instruction from a 25-year veteran.</p>
+      <div class="hero__ctas">
+        <a href="#booking-form" class="btn btn--primary">Check Availability</a>
+      </div>
+    </div>
   </section>
+
+  <!-- Breadcrumbs -->
   <Breadcrumbs items={[
     { name: "Home", url: "https://airdamien.com/" },
     { name: "Clinics", url: "https://airdamien.com/paragliding-clinics-mexico/" },
     { name: "XC Clinic", url: "https://airdamien.com/paragliding-clinics-mexico/mexico-cross-country-xc-paragliding-clinics/" }
   ]} />
 
-  <!-- About -->
+  <!-- The Pitch -->
   <section class="section section--white">
     <div class="container">
-      <div class="clinic-intro animate-in">
-        <h2>About the Clinic</h2>
-        <p>Our Cross Country (XC) Paragliding Clinic is designed for intermediate and seasoned pilots looking to push their boundaries and explore the art of long-distance paragliding. This clinic covers both the theory and practice of XC flying, giving you the skills and confidence to plan and execute cross-country flights.</p>
+      <div class="pitch-grid animate-in">
+        <div class="pitch-grid__text">
+          <h2>Stop circling the same thermal and go somewhere</h2>
+          <p>You can thermal. You can stay up. But when it is time to leave the safety of your home thermal and glide to the next one, everything changes.</p>
+          <p>This clinic is about making that leap. Over multiple days, you will learn to read the sky for XC routes, make thermal-to-thermal transitions, manage your glide, and land safely in unfamiliar terrain - all with Damien coaching you over the radio and a retrieve crew on the ground ready to pick you up wherever you end up.</p>
+        </div>
+        <div class="pitch-grid__image">
+          <img src="/images/IMG_5312.jpg" alt="Paraglider flying cross-country over Valle de Bravo terrain" width="800" height="600" loading="lazy" />
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Who Is This For -->
+  <!-- Typical Day -->
   <section class="section section--cream">
-    <div class="container text-center animate-in">
-      <h2>Who is this Clinic For?</h2>
-      <p class="intro-text">This clinic is for intermediate and advanced pilots who can consistently identify and utilize thermals. If you are comfortable flying in thermal conditions and want to take the next step into cross-country flying, this clinic is for you.</p>
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>A Typical Day at the XC Clinic</h2>
+      </div>
+      <div class="timeline animate-in">
+        <div class="timeline__item">
+          <div class="timeline__time">8:00 AM</div>
+          <div class="timeline__desc">Breakfast and XC briefing. Route planning based on the day's forecast. Study the terrain, identify thermal triggers along the route, discuss turnpoints and bailout options.</div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__time">9:30 AM</div>
+          <div class="timeline__desc">Drive to launch. Gear check, radio check, review the plan.</div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__time">10:30 AM</div>
+          <div class="timeline__desc">Launch and climb out. Establish in a thermal over launch before heading out on course.</div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__time">11:00 AM - 2:00 PM</div>
+          <div class="timeline__desc">XC flying. Radio-guided transitions between thermals. Damien coaches your glide decisions, thermal selection, and route adjustments in real time. Retrieve crew tracks your position on the ground.</div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__time">2:00 PM+</div>
+          <div class="timeline__desc">Land wherever the day takes you. Retrieve crew picks you up. Compare tracks, celebrate distances.</div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__time">4:00 PM</div>
+          <div class="timeline__desc">Debrief. Review your track log, analyze decisions, discuss what you would do differently.</div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__time">7:00 PM</div>
+          <div class="timeline__desc">Dinner. Stories about the day's flights.</div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Location -->
-  <section class="section section--sky">
-    <div class="container text-center animate-in">
-      <h2>Location: Valle De Bravo</h2>
-      <p class="intro-text">Valle de Bravo, Mexico is one of the premier paragliding destinations in the world. With consistent thermals, year-round flyable conditions, and stunning volcanic lake scenery, it is the ideal place to develop your XC flying skills.</p>
-    </div>
-  </section>
-
-  <!-- What We Offer -->
+  <!-- What You Will Learn -->
   <section class="section section--white">
     <div class="container">
       <div class="section__heading animate-in">
-        <h2>What We Offer</h2>
+        <h2>What You Will Walk Away With</h2>
       </div>
       <div class="grid-3 animate-in">
-        <div class="card">
-          <div class="card__body">
-            <h4>Comprehensive Training</h4>
-            <p>From XC theory to practical execution, we cover everything you need to know about planning and flying cross-country routes.</p>
-          </div>
+        <div class="skill-card">
+          <h3>Route Planning</h3>
+          <p>Read weather forecasts, identify thermal streets, plan turnpoints, and set realistic distance goals based on conditions.</p>
         </div>
-        <div class="card">
-          <div class="card__body">
-            <h4>Personalized Coaching</h4>
-            <p>Low student-to-instructor ratio ensures you get individual attention. Real-time radio guidance during flights tailored to your level.</p>
-          </div>
+        <div class="skill-card">
+          <h3>Thermal Transitions</h3>
+          <p>The hardest skill in XC: leaving a good thermal to glide to the next one. Learn to read the sky, commit to the glide, and find lift on the other side.</p>
         </div>
-        <div class="card">
-          <div class="card__body">
-            <h4>Ground School Sessions</h4>
-            <p>Daily briefings on weather, route planning, airspace, and decision-making. Build the knowledge foundation for safe XC flying.</p>
-          </div>
+        <div class="skill-card">
+          <h3>Glide Management</h3>
+          <p>Speed to fly, when to push and when to conserve, how to read sink and adjust your line.</p>
         </div>
-        <div class="card">
-          <div class="card__body">
-            <h4>Tandem Flights</h4>
-            <p>Fly tandem with your instructor to experience XC techniques firsthand before applying them on your own.</p>
-          </div>
+        <div class="skill-card">
+          <h3>Landing in Unfamiliar Terrain</h3>
+          <p>Field selection, approach planning, and landing safely when you have never seen the LZ before. Our retrieve service means you can land with confidence.</p>
         </div>
-        <div class="card">
-          <div class="card__body">
-            <h4>Safety Briefings</h4>
-            <p>Thorough safety protocols, emergency procedures, and risk management training to keep you safe on every flight.</p>
-          </div>
+        <div class="skill-card">
+          <h3>Using Instruments for XC</h3>
+          <p>Get the most out of your vario and GPS. Flight planning apps, airspace awareness, and live tracking.</p>
         </div>
-        <div class="card">
-          <div class="card__body">
-            <h4>Retrieve Service</h4>
-            <p>No need to worry about landing out. Our retrieve team will pick you up wherever you land, so you can focus on flying far.</p>
-          </div>
+        <div class="skill-card">
+          <h3>Mental Game</h3>
+          <p>XC flying is as much mental as physical. Managing fear, making decisions under pressure, knowing when to push and when to call it.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Booking Form (after sell) -->
-  <section class="section section--alt">
+  <!-- Why Valle de Bravo -->
+  <section class="section section--cream">
+    <div class="container">
+      <div class="destination-grid animate-in">
+        <div class="destination-grid__text">
+          <h2>Why Valle de Bravo</h2>
+          <p>Valle de Bravo sits at 1,800m in the mountains west of Mexico City. The flying site, El Penon, is an ancient volcanic peak surrounded by a lake and forested ridges that generate some of the most consistent thermals on the planet.</p>
+          <p>Pilots call the daily thermal cycle "The Hair Dryer" - it kicks on around 10am every morning with clockwork reliability. By late morning, thermals routinely reach cloudbase at 3,500-4,000m, giving you the altitude and time to fly serious XC routes.</p>
+          <p>With 300+ flyable days per year, oversized landing zones, and a charming lakeside town waiting for you at the end of the day, there is nowhere better to learn cross-country flying.</p>
+        </div>
+        <div class="destination-grid__image">
+          <img src="/images/val6.jpg" alt="Aerial view of Valle de Bravo lake and surrounding mountains" width="800" height="600" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Your Instructor -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="instructor-grid animate-in">
+        <div class="instructor-grid__image">
+          <img src="/images/damion.jpg" alt="Damien Mitchell, USHPA Advanced Instructor" width="600" height="600" loading="lazy" />
+        </div>
+        <div class="instructor-grid__text">
+          <h2>Your Instructor</h2>
+          <h3>Damien "Vampiro" Mitchell</h3>
+          <p>25+ years of flying. Over 10,000 flights. USHPA Advanced Instructor. Damien splits his time between the Wasatch Mountains in Utah and El Penon in Valle de Bravo, where the locals call him Vampiro.</p>
+          <p>He knows the terrain, the thermals, and the XC routes around Valle de Bravo better than anyone. During your flights, he will be in your ear over the radio - coaching your glide decisions, directing you to lift, and helping you push your distance safely.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- First Booking Form -->
+  <section class="section section--cream" id="booking-form">
     <div class="container">
       <div class="section__heading animate-in">
-        <h2>Book Your XC Clinic</h2>
-        <p>Tell us your dates and experience level, and we will get back to you with availability.</p>
+        <h2>Ready to Go Cross Country?</h2>
       </div>
-      <div class="animate-in">
-        <ContactForm formName="xc-booking" messagePlaceholder="I'm interested in the XC clinic. My rating is P_ and my preferred dates are..." buttonText="Book Your XC Clinic" />
+      <div class="animate-in form-container">
+        <ContactForm
+          formName="xc-booking"
+          messagePlaceholder="I'm a P3/P4 pilot interested in the XC clinic. My longest flight is..."
+          buttonText="Check Availability"
+        />
       </div>
+    </div>
+  </section>
+
+  <!-- What's Included -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>What is Included</h2>
+      </div>
+      <div class="included-grid animate-in">
+        <div class="included-item">
+          <svg class="included-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          <h4>Retrieve Service</h4>
+          <p>Our ground crew tracks you via live GPS and picks you up wherever you land. The backbone of XC flying - land with confidence knowing retrieval is handled.</p>
+        </div>
+        <div class="included-item">
+          <svg class="included-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          <h4>Radio-Guided XC Coaching</h4>
+          <p>Real-time instruction during your flights. Damien coaches your thermal selection, glide decisions, and route adjustments as you fly.</p>
+        </div>
+        <div class="included-item">
+          <svg class="included-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <h4>Housing</h4>
+          <p>Comfortable accommodations near the flying site. Come home, relax, and get ready for the next day.</p>
+        </div>
+        <div class="included-item">
+          <svg class="included-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          <h4>Home-Cooked Meals</h4>
+          <p>Breakfast and dinner prepared daily. No hunting for restaurants - just show up hungry.</p>
+        </div>
+        <div class="included-item">
+          <svg class="included-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          <h4>Airport Pickup</h4>
+          <p>We pick you up at Mexico City airport and handle all transport to Valle de Bravo.</p>
+        </div>
+        <div class="included-item">
+          <svg class="included-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <h4>Daily Shuttles to Launch</h4>
+          <p>Transport to El Penon every flying day. No rental car needed.</p>
+        </div>
+        <div class="included-item">
+          <svg class="included-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <h4>Ground School and Debriefs</h4>
+          <p>Morning briefings, route planning sessions, and post-flight track analysis every day.</p>
+        </div>
+        <div class="included-item">
+          <svg class="included-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+          <h4>Gear Spares</h4>
+          <p>Forgot something? We have spare radios, helmets, and other essentials on hand.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What to Bring -->
+  <section class="section section--cream">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>What to Bring</h2>
+      </div>
+      <div class="equipment-list animate-in">
+        <ul class="checklist">
+          <li>XC-appropriate paraglider (EN-B or higher recommended)</li>
+          <li>Certified harness with back protection</li>
+          <li>Reserve parachute</li>
+          <li>Helmet</li>
+          <li>GPS flight instrument (vario with GPS)</li>
+          <li>Dual-band VHF radio</li>
+          <li>Sunglasses and sunscreen</li>
+          <li>Hydration pack</li>
+          <li>Sturdy shoes for launch and landing</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Requirements -->
+  <section class="section section--white">
+    <div class="container text-center animate-in">
+      <h2>Requirements</h2>
+      <p class="requirements-text">This clinic is for intermediate and advanced pilots who can consistently thermal to cloudbase. You should be comfortable flying in moderate thermal conditions and be ready to push your boundaries. P3 (Intermediate) rating or equivalent recommended.</p>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section section--cream">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>What Past Clinic Pilots Say</h2>
+      </div>
+      <div class="grid-3 animate-in">
+        <TestimonialCard
+          quote="For many years Damien has been an invaluable source of knowledge and wisdom regarding everything paragliding and an absolute mainstay to our trips to Valle de Bravo. He really knows the place like no other."
+          author="Bianca Heinrich"
+          role="Comp Pilot"
+        />
+        <TestimonialCard
+          quote="I saw my flying mentality and my piloting skills improve drastically over the course of the week."
+          author="Ryan"
+          role="Feb 2023"
+        />
+        <TestimonialCard
+          quote="Great instruction, local knowledge, small groups, no attitude or pressure just great flying and even better times."
+          author="Pete"
+          role="Jan 2024"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--white">
+    <div class="container animate-in">
+      <FaqAccordion title="Common Questions" items={faqItems} />
     </div>
   </section>
 
   <!-- Cross-links -->
-  <section class="section">
-    <div class="container text-center animate-in">
-      <p>New to thermalling? Start with our <a href="/paragliding-clinics-mexico/paragliding-thermalling-clinic-mexico/">Thermalling Clinic</a> to build your thermal skills first. Or see our <a href="/tour/10-day-paraglide-mexico-package/">10 Day Mexico Package</a> for the full experience.</p>
+  <section class="section section--cream">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Explore Other Programs</h2>
+      </div>
+      <div class="grid-2 animate-in">
+        <div class="cross-link-card">
+          <h3>Thermalling Clinic</h3>
+          <p>Build your thermal foundation first. Master thermal identification, entry, and efficient climbing before tackling XC.</p>
+          <a href="/paragliding-clinics-mexico/paragliding-thermalling-clinic-mexico/" class="btn btn--primary">View Thermalling Clinic</a>
+        </div>
+        <div class="cross-link-card">
+          <h3>10 Day Package</h3>
+          <p>Combine both clinics into the ultimate flying trip. Thermalling first, then XC - the complete Valle de Bravo experience.</p>
+          <a href="/tour/10-day-paraglide-mexico-package/" class="btn btn--primary">View 10 Day Package</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Bottom Booking Form -->
-  <section class="section section--alt">
+  <!-- Second Booking Form -->
+  <section class="section section--white">
     <div class="container">
       <div class="section__heading animate-in">
-        <h2>Reserve Your Place</h2>
-        <p>Have more questions? Reach out and we will help you plan your trip.</p>
+        <h2>Book Your XC Clinic</h2>
       </div>
-      <div class="animate-in">
+      <div class="animate-in form-container">
         <ContactForm formName="xc-booking-bottom" />
       </div>
     </div>
@@ -146,18 +354,283 @@ const courseSchema = {
 </BaseLayout>
 
 <style>
-  .clinic-intro {
-    max-width: 800px;
+  /* Hero overrides */
+  .hero__title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 0.25rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .hero__location {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-weight: 600;
+    color: var(--color-accent, #e8732a);
+    margin-bottom: 0.75rem;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .hero__sub {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    margin-bottom: 2rem;
+    opacity: 0.95;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  .hero__ctas {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Pitch Grid */
+  .pitch-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .pitch-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .pitch-grid__text h2 {
+    margin-bottom: 1.25rem;
+  }
+
+  .pitch-grid__text p {
+    line-height: 1.7;
+    color: var(--color-text-light, #555);
+    margin-bottom: 1rem;
+  }
+
+  .pitch-grid__image img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+
+  /* Timeline */
+  .timeline {
+    max-width: 750px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .timeline__item {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 1.5rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .timeline__item:last-child {
+    border-bottom: none;
+  }
+
+  .timeline__time {
+    font-weight: 700;
+    color: var(--color-accent, #e8732a);
+    font-size: 0.95rem;
+    white-space: nowrap;
+    padding-top: 0.1rem;
+  }
+
+  .timeline__desc {
+    line-height: 1.7;
+    color: var(--color-text-light, #555);
+  }
+
+  @media (max-width: 600px) {
+    .timeline__item {
+      grid-template-columns: 1fr;
+      gap: 0.25rem;
+    }
+  }
+
+  /* Skill Cards */
+  .skill-card {
+    background: var(--color-bg-warm, #f9f7f3);
+    border-radius: 12px;
+    padding: 1.75rem;
+    border-left: 4px solid var(--color-accent, #e8732a);
+  }
+
+  .skill-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary, #4a4168);
+  }
+
+  .skill-card p {
+    color: var(--color-text-light, #555);
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
+
+  /* Destination Grid */
+  .destination-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .destination-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .destination-grid__text h2 {
+    margin-bottom: 1.25rem;
+  }
+
+  .destination-grid__text p {
+    line-height: 1.7;
+    color: var(--color-text-light, #555);
+    margin-bottom: 1rem;
+  }
+
+  .destination-grid__image img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+
+  /* Instructor Grid */
+  .instructor-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    max-width: 900px;
     margin: 0 auto;
   }
 
-  .clinic-intro h2 {
-    margin-bottom: 1.5rem;
+  @media (min-width: 768px) {
+    .instructor-grid {
+      grid-template-columns: 300px 1fr;
+    }
   }
 
-  .intro-text {
+  .instructor-grid__image img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+  }
+
+  .instructor-grid__text h2 {
+    margin-bottom: 0.25rem;
+  }
+
+  .instructor-grid__text h3 {
+    color: var(--color-accent, #e8732a);
+    margin-bottom: 1rem;
+  }
+
+  .instructor-grid__text p {
+    line-height: 1.7;
+    color: var(--color-text-light, #555);
+    margin-bottom: 1rem;
+  }
+
+  /* Form Container */
+  .form-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Included Grid */
+  .included-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 600px) {
+    .included-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 960px) {
+    .included-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .included-item {
+    text-align: center;
+    padding: 1.5rem 1rem;
+  }
+
+  .included-icon {
+    width: 36px;
+    height: 36px;
+    color: var(--color-accent, #e8732a);
+    margin-bottom: 0.75rem;
+  }
+
+  .included-item h4 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary, #4a4168);
+  }
+
+  .included-item p {
+    font-size: 0.9rem;
+    color: var(--color-text-light, #555);
+    line-height: 1.6;
+  }
+
+  /* Equipment List */
+  .equipment-list {
+    max-width: 550px;
+    margin: 0 auto;
+  }
+
+  /* Requirements */
+  .requirements-text {
     max-width: 700px;
     margin: 0 auto;
     font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--color-text-light, #555);
+  }
+
+  /* Cross-link Cards */
+  .cross-link-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    text-align: center;
+  }
+
+  .cross-link-card h3 {
+    margin-bottom: 0.75rem;
+    color: var(--color-primary, #4a4168);
+  }
+
+  .cross-link-card p {
+    color: var(--color-text-light, #555);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
   }
 </style>
