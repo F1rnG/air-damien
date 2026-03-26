@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactForm from '../../components/ContactForm.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import SchemaMarkup from '../../components/SchemaMarkup.astro';
+import TestimonialCard from '../../components/TestimonialCard.astro';
 
 const tripSchema = {
   "@context": "https://schema.org",
@@ -35,7 +36,7 @@ const tripSchema = {
   ]} />
 
   <!-- Intro -->
-  <section class="section section--white">
+  <section class="section">
     <div class="container">
       <div class="tour-intro animate-in">
         <p class="tour-intro__lead">Dive into an all-encompassing 10-day adventure with Air Damien. Our comprehensive package includes everything you need for an unforgettable paragliding experience in Valle De Bravo.</p>
@@ -43,8 +44,40 @@ const tripSchema = {
     </div>
   </section>
 
+  <!-- What's Included Strip -->
+  <section class="included-strip">
+    <div class="container">
+      <div class="included-strip__grid animate-in">
+        <div class="included-strip__item">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 18.5a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13Z"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span>Instruction</span>
+        </div>
+        <div class="included-strip__item">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span>Housing</span>
+        </div>
+        <div class="included-strip__item">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          <span>Meals</span>
+        </div>
+        <div class="included-strip__item">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5a1 1 0 0 1-1 1h-2"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          <span>Airport Transfer</span>
+        </div>
+        <div class="included-strip__item">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          <span>Gear Spares</span>
+        </div>
+        <div class="included-strip__item">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Retrieve Service</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Package Details -->
-  <section class="section section--cream">
+  <section class="section section--alt">
     <div class="container">
       <div class="section__heading animate-in">
         <h2>Package Details</h2>
@@ -82,8 +115,51 @@ const tripSchema = {
     </div>
   </section>
 
+  <!-- Sample Itinerary -->
+  <section class="section">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>A Typical Day at El Penon</h2>
+      </div>
+      <div class="timeline animate-in">
+        <div class="timeline__item">
+          <span class="timeline__time">7:30 AM</span>
+          <span class="timeline__label">Breakfast at the house</span>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__time">8:30 AM</span>
+          <span class="timeline__label">Ground school / weather briefing</span>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__time">10:00 AM</span>
+          <span class="timeline__label">Shuttle to launch (the Hair Dryer kicks on)</span>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__time">10:30 AM</span>
+          <span class="timeline__label">Launch and fly with radio-guided instruction</span>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__time">1:00 PM</span>
+          <span class="timeline__label">Retrieve / return to LZ</span>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__time">2:00 PM</span>
+          <span class="timeline__label">Lunch and flight debrief</span>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__time">4:30 PM</span>
+          <span class="timeline__label">Glass-off session (optional afternoon flight)</span>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__time">7:00 PM</span>
+          <span class="timeline__label">Dinner in Valle de Bravo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Why Choose -->
-  <section class="section section--sky">
+  <section class="section section--purple">
     <div class="container">
       <div class="section__heading animate-in">
         <h2>Why Choose Our Ten Day Package?</h2>
@@ -113,8 +189,21 @@ const tripSchema = {
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="section section--white">
+  <!-- Testimonial -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="animate-in" style="max-width: 700px; margin: 0 auto;">
+        <TestimonialCard
+          quote="The combination of ground school, launch support, and in-sky coaching provided an incredibly valuable learning experience. The accommodations and hospitality made for a great overall experience."
+          author="Jim"
+          role="Jan 2023"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / Form -->
+  <section class="section">
     <div class="container">
       <div class="section__heading animate-in">
         <h2>Get Ready for Takeoff</h2>
@@ -123,6 +212,13 @@ const tripSchema = {
       <div class="animate-in">
         <ContactForm formName="ten-day-tour" />
       </div>
+    </div>
+  </section>
+
+  <!-- Cross-links -->
+  <section class="section section--alt">
+    <div class="container text-center animate-in">
+      <p>Want to focus on specific skills? Check out our <a href="/paragliding-clinics-mexico/paragliding-thermalling-clinic-mexico/">Thermalling Clinic</a> or <a href="/paragliding-clinics-mexico/mexico-cross-country-xc-paragliding-clinics/">Cross Country Clinic</a>.</p>
     </div>
   </section>
 </BaseLayout>
@@ -145,6 +241,87 @@ const tripSchema = {
     line-height: 1.8;
   }
 
+  /* Included Strip */
+  .included-strip {
+    background: var(--color-bg-lavender, #f4f2fa);
+    padding: 2rem 0;
+  }
+
+  .included-strip__grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem 3rem;
+  }
+
+  .included-strip__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-primary, #3b3160);
+  }
+
+  .included-strip__item svg {
+    color: var(--color-accent, #e07730);
+  }
+
+  .included-strip__item span {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-text-body, #5a5570);
+  }
+
+  /* Timeline */
+  .timeline {
+    max-width: 550px;
+    margin: 0 auto;
+    position: relative;
+    padding-left: 1rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 2px;
+    background: var(--color-border, #d8d4e0);
+  }
+
+  .timeline__item {
+    display: flex;
+    gap: 1.25rem;
+    padding: 0.75rem 0 0.75rem 1.5rem;
+    position: relative;
+  }
+
+  .timeline__item::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 1.1rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-accent, #e07730);
+  }
+
+  .timeline__time {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-text, #2a2050);
+    white-space: nowrap;
+    min-width: 75px;
+  }
+
+  .timeline__label {
+    color: var(--color-text-body, #5a5570);
+    font-size: 0.95rem;
+  }
+
+  /* Feature cards on purple */
   .feature-card {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 12px;
@@ -152,7 +329,7 @@ const tripSchema = {
   }
 
   .feature-card h4 {
-    color: var(--color-sunset-light);
+    color: var(--color-accent, #e07730);
     margin-bottom: 0.75rem;
   }
 
