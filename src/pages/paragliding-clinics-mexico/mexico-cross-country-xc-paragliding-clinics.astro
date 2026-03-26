@@ -56,18 +56,6 @@ const courseSchema = {
     </div>
   </section>
 
-  <!-- Contact Form -->
-  <section class="section section--white">
-    <div class="container">
-      <div class="section__heading animate-in">
-        <h2>Interested? Get in Touch</h2>
-      </div>
-      <div class="animate-in">
-        <ContactForm formName="xc-clinic" />
-      </div>
-    </div>
-  </section>
-
   <!-- Location -->
   <section class="section section--sky">
     <div class="container text-center animate-in">
@@ -123,21 +111,35 @@ const courseSchema = {
     </div>
   </section>
 
-  <!-- Join Us -->
-  <section class="section section--sky text-center">
-    <div class="container animate-in">
-      <h2>Join Us</h2>
-      <p class="intro-text">Ready to fly cross-country? Book your spot in our next XC clinic.</p>
+  <!-- Booking Form (after sell) -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Book Your XC Clinic</h2>
+        <p>Tell us your dates and experience level, and we will get back to you with availability.</p>
+      </div>
+      <div class="animate-in">
+        <ContactForm formName="xc-booking" messagePlaceholder="I'm interested in the XC clinic. My rating is P_ and my preferred dates are..." buttonText="Book Your XC Clinic" />
+      </div>
     </div>
   </section>
 
-  <section class="section section--cream">
+  <!-- Cross-links -->
+  <section class="section">
+    <div class="container text-center animate-in">
+      <p>New to thermalling? Start with our <a href="/paragliding-clinics-mexico/paragliding-thermalling-clinic-mexico/">Thermalling Clinic</a> to build your thermal skills first. Or see our <a href="/tour/10-day-paraglide-mexico-package/">10 Day Mexico Package</a> for the full experience.</p>
+    </div>
+  </section>
+
+  <!-- Bottom Booking Form -->
+  <section class="section section--alt">
     <div class="container">
       <div class="section__heading animate-in">
         <h2>Reserve Your Place</h2>
+        <p>Have more questions? Reach out and we will help you plan your trip.</p>
       </div>
       <div class="animate-in">
-        <ContactForm formName="xc-join" />
+        <ContactForm formName="xc-booking-bottom" />
       </div>
     </div>
   </section>

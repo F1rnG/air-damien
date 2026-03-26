@@ -91,19 +91,6 @@ const courseSchema = {
     </div>
   </section>
 
-  <!-- Booking Form -->
-  <section class="section section--white">
-    <div class="container">
-      <div class="section__heading animate-in">
-        <h2>Book Your Spot</h2>
-        <p>Ready to join? Fill out the form below and we will get back to you with availability.</p>
-      </div>
-      <div class="animate-in">
-        <ContactForm formName="thermalling-clinic" />
-      </div>
-    </div>
-  </section>
-
   <!-- Why Valle de Bravo -->
   <section class="section section--sky">
     <div class="container">
@@ -149,6 +136,19 @@ const courseSchema = {
     </div>
   </section>
 
+  <!-- Booking Form (after sell) -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Book Your Thermalling Clinic</h2>
+        <p>Tell us your dates and skill level, and we will get back to you with availability.</p>
+      </div>
+      <div class="animate-in">
+        <ContactForm formName="thermalling-booking" messagePlaceholder="I'm interested in the thermalling clinic. My rating is P_ and my preferred dates are..." buttonText="Book Your Clinic" />
+      </div>
+    </div>
+  </section>
+
   <!-- Equipment Checklist -->
   <section class="section section--cream">
     <div class="container">
@@ -176,22 +176,22 @@ const courseSchema = {
     </div>
   </section>
 
-  <!-- Join Us CTA -->
-  <section class="section section--sky text-center">
-    <div class="container animate-in">
-      <h2>Join Us</h2>
-      <p class="cta-text">Ready to take your thermalling skills to the next level? Book your spot today.</p>
-      <a href="#book" class="btn btn--primary" onclick="document.querySelector('#book-form').scrollIntoView({behavior:'smooth'})">Book Now</a>
+  <!-- Cross-links -->
+  <section class="section section--alt">
+    <div class="container text-center animate-in">
+      <p>Looking for more advanced instruction? Check out our <a href="/paragliding-clinics-mexico/mexico-cross-country-xc-paragliding-clinics/">Cross Country (XC) Clinic</a>. Or explore our <a href="/tour/10-day-paraglide-mexico-package/">10 Day Mexico Package</a> for a complete flying vacation.</p>
     </div>
   </section>
 
-  <section class="section section--cream" id="book-form">
+  <!-- Bottom Booking Form -->
+  <section class="section">
     <div class="container">
       <div class="section__heading animate-in">
         <h2>Reserve Your Place</h2>
+        <p>Have more questions? Reach out and we will help you plan your trip.</p>
       </div>
       <div class="animate-in">
-        <ContactForm formName="thermalling-join" />
+        <ContactForm formName="thermalling-booking-bottom" />
       </div>
     </div>
   </section>
