@@ -533,10 +533,15 @@ img.hero__bg {
   }
 
   .hero {
-    min-height: 60vh;
+    min-height: 85vh;
+    padding-top: calc(var(--nav-height) + 3rem);
   }
 
   .hero--full {
-    min-height: 70vh;
+    min-height: 85vh;
+  }
+
+  .hero__content {
+    padding-bottom: 2.5rem;
   }
 }
