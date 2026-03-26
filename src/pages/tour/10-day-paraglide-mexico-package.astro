@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+---
+
+<BaseLayout
+  title="Ten Day Paraglide Mexico Package - Valle De Bravo, Mexico - Air Damien"
+  description="All-inclusive 10-day paragliding package in Valle de Bravo, Mexico. Includes lessons, airport transport, hotel accommodation, and catering."
+>
+  <section class="page-header">
+    <h1>Ten Day Paraglide Mexico Package</h1>
+    <p class="page-header__sub">Valle De Bravo, Mexico</p>
+  </section>
+
+  <!-- Intro -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="tour-intro animate-in">
+        <p class="tour-intro__lead">Dive into an all-encompassing 10-day adventure with Air Damien. Our comprehensive package includes everything you need for an unforgettable paragliding experience in Valle De Bravo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Package Details -->
+  <section class="section section--cream">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Package Details</h2>
+      </div>
+      <div class="grid-2 animate-in">
+        <div class="card">
+          <div class="card__image">Paragliding lessons photo</div>
+          <div class="card__body">
+            <h4>Paragliding Lessons</h4>
+            <p>Expert guidance with morning ground school sessions. Personalized instruction from experienced pilots who know the local conditions inside and out.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__image">Airport transport photo</div>
+          <div class="card__body">
+            <h4>Airport Transport</h4>
+            <p>Round-trip transportation from the airport to Valle de Bravo. Sit back and relax while we handle the logistics of getting you to the flying site.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__image">Hotel accommodation photo</div>
+          <div class="card__body">
+            <h4>Hotel Accommodation</h4>
+            <p>Comfortable lodging near the launch site for the duration of your stay. Wake up and be on the mountain in minutes.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__image">Catering photo</div>
+          <div class="card__body">
+            <h4>Catering</h4>
+            <p>Freshly prepared meals throughout your trip, with optional nightly dinner. Fuel your flying with great food.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose -->
+  <section class="section section--sky">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Why Choose Our Ten Day Package?</h2>
+      </div>
+      <div class="grid-3 animate-in">
+        <div class="feature-card">
+          <h4>Hassle-Free Planning</h4>
+          <p>Everything is taken care of. Transport, accommodation, meals, and instruction are all included so you can focus on what matters: flying.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Cost-Effective</h4>
+          <p>Our bundled package saves you money compared to booking everything separately. Get more flying for less.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Deep Immersion</h4>
+          <p>Ten days gives you the time to truly immerse yourself in the flying culture of Valle de Bravo and develop your skills progressively.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Learn to Thermal</h4>
+          <p>Daily thermal instruction and practice. By the end of 10 days you will be reading the sky with confidence.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Learn to XC Fly</h4>
+          <p>Progress from local soaring to cross-country flying. Our structured program builds your skills day by day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Get Ready for Takeoff</h2>
+        <p>Ready to book your 10-day adventure? Contact us at <a href="mailto:damien@airdamien.com">damien@airdamien.com</a> or fill out the form below.</p>
+      </div>
+      <div class="animate-in">
+        <ContactForm formName="ten-day-tour" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header__sub {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-top: 0.5rem;
+  }
+
+  .tour-intro {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .tour-intro__lead {
+    font-size: 1.15rem;
+    line-height: 1.8;
+  }
+
+  .feature-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+
+  .feature-card h4 {
+    color: var(--color-sunset-light);
+    margin-bottom: 0.75rem;
+  }
+
+  .feature-card p {
+    opacity: 0.9;
+  }
+</style>

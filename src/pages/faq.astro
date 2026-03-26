@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const bookingsFaq = [
+  {
+    question: "Why do I have to book 12-hours in advance?",
+    answer: "<p>We need to understand the weather, plan the logistics of moving people, and have vehicles in place with drivers.</p>"
+  },
+  {
+    question: "Why do I have to request a booking?",
+    answer: "<p>We need to build out different flight plans based on the number of students and their skill levels.</p>"
+  },
+  {
+    question: "How long does it take to confirm a booking?",
+    answer: "<p>Bookings are typically confirmed at night. That's when we are off the mountain and can get access to internet service. If we are on launch, we are typically out-pocket except for radios.</p>"
+  },
+  {
+    question: "What is your refund policy?",
+    answer: "<p>We try to be accommodating as possible. But, stuff happens, like the weather. If it's flyable, and you do not show, there is no refund. If you miss the pickup, there is no refund. If things go sideways with the weather, and we deem it unsafe to fly, we give you credit for a makeup session.</p>"
+  },
+  {
+    question: "Where can I find a copy of the waiver?",
+    answer: `<p>You can view the waiver at <a href="https://airdamien.com/waiver" target="_blank" rel="noopener noreferrer">airdamien.com/waiver</a>.</p>`
+  }
+];
+
+const flyingFaq = [
+  {
+    question: "What if my flight is a sledder? Can I get back to launch?",
+    answer: "<p>If conditions allow and the shuttle is available, we can get you back up for another attempt. Sledders happen to everyone, even the most experienced pilots.</p>"
+  },
+  {
+    question: "What if I want to fly longer?",
+    answer: "<p>If the conditions are good and you are comfortable, fly as long as you like. Just make sure to stay in radio contact and keep an eye on your altitude and the landing zone.</p>"
+  },
+  {
+    question: "What if I miss the LZ and land out in a field?",
+    answer: "<p>Stay calm, gather your gear, and contact us on the radio. We will come pick you up. It happens more than you would think, and it is not a big deal.</p>"
+  },
+  {
+    question: "What if I go over the backside?",
+    answer: "<p>Radio us immediately. We have retrieve options for backside landings, but it is important to communicate your position as soon as possible.</p>"
+  },
+  {
+    question: "What if I land in a tree?",
+    answer: "<p>Do not try to climb down yourself. Call us on the radio. Tree extraction typically costs $500-$800 plus tips for the extraction team. It is a specialized operation and safety comes first.</p>"
+  },
+  {
+    question: "What if I get hurt?",
+    answer: "<p>Safety is our top priority. We have first aid on site and will coordinate emergency services if needed. Make sure to fill out your waiver and emergency contact information before flying.</p>"
+  },
+  {
+    question: "What if I get hospitalized?",
+    answer: "<p>In Utah, standard US health insurance applies. In Mexico, medical costs are significantly lower, but we strongly recommend purchasing travel insurance before your trip. Have your insurance information accessible at all times.</p>"
+  },
+  {
+    question: "Should I purchase insurance?",
+    answer: `<p>Yes, we strongly recommend it. Gavin McClurg has an excellent article on paragliding insurance: <a href="https://www.cloudbasemayhem.com/humanflight/insurance/" target="_blank" rel="noopener noreferrer">CloudBase Mayhem Insurance Guide</a>.</p>`
+  },
+  {
+    question: "Why can't we fly mid-day?",
+    answer: "<p>Mid-day thermals can be very strong and turbulent, especially for less experienced pilots. We typically fly in the morning when conditions are smoother and more predictable, and sometimes in the late afternoon when things calm down again.</p>"
+  }
+];
+
+const generalFaq = [
+  {
+    question: "Where do we meet for pickup?",
+    answer: "<p><strong>Utah:</strong> Southside Launch, 121100 N East, N Frontage Road, Draper, UT 84020</p><p><strong>Mexico:</strong> Mari's taco and beer stand at the lakefront LZ</p>"
+  },
+  {
+    question: "How long a drive is it from town to the launch?",
+    answer: "<p>In Valle de Bravo, the drive from town to El Penon launch is approximately 20-30 minutes depending on traffic and road conditions.</p>"
+  },
+  {
+    question: "What if I forgot some gear?",
+    answer: `<p>Email Damien at <a href="mailto:Damien@AirDamien.com">Damien@AirDamien.com</a> and let us know what you need. We have some spares and rental gear available.</p>`
+  },
+  {
+    question: "Why do I need to join the local club?",
+    answer: "<p>Local flying clubs manage the launch sites, maintain landing zones, and coordinate with landowners. Membership helps support the flying community and ensures continued access to these sites.</p>"
+  },
+  {
+    question: "Is there food and bathroom on launch?",
+    answer: "<p>In Mexico, yes. There are vendors at or near launch selling food and drinks. Bathroom facilities vary by site but are generally available. In Utah, facilities are more limited so plan accordingly.</p>"
+  },
+  {
+    question: "Is there a place in Valle to purchase gear?",
+    answer: "<p><strong>Utah:</strong> Superfly, Cloud9</p><p><strong>Mexico:</strong> ALAS DEL HOMBRE</p>"
+  },
+  {
+    question: "What is the Fish Bowl?",
+    answer: "<p>The Fish Bowl is the thermal convergence zone above the lake in Valle de Bravo. It is where multiple thermal sources come together, creating a reliable area of lift. Experienced pilots use it to gain altitude and start cross-country flights.</p>"
+  },
+  {
+    question: "What is the Piano?",
+    answer: "<p>The Piano is a well-known landing zone in Valle de Bravo located near the lakefront. It is a large, open area that is easy to spot from the air and serves as the primary LZ for most flights from El Penon.</p>"
+  }
+];
+---
+
+<BaseLayout
+  title="FAQ - Air Damien Paragliding"
+  description="Frequently asked questions about paragliding with Air Damien in Valle de Bravo, Mexico and Utah. Bookings, flying, safety, and general info."
+>
+  <section class="page-header">
+    <h1>FAQ</h1>
+  </section>
+
+  <section class="section section--white">
+    <div class="container">
+      <FaqAccordion title="Bookings" items={bookingsFaq} />
+      <FaqAccordion title="Flying" items={flyingFaq} />
+
+      <div class="safety-note animate-in">
+        <p><strong>Safety Disclaimer:</strong> Paragliding is an inherently dangerous activity that involves risks of serious injury or death. All participants fly at their own risk and must sign a waiver before participating. Air Damien provides instruction and guidance, but cannot guarantee the safety of any flight. Weather conditions can change rapidly and unexpected situations can arise. Always prioritize safety over ambition.</p>
+      </div>
+
+      <FaqAccordion title="General" items={generalFaq} />
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h3>Still Have Questions?</h3>
+      </div>
+      <div class="animate-in">
+        <ContactForm formName="faq-contact" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .safety-note {
+    background: #fff3e0;
+    border-left: 4px solid var(--color-sunset);
+    padding: 1.5rem;
+    border-radius: 0 8px 8px 0;
+    margin: 2rem 0 3rem;
+  }
+
+  .safety-note p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+</style>

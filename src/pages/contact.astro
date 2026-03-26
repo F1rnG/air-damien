@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<BaseLayout
+  title="Contact Us - Air Damien Paragliding"
+  description="Get in touch with Air Damien. Call, text, email, or visit us in Utah or Valle de Bravo, Mexico for paragliding instruction and tours."
+>
+  <section class="page-header">
+    <h1>Contact Us</h1>
+    <p>Interested in a session or a custom flying tour? Contact us with your questions.</p>
+  </section>
+
+  <section class="section section--white">
+    <div class="container">
+      <div class="grid-2 animate-in">
+        <div class="contact-card card">
+          <div class="card__body">
+            <h3>Give us a Call or Text</h3>
+            <p><strong>Utah:</strong> <a href="tel:18012444791">1-801-244-4791</a></p>
+            <p><strong>Mexico:</strong> <a href="tel:+5217221151655">+5217221151655</a></p>
+            <p class="contact-note">Text messaging is more reliable when we are up in the mountains.</p>
+          </div>
+        </div>
+
+        <div class="contact-card card">
+          <div class="card__body">
+            <h3>Send us an email</h3>
+            <p><a href="mailto:Damien@AirDamien.com">Damien@AirDamien.com</a></p>
+            <p class="contact-note">Emails are typically returned during the early morning, mid-day, and late evening.</p>
+          </div>
+        </div>
+
+        <div class="contact-card card">
+          <div class="card__body">
+            <h3>Call us on the radio</h3>
+            <p class="radio-freq">Frequency 144445</p>
+          </div>
+        </div>
+
+        <div class="contact-card card">
+          <div class="card__body">
+            <h3>Drop by and talk</h3>
+            <div class="contact-locations">
+              <div>
+                <h4>Utah Southside Launch</h4>
+                <p>121100 N East, N Frontage Road, Draper, UT 84020</p>
+              </div>
+              <div>
+                <h4>Utah North Side Launch</h4>
+                <p>15300 S. Steep Mountain Drive, Draper, UT 84020</p>
+              </div>
+              <div>
+                <h4>Mexico El Penon Launch</h4>
+                <p>Coords: (19.061997110744503, -100.09099668588526)</p>
+              </div>
+              <div>
+                <h4>Piano LZ</h4>
+                <p>Coords: (19.041882, -100.1049403499)</p>
+              </div>
+              <div>
+                <h4>Beach LZ</h4>
+                <p>Coords: (19.183792, -100.127785)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Send Us a Message</h2>
+      </div>
+      <div class="animate-in">
+        <ContactForm formName="contact-page" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-card .card__body h3 {
+    color: var(--color-sky);
+    margin-bottom: 1rem;
+  }
+
+  .contact-note {
+    font-size: 0.9rem;
+    color: var(--color-gray-light);
+    font-style: italic;
+  }
+
+  .radio-freq {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-sunset);
+  }
+
+  .contact-locations > div {
+    margin-bottom: 1rem;
+  }
+
+  .contact-locations h4 {
+    font-size: 0.95rem;
+    margin-bottom: 0.2rem;
+    color: var(--color-sunset);
+  }
+
+  .contact-locations p {
+    font-size: 0.9rem;
+    margin: 0;
+    color: var(--color-gray);
+  }
+</style>

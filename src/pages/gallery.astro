@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GalleryGrid from '../components/GalleryGrid.astro';
+---
+
+<BaseLayout
+  title="Gallery - Air Damien Paragliding"
+  description="Browse photos from our paragliding adventures in Valle de Bravo, Mexico and the Wasatch Mountains, Utah."
+>
+  <section class="page-header">
+    <h1>Gallery</h1>
+  </section>
+
+  <section class="section section--white">
+    <div class="container">
+      <GalleryGrid title="A taste of Sky Life in El Penon" count={24} />
+      <GalleryGrid title="A taste of Valle de Bravo" count={14} />
+      <GalleryGrid title="A taste of Sky Life in the Wasatch Mountains" count={12} />
+      <GalleryGrid title="A taste of Salt Lake City" count={13} />
+
+      <div class="gallery-social animate-in text-center">
+        <p>Would you like to share a photo? Follow us on <a href="https://www.instagram.com/air.damien/" target="_blank" rel="noopener noreferrer">Instagram @Air.Damien</a> or <a href="https://www.facebook.com/groups/1084131562402201/" target="_blank" rel="noopener noreferrer">Facebook @airdamien</a></p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .gallery-social {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: var(--color-cream);
+    border-radius: 12px;
+  }
+
+  .gallery-social p {
+    font-size: 1.1rem;
+    margin: 0;
+  }
+</style>

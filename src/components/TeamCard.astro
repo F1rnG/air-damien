@@ -1,0 +1,28 @@
+---
+interface Props {
+  name: string;
+  role: string;
+  bio: string;
+  placeholder?: string;
+}
+
+const { name, role, bio, placeholder = 'Team member photo' } = Astro.props;
+---
+
+<div class="card">
+  <div class="card__image">{placeholder}</div>
+  <div class="card__body">
+    <h3>{name}</h3>
+    <p class="team-card__role">{role}</p>
+    <p>{bio}</p>
+  </div>
+</div>
+
+<style>
+  .team-card__role {
+    color: var(--color-sunset);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+</style>

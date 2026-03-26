@@ -1,0 +1,134 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+---
+
+<BaseLayout
+  title="Valle De Bravo, Mexico Cross Country (XC) Paragliding Clinics - Air Damien"
+  description="Cross country XC paragliding clinics in Valle de Bravo, Mexico. Designed for intermediate and advanced pilots. Personalized coaching, ground school, and retrieve service."
+>
+  <section class="page-header">
+    <h1>Valle De Bravo, Mexico Cross Country (XC) Paragliding Clinics</h1>
+  </section>
+
+  <!-- About -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="clinic-intro animate-in">
+        <h2>About the Clinic</h2>
+        <p>Our Cross Country (XC) Paragliding Clinic is designed for intermediate and seasoned pilots looking to push their boundaries and explore the art of long-distance paragliding. This clinic covers both the theory and practice of XC flying, giving you the skills and confidence to plan and execute cross-country flights.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who Is This For -->
+  <section class="section section--cream">
+    <div class="container text-center animate-in">
+      <h2>Who is this Clinic For?</h2>
+      <p class="intro-text">This clinic is for intermediate and advanced pilots who can consistently identify and utilize thermals. If you are comfortable flying in thermal conditions and want to take the next step into cross-country flying, this clinic is for you.</p>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Interested? Get in Touch</h2>
+      </div>
+      <div class="animate-in">
+        <ContactForm formName="xc-clinic" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Location -->
+  <section class="section section--sky">
+    <div class="container text-center animate-in">
+      <h2>Location: Valle De Bravo</h2>
+      <p class="intro-text">Valle de Bravo, Mexico is one of the premier paragliding destinations in the world. With consistent thermals, year-round flyable conditions, and stunning volcanic lake scenery, it is the ideal place to develop your XC flying skills.</p>
+    </div>
+  </section>
+
+  <!-- What We Offer -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>What We Offer</h2>
+      </div>
+      <div class="grid-3 animate-in">
+        <div class="card">
+          <div class="card__body">
+            <h4>Comprehensive Training</h4>
+            <p>From XC theory to practical execution, we cover everything you need to know about planning and flying cross-country routes.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__body">
+            <h4>Personalized Coaching</h4>
+            <p>Low student-to-instructor ratio ensures you get individual attention. Real-time radio guidance during flights tailored to your level.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__body">
+            <h4>Ground School Sessions</h4>
+            <p>Daily briefings on weather, route planning, airspace, and decision-making. Build the knowledge foundation for safe XC flying.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__body">
+            <h4>Tandem Flights</h4>
+            <p>Fly tandem with your instructor to experience XC techniques firsthand before applying them on your own.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__body">
+            <h4>Safety Briefings</h4>
+            <p>Thorough safety protocols, emergency procedures, and risk management training to keep you safe on every flight.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__body">
+            <h4>Retrieve Service</h4>
+            <p>No need to worry about landing out. Our retrieve team will pick you up wherever you land, so you can focus on flying far.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Join Us -->
+  <section class="section section--sky text-center">
+    <div class="container animate-in">
+      <h2>Join Us</h2>
+      <p class="intro-text">Ready to fly cross-country? Book your spot in our next XC clinic.</p>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Reserve Your Place</h2>
+      </div>
+      <div class="animate-in">
+        <ContactForm formName="xc-join" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .clinic-intro {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .clinic-intro h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  .intro-text {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+  }
+</style>

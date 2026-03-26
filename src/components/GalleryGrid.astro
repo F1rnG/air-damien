@@ -1,0 +1,83 @@
+---
+interface Props {
+  title: string;
+  count: number;
+  description?: string;
+}
+
+const { title, count, description } = Astro.props;
+const items = Array.from({ length: count }, (_, i) => i + 1);
+---
+
+<div class="gallery-section">
+  <h2>{title}</h2>
+  {description && <p class="gallery-section__desc">{description}</p>}
+  <div class="gallery-grid">
+    {items.map((i) => (
+      <div class="gallery-item" tabindex="0">
+        <div class="gallery-item__placeholder">
+          Photo {i}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .gallery-section {
+    margin-bottom: 4rem;
+  }
+
+  .gallery-section h2 {
+    margin-bottom: 0.5rem;
+  }
+
+  .gallery-section__desc {
+    color: var(--color-gray);
+    margin-bottom: 1.5rem;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  @media (min-width: 640px) {
+    .gallery-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (min-width: 960px) {
+    .gallery-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+  }
+
+  .gallery-item {
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .gallery-item:hover,
+  .gallery-item:focus {
+    transform: scale(1.03);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    outline: none;
+  }
+
+  .gallery-item__placeholder {
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, var(--color-sky-light), var(--color-sky));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+</style>

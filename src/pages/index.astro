@@ -1,0 +1,219 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+---
+
+<BaseLayout
+  title="Air Damien - Paragliding Instruction in Mexico & Utah"
+  description="Paragliding instruction and guided flights in Valle de Bravo, Mexico and Utah. Thermalling clinics, XC clinics, tours, and personalized coaching."
+>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Air Damien",
+      "description": "Paragliding instruction in Valle de Bravo, Mexico and Utah",
+      "telephone": "+1-801-244-4791",
+      "email": "Damien@AirDamien.com",
+      "url": "https://airdamien.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Marina Nacional 202, Sin Nombre",
+        "addressLocality": "Valle de Bravo",
+        "addressRegion": "Mexico",
+        "addressCountry": "MX"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 19.183792,
+        "longitude": -100.127785
+      },
+      "sameAs": [
+        "https://www.facebook.com/groups/1084131562402201/",
+        "https://www.youtube.com/air_damien",
+        "https://www.instagram.com/air.damien/",
+        "https://twitter.com/AirDamien",
+        "https://tiktok.com/@airdamien"
+      ]
+    })} />
+  </slot>
+
+  <h1 class="sr-only">Home</h1>
+
+  <!-- Hero -->
+  <section class="hero hero--full">
+    <div class="hero__bg" style="background-color: var(--color-sky);"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <p class="hero__eyebrow">Paragliding in Valle de Bravo, Mexico</p>
+      <h2 class="hero__title">Fly with Air Damien</h2>
+      <p>Guided paragliding instruction, thermalling clinics, and cross-country adventures in one of the world's premier flying destinations.</p>
+      <div class="hero__ctas">
+        <a href="/contact/" class="btn btn--primary">Get in Touch</a>
+        <a href="/paragliding-clinics-mexico/paragliding-thermalling-clinic-mexico/" class="btn btn--outline">View Clinics</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Offer -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h3>What We Offer</h3>
+        <p>Join the excitement of paragliding in Valle de Bravo, Mexico</p>
+      </div>
+      <div class="grid-3">
+        <div class="card animate-in">
+          <div class="card__image">Housing &amp; Food photo</div>
+          <div class="card__body">
+            <h4>Housing &amp; Food</h4>
+            <p>We've secured a lovely abode for you near the mountains. It's conveniently situated near the paragliding site, and we ensure that every meal provided is freshly prepared at home daily.</p>
+          </div>
+        </div>
+        <div class="card animate-in">
+          <div class="card__image">Guided Flights photo</div>
+          <div class="card__body">
+            <h4>Guided Flights</h4>
+            <p>Experience daily guided paragliding expeditions, each accompanied by individualized coaching tailored to enhance your flying skills.</p>
+          </div>
+        </div>
+        <div class="card animate-in">
+          <div class="card__image">Transportation photo</div>
+          <div class="card__body">
+            <h4>Transportation</h4>
+            <p>We provide shuttle services for your convenience, both to and from the airport, as well as to the mountain base and back.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section class="section section--cream" id="contact">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h3>Get in Touch</h3>
+        <p>Ready to fly? Send us a message and we will get back to you.</p>
+      </div>
+      <div class="animate-in">
+        <ContactForm formName="homepage-contact" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Thermalling Clinics -->
+  <section class="section section--sky">
+    <div class="container">
+      <div class="home-split animate-in">
+        <div class="home-split__text">
+          <h4>Thermalling Clinics</h4>
+          <p>Discover an unparalleled paragliding experience at our Thermal Clinic, designed to offer not just a thrilling flight, but an opportunity to truly harness the power of thermal currents. Nestled in the heart of the mountains, our Clinic provides guided paragliding adventures paired with tailored instructions to elevate your skills daily.</p>
+          <a href="/paragliding-clinics-mexico/paragliding-thermalling-clinic-mexico/" class="btn btn--primary">Learn More</a>
+        </div>
+        <div class="home-split__image">
+          <div class="card__image">Thermalling Clinic photo</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why El Penon -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="home-content-block animate-in text-center">
+        <h4>WHY EL PENON?</h4>
+        <p>The famous El Penon launch sits on the ring of an ancient volcano. It's known for its dependable flying weather, friendly launch, and oversized landing zone. It's practically flyable year round. The 'Hair Dryer' turns on at exactly 10am each day - you can set your watch by it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Relax and Focus -->
+  <section class="section section--cream">
+    <div class="container">
+      <div class="home-content-block animate-in text-center">
+        <h4>RELAX AND FOCUS ON FLYING</h4>
+        <p>Enjoy a full morning, evening, or day of flying. If you're in town for a week, let's get together and we'll show you all the great launches, all the top LZs and all the best places to get a beer.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h3>What Our Pilots Say</h3>
+      </div>
+      <div class="grid-2 animate-in">
+        <TestimonialCard
+          quote="For many years Damien has been an invaluable source of knowledge and wisdom regarding everything paragliding and an absolute mainstay to our trips to Valle de Bravo. He really knows the place like no other!"
+          author="Bianca Heinrich"
+          role="Comp Pilot"
+        />
+        <TestimonialCard
+          quote="Amazing flying; Great airtime and awesome instruction. We had an excellent trip. Big group, but easily accommodated by Damien. The flying was amazing, the weather was perfect, and the company was entertaining."
+          author="John Gallagher"
+          role="Gringo"
+        />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero__eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    opacity: 0.9;
+  }
+
+  .hero__title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    color: var(--color-white);
+    margin-bottom: 1rem;
+  }
+
+  .hero__ctas {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .home-split {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .home-split {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .home-split__image .card__image {
+    border-radius: 12px;
+    min-height: 300px;
+  }
+
+  .home-content-block {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .home-content-block h4 {
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+  }
+
+  .home-content-block p {
+    font-size: 1.1rem;
+    color: var(--color-gray);
+  }
+</style>

@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ReviewCard from '../components/ReviewCard.astro';
+---
+
+<BaseLayout
+  title="Reviews - Air Damien Paragliding"
+  description="Read reviews from pilots who have flown with Air Damien in Valle de Bravo, Mexico and Utah. 5.0 out of 5 stars from 33 reviews."
+>
+  <section class="page-header">
+    <h1>Reviews</h1>
+  </section>
+
+  <section class="section section--white">
+    <div class="container">
+      <div class="reviews-summary animate-in text-center">
+        <div class="stars reviews-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="reviews-rating">5.0 out of 5 stars</p>
+        <p class="reviews-count">Based on 33 reviews</p>
+      </div>
+
+      <div class="reviews-grid grid-2 animate-in">
+        <ReviewCard
+          author="Pete"
+          date="Jan 30, 2024"
+          text="Great instruction, local knowledge, small groups, no attitude or pressure just great flying and even better times. Couldn't recommend more."
+        />
+        <ReviewCard
+          author="Ryan"
+          date="Feb 27, 2023"
+          text="Went with only a year of flying and gained confidence I didn't think was possible. Saw my skills improve drastically over the week. The instruction was personalized and the flying was world-class."
+        />
+        <ReviewCard
+          author="Jim"
+          date="Jan 24, 2023"
+          text="Weeklong thermaling clinic was everything I hoped for. Ground school in the morning, launch support, and in-sky coaching via radio. Already looking forward to next year."
+        />
+        <ReviewCard
+          author="Charles Walsh"
+          date="Oct 8, 2022"
+          text="Great experience flying in Utah. Top notch instruction from Damien. He knows the local conditions better than anyone and makes sure every pilot feels comfortable and confident."
+        />
+        <ReviewCard
+          author="Dune Flier"
+          date="Oct 6, 2022"
+          text="Third trip to Utah flying with Damien. Each time I come back I learn something new. Only regret this time was not flying Jupiter. Next year for sure."
+        />
+        <ReviewCard
+          author="FlyGirl33"
+          date="Aug 14, 2022"
+          text="Annual Utah visit, living the van life and flew every opportunity I could. Damien's guidance helped me feel safe pushing my comfort zone. The community here is welcoming and supportive."
+        />
+        <ReviewCard
+          author="Blaze"
+          date="Jul 24, 2022"
+          text="First time paragliding and I could not have asked for a better instructor. Patient, knowledgeable, and answered all my questions without making me feel like a beginner."
+        />
+        <ReviewCard
+          author="Kara G"
+          date="Jul 23, 2022"
+          text="First time flying and it was an awesome experience. Damien was super helpful, made me feel at ease, and the whole team was welcoming. Would do it again in a heartbeat."
+        />
+        <ReviewCard
+          author="DirtyBirdy"
+          date="Jul 17, 2022"
+          text="Incredible day in Utah. The views from above are something you have to experience to understand. Damien was a wonderful guide and made the whole experience feel natural and safe."
+        />
+        <ReviewCard
+          author="GR3YGUY"
+          date="Jul 15, 2022"
+          text="The scariest part of the trip was driving up the switchbacks. Thanks for the doughnuts."
+        />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .reviews-summary {
+    margin-bottom: 3rem;
+  }
+
+  .reviews-stars {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .reviews-rating {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  .reviews-count {
+    color: var(--color-gray-light);
+    margin: 0;
+  }
+
+  .reviews-grid {
+    gap: 1.5rem;
+  }
+</style>

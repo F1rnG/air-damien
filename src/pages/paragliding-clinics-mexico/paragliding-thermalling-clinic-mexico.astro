@@ -1,0 +1,229 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+---
+
+<BaseLayout
+  title="Multi-Day Paragliding Thermalling Clinic, Mexico - Air Damien"
+  description="Join our paragliding thermalling clinic in Valle de Bravo, Mexico. Expert instruction, guided flying, daily flight analysis for all skill levels."
+>
+  <section class="page-header">
+    <h1>Multi-Day Paragliding Thermalling Clinic, Mexico</h1>
+  </section>
+
+  <!-- About the Clinic -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="clinic-intro animate-in">
+        <h2>About the Clinic</h2>
+        <p>Welcome to our Paragliding Thermalling Clinic, a once-in-a-lifetime experience designed for all those paragliding enthusiasts eager to refine their thermalling skills and ride the winds like never before. Hosted in the breathtaking landscapes of Mexico, our clinic merges exhilarating adventure with comprehensive learning under expert guidance.</p>
+        <p>Our goal is to provide you with the necessary skill set, knowledge, and confidence to harness the power of thermals effectively, and ultimately enjoy more fulfilling, longer, and safer flights. Whether you are a beginner looking to start your thermalling journey or an intermediate pilot wanting to brush up your skills, this clinic has something to offer for everyone.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Program Details -->
+  <section class="section section--cream">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>5-Day Clinic Program</h2>
+      </div>
+      <div class="grid-2 animate-in">
+        <div class="card">
+          <div class="card__body">
+            <h4>1. Theoretical Sessions</h4>
+            <p>Understanding thermals, their formation, weather dynamics, risk management, and safety protocols. Build a solid foundation before taking to the sky.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__body">
+            <h4>2. Practical Training</h4>
+            <p>Guided by certified professionals in a safe, controlled environment. Ground handling, launch techniques, and progressive skill building.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__body">
+            <h4>3. Guided Flying</h4>
+            <p>Radio support with real-time feedback for thermal soaring techniques. Your instructor will be in your ear every step of the way.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__body">
+            <h4>4. Flight Analysis</h4>
+            <p>Daily debriefing sessions with personalized feedback. Review your flights, identify improvements, and set goals for the next day.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Form -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Book Your Spot</h2>
+        <p>Ready to join? Fill out the form below and we will get back to you with availability.</p>
+      </div>
+      <div class="animate-in">
+        <ContactForm formName="thermalling-clinic" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Valle de Bravo -->
+  <section class="section section--sky">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Why Valle De Bravo, Mexico?</h2>
+      </div>
+      <div class="grid-3 animate-in">
+        <div class="feature-card">
+          <h4>Consistent Thermals</h4>
+          <p>Valle de Bravo is renowned for its reliable thermal activity. The unique geography, combined with the lake and surrounding mountains, creates consistent thermal conditions ideal for learning and advancing your skills.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Year-Round Flying Conditions</h4>
+          <p>Unlike many flying destinations, Valle de Bravo offers flyable conditions throughout the year. The mild climate and predictable weather patterns mean you can plan your clinic with confidence.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Varied Terrain</h4>
+          <p>The diverse landscape provides a range of flying experiences, from gentle ridge soaring to strong thermal climbs. This variety is perfect for building well-rounded piloting skills.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Stunning Scenery</h4>
+          <p>Fly above a volcanic lake surrounded by lush forests and charming Mexican architecture. The views from altitude are truly breathtaking and make every flight memorable.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Safety and Infrastructure</h4>
+          <p>Valle de Bravo has a well-established paragliding community with proper launch sites, designated landing zones, and experienced local pilots. The infrastructure supports safe and organized flying operations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instructor -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="clinic-instructor animate-in">
+        <div class="card__image instructor-photo">Damien Mitchell photo</div>
+        <div class="instructor-info">
+          <h2>Your Instructor</h2>
+          <h3>Damien Mitchell</h3>
+          <p>With years of experience flying and teaching in Valle de Bravo, Damien knows the local conditions better than anyone. He will be your personal guide, providing real-time radio coaching during flights and detailed debriefs after each session.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipment Checklist -->
+  <section class="section section--cream">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Essential Equipment Checklist</h2>
+      </div>
+      <div class="equipment-list animate-in">
+        <ul class="checklist">
+          <li>Certified Paraglider</li>
+          <li>Certified Harness</li>
+          <li>Reserve Parachute</li>
+          <li>Helmet</li>
+          <li>Dual-Band VHF Radio</li>
+          <li>Vario (recommended)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Requirements -->
+  <section class="section section--white">
+    <div class="container text-center animate-in">
+      <h2>Participant Requirements</h2>
+      <p>P2 (Novice) rating or equivalent certification required.</p>
+    </div>
+  </section>
+
+  <!-- Join Us CTA -->
+  <section class="section section--sky text-center">
+    <div class="container animate-in">
+      <h2>Join Us</h2>
+      <p class="cta-text">Ready to take your thermalling skills to the next level? Book your spot today.</p>
+      <a href="#book" class="btn btn--primary" onclick="document.querySelector('#book-form').scrollIntoView({behavior:'smooth'})">Book Now</a>
+    </div>
+  </section>
+
+  <section class="section section--cream" id="book-form">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Reserve Your Place</h2>
+      </div>
+      <div class="animate-in">
+        <ContactForm formName="thermalling-join" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .clinic-intro {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .clinic-intro h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  .feature-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+
+  .feature-card h4 {
+    color: var(--color-sunset-light);
+    margin-bottom: 0.75rem;
+  }
+
+  .feature-card p {
+    opacity: 0.9;
+  }
+
+  .clinic-instructor {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 768px) {
+    .clinic-instructor {
+      grid-template-columns: 300px 1fr;
+    }
+  }
+
+  .instructor-photo {
+    border-radius: 12px;
+    min-height: 300px;
+  }
+
+  .instructor-info h2 {
+    margin-bottom: 0.25rem;
+  }
+
+  .instructor-info h3 {
+    color: var(--color-sunset);
+    margin-bottom: 1rem;
+  }
+
+  .equipment-list {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .cta-text {
+    font-size: 1.15rem;
+    margin-bottom: 1.5rem;
+  }
+</style>
