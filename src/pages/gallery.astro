@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import GalleryGrid from '../components/GalleryGrid.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import SchemaMarkup from '../components/SchemaMarkup.astro';
 
@@ -29,10 +28,141 @@ const gallerySchema = {
 
   <section class="section section--white">
     <div class="container">
-      <GalleryGrid title="A taste of Sky Life in El Penon" count={24} />
-      <GalleryGrid title="A taste of Valle de Bravo" count={14} />
-      <GalleryGrid title="A taste of Sky Life in the Wasatch Mountains" count={12} />
-      <GalleryGrid title="A taste of Salt Lake City" count={13} />
+
+      <section class="gallery-section">
+        <h2>A taste of Sky Life in El Penon</h2>
+        <div class="gallery-grid">
+          <a href="/images/gaggle.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/gaggle.jpg" alt="Large gaggle of paragliders thermalling over El Penon" width="800" height="600" loading="lazy" />
+          </a>
+          <a href="/images/val4.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/val4.jpg" alt="Gaggle of paragliders over El Penon from a different angle" width="800" height="600" loading="lazy" />
+          </a>
+          <a href="/images/val6.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/val6.jpg" alt="Solo paraglider soaring over El Penon mountain" width="800" height="600" loading="lazy" />
+          </a>
+          <a href="/images/val5.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/val5.jpg" alt="Paraglider flying near El Penon" width="800" height="600" loading="lazy" />
+          </a>
+          <a href="/images/val7.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/val7.jpg" alt="Paragliding action over El Penon cliffs" width="800" height="600" loading="lazy" />
+          </a>
+          <a href="/images/val8.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/val8.jpg" alt="Paraglider in flight near El Penon" width="800" height="600" loading="lazy" />
+          </a>
+          <a href="/images/valle2.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/valle2.jpg" alt="Paragliders scattered across blue sky over Valle de Bravo" width="800" height="600" loading="lazy" />
+          </a>
+          <a href="/images/pg 1.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/pg 1.jpg" alt="Two paragliders flying over mountains near El Penon" width="800" height="600" loading="lazy" />
+          </a>
+          <a href="/images/IMG_5312.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/IMG_5312.jpg" alt="Two paragliders soaring over terrain near Valle de Bravo" width="800" height="600" loading="lazy" />
+          </a>
+          <a href="/images/IMG_5277.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/IMG_5277.jpg" alt="Paragliding over the mountains of Valle de Bravo" width="800" height="600" loading="lazy" />
+          </a>
+          <a href="/images/landing 1.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/landing 1.jpg" alt="Pilot flying with the El Penon cliff face behind" width="800" height="600" loading="lazy" />
+          </a>
+          <a href="/images/test123.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/test123.jpg" alt="Two paragliders flying over Valle de Bravo" width="800" height="600" loading="lazy" />
+          </a>
+          <a href="/images/el penon.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/el penon.jpg" alt="El Penon cliff face with a tiny glider visible against the rock" width="800" height="600" loading="lazy" />
+          </a>
+          <a href="/images/IMG_7203.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/IMG_7203.jpg" alt="El Penon cliff towering over the valley" width="800" height="600" loading="lazy" />
+          </a>
+          <a href="/images/feet.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/feet.jpg" alt="POV cockpit shot showing feet, vario, and mountain panorama below" width="800" height="600" loading="lazy" />
+          </a>
+          <a href="/images/Damion3.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/Damion3.jpg" alt="Pilot selfie flying over lush green mountains in Mexico" width="800" height="600" loading="lazy" />
+          </a>
+          <a href="/images/Damion4.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/Damion4.jpg" alt="Pilot in flight over the Mexican landscape" width="800" height="600" loading="lazy" />
+          </a>
+          <a href="/images/Damion5.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/Damion5.jpg" alt="Paragliding selfie with mountain scenery in Valle de Bravo" width="800" height="600" loading="lazy" />
+          </a>
+        </div>
+      </section>
+
+      <section class="gallery-section">
+        <h2>A taste of Valle de Bravo</h2>
+        <div class="gallery-grid">
+          <a href="/images/valle 1.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/valle 1.jpg" alt="Panoramic view of Valle de Bravo lakeside town" width="800" height="600" loading="lazy" />
+          </a>
+          <a href="/images/valle-1.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/valle-1.jpg" alt="Paragliders flying over the terrain near Valle de Bravo" width="800" height="600" loading="lazy" />
+          </a>
+          <a href="/images/Rural-Home-Local-Lane-NBS-750x375-1.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/Rural-Home-Local-Lane-NBS-750x375-1.jpg" alt="Local housing along a lane in Valle de Bravo" width="800" height="600" loading="lazy" />
+          </a>
+          <a href="/images/cross.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/cross.jpg" alt="Volcanic ridge hike near Valle de Bravo" width="800" height="600" loading="lazy" />
+          </a>
+        </div>
+      </section>
+
+      <section class="gallery-section">
+        <h2>A taste of Sky Life in the Wasatch Mountains</h2>
+        <div class="gallery-grid">
+          <a href="/images/Damion6.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/Damion6.jpg" alt="Launch at Point of the Mountain with Utah Lake in the background" width="800" height="600" loading="lazy" />
+          </a>
+          <a href="/images/Damion2.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/Damion2.jpg" alt="Pilot gearing up before a flight in Utah" width="800" height="600" loading="lazy" />
+          </a>
+          <a href="/images/10-17-2021-Snowbird-north-valley.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/10-17-2021-Snowbird-north-valley.jpg" alt="Paragliding event at Snowbird in the Wasatch mountains" width="800" height="600" loading="lazy" />
+          </a>
+          <a href="/images/10-17-2021-German-horns.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/10-17-2021-German-horns.jpg" alt="Flying near German horns in the Wasatch range" width="800" height="600" loading="lazy" />
+          </a>
+          <a href="/images/10-16-2021-view-from-Francis-scaled.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/10-16-2021-view-from-Francis-scaled.jpg" alt="Scenic view from Francis launch site in Utah" width="800" height="600" loading="lazy" />
+          </a>
+          <a href="/images/10-16-2021-John-laying-out-glider-Francis-2-scaled.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/10-16-2021-John-laying-out-glider-Francis-2-scaled.jpg" alt="Pilot laying out glider at Francis launch in the Wasatch mountains" width="800" height="600" loading="lazy" />
+          </a>
+        </div>
+      </section>
+
+      <section class="gallery-section">
+        <h2>A taste of Salt Lake City</h2>
+        <div class="gallery-grid">
+          <a href="/images/sitting 1.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/sitting 1.jpg" alt="Pilots relaxing at the landing zone with beers after a flight" width="800" height="600" loading="lazy" />
+          </a>
+          <a href="/images/coaching 1.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/coaching 1.jpg" alt="Two pilots high-fiving with helmets on after a great flight" width="800" height="600" loading="lazy" />
+          </a>
+          <a href="/images/Dave.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/Dave.jpg" alt="Pilot selfie taken in flight over Utah" width="800" height="600" loading="lazy" />
+          </a>
+          <a href="/images/20210501_183841.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/20210501_183841.jpg" alt="Paragliding community gathering in Salt Lake City" width="800" height="600" loading="lazy" />
+          </a>
+          <a href="/images/20210501_183815.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/20210501_183815.jpg" alt="Pilots and friends enjoying the Utah outdoors" width="800" height="600" loading="lazy" />
+          </a>
+          <a href="/images/20210430_174340.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/20210430_174340.jpg" alt="Evening scene at the paragliding landing zone in Utah" width="800" height="600" loading="lazy" />
+          </a>
+          <a href="/images/20210503_140410-1.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/20210503_140410-1.jpg" alt="Day out with the paragliding crew in Salt Lake City" width="800" height="600" loading="lazy" />
+          </a>
+          <a href="/images/20210503_134132.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/20210503_134132.jpg" alt="Enjoying the Salt Lake City paragliding scene" width="800" height="600" loading="lazy" />
+          </a>
+          <a href="/images/20210503_134051.jpg" class="gallery-item" data-lightbox>
+            <img src="/images/20210503_134051.jpg" alt="Pilots hanging out at the Utah flying site" width="800" height="600" loading="lazy" />
+          </a>
+        </div>
+      </section>
 
       <div class="gallery-social animate-in text-center">
         <p>Would you like to share a photo? Follow us on <a href="https://www.instagram.com/air.damien/" target="_blank" rel="noopener noreferrer">Instagram @Air.Damien</a> or <a href="https://www.facebook.com/groups/1084131562402201/" target="_blank" rel="noopener noreferrer">Facebook @airdamien</a></p>
@@ -42,6 +172,38 @@ const gallerySchema = {
 </BaseLayout>
 
 <style>
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .gallery-item {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 8px;
+    display: block;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+
+  .gallery-item:hover img {
+    transform: scale(1.05);
+  }
+
+  .gallery-section {
+    margin-bottom: 3rem;
+  }
+
+  .gallery-section h2 {
+    margin-bottom: 1.5rem;
+  }
+
   .gallery-social {
     margin-top: 2rem;
     padding: 2rem;

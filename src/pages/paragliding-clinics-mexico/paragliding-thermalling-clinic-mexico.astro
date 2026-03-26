@@ -139,7 +139,7 @@ const courseSchema = {
   <section class="section section--white">
     <div class="container">
       <div class="clinic-instructor animate-in">
-        <div class="card__image instructor-photo">Damien Mitchell photo</div>
+        <div class="card__image instructor-photo"><img src="/images/damien 1.jpg" alt="Damien Mitchell coaching at El Penon launch" width="800" height="600" loading="lazy" /></div>
         <div class="instructor-info">
           <h2>Your Instructor</h2>
           <h3>Damien Mitchell</h3>
@@ -240,6 +240,13 @@ const courseSchema = {
   .instructor-photo {
     border-radius: 12px;
     min-height: 300px;
+  }
+
+  .instructor-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
   }
 
   .instructor-info h2 {

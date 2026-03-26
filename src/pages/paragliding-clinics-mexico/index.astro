@@ -51,7 +51,7 @@ const schema = {
       <div class="clinic-cards">
         <article class="clinic-card">
           <div class="clinic-card__image">
-            <span>XC Paragliding Clinic - Pilots soaring over Valle de Bravo</span>
+            <img src="/images/pg 1.jpg" alt="Two paragliders flying cross-country over Valle de Bravo" width="1024" height="683" loading="lazy" />
           </div>
           <div class="clinic-card__body">
             <h2>Cross Country (XC) Paragliding Clinic</h2>
@@ -62,7 +62,7 @@ const schema = {
 
         <article class="clinic-card">
           <div class="clinic-card__image">
-            <span>Thermalling Clinic - Pilot catching thermals over El Penon</span>
+            <img src="/images/val4.jpg" alt="Paragliders thermalling in a gaggle over El Penon" width="1024" height="683" loading="lazy" />
           </div>
           <div class="clinic-card__body">
             <h2>Thermalling Paragliding Clinics</h2>
@@ -125,6 +125,12 @@ const schema = {
     justify-content: center;
     padding: 1rem;
     min-height: 300px;
+  }
+
+  .clinic-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .clinic-card__image span {

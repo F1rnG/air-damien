@@ -4,13 +4,17 @@ interface Props {
   role: string;
   bio: string;
   placeholder?: string;
+  image?: string;
+  imageAlt?: string;
 }
 
-const { name, role, bio, placeholder = 'Team member photo' } = Astro.props;
+const { name, role, bio, placeholder = 'Team member photo', image, imageAlt } = Astro.props;
 ---
 
 <div class="card">
-  <div class="card__image">{placeholder}</div>
+  <div class="card__image">
+    {image ? <img src={image} alt={imageAlt || `${name} photo`} width="800" height="600" loading="lazy" /> : placeholder}
+  </div>
   <div class="card__body">
     <h3>{name}</h3>
     <p class="team-card__role">{role}</p>
