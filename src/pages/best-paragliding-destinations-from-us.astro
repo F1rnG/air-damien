@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Best Paragliding Destinations from the US: Where to Fly Next",
+  "description": "The top paragliding destinations accessible from the US. Mexico, Colombia, Brazil, Europe, and more - with season timing, skill requirements, and trip planning tips.",
+  "datePublished": "2024-01-15",
+  "dateModified": "2024-01-15",
+  "wordCount": 3200,
+  "author": { "@type": "Person", "name": "Damien Mitchell", "url": "https://airdamien.com/about-us/", "jobTitle": "USHPA Advanced Instructor" },
+  "publisher": { "@type": "Organization", "name": "Air Damien", "url": "https://airdamien.com", "logo": { "@type": "ImageObject", "url": "https://airdamien.com/images/logo.png" } },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://airdamien.com/best-paragliding-destinations-from-us/" }
+};
+
+const breadcrumbs = [
+  { name: "Home", url: "https://airdamien.com/" },
+  { name: "Blog", url: "https://airdamien.com/blog/" },
+  { name: "Best Paragliding Destinations", url: "https://airdamien.com/best-paragliding-destinations-from-us/" }
+];
+---
+
+<BaseLayout
+  title="Best Paragliding Destinations from the US: Where to Fly Next | Air Damien"
+  description="The top paragliding destinations accessible from the US. Mexico, Colombia, Brazil, Europe, and more - with season timing, skill requirements, and trip planning tips."
+  canonicalUrl="https://airdamien.com/best-paragliding-destinations-from-us/"
+>
+  <SchemaMarkup schema={blogSchema} />
+
+  <div class="page-header">
+    <div class="container">
+      <h1>Best Paragliding Destinations from the US</h1>
+      <p class="page-header__byline">By Damien Mitchell, USHPA Advanced Instructor</p>
+    </div>
+  </div>
+
+  <Breadcrumbs items={breadcrumbs} />
+
+  <article class="section">
+    <div class="container article-body">
+
+      <p class="article-lead">After 25+ years of flying on five continents, these are the destinations I recommend to US-based pilots looking for their next flying trip. Some of these are sites where I run guided trips. Others are places I have flown independently and can vouch for. All of them will make you a better pilot and give you experiences you will remember for years.</p>
+
+      <h2 id="valle-de-bravo">1. Valle de Bravo, Mexico</h2>
+      <p><strong>Season:</strong> November - March | <strong>Skill level:</strong> P2+ | <strong>Travel from US:</strong> 4-5 hour flight + 2-3 hour drive</p>
+
+      <p>If I had to recommend one destination to a US pilot who has never traveled to fly, it would be Valle de Bravo. The site delivers 300+ flyable days per year, and peak season (November through March) offers some of the most consistent thermal conditions anywhere on earth. El Penon's Hair Dryer thermal cycle kicks on at 10:00 AM like clockwork. The town is charming, the food is great, and the logistics from the US are simple.</p>
+
+      <p>Valle is accessible to P2 pilots but offers enough depth that P4 competition pilots keep coming back. The thermals are moderate and well-organized - strong enough to learn on, consistent enough to progress rapidly. XC potential is solid, with 40-60km flights achievable during peak season.</p>
+
+      <p><strong>Air Damien runs guided trips here.</strong> <a href="/paragliding-valle-de-bravo/">Read our complete Valle de Bravo guide</a> or <a href="/tour/10-day-paraglide-mexico-package/">view the 10 Day Package</a>.</p>
+
+      <h2 id="roldanillo">2. Roldanillo, Colombia</h2>
+      <p><strong>Season:</strong> February - March | <strong>Skill level:</strong> P3+ | <strong>Travel from US:</strong> 4-5 hour flight to Cali + 3 hour drive</p>
+
+      <p>Roldanillo is where you go when you want to fly far. The Cauca Valley produces some of the strongest, most consistent thermals in the Americas. Cloudbase regularly hits 3,500-4,000 meters, thermal streets run along the Andes for 100+ kilometers, and the Colombian Open - one of the biggest competitions in the sport - is held here annually.</p>
+
+      <p>This is not a beginner site. The thermals are 4-8 m/s and they demand solid centering and management skills. But if you can thermal to cloudbase consistently, Roldanillo will reward you with distance you have never flown before.</p>
+
+      <p><strong>Air Damien runs guided trips here.</strong> <a href="/paragliding-roldanillo-colombia/">Read our complete Roldanillo guide</a> or <a href="/tours/colombia-paragliding-roldanillo/">view the Colombia trip</a>.</p>
+
+      <h2 id="governador-valadares">3. Governador Valadares, Brazil</h2>
+      <p><strong>Season:</strong> September - March | <strong>Skill level:</strong> P2+ (P3+ for XC) | <strong>Travel from US:</strong> 8-10 hour flight + 4 hour drive from Belo Horizonte</p>
+
+      <p>GV is well-known in the paragliding world with a long history of free-flight. Pico da Ibituruna is one of the most iconic launches in the sport - a granite peak rising over three-thousand feet above a thriving city of over a quarter million people. The LZ is one of the largest in the world, the thermals are a soft, well-organized experience ideal for logging hours, and the Brazilian flying community is the warmest you will find anywhere.</p>
+
+      <p>GV offers excellent XC potential along the Rio Doce valley and a flying culture that makes every trip feel like more than just a flying vacation. If you want a bucket-list launch, strong thermals, and an immersion in Brazilian flying life, this is the destination.</p>
+
+      <p><strong>Air Damien runs guided trips here.</strong> <a href="/paragliding-governador-valadares-brazil/">Read our complete GV guide</a> or <a href="/tours/brazil-paragliding-governador-valadares/">view the Brazil trip</a>.</p>
+
+      <h2 id="dolomites">4. The Dolomites, Italy</h2>
+      <p><strong>Season:</strong> June - September | <strong>Skill level:</strong> P3+ | <strong>Travel from US:</strong> 8-10 hour flight + 2-3 hour drive from Verona or Venice</p>
+
+      <p>No other flying destination offers scenery like the Dolomites. Jagged limestone towers, alpine meadows, glaciers, and medieval villages create a backdrop that makes every flight feel like a highlight reel. Val di Fassa in Trentino-Alto Adige has established flying infrastructure and multiple launch sites accessed by cable car.</p>
+
+      <p>Mountain flying is its own discipline - valley winds, alpine thermals, rotor, and rapid weather changes all require specific skills. The Dolomites are the place to learn these skills in the most beautiful classroom on earth. Plus, the food and wine in Trentino are world-class, and rest days here are a highlight, not a hardship.</p>
+
+      <p><strong>Air Damien runs guided trips here.</strong> <a href="/paragliding-dolomites-italy/">Read our complete Dolomites guide</a> or <a href="/tours/italy-paragliding-dolomites/">view the Italy trip</a>.</p>
+
+      <h2 id="oludeniz">5. Oludeniz, Turkey</h2>
+      <p><strong>Season:</strong> April - November | <strong>Skill level:</strong> P2+ | <strong>Travel from US:</strong> 10-12 hours to Istanbul + domestic flight to Dalaman</p>
+
+      <p>Babadag Mountain above Oludeniz is one of the most famous paragliding sites in the world, primarily because of the stunning landing at the Blue Lagoon beach. The site is heavily used for tandem tourist flights, but the soaring conditions are genuinely good. Coastal thermals, ridge lift along Babadag, and stunning Mediterranean scenery make it a worthwhile destination. The town is a resort area with plenty of accommodation and nightlife. A good destination for a mixed flying/vacation trip with a non-flying partner.</p>
+
+      <h2 id="bir-billing">6. Bir Billing, India</h2>
+      <p><strong>Season:</strong> October - June (best: March - May, October - November) | <strong>Skill level:</strong> P2+ | <strong>Travel from US:</strong> 15-20 hours to Delhi + domestic flight to Dharamsala + drive</p>
+
+      <p>Bir Billing in Himachal Pradesh hosted the 2015 Paragliding World Cup and has become one of the most popular flying destinations in Asia. The site sits in the Himalayan foothills at about 2,400 meters, with excellent thermal conditions during season. XC potential runs along the Dhauladhar range. The town has a Tibetan Buddhist culture, excellent food, and very affordable living costs. The travel is long from the US but the experience is unique.</p>
+
+      <h2 id="pokhara">7. Pokhara, Nepal</h2>
+      <p><strong>Season:</strong> October - April (best: November - February) | <strong>Skill level:</strong> P3+ | <strong>Travel from US:</strong> 18-24 hours to Kathmandu + domestic flight or drive to Pokhara</p>
+
+      <p>Flying with the Annapurna range as your backdrop is a once-in-a-lifetime experience. Sarangkot launch above Pokhara offers thermal flying with views of 8,000-meter peaks. The flying is good, the scenery is unmatched, and the cost of living is extremely low. The town is geared toward adventure tourism with plenty of accommodation and food options. The travel is long and the logistics require some planning, but for pilots who want the ultimate mountain flying backdrop, nothing compares.</p>
+
+      <h2 id="chamonix">8. Chamonix, France</h2>
+      <p><strong>Season:</strong> June - September | <strong>Skill level:</strong> P3+ (P4 for serious alpine routes) | <strong>Travel from US:</strong> 8-10 hours to Geneva + 1 hour drive</p>
+
+      <p>Chamonix is the epicenter of European alpine flying. Mont Blanc, the Aiguilles, and the glaciers create dramatic flying terrain. The hike-and-fly and vol-biv culture is strongest here. This is serious mountain flying that demands solid skills and judgment. The town itself is a legendary outdoor sports destination with world-class dining, bars, and culture. Not a beginner destination, but for experienced pilots it is hard to beat.</p>
+
+      <h2>How to Choose</h2>
+
+      <p>Here is a simple framework based on your skill level and goals:</p>
+
+      <ul>
+        <li><strong>First international trip, building skills:</strong> <a href="/paragliding-valle-de-bravo/">Valle de Bravo</a></li>
+        <li><strong>Pushing XC distance:</strong> <a href="/paragliding-roldanillo-colombia/">Roldanillo</a></li>
+        <li><strong>Bucket-list launch + flying culture:</strong> <a href="/paragliding-governador-valadares-brazil/">Governador Valadares</a></li>
+        <li><strong>Alpine flying + scenery:</strong> <a href="/paragliding-dolomites-italy/">The Dolomites</a></li>
+        <li><strong>Beach vacation + flying:</strong> Oludeniz</li>
+        <li><strong>Budget-friendly + Asian adventure:</strong> Bir Billing</li>
+        <li><strong>Ultimate mountain backdrop:</strong> Pokhara</li>
+        <li><strong>Serious European alpine:</strong> Chamonix</li>
+      </ul>
+
+      <h2>Plan Your Next Trip</h2>
+
+      <p>I have been flying internationally for 25+ years and can help you pick the right destination for your skill level and goals. Air Damien runs guided trips to Mexico, Colombia, Brazil, and Italy - with housing, food, transport, and daily instruction included. For the other destinations on this list, I am happy to share what I know and help you plan independently.</p>
+
+    </div>
+  </article>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Need Help Choosing?</h2>
+        <p>Tell me your skill level and what you are looking for. I will give you an honest recommendation.</p>
+      </div>
+      <div class="animate-in" style="max-width: 600px; margin: 0 auto;">
+        <ContactForm formName="destinations-inquiry" messagePlaceholder="I'm looking for my next flying trip. My rating is P___ and I'm interested in..." buttonText="Get a Recommendation" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header__byline { color: var(--color-text-on-dark-muted, #c4b8e0); font-size: 1rem; margin-top: 0.5rem; }
+  .article-body { max-width: 780px; margin: 0 auto; }
+  .article-lead { font-size: 1.15rem; line-height: 1.8; font-weight: 500; margin-bottom: 1.5rem; color: var(--color-text, #2a2050); }
+  .article-body h2 { margin-top: 3rem; margin-bottom: 1rem; padding-top: 1rem; border-top: 1px solid var(--color-border, #d8d4e0); }
+  .article-body h2:first-of-type { border-top: none; padding-top: 0; }
+  .article-body p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.25rem; }
+  .article-body ul { margin: 1rem 0 1.5rem 1.5rem; list-style: disc; }
+  .article-body ul li { font-size: 1.05rem; line-height: 1.8; margin-bottom: 0.75rem; }
+  .article-body a { color: var(--color-accent, #e07730); font-weight: 500; }
+  .article-body a:hover { text-decoration: underline; }
+  .article-body strong { color: var(--color-text, #2a2050); }
+</style>

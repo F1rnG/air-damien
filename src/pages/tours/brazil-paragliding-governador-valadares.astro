@@ -38,7 +38,7 @@ const faqSchema = {
     { "@type": "Question", "name": "When does the Brazil trip run?", "acceptedAnswer": { "@type": "Answer", "text": "Contact Damien for current season dates. Brazilian flying conditions are good most of the year, with peak thermal activity from September through March." } },
     { "@type": "Question", "name": "How do I get there?", "acceptedAnswer": { "@type": "Answer", "text": "Fly into Governador Valadares (GVR) directly, or fly into Confins/Belo Horizonte (CNF) and drive approximately 4 hours. We coordinate ground transport." } },
     { "@type": "Question", "name": "Do I need a visa for Brazil?", "acceptedAnswer": { "@type": "Answer", "text": "US citizens do not need a visa for tourist stays under 90 days. You need a valid passport with at least 6 months validity." } },
-    { "@type": "Question", "name": "What rating do I need?", "acceptedAnswer": { "@type": "Answer", "text": "P2+ for guided flying, P3+ recommended for XC. The thermals at Ibituruna are strong - you should be comfortable in active air." } },
+    { "@type": "Question", "name": "What rating do I need?", "acceptedAnswer": { "@type": "Answer", "text": "This is not a beginner trip. You should have solid forward or dynamic reversal launch skills, side-hill landing skills, and be autonomous in coring light lift. The thermals at Ibituruna are a soft thermal experience compared to sites like Roldanillo, but the goal here is logging hours in the saddle and chasing 100km XC flights. P3+ recommended." } },
     { "@type": "Question", "name": "Is it safe?", "acceptedAnswer": { "@type": "Answer", "text": "Governador Valadares has a long history of hosting international pilots. The flying infrastructure is excellent and the community is very welcoming to visitors." } },
     { "@type": "Question", "name": "Can I combine this with other Air Damien trips?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Many pilots combine Brazil with Colombia or Mexico depending on the season. Talk to Damien about building a multi-destination season." } }
   ]
@@ -48,7 +48,7 @@ const faqItems = [
   { question: "When does the Brazil trip run?", answer: "Contact Damien for current season dates. Brazilian flying conditions are good most of the year, with peak thermal activity from September through March." },
   { question: "How do I get there?", answer: "Fly into Governador Valadares (GVR) directly, or fly into Confins/Belo Horizonte (CNF) and drive approximately 4 hours. We coordinate ground transport." },
   { question: "Do I need a visa for Brazil?", answer: "US citizens do not need a visa for tourist stays under 90 days. You need a valid passport with at least 6 months validity." },
-  { question: "What rating do I need?", answer: "P2+ for guided flying, P3+ recommended for XC. The thermals at Ibituruna are strong - you should be comfortable in active air." },
+  { question: "What rating do I need?", answer: "This is not a beginner trip. You should have solid forward or dynamic reversal launch skills, side-hill landing skills, and be autonomous in coring light lift. The thermals at Ibituruna are a soft thermal experience compared to sites like Roldanillo, but the goal here is logging hours in the saddle and chasing 100km XC flights. P3+ recommended." },
   { question: "Is it safe?", answer: "Governador Valadares has a long history of hosting international pilots. The flying infrastructure is excellent and the community is very welcoming to visitors." },
   { question: "Can I combine this with other Air Damien trips?", answer: "Yes. Many pilots combine Brazil with Colombia or Mexico depending on the season. Talk to Damien about building a multi-destination season." }
 ];
@@ -89,7 +89,7 @@ const faqItems = [
       <div class="pitch-grid animate-in">
         <div class="pitch-grid__text">
           <h2>The city that was built to fly</h2>
-          <p>Governador Valadares is not just a place where people paraglide. It is the city where Brazilian free flight was born. Pico da Ibituruna rises 1,123 meters above the Rio Doce valley, generating thermals that have drawn pilots from around the world for decades. The city itself revolves around flying - the launch is visible from nearly everywhere in town, and the landing zone is right in the city center.</p>
+          <p>Governador Valadares is well-known in the paragliding world and has a long history of free-flight. Pico da Ibituruna rises over three-thousand feet above the Rio Doce valley, generating thermals that have drawn pilots from around the world for decades. GV is a thriving metropolis of over a quarter million people with all types of industry and commerce, serving as a central hub for outlying residents across the state - and the mountain that towers over it all happens to be one of the best paragliding launches on earth.</p>
           <p>Damien leads guided trips to GV for pilots who want to experience one of the great flying sites on the planet. Whether you are looking to log flights from a bucket-list launch, push your XC distance along the Rio Doce, or simply soak in the energy of a city that lives and breathes paragliding, this trip delivers.</p>
         </div>
         <div class="pitch-grid__image">
@@ -134,44 +134,46 @@ const faqItems = [
     </div>
   </section>
 
-  <!-- 5. Typical Day (white) -->
+  <!-- 5. Your Trip - Phased Progression (white) -->
   <section class="section section--white">
     <div class="container">
       <div class="section__heading animate-in">
-        <h2>A day in Governador Valadares</h2>
+        <h2>Your Trip</h2>
       </div>
-      <div class="timeline animate-in">
-        <div class="timeline__item">
-          <div class="timeline__time">7:00 AM</div>
-          <div class="timeline__desc">Breakfast at the house. Coffee, fruit, and a look at the sky.</div>
+
+      <div class="phase phase--left animate-in">
+        <div class="phase__image-wrap">
+          <span class="phase__badge">Phase 1</span>
+          <div class="phase__placeholder">First Flights - Pico da Ibituruna</div>
         </div>
-        <div class="timeline__item">
-          <div class="timeline__time">8:30 AM</div>
-          <div class="timeline__desc">Weather briefing and flight planning. Review wind data, thermal forecasts, and set goals for the day.</div>
+        <div class="phase__content">
+          <h3 class="phase__title">First Flights</h3>
+          <p class="phase__days">Days 1 - 2</p>
+          <p class="phase__text">You arrive and we get you settled. Day one is about understanding Ibituruna - the launch, the landing zones, the thermal patterns off the rock face. Day two is your first flying day. The drive up the winding road to the top of Pico da Ibituruna is an experience in itself - the valley opens up below you and you can see the LZ, the city, and the Rio Doce stretching into the distance. Your first thermal off the granite face will be stronger and more organized than most thermals you have flown at home. Damien is on the radio coaching your centering and climb rate from the first moment.</p>
         </div>
-        <div class="timeline__item">
-          <div class="timeline__time">10:00 AM</div>
-          <div class="timeline__desc">Drive up Ibituruna. Gear up at launch and watch the first cycles come through.</div>
+      </div>
+
+      <div class="phase phase--right animate-in">
+        <div class="phase__content">
+          <h3 class="phase__title">Building Confidence</h3>
+          <p class="phase__days">Days 3 - 5</p>
+          <p class="phase__text">Now you have the feel of Ibituruna thermals. Flights get longer. You start exploring the valley - following the ridge south, crossing over to the back, reading the thermal triggers along the terrain. Ground school shifts to XC planning for the Rio Doce corridor. Each day builds on the last. Day four or five is a good time for a rest day - explore GV, eat churrasco, visit the markets, or just sit at the LZ watching other pilots and absorbing the flying culture that makes this place special.</p>
         </div>
-        <div class="timeline__item">
-          <div class="timeline__time">11:00 AM</div>
-          <div class="timeline__desc">Launch and climb out. Thermals typically start cycling by mid-morning with consistent lift along the ridge.</div>
+        <div class="phase__image-wrap">
+          <span class="phase__badge">Phase 2</span>
+          <div class="phase__placeholder">Building Confidence - XC along the Rio Doce</div>
         </div>
-        <div class="timeline__item">
-          <div class="timeline__time">12:00 PM</div>
-          <div class="timeline__desc">Peak thermal hours. Fly XC along the Rio Doce valley or work thermals over the mountain with radio guidance.</div>
+      </div>
+
+      <div class="phase phase--left animate-in">
+        <div class="phase__image-wrap">
+          <span class="phase__badge">Phase 3</span>
+          <div class="phase__placeholder">Pushing Distance - Full XC days</div>
         </div>
-        <div class="timeline__item">
-          <div class="timeline__time">2:00 PM</div>
-          <div class="timeline__desc">Retrieve and return to the LZ. Compare tracks and debrief on the day's flights.</div>
-        </div>
-        <div class="timeline__item">
-          <div class="timeline__time">4:30 PM</div>
-          <div class="timeline__desc">Rest, repack, or take a glass-off flight if conditions allow. Free time in town.</div>
-        </div>
-        <div class="timeline__item">
-          <div class="timeline__time">7:00 PM</div>
-          <div class="timeline__desc">Dinner together. Brazilian food, flight stories, and planning for tomorrow.</div>
+        <div class="phase__content">
+          <h3 class="phase__title">Pushing Distance</h3>
+          <p class="phase__days">Days 6 - 7</p>
+          <p class="phase__text">These are your big days. You know the thermals, you trust the site, and you have the skills to push further. XC along the Rio Doce valley with the driver chasing and picking up pilots along the course line. It is possible to launch all day at Ibituruna, and we typically fly until 5:00 PM - long days in the air chasing distance. The valley funnels thermals into flyable corridors that go on for dozens of kilometers. Some pilots fly their longest flights ever during these days. Celebrate your distance over cold Brahma at dinner.</p>
         </div>
       </div>
     </div>
@@ -185,16 +187,16 @@ const faqItems = [
       </div>
       <div class="grid-3 animate-in">
         <div class="skill-card">
-          <h3>Bucket-List Launch</h3>
-          <p>Fly from Pico da Ibituruna, one of the most famous paragliding launches in the world. The view alone is worth the trip - the flying makes it unforgettable.</p>
+          <h3>Iconic Launch, Soft Thermals</h3>
+          <p>Ibituruna is one of the most famous launches in the world. The thermals here are a soft, well-organized experience compared to sites like Roldanillo - strong enough to be productive but smooth enough to log long hours in the saddle.</p>
         </div>
         <div class="skill-card">
-          <h3>Strong Thermal Flying</h3>
-          <p>GV thermals are powerful and well-defined. You will build confidence flying in strong, organized lift and learn to read the valley's thermal patterns.</p>
+          <h3>Hours in the Saddle</h3>
+          <p>The goal at GV is airtime. Long thermal windows, sustained conditions, and a massive LZ mean you fly more hours per day than at most sites. That seat time is what builds real pilot skill.</p>
         </div>
         <div class="skill-card">
-          <h3>XC in the Rio Doce Valley</h3>
-          <p>The valley stretches for hundreds of kilometers, creating natural XC corridors. With radio guidance and retrieve support, you can push your distance safely.</p>
+          <h3>Chasing the 100km Flight</h3>
+          <p>The Rio Doce valley stretches for hundreds of kilometers, creating natural XC corridors. The soft thermals and long thermal window make this the site to chase your first 100km flight. With radio guidance and retrieve support, you push distance without worrying about getting home.</p>
         </div>
         <div class="skill-card">
           <h3>Competition-Site Experience</h3>
@@ -218,32 +220,32 @@ const faqItems = [
         <div class="included-item">
           <svg class="included-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           <h4>Housing</h4>
-          <p>Comfortable accommodations near the flying site. Stay close to the action and the local pilot community.</p>
+          <p>Shared accommodation in Governador Valadares, close to the flying community. Not a resort, not a hostel - a comfortable base where the group lives together, with common spaces for debriefing, route planning, and sharing stories from the day's flights.</p>
         </div>
         <div class="included-item">
           <svg class="included-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-          <h4>Breakfast and Dinners</h4>
-          <p>Start the day fueled up and end it with a proper Brazilian meal. Lunch is on your own so you can explore the town.</p>
+          <h4>Food</h4>
+          <p>Breakfast every morning - fresh tropical fruit, strong coffee, pao de queijo (Brazilian cheese bread that you will become addicted to). Group dinners in the evening. Brazilian food is incredible - from churrasco to acai to freshly grilled fish. Lunch is usually grabbed at the LZ or in town.</p>
         </div>
         <div class="included-item">
           <svg class="included-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-          <h4>Transport to Launch</h4>
-          <p>Daily shuttles up Ibituruna. No rental car needed - just grab your gear and go.</p>
+          <h4>Ground Transport</h4>
+          <p>Daily shuttle up the winding road to the top of Pico da Ibituruna. Retrieve service for XC flights along the Rio Doce valley. You never need to figure out how to get anywhere - just show up and fly.</p>
         </div>
         <div class="included-item">
           <svg class="included-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-          <h4>Instruction and Radio</h4>
-          <p>Guided flying with radio support from Damien. Weather briefings, flight planning, and post-flight debriefs every day.</p>
+          <h4>Instruction</h4>
+          <p>Damien is your coach for the entire trip. Morning briefings on weather and thermal forecasts, radio-guided flights with real-time coaching, and evening debriefs where you review your track logs and plan for tomorrow. One instructor who knows your flying from day one.</p>
         </div>
         <div class="included-item">
           <svg class="included-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
           <h4>Retrieve Service</h4>
-          <p>Our ground crew tracks your position and picks you up wherever you land. Push your XC distance without worrying about getting back.</p>
+          <p>Critical for XC flying in the Rio Doce valley. Our ground crew tracks everyone via GPS and picks you up wherever you land. When you know you have reliable retrieve, you fly differently - you stop playing it safe and start flying for distance.</p>
         </div>
         <div class="included-item">
           <svg class="included-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           <h4>Airport Coordination</h4>
-          <p>We help coordinate your arrival and ground transport from GVR or Belo Horizonte so you can focus on getting here.</p>
+          <p>Fly into Governador Valadares (GVR) directly, or fly into Confins/Belo Horizonte (CNF) for more flight options. We coordinate ground transport either way so you do not have to figure out Brazilian logistics on your own.</p>
         </div>
       </div>
     </div>
@@ -257,21 +259,21 @@ const faqItems = [
       </div>
       <div class="grid-3 animate-in">
         <div class="profile-card">
-          <h4>The Bucket-Lister</h4>
-          <p>You have heard about Ibituruna for years and it is time to go. P2 or above, you want to fly one of the great launches of the world with someone who knows it well.</p>
+          <h4>I want to log serious airtime</h4>
+          <p>You have solid launch skills and can core thermals autonomously. What you need is hours - long days in the air building the instincts that only come from seat time. GV's soft thermals and long flying window give you exactly that.</p>
         </div>
         <div class="profile-card">
-          <h4>The XC Pilot</h4>
-          <p>P3+ with thermal experience, you want to push your distance in a valley built for cross-country flying. Strong thermals, long glides, and retrieve support to back you up.</p>
+          <h4>I want to chase 100km</h4>
+          <p>You can thermal consistently and you have XC experience, but you have never had the conditions and retrieve support to really push distance. The Rio Doce valley corridor is built for it. This is where pilots come to log their longest flights.</p>
         </div>
         <div class="profile-card">
-          <h4>The Culture Seeker</h4>
-          <p>You want more than just flying. You want to experience the Brazilian paragliding scene - the energy, the community, the food, and the lifestyle that comes with it.</p>
+          <h4>I want the full Brazilian experience</h4>
+          <p>You want more than just flying. You want to experience Brazilian flying culture - a community with a long history of free-flight where the energy at the LZ, the barbecue after landing, and the international pilot scene add up to something you will not find anywhere else.</p>
         </div>
       </div>
       <div class="cta-block animate-in">
-        <p>Not sure if this trip is right for you? Call Damien and talk it through.</p>
-        <a href="tel:+18018887325" class="btn btn--outline">Call (801) 888-7325</a>
+        <p>Not sure if you are ready? Call Damien and talk it through.</p>
+        <a href="tel:+18012444791" class="btn btn--outline">Call 801-244-4791</a>
       </div>
     </div>
   </section>
@@ -284,10 +286,12 @@ const faqItems = [
           <img src="/images/damion.jpg" alt="Damien Mitchell, USHPA Advanced Instructor" width="600" height="600" loading="lazy" />
         </div>
         <div class="instructor-grid__text">
-          <h2>Your Guide</h2>
+          <h2>Your Guide for the Entire Trip</h2>
           <h3>Damien "Vampiro" Mitchell</h3>
-          <p>25+ years of flying. Over 10,000 flights. USHPA Advanced Instructor. Damien has been flying Ibituruna for years and knows the thermals, the terrain, and the local community inside and out.</p>
-          <p>In Governador Valadares, he connects you with the best the site has to offer - from optimal launch timing to the XC routes that make the Rio Doce valley legendary. On the radio during your flights, he coaches your thermal decisions and keeps you flying safely in strong Brazilian air.</p>
+          <p>This is not a school where you get passed between different instructors. Damien flies with you, coaches you, and debriefs with you for the entire trip. He knows your flying on day one and builds on it every day after that.</p>
+          <p>Damien has been flying Ibituruna across multiple seasons and knows the thermals, the terrain, and the local community the way locals know it. He knows which thermal triggers fire first off the rock face in the morning, where the best XC corridors run along the Rio Doce, and which restaurants serve the best post-flight churrasco.</p>
+          <p>In Governador Valadares, the thermals are strong and the flying culture is intense. Having an instructor who knows the site - who can talk you through your first powerful Ibituruna thermal on the radio - makes the difference between white-knuckling it and actually learning to fly this kind of air with confidence.</p>
+          <p>USHPA Advanced Instructor. 25+ years of flying. Over 10,000 flights. When you fly with Damien, you are getting the benefit of thousands of hours at sites around the world, combined with a genuine passion for helping pilots improve.</p>
         </div>
       </div>
     </div>
@@ -320,21 +324,21 @@ const faqItems = [
           <img src="/images/GV.jpeg" alt="Downtown Governador Valadares with views of Pico da Ibituruna" width="800" height="600" loading="lazy" />
           <div class="beyond-card__body">
             <h4>The City</h4>
-            <p>GV is a real Brazilian city, not a tourist bubble. Explore the markets, eat at local restaurants, and experience daily life in Minas Gerais. The people are genuinely friendly and curious about visiting pilots.</p>
+            <p>GV is a real Brazilian city on the Rio Doce. Not a tourist town, not a resort - a mid-sized city with markets, restaurants, bars, and a genuine local culture. The people are friendly and curious about visiting pilots. Walk around town and you will see paragliders on murals, on shop signs, woven into the identity of the place. This is a city that celebrates flying.</p>
           </div>
         </div>
         <div class="beyond-card">
           <img src="/images/waterfallgv.jpg" alt="Waterfall near Governador Valadares, a popular day trip destination" width="800" height="600" loading="lazy" />
           <div class="beyond-card__body">
             <h4>Day Trips</h4>
-            <p>On non-flying days, explore the surrounding region. Waterfalls, hiking trails on Ibituruna, and small towns in the Minas Gerais countryside offer plenty to see beyond the LZ.</p>
+            <p>Minas Gerais is famous for waterfalls, colonial towns, and incredible food. On rest days, explore the surrounding countryside - there are swimming holes, hiking trails on Ibituruna itself, and small towns that feel like stepping back in time. The region has no shortage of things to do when you are not in the air.</p>
           </div>
         </div>
         <div class="beyond-card">
           <img src="/images/rio_doce.jpg" alt="Rio Doce river flowing through the valley near Governador Valadares" width="800" height="600" loading="lazy" />
           <div class="beyond-card__body">
             <h4>The River</h4>
-            <p>The Rio Doce runs through the heart of the valley and shapes the flying conditions. On rest days, the river and its surroundings offer a peaceful contrast to the intensity of thermal flying.</p>
+            <p>The Rio Doce runs through the heart of the valley and shapes everything - the thermals, the XC corridors, the landscape. On rest days, the river and its surroundings offer a peaceful contrast to the intensity of thermal flying. River walks, waterfront dining, and a slower pace when you need it.</p>
           </div>
         </div>
       </div>
@@ -594,6 +598,91 @@ const faqItems = [
     .timeline__item {
       grid-template-columns: 1fr;
       gap: 0.25rem;
+    }
+  }
+
+  /* Phase Cards */
+  .phase {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-bottom: 4rem;
+  }
+
+  .phase:last-child {
+    margin-bottom: 0;
+  }
+
+  .phase__image-wrap {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .phase__badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: #e07730;
+    color: #fff;
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    z-index: 2;
+  }
+
+  .phase__placeholder {
+    width: 100%;
+    height: 350px;
+    background: var(--color-bg-lavender, #f4f2fa);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary-subtle, #a99cc4);
+    font-size: 0.9rem;
+    text-align: center;
+    border-radius: 12px;
+  }
+
+  .phase__content {
+    padding: 1rem 0;
+  }
+
+  .phase__title {
+    font-size: 1.5rem;
+    color: var(--color-text, #2a2050);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+
+  .phase__days {
+    font-size: 0.95rem;
+    color: #e07730;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .phase__text {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #444;
+  }
+
+  @media (max-width: 768px) {
+    .phase {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .phase--right .phase__content {
+      order: 2;
+    }
+
+    .phase--right .phase__image-wrap {
+      order: 1;
     }
   }
 

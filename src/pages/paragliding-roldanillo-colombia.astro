@@ -1,0 +1,230 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Paragliding in Roldanillo, Colombia: The Complete Guide",
+  "description": "The complete guide to paragliding Roldanillo, Valle del Cauca. El Aguila launch, XC conditions, thermal strength, travel logistics, and how to plan your trip.",
+  "datePublished": "2024-01-15",
+  "dateModified": "2024-01-15",
+  "wordCount": 3800,
+  "author": { "@type": "Person", "name": "Damien Mitchell", "url": "https://airdamien.com/about-us/", "jobTitle": "USHPA Advanced Instructor" },
+  "publisher": { "@type": "Organization", "name": "Air Damien", "url": "https://airdamien.com", "logo": { "@type": "ImageObject", "url": "https://airdamien.com/images/logo.png" } },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://airdamien.com/paragliding-roldanillo-colombia/" },
+  "image": "https://airdamien.com/images/logo.png"
+};
+
+const breadcrumbs = [
+  { name: "Home", url: "https://airdamien.com/" },
+  { name: "Blog", url: "https://airdamien.com/blog/" },
+  { name: "Paragliding Roldanillo Guide", url: "https://airdamien.com/paragliding-roldanillo-colombia/" }
+];
+---
+
+<BaseLayout
+  title="Paragliding in Roldanillo, Colombia: The Complete Guide | Air Damien"
+  description="The complete guide to paragliding Roldanillo, Valle del Cauca. El Aguila launch, XC conditions, thermal strength, travel logistics, and how to plan your trip."
+  canonicalUrl="https://airdamien.com/paragliding-roldanillo-colombia/"
+>
+  <SchemaMarkup schema={blogSchema} />
+
+  <div class="page-header">
+    <div class="container">
+      <h1>Paragliding in Roldanillo, Colombia: The Complete Guide</h1>
+      <p class="page-header__byline">By Damien Mitchell, USHPA Advanced Instructor</p>
+    </div>
+  </div>
+
+  <Breadcrumbs items={breadcrumbs} />
+
+  <article class="section">
+    <div class="container article-body">
+
+      <p class="article-lead">Roldanillo is one of the top cross-country paragliding sites on the planet. Located in the Cauca Valley of western Colombia at the base of the Western Andes, the site produces powerful, consistent thermals that pilots use to fly 100km+ routes along the mountain range. The Colombian Open - one of the biggest paragliding competitions in the world - is held here for a reason. If you are serious about XC flying, Roldanillo belongs on your list.</p>
+
+      <p>This guide covers everything you need to know to plan a paragliding trip to Roldanillo - the launch, the conditions, the XC potential, travel logistics, and what to expect on the ground. It is written from experience leading guided trips to this site during peak season.</p>
+
+      <h2 id="el-aguila">El Aguila Launch</h2>
+
+      <p>El Aguila is the primary launch site for Roldanillo. It sits high above the Cauca Valley at over 1,800 meters (approximately 5,900 feet) on the western slope of the Andes. The launch faces east, looking out over the flat valley floor that stretches to the Central Andes range on the far side.</p>
+
+      <p>The launch itself is wide and forgiving. The terrain drops away cleanly, and even in light conditions you can get off the hill without stress. What makes El Aguila special is the view from setup - the Cauca Valley spreads out below you for as far as you can see, and on a good day you can watch cloud streets forming along the range in both directions. You are looking at your XC route before you even clip in.</p>
+
+      <p>The drive from town to launch takes approximately 45 minutes on a mountain road. If you are flying with <a href="/tours/colombia-paragliding-roldanillo/">Air Damien</a>, daily shuttle service is included.</p>
+
+      <h2 id="thermal-conditions">Thermal Conditions</h2>
+
+      <p>Roldanillo thermals are strong. There is no other way to say it. If you have been flying at gentle coastal sites or moderate mountain sites in the US, the thermals here will feel like a step change. Expect average climb rates of 4-8 m/s, with stronger cores regularly exceeding that. The lift is well-organized and sustained, but it demands attention and solid thermal management skills.</p>
+
+      <p>Cloudbase in peak season regularly reaches 3,500 to 4,000 meters (11,500 to 13,000 feet). The thermal window is long - usable thermals start developing by mid-morning and sustain through the mid-afternoon. This means long flights are not just possible, they are the norm. Two to four hour flights are common during peak season.</p>
+
+      <p>The Cauca Valley acts as a thermal engine. The flat valley floor heats through the morning, and the resulting thermals are funneled along the Andes range, creating thermal streets that can extend for dozens of kilometers. This is the mechanism that makes Roldanillo one of the best XC sites in the world - the thermals are not random. They form along predictable lines that you can plan routes along.</p>
+
+      <h2 id="xc-potential">Cross-Country Potential</h2>
+
+      <p>Roldanillo is built for distance. The combination of powerful thermals, thermal streets along the Andes range, and a long thermal window creates XC conditions that are hard to match anywhere else in the Americas.</p>
+
+      <p>Typical XC routes run north or south along the Western Andes. The terrain channels thermals into flyable corridors, and pilots who can read the cloud streets can cover enormous distances. First-time visitors to Roldanillo who already have solid thermal skills typically fly 10-30km on their initial XC attempts. Experienced XC pilots regularly fly 40-80km routes, and on exceptional days, flights exceeding 100km are achievable.</p>
+
+      <p>The key skill difference between flying XC here versus at sites like <a href="/paragliding-valle-de-bravo/">Valle de Bravo</a> is the thermal strength. In Valle, thermals are moderate and forgiving. In Roldanillo, you need to be comfortable in powerful air. The reward for that comfort is distance that would take you multiple flights to achieve at most other sites.</p>
+
+      <p>Retrieve logistics are critical for XC flying here. When you fly 50km along the range, you need someone to come get you. Air Damien provides full retrieve support with GPS tracking for all XC flights.</p>
+
+      <h2 id="season">When to Go: Peak Season</h2>
+
+      <p>Roldanillo's peak season runs from late January through March, with February and March offering the most consistent conditions. This is when Air Damien runs guided trips to the site.</p>
+
+      <p>During peak season, expect:</p>
+      <ul>
+        <li>Flyable conditions 5-6 days per week</li>
+        <li>Strong, sustained thermals from mid-morning through mid-afternoon</li>
+        <li>Cloudbase at 3,500-4,000 meters</li>
+        <li>The international pilot community at its largest (pilots from all over the world converge here during season)</li>
+        <li>Warm temperatures on the ground (Roldanillo sits at approximately 960m elevation in a tropical valley)</li>
+      </ul>
+
+      <p>Outside of peak season, conditions are more variable. Flying is possible at other times of year, but the consistency that makes Roldanillo special is strongest in February and March.</p>
+
+      <h2 id="colombian-open">The Colombian Open</h2>
+
+      <p>The Colombian Open is one of the most prestigious paragliding competitions in the world. It is held at Roldanillo annually, typically in January or February, and attracts top-ranked pilots from across the globe. The competition format is standard PWC-style tasks - speed runs, distance tasks, and race-to-goal along the Andes range.</p>
+
+      <p>Even if you are not competing, being at the site during or near competition time is valuable. You see how top pilots read conditions, plan routes, and make decisions. The level of flying is inspiring and the social scene is unlike anything else in the sport. Pilots from 30+ countries gather in a small Colombian town to fly - the international community vibe is a huge part of the Roldanillo experience.</p>
+
+      <h2 id="getting-there">Getting to Roldanillo</h2>
+
+      <p>The nearest major airport is Alfonso Bonilla Aragon International Airport in Cali (airport code CLO). From Cali, Roldanillo is approximately a 3-hour drive north along the Cauca Valley. The road is paved and straightforward.</p>
+
+      <p>From the US, direct flights to Cali are available from Miami, Fort Lauderdale, New York (JFK), and Houston. Connecting flights through Bogota are also common and often cheaper. Flight time from the US east coast is approximately 4-5 hours direct.</p>
+
+      <p>If you are flying with Air Damien, we coordinate airport pickup and ground transport. For independent travelers, private drivers can be arranged through local services, or you can rent a car (international driver's license recommended).</p>
+
+      <h2 id="the-town">The Town of Roldanillo</h2>
+
+      <p>Roldanillo is a small Colombian town in the heart of the Cauca Valley. It is not a tourist resort and it does not pretend to be one. It is a real, working town with a central plaza, local restaurants, small shops, and a genuine warmth that is characteristic of Colombian culture.</p>
+
+      <p>During paragliding season, the town transforms somewhat. International pilots arrive from every continent, and the local restaurants and bars become gathering spots for the flying community. The social scene after flying is as much a part of the Roldanillo experience as the flying itself - cold beers, Colombian food, stories about the day's flights, and route planning for tomorrow.</p>
+
+      <p>The food in the Cauca Valley is excellent. Colombian cuisine features grilled meats, fresh tropical fruit, empanadas, arepas, and strong coffee. Meals are affordable by US standards and the quality is consistently good.</p>
+
+      <h2 id="visa-entry">Visa and Entry Requirements</h2>
+
+      <p>US citizens do not need a visa to enter Colombia for stays under 90 days. You will need a valid passport. Entry is straightforward - immigration at Cali airport is efficient and used to processing international travelers.</p>
+
+      <p>Colombia has changed dramatically in the last two decades and the safety concerns that once kept travelers away are largely outdated. Roldanillo and the Cauca Valley are well-traveled by international pilots and the paragliding community is well-established and welcoming.</p>
+
+      <h2 id="safety">Safety and Culture</h2>
+
+      <p>Flying in Roldanillo requires solid thermal management skills. The thermals are strong, and pilots who are not comfortable in active air will find the conditions challenging. This is not a site for newly rated P2 pilots. P3 (Intermediate) rating or above is recommended, and you should be comfortable thermalling in 4+ m/s climbs.</p>
+
+      <p>Damien Mitchell is a USHPA Advanced Instructor and trained First Responder. Safety briefings are part of every trip, and radio-guided instruction is provided on every flight. Medical facilities in the Cauca Valley can handle basic emergencies, and more serious cases are transferred to Cali hospitals. Travel insurance with medical evacuation coverage is strongly recommended.</p>
+
+      <h2 id="gear">Gear Considerations</h2>
+
+      <ul>
+        <li><strong>Wing:</strong> An XC-appropriate wing is recommended. This is not the site to fly a mellow EN-A school wing. A mid-to-high EN-B or EN-C that you are comfortable and current on is ideal. Talk to Damien about whether your wing is appropriate for Roldanillo conditions.</li>
+        <li><strong>Harness:</strong> Standard pod harness with certified reserve. Consider a back protector - the thermals here can produce turbulence at the edges.</li>
+        <li><strong>Instruments:</strong> Vario and GPS are essential for XC flying. Flight planning apps (XCTrack, SeeYou Navigator) are useful for route planning.</li>
+        <li><strong>Radio:</strong> Required for guided flying. Air Damien provides spares.</li>
+        <li><strong>Sun protection:</strong> Tropical sun plus altitude. Sunscreen, sunglasses, and hydration are critical.</li>
+      </ul>
+
+      <h2 id="fly-with-us">Ready to Fly Roldanillo?</h2>
+
+      <p>Air Damien runs guided trips to Roldanillo during peak season (February and March). The trip includes accommodation, meals, daily transport to El Aguila launch, radio-guided instruction, XC retrieve service, and airport coordination from Cali.</p>
+
+      <p>If you can thermal to cloudbase consistently and you want to push your XC distance at a world-class site with coaching and retrieve support, this is the trip.</p>
+
+      <ul>
+        <li><a href="/tours/colombia-paragliding-roldanillo/">View the Colombia trip details</a></li>
+        <li><a href="/paragliding-valle-de-bravo/">Compare with Valle de Bravo</a> - a great option if you are still building thermal skills</li>
+        <li><a href="/tour/10-day-paraglide-mexico-package/">10 Day Mexico Package</a> - many pilots do Mexico first, then Colombia the following season</li>
+      </ul>
+
+    </div>
+  </article>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Plan Your Roldanillo Trip</h2>
+        <p>February and March fill up. Get in touch early to secure your spot.</p>
+      </div>
+      <div class="animate-in" style="max-width: 600px; margin: 0 auto;">
+        <ContactForm formName="roldanillo-guide-inquiry" messagePlaceholder="I'm interested in the Colombia trip. My rating is P___ and my XC experience is..." buttonText="Plan My Trip" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header__byline {
+    color: var(--color-text-on-dark-muted, #c4b8e0);
+    font-size: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .article-body {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  .article-lead {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    color: var(--color-text, #2a2050);
+  }
+
+  .article-body h2 {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border, #d8d4e0);
+  }
+
+  .article-body h2:first-of-type {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .article-body h3 {
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .article-body p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+
+  .article-body ul {
+    margin: 1rem 0 1.5rem 1.5rem;
+    list-style: disc;
+  }
+
+  .article-body ul li {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+  }
+
+  .article-body a {
+    color: var(--color-accent, #e07730);
+    font-weight: 500;
+  }
+
+  .article-body a:hover {
+    text-decoration: underline;
+  }
+
+  .article-body strong {
+    color: var(--color-text, #2a2050);
+  }
+</style>

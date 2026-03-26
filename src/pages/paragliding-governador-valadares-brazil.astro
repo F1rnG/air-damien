@@ -1,0 +1,227 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Paragliding Governador Valadares: The Complete Guide",
+  "description": "The complete guide to paragliding GV, the capital of free flight. Pico da Ibituruna launch, thermal conditions, XC routes along the Rio Doce, and trip planning.",
+  "datePublished": "2024-01-15",
+  "dateModified": "2024-01-15",
+  "wordCount": 3600,
+  "author": { "@type": "Person", "name": "Damien Mitchell", "url": "https://airdamien.com/about-us/", "jobTitle": "USHPA Advanced Instructor" },
+  "publisher": { "@type": "Organization", "name": "Air Damien", "url": "https://airdamien.com", "logo": { "@type": "ImageObject", "url": "https://airdamien.com/images/logo.png" } },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://airdamien.com/paragliding-governador-valadares-brazil/" },
+  "image": "https://airdamien.com/images/pico.jpg"
+};
+
+const breadcrumbs = [
+  { name: "Home", url: "https://airdamien.com/" },
+  { name: "Blog", url: "https://airdamien.com/blog/" },
+  { name: "Paragliding GV Guide", url: "https://airdamien.com/paragliding-governador-valadares-brazil/" }
+];
+---
+
+<BaseLayout
+  title="Paragliding Governador Valadares, Brazil: The Complete Guide | Air Damien"
+  description="The complete guide to paragliding GV, the capital of free flight. Pico da Ibituruna launch, thermal conditions, XC routes along the Rio Doce, and trip planning."
+  canonicalUrl="https://airdamien.com/paragliding-governador-valadares-brazil/"
+>
+  <SchemaMarkup schema={blogSchema} />
+
+  <div class="page-header">
+    <div class="container">
+      <h1>Paragliding Governador Valadares: The Complete Guide</h1>
+      <p class="page-header__byline">By Damien Mitchell, USHPA Advanced Instructor</p>
+    </div>
+  </div>
+
+  <Breadcrumbs items={breadcrumbs} />
+
+  <article class="section">
+    <div class="container article-body">
+
+      <p class="article-lead">Governador Valadares is well-known in the paragliding world and has a long history of free-flight. Pico da Ibituruna, a granite peak rising over three-thousand feet above the Rio Doce valley, is one of the most iconic paragliding launches in the world. GV is a thriving metropolis of over a quarter million people with all types of industry, commerce, and culture - and the mountain that towers above it all happens to be one of the best flying sites on earth. The city has produced world-champion pilots, hosts major competitions, and the flying community here is one of the most welcoming you will find anywhere. If you are a paraglider pilot and you have not flown Ibituruna, it belongs on your list.</p>
+
+      <div class="article-image">
+        <img src="/images/pico.jpg" alt="View from Pico da Ibituruna looking over the city of Governador Valadares and the Rio Doce valley" width="800" height="600" loading="lazy" />
+      </div>
+
+      <h2 id="ibituruna">Pico da Ibituruna</h2>
+
+      <p>Ibituruna is not just a launch - it is a landmark. The granite peak rises directly above the city of Governador Valadares, visible from nearly everywhere in town. At over three-thousand feet above the valley floor, the vertical drop from launch to the landing zone is substantial, and the thermal triggers off the rock face are powerful and reliable.</p>
+
+      <p>The launch has multiple takeoff directions, accommodating different wind conditions. The setup area is spacious and the terrain drops away cleanly, making launches straightforward for experienced pilots. The road to the top winds up the granite peak with switchbacks that offer increasingly dramatic views of the valley below. By the time you reach the top and start laying out your wing, you can see the LZ, the city, and the Rio Doce stretching into the distance in both directions.</p>
+
+      <p>What makes Ibituruna special is the combination of scale and accessibility. This is a serious mountain launch with serious thermals, but the infrastructure is excellent, the landing zone is enormous, and the flying community is organized and welcoming.</p>
+
+      <h2 id="free-flight-history">A Long History of Free Flight</h2>
+
+      <p>GV has a deep connection to paragliding and hang gliding. Competitions have been held here for decades - Brazilian nationals, pre-PWC events, and international competitions regularly use Ibituruna as their venue. The city has produced multiple Brazilian national champions and world-class pilots.</p>
+
+      <p>The flying community in GV is one of the most vibrant in the world. During season, international pilots arrive from every continent. The landing zone becomes a gathering point where Brazilian pilots, European comp pilots, and visiting Americans swap stories and compare tracks. The energy is unlike anything you experience at a typical US flying site.</p>
+
+      <p>The city itself supports the sport actively. Paragliding is featured in local tourism promotion, and the infrastructure - roads to launch, LZ maintenance, retrieve services - reflects a community that takes flying seriously.</p>
+
+      <h2 id="thermals">Thermal Conditions</h2>
+
+      <p>Ibituruna thermals are strong, well-organized, and reliable. The granite face heats efficiently in the tropical sun, creating thermal triggers that fire consistently once the cycle begins. Expect average climb rates of 3-6 m/s, with stronger cores possible. The thermals are generally cleaner and more organized than what most US pilots fly at home.</p>
+
+      <p>The tropical climate means the thermal window is long. Usable thermals develop by mid-morning and sustain well into the afternoon. Cloudbase is typically high - 2,500 to 3,500 meters on good days. This combination of strong thermals, long window, and high cloudbase means multi-hour flights are common.</p>
+
+      <p>For pilots coming from moderate thermal environments, the first few flights at GV can be an adjustment. The lift is stronger and more decisive than what you may be used to. This is actually one of the best reasons to fly here - you build confidence and skill in strong air that transfers directly to every other site you fly afterward.</p>
+
+      <h2 id="xc-rio-doce">XC Flying Along the Rio Doce</h2>
+
+      <p>The Rio Doce valley stretches for hundreds of kilometers through Minas Gerais, and the terrain along its course creates natural XC corridors. Thermal triggers are spaced along ridgelines and rock features at regular intervals, and pilots who can read the valley can cover serious distance.</p>
+
+      <p>XC routes from Ibituruna typically run along the edges of the valley where the terrain generates the most consistent lift. The valley floor is relatively flat and open, providing landing options throughout. With retrieve support and GPS tracking, you can push your distance without worrying about getting stranded.</p>
+
+      <p>GV is not quite at the Roldanillo level for pure distance potential - the Cauca Valley thermal streets in <a href="/paragliding-roldanillo-colombia/">Colombia</a> are harder to beat. But GV offers excellent XC conditions with the added bonus of that iconic launch, an incredible landing zone, and a flying culture that makes the whole experience feel bigger than the flying itself.</p>
+
+      <h2 id="landing-zone">The Landing Zone</h2>
+
+      <p>The main LZ at Governador Valadares is one of the largest in the world. It sits right on the edge of the city - a sprawling flat field that is nearly impossible to miss from the air. You can see it clearly from launch, and the approach is straightforward from multiple directions.</p>
+
+      <p>The size of the LZ removes one of the biggest stress factors for visiting pilots. There is no tight approach, no obstacle-laden final, no anxiety about overshooting into buildings. You set up your approach, fly your pattern, and land with room to spare. For pilots learning to thermal in strong conditions, this is a meaningful safety factor - you can focus on the flying without worrying about a technical landing.</p>
+
+      <h2 id="getting-there">Getting to Governador Valadares</h2>
+
+      <p>There are two main options for getting to GV:</p>
+
+      <ul>
+        <li><strong>Governador Valadares Airport (GVR):</strong> A small regional airport with domestic connections. Flying domestically from Sao Paulo or Belo Horizonte gets you here directly. This is the easiest option if you can find connecting flights.</li>
+        <li><strong>Confins/Belo Horizonte Airport (CNF):</strong> The major international airport in Minas Gerais. Direct flights from the US arrive here (mainly connecting through Sao Paulo or via Copa through Panama City). The drive from CNF to GV is approximately 4 hours on good roads.</li>
+      </ul>
+
+      <p>If you are flying with <a href="/tours/brazil-paragliding-governador-valadares/">Air Damien</a>, we coordinate airport pickup and ground transport regardless of which airport you use.</p>
+
+      <h2 id="the-city">The City</h2>
+
+      <p>Governador Valadares is a mid-sized Brazilian city of approximately 280,000 people. It is not a tourist town - it is a real, working city with all the infrastructure that implies. Restaurants, bars, shops, markets, hospitals, and a genuine local culture that is welcoming to visiting pilots.</p>
+
+      <p>The food scene is excellent. Brazilian churrasco (barbecue), acai bowls, freshly grilled fish, pao de queijo (cheese bread), and strong coffee are available everywhere. Group dinners after flying are a highlight of any GV trip - the food is outstanding and affordable.</p>
+
+      <p>The Rio Doce runs through the city, and the waterfront area offers a pleasant contrast to the intensity of thermal flying on rest days.</p>
+
+      <h2 id="visa">Visa and Entry</h2>
+
+      <p>US citizens do not need a visa to enter Brazil for tourist stays under 90 days. You will need a valid passport with at least 6 months of remaining validity. Entry at Brazilian airports is straightforward.</p>
+
+      <h2 id="gear">Gear Considerations</h2>
+
+      <ul>
+        <li><strong>Wing:</strong> An EN-B or EN-C appropriate for your level. Ibituruna thermals are strong - do not fly a wing that is beyond your skill level. A well-handled mid-B will perform better than a hot C that you are not comfortable on.</li>
+        <li><strong>Harness:</strong> Standard pod harness with certified reserve and back protector.</li>
+        <li><strong>Radio:</strong> Essential for guided flying. Air Damien provides spares.</li>
+        <li><strong>Vario and GPS:</strong> Bring both. A vario helps optimize climbs and a GPS is essential for XC navigation.</li>
+        <li><strong>Sun protection:</strong> Tropical sun at altitude. Sunscreen, sunglasses, hydration, and a hat or buff are non-negotiable.</li>
+      </ul>
+
+      <h2 id="skill-level">Rating Requirements</h2>
+
+      <p>This is not a beginner trip. You should have solid forward or dynamic reversal launch skills, side-hill landing skills, and be autonomous in coring light lift. The thermals at Ibituruna are a soft thermal experience compared to sites like <a href="/paragliding-roldanillo-colombia/">Roldanillo</a> - smooth and well-organized rather than punchy and aggressive. The goal here is logging hours in the saddle and chasing the 100km XC flight, not learning to thermal for the first time. It is possible to launch all day at Ibituruna, and we typically fly until 5:00 PM with the driver chasing and picking up pilots along the course line. P3 (Intermediate) rating or above recommended.</p>
+
+      <h2 id="fly-with-us">Ready to Fly Ibituruna?</h2>
+
+      <p>Air Damien runs guided trips to Governador Valadares for pilots who want to experience one of the great flying sites on the planet. The trip includes accommodation, meals, daily transport to Ibituruna, radio-guided instruction, XC retrieve service, and airport coordination.</p>
+
+      <ul>
+        <li><a href="/tours/brazil-paragliding-governador-valadares/">View the Brazil trip details</a></li>
+        <li><a href="/paragliding-roldanillo-colombia/">Compare with Roldanillo, Colombia</a> - stronger XC conditions for experienced pilots</li>
+        <li><a href="/paragliding-valle-de-bravo/">Compare with Valle de Bravo, Mexico</a> - more moderate conditions, great for building skills</li>
+      </ul>
+
+    </div>
+  </article>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Plan Your GV Trip</h2>
+        <p>Contact Damien for dates and availability.</p>
+      </div>
+      <div class="animate-in" style="max-width: 600px; margin: 0 auto;">
+        <ContactForm formName="gv-guide-inquiry" messagePlaceholder="I'm interested in flying Governador Valadares. My rating is P___ and..." buttonText="Plan My Trip" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header__byline {
+    color: var(--color-text-on-dark-muted, #c4b8e0);
+    font-size: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .article-body {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  .article-lead {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    color: var(--color-text, #2a2050);
+  }
+
+  .article-body h2 {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border, #d8d4e0);
+  }
+
+  .article-body h2:first-of-type {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .article-body p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+
+  .article-body ul {
+    margin: 1rem 0 1.5rem 1.5rem;
+    list-style: disc;
+  }
+
+  .article-body ul li {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+  }
+
+  .article-body a {
+    color: var(--color-accent, #e07730);
+    font-weight: 500;
+  }
+
+  .article-body a:hover {
+    text-decoration: underline;
+  }
+
+  .article-body strong {
+    color: var(--color-text, #2a2050);
+  }
+
+  .article-image {
+    margin: 2rem 0;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .article-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+</style>
