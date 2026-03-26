@@ -5,16 +5,22 @@ interface Props {
   description: string;
   date: string;
   readingTime: string;
+  image?: string;
+  imageAlt?: string;
   imagePlaceholder?: string;
 }
 
-const { title, url, description, date, readingTime, imagePlaceholder = 'Blog Featured Image' } = Astro.props;
+const { title, url, description, date, readingTime, image, imageAlt = '', imagePlaceholder = 'Blog Featured Image' } = Astro.props;
 ---
 
 <article class="blog-card">
   <a href={url} class="blog-card__link">
     <div class="blog-card__image">
-      <span>{imagePlaceholder}</span>
+      {image ? (
+        <img src={image} alt={imageAlt || title} width="640" height="360" loading="lazy" />
+      ) : (
+        <span>{imagePlaceholder}</span>
+      )}
     </div>
     <div class="blog-card__body">
       <h3 class="blog-card__title">{title}</h3>
@@ -53,10 +59,18 @@ const { title, url, description, date, readingTime, imagePlaceholder = 'Blog Fea
 
   .blog-card__image {
     aspect-ratio: 16 / 9;
-    background: #c4bfd4;
+    background: var(--color-bg-lavender, #f4f2fa);
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+  }
+
+  .blog-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
   .blog-card__image span {

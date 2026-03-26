@@ -15,70 +15,90 @@ const posts = [
     url: "/best-months-to-paraglide-mexico/",
     description: "In November and December, Valle de Bravo enjoys mild temperatures ranging from 50F to 75F. During these months the conditions are ideal.",
     date: "2023-11-15",
-    readingTime: "3 min read"
+    readingTime: "3 min read",
+    image: "/images/valle 1.jpg",
+    imageAlt: "Valle de Bravo lakeside town with mountains"
   },
   {
     title: "An Introduction to Cross-Country Paragliding: Soaring Beyond Limits",
     url: "/intro-to-cross-country-paragliding/",
     description: "Cross-country paragliding is a form of free-flight where pilots use paragliders to cover significant distances across diverse terrains.",
     date: "2023-10-20",
-    readingTime: "4 min read"
+    readingTime: "4 min read",
+    image: "/images/pg 1.jpg",
+    imageAlt: "Two paragliders flying cross-country over Valle de Bravo"
   },
   {
     title: "The Art of Thermal in Paragliding: Techniques and Tips",
     url: "/thermal-in-paragliding-techniques-and-tips/",
     description: "Master the art of thermaling in paragliding with our in-depth guide. Discover techniques for identifying, entering, and riding thermals.",
     date: "2023-09-15",
-    readingTime: "4 min read"
+    readingTime: "4 min read",
+    image: "/images/gaggle.jpg",
+    imageAlt: "Gaggle of paragliders thermalling together"
   },
   {
     title: "Can I paraglide anywhere?",
     url: "/can-i-paraglide-anywhere/",
     description: "The short answer is yes, you have the right to fly a paraglider anywhere, but there are limitations to where you can launch, fly, and land a paraglider.",
     date: "2023-08-10",
-    readingTime: "8 min read"
+    readingTime: "8 min read",
+    image: "/images/val6.jpg",
+    imageAlt: "Paraglider soaring over El Penon mountain"
   },
   {
     title: "How to land a paraglider?",
     url: "/how-to-land-a-paraglider/",
     description: "Learn the top tricks and tips to landing a paraglider from an USHPA Advanced Instructor. Understand flair timing, and what to do if things go wrong.",
     date: "2023-07-25",
-    readingTime: "9 min read"
+    readingTime: "9 min read",
+    image: "/images/landing 1.jpg",
+    imageAlt: "Paraglider pilot approaching landing at El Penon"
   },
   {
     title: "How to launch a paraglider?",
     url: "/how-to-launch-a-paraglider/",
     description: "Learn to launch a paraglider by reading this extensive step-by-step guide. You'll learn the top five launch techniques and tips from an Advanced Instructor.",
     date: "2023-07-10",
-    readingTime: "7 min read"
+    readingTime: "7 min read",
+    image: "/images/Damion6.jpg",
+    imageAlt: "Pilot preparing to launch at Point of the Mountain, Utah"
   },
   {
     title: "How long does it take to learn paragliding?",
     url: "/how-long-does-it-take-to-learn-paragliding/",
     description: "The short answer is a week, but the time needed to learn paragliding depends on your physical abilities, mental skills, and training environment.",
     date: "2023-06-20",
-    readingTime: "16 min read"
+    readingTime: "16 min read",
+    image: "/images/damien 1.jpg",
+    imageAlt: "Instructor coaching a student pilot at launch"
   },
   {
     title: "How dangerous is paragliding?",
     url: "/how-dangerous-is-paragliding/",
     description: "The short answer is paragliding is extremely safe when statistically compared to other sports like motorcycling.",
     date: "2023-06-05",
-    readingTime: "10 min read"
+    readingTime: "10 min read",
+    image: "/images/el penon.jpg",
+    imageAlt: "El Penon cliff face with a paraglider above"
   },
   {
     title: "Do you need a license to fly a paraglider?",
     url: "/do-you-need-a-license-to-fly-a-paraglider/",
     description: "The short answer is no for certain air sports. You do not need a pilot license to fly a paraglider.",
     date: "2023-05-20",
-    readingTime: "8 min read"
+    readingTime: "8 min read",
+    image: "/images/coaching 1.jpg",
+    imageAlt: "Two pilots after a coaching session"
   },
   {
     title: "How much is a paraglider?",
     url: "/how-much-is-a-paraglider/",
     description: "The short answer is a paraglider costs between $2,500 and $4,500 depending on the quality of the equipment and the specific model.",
     date: "2023-05-01",
-    readingTime: "6 min read"
+    readingTime: "6 min read",
+    image: "/images/paraglider_wing-scaled.jpg",
+    imageAlt: "Paraglider wing laid out on the ground"
   }
 ];
 ---
@@ -113,6 +133,8 @@ const posts = [
             description={post.description}
             date={post.date}
             readingTime={post.readingTime}
+            image={post.image}
+            imageAlt={post.imageAlt}
           />
         ))}
       </div>
