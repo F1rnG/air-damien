@@ -252,7 +252,7 @@ p {
   position: relative;
   min-height: 70vh;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   text-align: center;
   color: var(--color-text-on-dark);
@@ -281,7 +281,13 @@ img.hero__bg {
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(170deg, rgba(74, 63, 114, 0.6) 0%, rgba(53, 43, 94, 0.7) 50%, rgba(42, 32, 80, 0.75) 100%);
+  background: linear-gradient(
+    to bottom,
+    rgba(42, 32, 80, 0.1) 0%,
+    rgba(42, 32, 80, 0.25) 35%,
+    rgba(42, 32, 80, 0.55) 65%,
+    rgba(42, 32, 80, 0.8) 100%
+  );
   z-index: 1;
 }
 
@@ -289,7 +295,7 @@ img.hero__bg {
   position: relative;
   z-index: 2;
   max-width: 800px;
-  padding: 2rem 1.5rem;
+  padding: 2rem 1.5rem 3.5rem;
 }
 
 .hero__content h1 {
@@ -305,30 +311,33 @@ img.hero__bg {
 
 /* --- Cards --- */
 .card {
-  background: var(--color-bg);
-  border-radius: var(--radius-lg);
+  background: #ffffff;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  box-shadow: 0 2px 16px rgba(42, 32, 80, 0.07);
+  border: none;
+  transition: transform 250ms ease, box-shadow 250ms ease;
 }
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 24px rgba(42, 32, 80, 0.12);
 }
 
 .card__image {
   width: 100%;
-  aspect-ratio: 16 / 10;
-  background: var(--color-primary-light);
+  aspect-ratio: 4 / 3;
+  background: var(--color-bg-lavender);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-text-on-dark);
+  color: var(--color-primary-subtle);
   font-size: 0.9rem;
-  padding: 1rem;
   text-align: center;
   overflow: hidden;
+  border: none;
+  outline: none;
+  padding: 0;
 }
 
 .card__image img {
@@ -336,6 +345,8 @@ img.hero__bg {
   height: 100%;
   object-fit: cover;
   display: block;
+  border: none;
+  outline: none;
 }
 
 .card__body {
