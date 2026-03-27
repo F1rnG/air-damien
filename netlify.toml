@@ -42,6 +42,11 @@
   to = "/tours/brazil-paragliding-governador-valadares/"
   status = 301
 
+[[redirects]]
+  from = "/tour/10-day-paraglide-mexico-package/"
+  to = "/tours/10-day-paraglide-mexico-package/"
+  status = 301
+
 # Redirect www to non-www
 [[redirects]]
   from = "https://www.airdamien.com/*"
