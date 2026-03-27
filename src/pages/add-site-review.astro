@@ -77,29 +77,7 @@ const breadcrumbs = [
   </section>
 </BaseLayout>
 
-<script>
-  const form = document.querySelector('.review-form') as HTMLFormElement;
-  const success = document.getElementById('review-success');
-
-  if (form) {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const formData = new FormData(form);
-
-      try {
-        await fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams(formData as any).toString()
-        });
-        form.classList.add('hidden');
-        success?.classList.remove('hidden');
-      } catch (err) {
-        alert('There was an error submitting your review. Please try again.');
-      }
-    });
-  }
-</script>
+<!-- Form submits natively to Netlify -->
 
 <style>
   .content-narrow {
