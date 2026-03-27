@@ -387,18 +387,21 @@ const faqItems = [
       </div>
       <div class="grid-3 animate-in">
         <div class="cross-link-card">
+          <img src="/images/valle 1.jpg" alt="Valle de Bravo lakeside town" width="800" height="450" loading="lazy" class="cross-link-card__img" />
           <h3>Mexico - Valle de Bravo</h3>
-          <p>The Hair Dryer at El Penon. 300+ flyable days a year, clockwork thermals, and a charming lakeside town. The flagship Air Damien destination.</p>
+          <p>The Hair Dryer at El Penon. 300+ flyable days a year, clockwork thermals, and a charming lakeside town.</p>
           <a href="/tour/10-day-paraglide-mexico-package/" class="btn btn--primary">View Mexico Trip</a>
         </div>
         <div class="cross-link-card">
+          <img src="/images/IMG_5312.jpg" alt="Paragliders soaring over mountains" width="800" height="450" loading="lazy" class="cross-link-card__img" />
           <h3>Colombia - Roldanillo</h3>
-          <p>Fly the Valle del Cauca with towering cloudbase and XC routes that stretch for over 100km. A world-class site with a laid-back Colombian atmosphere.</p>
+          <p>World-class XC in the Cauca Valley. Powerful thermals and long cross-country routes.</p>
           <a href="/tours/colombia-paragliding-roldanillo/" class="btn btn--primary">View Colombia Trip</a>
         </div>
         <div class="cross-link-card">
+          <img src="/images/fal di fassa.jpg" alt="Val di Fassa in the Italian Dolomites" width="800" height="450" loading="lazy" class="cross-link-card__img" />
           <h3>Italy - Dolomites</h3>
-          <p>Alpine flying in one of the most beautiful mountain ranges on earth. A completely different experience from tropical flying - and worth every flight.</p>
+          <p>Alpine flying through the most dramatic mountain scenery on earth.</p>
           <a href="/tours/italy-paragliding-dolomites/" class="btn btn--primary">View Italy Trip</a>
         </div>
       </div>
@@ -863,9 +866,27 @@ const faqItems = [
   .cross-link-card {
     background: #ffffff;
     border-radius: 12px;
-    padding: 2rem;
+    overflow: hidden;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
     text-align: center;
+  }
+
+  .cross-link-card__img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .cross-link-card h3,
+  .cross-link-card p,
+  .cross-link-card .btn {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .cross-link-card .btn {
+    margin-bottom: 1.5rem;
   }
 
   .cross-link-card h3 {

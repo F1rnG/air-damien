@@ -1,0 +1,1166 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import SchemaMarkup from '../../components/SchemaMarkup.astro';
+import TestimonialCard from '../../components/TestimonialCard.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+
+const tripSchema = {
+  "@context": "https://schema.org",
+  "@type": "TouristTrip",
+  "name": "Paraglide Roldanillo, Colombia",
+  "description": "World-class XC paragliding in Roldanillo, Valle del Cauca, Colombia. Guided trips in February and March with a 25-year veteran instructor.",
+  "touristType": ["Paragliding enthusiasts", "XC pilots", "Adventure travelers"],
+  "provider": {
+    "@type": "Organization",
+    "name": "Air Damien",
+    "url": "https://airdamien.com"
+  },
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "url": "https://airdamien.com/tours/colombia-paragliding-roldanillo/"
+  },
+  "itinerary": {
+    "@type": "ItemList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Days 1-2: Arrival and Orientation - Understanding the Cauca Valley, first flights at El Aguila" },
+      { "@type": "ListItem", "position": 2, "name": "Days 3-5: Building Distance - Longer XC flights along the Andes range, route planning" },
+      { "@type": "ListItem", "position": 3, "name": "Days 6-7: Full Send - Biggest distance days, competition-style flying" }
+    ]
+  },
+  "includesAttraction": [
+    {
+      "@type": "TouristAttraction",
+      "name": "El Aguila Launch",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Roldanillo",
+        "addressRegion": "Valle del Cauca",
+        "addressCountry": "CO"
+      }
+    }
+  ]
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "When does the Colombia trip run?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "February and March, when conditions in Roldanillo are at their peak. Exact dates vary by season - contact Damien for the current schedule."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I get to Roldanillo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Fly into Cali (CLO). From Cali it is about a 3-hour drive. We coordinate transport from the airport."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need a visa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "US citizens do not need a visa for stays under 90 days. Valid passport required."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Colombia safe?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Roldanillo and the Valle del Cauca region are well-traveled by international paragliding pilots. The town is small, friendly, and accustomed to hosting foreign pilots."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What rating do I need?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "P3 (Intermediate) or above recommended. You should be comfortable thermalling in strong conditions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How strong are the thermals?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Stronger than most US sites. Expect 4-8 m/s average climbs. If you have only flown mellow thermals, talk to Damien first."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What about gear?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bring your own certified gear. An XC-appropriate wing is recommended. Damien can advise on whether your wing suits the conditions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I combine with other trips?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Many pilots do Mexico in Nov/Dec and Colombia in Feb/March. Talk to Damien about planning back-to-back trips."
+      }
+    }
+  ]
+};
+
+const faqItems = [
+  {
+    question: "When does the Colombia trip run?",
+    answer: "February and March, when conditions in Roldanillo are at their peak. Exact dates vary by season - contact Damien for the current schedule."
+  },
+  {
+    question: "How do I get to Roldanillo?",
+    answer: "Fly into Cali (CLO). From Cali it is about a 3-hour drive. We coordinate transport from the airport."
+  },
+  {
+    question: "Do I need a visa?",
+    answer: "US citizens do not need a visa for stays under 90 days. Valid passport required."
+  },
+  {
+    question: "Is Colombia safe?",
+    answer: "Roldanillo and the Valle del Cauca region are well-traveled by international paragliding pilots. The town is small, friendly, and accustomed to hosting foreign pilots."
+  },
+  {
+    question: "What rating do I need?",
+    answer: "P3 (Intermediate) or above recommended. You should be comfortable thermalling in strong conditions."
+  },
+  {
+    question: "How strong are the thermals?",
+    answer: "Stronger than most US sites. Expect 4-8 m/s average climbs. If you have only flown mellow thermals, talk to Damien first."
+  },
+  {
+    question: "What about gear?",
+    answer: "Bring your own certified gear. An XC-appropriate wing is recommended. Damien can advise on whether your wing suits the conditions."
+  },
+  {
+    question: "Can I combine with other trips?",
+    answer: "Many pilots do Mexico in Nov/Dec and Colombia in Feb/March. Talk to Damien about planning back-to-back trips."
+  }
+];
+---
+
+<BaseLayout
+  title="Paraglide Roldanillo, Colombia - XC Paragliding Trips | Air Damien"
+  description="World-class XC paragliding in Roldanillo, Valle del Cauca, Colombia. Guided trips in February and March with a 25-year veteran instructor."
+  canonicalUrl="https://airdamien.com/tours/colombia-paragliding-roldanillo/"
+>
+  <SchemaMarkup schema={tripSchema} />
+  <SchemaMarkup schema={faqSchema} />
+
+  <!-- 1. Hero -->
+  <section class="hero hero--full">
+    <div class="hero__placeholder">Colombia hero photo coming soon</div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <h1 class="hero__title">Paraglide Roldanillo, Colombia</h1>
+      <p class="hero__subtitle">Valle del Cauca - February and March</p>
+      <p class="hero__tagline">World-class XC flying, legendary thermals, and some of the longest cross-country routes on earth.</p>
+      <a href="#booking-form" class="hero__cta">Reserve Your Spot</a>
+    </div>
+  </section>
+
+  <!-- 2. Breadcrumbs -->
+  <Breadcrumbs items={[
+    { name: "Home", url: "https://airdamien.com/" },
+    { name: "Tours", url: "https://airdamien.com/tours/" },
+    { name: "Colombia", url: "https://airdamien.com/tours/colombia-paragliding-roldanillo/" }
+  ]} />
+
+  <!-- 3. Hook (white) -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="hook animate-in">
+        <h2 class="hook__heading">This is where pilots go to fly far</h2>
+        <p class="hook__text">
+          Roldanillo is not casual. Sitting at the base of Colombia's Western Andes in the Cauca Valley, this small town produces some of the most powerful and consistent thermals on earth. Pilots routinely fly 100km+ routes here. The Colombian Open is held here for a reason - the conditions are world-class, and the XC potential is almost unlimited.
+        </p>
+        <p class="hook__text">
+          Damien leads guided trips to Roldanillo during the February and March peak season, when the valley is firing and the skies are stacked with cu. Small groups, radio coaching, retrieve support, and decades of site knowledge from an instructor who has flown here across many seasons.
+        </p>
+        <p class="hook__text">
+          Whether you are chasing distance records or flying your first big XC, this is the right sky with the right guidance.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Your Trip - Phased Timeline (cream) -->
+  <section class="section section--cream">
+    <div class="container">
+      <h2 class="section__title animate-in">Your Trip</h2>
+
+      <div class="phase phase--left animate-in">
+        <div class="phase__image-wrap">
+          <span class="phase__badge">Phase 1</span>
+          <div class="phase__placeholder">Arrival and Orientation - El Aguila launch</div>
+        </div>
+        <div class="phase__content">
+          <h3 class="phase__title">Arrival and Orientation</h3>
+          <p class="phase__days">Days 1 - 2</p>
+          <p class="phase__text">You arrive in Roldanillo and settle in. Day one is about understanding the Cauca Valley weather system - the thermal cycles, the wind patterns, and the terrain that drives it all. Day two is your first flying day from El Aguila. These thermals are stronger than what most pilots are used to, so the first flights are about calibrating. Damien is on radio, coaching you through the stronger climbs and helping you adjust to the pace. By the end of day two, you have a feel for the air and you are ready to start building distance.</p>
+        </div>
+      </div>
+
+      <div class="phase phase--right animate-in">
+        <div class="phase__content">
+          <h3 class="phase__title">Building Distance</h3>
+          <p class="phase__days">Days 3 - 5</p>
+          <p class="phase__text">Now you know the thermals and you know the valley. Each day is an XC day. Morning briefing covers route planning along the Andes range - reading cloud streets, identifying thermal triggers on the ridgeline, and setting turnpoints. Flights get progressively longer as you learn to use the powerful climbs efficiently. The valley funnels thermals into corridors that stretch for dozens of kilometers. Rest day mixed in to explore Roldanillo, eat local food, and let your arms recover from the strong air. By day five, you are covering distances that would have seemed ambitious on day two.</p>
+        </div>
+        <div class="phase__image-wrap">
+          <span class="phase__badge">Phase 2</span>
+          <div class="phase__placeholder">Building Distance - XC along the Andes</div>
+        </div>
+      </div>
+
+      <div class="phase phase--left animate-in">
+        <div class="phase__image-wrap">
+          <span class="phase__badge">Phase 3</span>
+          <div class="phase__placeholder">Full Send - Biggest distance days</div>
+        </div>
+        <div class="phase__content">
+          <h3 class="phase__title">Full Send</h3>
+          <p class="phase__days">Days 6 - 7</p>
+          <p class="phase__text">This is what you came for. You know the thermals, you know the corridors, and you know how to read the clouds for the next climb. These are your biggest distance days - competition-style flying where you launch, climb out, and commit to the course line. The driver chases along below. Everything you have learned about reading the Cauca Valley air and planning cloud-to-cloud transitions comes together here. Push your personal records. Then celebrate over dinner in town with the group.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Everything Included (white) -->
+  <section class="section section--white">
+    <div class="container">
+      <h2 class="section__title animate-in">Just bring your wing and your passport</h2>
+      <div class="included-grid animate-in">
+        <div class="included-item">
+          <div class="included-item__icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h4 class="included-item__title">Housing</h4>
+          <p class="included-item__text">Shared accommodation in Roldanillo, close to the flying community. A comfortable base where the group lives together, with common spaces for debriefing, route planning, and reviewing the day's track logs.</p>
+        </div>
+        <div class="included-item">
+          <div class="included-item__icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+          <h4 class="included-item__title">Food</h4>
+          <p class="included-item__text">Breakfast every morning. Group dinners in the evening - Colombian cuisine is rich, fresh, and filling. Lunch is usually grabbed near the LZ or in town. You will eat well here.</p>
+        </div>
+        <div class="included-item">
+          <div class="included-item__icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5a1 1 0 0 1-1 1h-2"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <h4 class="included-item__title">Ground Transport</h4>
+          <p class="included-item__text">Daily shuttle up to El Aguila launch. Retrieve service for XC flights along the valley. You never need to figure out how to get anywhere - just show up and fly.</p>
+        </div>
+        <div class="included-item">
+          <div class="included-item__icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <h4 class="included-item__title">Instruction</h4>
+          <p class="included-item__text">Damien is your coach for the entire trip. Morning briefings on weather and thermal forecasts, radio-guided flights with real-time coaching, and evening debriefs where you review your track logs and plan for tomorrow.</p>
+        </div>
+        <div class="included-item">
+          <div class="included-item__icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h4 class="included-item__title">Retrieve Service</h4>
+          <p class="included-item__text">Critical for XC flying in the Cauca Valley. The ground crew tracks everyone and picks you up wherever you land. When you know you have reliable retrieve, you fly differently - you stop playing it safe and start flying for distance.</p>
+        </div>
+        <div class="included-item">
+          <div class="included-item__icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h4 class="included-item__title">Airport Coordination</h4>
+          <p class="included-item__text">Fly into Cali (CLO). We coordinate ground transport from the airport to Roldanillo, about a 3-hour drive. Same thing on the way home. No rental car, no navigation stress.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Who This Is For (cream) -->
+  <section class="section section--cream">
+    <div class="container">
+      <h2 class="section__title animate-in">Is this trip right for you?</h2>
+      <div class="profiles-grid animate-in">
+        <div class="profile-card">
+          <div class="profile-card__icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h3 class="profile-card__title">I want to fly my longest XC</h3>
+          <p class="profile-card__text">You can thermal consistently and you have some XC experience, but you have never had the conditions and retrieve support to really push distance. The Cauca Valley corridor is built for it. Powerful thermals, high cloudbases, and routes that stretch for over 100 kilometers on the best days. This is where pilots come to log their longest flights.</p>
+        </div>
+        <div class="profile-card">
+          <div class="profile-card__icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6l3-3"/><path d="M12 2v6l-3-3"/><circle cx="12" cy="18" r="4"/></svg>
+          </div>
+          <h3 class="profile-card__title">I fly competitions and want to train</h3>
+          <p class="profile-card__text">Roldanillo hosts the Colombian Open and attracts competition pilots from around the world. The conditions here - strong thermals, high cloudbases, long task lines - are exactly what you encounter in PWC and national-level events. Training here with Damien's coaching sharpens your race-day decision-making.</p>
+        </div>
+        <div class="profile-card">
+          <div class="profile-card__icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+          </div>
+          <h3 class="profile-card__title">I want a flying adventure somewhere new</h3>
+          <p class="profile-card__text">You are an experienced pilot looking for a destination that delivers serious flying and a genuine cultural experience. Roldanillo is a small Colombian town that lives and breathes paragliding during season. The people are warm, the food is incredible, and the flying is unlike anything in the US.</p>
+        </div>
+      </div>
+      <div class="profiles-cta animate-in">
+        <p>Not sure if you are ready for Roldanillo? Call Damien and talk it through.</p>
+        <a href="tel:+18012444791" class="btn btn--outline">Call 801-244-4791</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Why Roldanillo (white) -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="destination-grid animate-in">
+        <div class="destination-grid__features">
+          <h2 class="section__title section__title--left">Why pilots choose Roldanillo</h2>
+          <div class="destination-feature">
+            <h4>World-class XC conditions</h4>
+            <p>Roldanillo sits in the Cauca Valley at the base of the Western Andes. The valley acts as a thermal engine, producing powerful and consistent lift that feeds long XC corridors along the mountain range. Pilots routinely fly 100km+ from this site. The Colombian Open and other international competitions are held here because the conditions are that good.</p>
+          </div>
+          <div class="destination-feature">
+            <h4>Powerful thermals, high cloudbases</h4>
+            <p>Expect 4-8 m/s average climbs with cloudbase reaching 3500-4000 meters. These are not mellow thermals - they are strong, well-organized, and they get you to altitude fast. The high cloudbase gives you room to glide between climbs and cover serious distance.</p>
+          </div>
+          <div class="destination-feature">
+            <h4>Peak season and El Aguila launch</h4>
+            <p>February and March are the prime months. Conditions are at their most consistent and the flying community is at its peak. El Aguila launch sits on the western ridge above the valley, giving you direct access to the thermal triggers that start firing in the late morning and run well into the afternoon.</p>
+          </div>
+          <div class="destination-feature">
+            <h4>The culture</h4>
+            <p>Roldanillo is a small, friendly town that welcomes international pilots every season. The local flying community is passionate about the sport. You will share the sky with Colombian pilots, exchange stories over meals, and experience a flying culture that takes the sport seriously while keeping the vibe relaxed and welcoming.</p>
+          </div>
+        </div>
+        <div class="destination-grid__image">
+          <div class="destination-placeholder">Roldanillo valley photo coming soon</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Your Instructor (cream) -->
+  <section class="section section--cream">
+    <div class="container">
+      <div class="instructor-grid animate-in">
+        <div class="instructor-grid__image">
+          <img src="/images/damion.jpg" alt="Damien Mitchell, USHPA Advanced Instructor" width="600" height="750" loading="lazy" />
+        </div>
+        <div class="instructor-grid__content">
+          <h2 class="section__title section__title--left">Your Guide in Roldanillo</h2>
+          <p>This is not a school where you get passed between different instructors. Damien flies with you, coaches you, and debriefs with you for the entire trip. He knows your flying on day one and builds on it every day after that.</p>
+          <p>Damien has been flying Roldanillo across multiple seasons and knows the thermals, the terrain, and the local community. He knows which thermal triggers fire first off the ridge in the morning, where the best XC corridors run along the Andes, and how to read the valley winds as they shift through the day.</p>
+          <p>In Roldanillo, the thermals are strong and the flying is serious. Having an instructor who knows the site - who can talk you through your first powerful Cauca Valley thermal on the radio - makes the difference between white-knuckling it and actually learning to fly this kind of air with confidence.</p>
+          <p>USHPA Advanced Instructor. 25+ years of flying. Over 10,000 flights. When you fly with Damien, you are getting the benefit of thousands of hours at sites around the world, combined with deep knowledge of this specific valley and a genuine passion for helping pilots improve.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. First Booking Form (white) -->
+  <section class="section section--white" id="booking-form">
+    <div class="container">
+      <div class="form-section animate-in">
+        <h2 class="section__title">Join the Next Colombia Trip</h2>
+        <p class="form-section__intro">Groups are kept small so every pilot gets real attention. The season runs February and March and spots fill early. If you have dates in mind, reach out now to hold your place.</p>
+        <div class="form-section__wrap">
+          <ContactForm
+            formName="colombia-booking"
+            messagePlaceholder="I'm interested in the Roldanillo trip. My rating is P___ and my preferred dates are..."
+            buttonText="Reserve Your Spot"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. Beyond Flying (cream) -->
+  <section class="section section--cream">
+    <div class="container">
+      <h2 class="section__title animate-in">Colombia beyond the flying</h2>
+      <div class="beyond-grid animate-in">
+        <div class="beyond-card">
+          <div class="beyond-card__image">
+            <div class="beyond-card__placeholder">Roldanillo town photo coming soon</div>
+          </div>
+          <div class="beyond-card__body">
+            <h3>The Town</h3>
+            <p>Roldanillo is a small Colombian town in the Valle del Cauca region. It is not a tourist destination - it is a real town with local markets, family-run restaurants, and a genuine warmth toward visiting pilots. During season the town fills with an international mix of paragliding pilots, creating a unique energy that blends Colombian hospitality with the global flying community.</p>
+          </div>
+        </div>
+        <div class="beyond-card">
+          <div class="beyond-card__image">
+            <div class="beyond-card__placeholder">Colombian culture photo coming soon</div>
+          </div>
+          <div class="beyond-card__body">
+            <h3>The Culture</h3>
+            <p>Colombia's culture is vibrant, musical, and deeply hospitable. The food alone is worth the trip - fresh tropical fruit, empanadas, bandeja paisa, and strong Colombian coffee every morning. The people are friendly and curious about visiting pilots. Rest days here feel like a genuine cultural experience, not filler.</p>
+          </div>
+        </div>
+        <div class="beyond-card">
+          <div class="beyond-card__image">
+            <div class="beyond-card__placeholder">Valle del Cauca landscape coming soon</div>
+          </div>
+          <div class="beyond-card__body">
+            <h3>Side Trips</h3>
+            <p>The Valle del Cauca region offers plenty to explore on rest days. Visit Cali for salsa and city energy, explore the coffee country in the nearby Eje Cafetero, or simply walk the surrounding countryside. The landscape is green, dramatic, and photogenic in every direction.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. Testimonials (white) -->
+  <section class="section section--white">
+    <div class="container">
+      <h2 class="section__title animate-in">What Pilots Say About Flying with Damien</h2>
+      <div class="testimonials-grid animate-in">
+        <TestimonialCard
+          quote="I saw my flying mentality and my piloting skills improve drastically over the course of the week."
+          author="Ryan"
+          role="Feb 2023"
+        />
+        <TestimonialCard
+          quote="The combination of ground school, launch support, and in-sky coaching provided an incredibly valuable learning experience. The accommodations and hospitality made for a great overall experience."
+          author="Jim"
+          role="Jan 2023"
+        />
+        <TestimonialCard
+          quote="Great instruction, local knowledge, small groups, no attitude or pressure just great flying and even better times."
+          author="Pete"
+          role="Jan 2024"
+        />
+        <TestimonialCard
+          quote="He really knows the place like no other. The local knowledge, the site management, the way he reads the conditions - it all comes from decades of flying here."
+          author="Bianca"
+        />
+      </div>
+      <p class="testimonial-note animate-in">Colombia-specific reviews coming soon. These reviews are from pilots who have flown with Damien on other trips.</p>
+    </div>
+  </section>
+
+  <!-- 12. FAQ (cream) -->
+  <section class="section section--cream">
+    <div class="container animate-in">
+      <FaqAccordion title="Common Questions About the Colombia Trip" items={faqItems} />
+    </div>
+  </section>
+
+  <!-- 13. Cross-links (white) -->
+  <section class="section section--white">
+    <div class="container">
+      <h2 class="section__title animate-in">Explore Other Destinations</h2>
+      <div class="crosslink-grid animate-in">
+        <a href="/tour/10-day-paraglide-mexico-package/" class="crosslink-card">
+          <div class="crosslink-card__image">
+            <img src="/images/valle 1.jpg" alt="Valle de Bravo lakeside town" width="800" height="500" loading="lazy" />
+          </div>
+          <div class="crosslink-card__body">
+            <h3>Mexico - Valle de Bravo</h3>
+            <p>The Hair Dryer at El Penon. 300+ flyable days a year, clockwork thermals, and a charming lakeside town.</p>
+            <span class="crosslink-card__link">View Mexico Trip</span>
+          </div>
+        </a>
+        <a href="/tours/brazil-paragliding-governador-valadares/" class="crosslink-card">
+          <div class="crosslink-card__image">
+            <img src="/images/pico.jpg" alt="View from Pico da Ibituruna in Governador Valadares" width="800" height="500" loading="lazy" />
+          </div>
+          <div class="crosslink-card__body">
+            <h3>Brazil - Governador Valadares</h3>
+            <p>Fly from Pico da Ibituruna, the capital of free flight. Soft thermals, long XC corridors, and Brazilian flying culture.</p>
+            <span class="crosslink-card__link">View Brazil Trip</span>
+          </div>
+        </a>
+        <a href="/tours/italy-paragliding-dolomites/" class="crosslink-card">
+          <div class="crosslink-card__image">
+            <img src="/images/fal di fassa.jpg" alt="Val di Fassa in the Italian Dolomites" width="800" height="500" loading="lazy" />
+          </div>
+          <div class="crosslink-card__body">
+            <h3>Italy - Dolomites</h3>
+            <p>Alpine flying through the most dramatic mountain scenery on earth.</p>
+            <span class="crosslink-card__link">View Italy Trip</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14. Second Booking Form (cream) -->
+  <section class="section section--cream">
+    <div class="container">
+      <div class="form-section animate-in">
+        <h2 class="section__title">Secure your spot in Roldanillo</h2>
+        <div class="form-section__wrap">
+          <ContactForm formName="colombia-booking-bottom" />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ===========================
+     Hero
+     =========================== */
+  .hero {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero--full {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+  }
+
+  .hero__placeholder {
+    position: absolute;
+    inset: 0;
+    background: #c4b5e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.5);
+    font-size: 1rem;
+    z-index: 0;
+  }
+
+  .hero__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.35) 0%,
+      rgba(0, 0, 0, 0.55) 100%
+    );
+    z-index: 1;
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 2rem;
+    max-width: 850px;
+  }
+
+  .hero__title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+    font-weight: 800;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .hero__subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    color: rgba(255, 255, 255, 0.92);
+    margin-bottom: 1rem;
+    font-weight: 400;
+  }
+
+  .hero__tagline {
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
+    color: rgba(255, 255, 255, 0.82);
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  .hero__cta {
+    display: inline-block;
+    background: #e07730;
+    color: #fff;
+    padding: 1rem 2.5rem;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .hero__cta:hover {
+    background: #c8652a;
+    transform: translateY(-2px);
+  }
+
+  /* ===========================
+     Sections
+     =========================== */
+  .section {
+    padding: 5rem 0;
+  }
+
+  .section--white {
+    background: #fff;
+  }
+
+  .section--cream {
+    background: #faf8f5;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .section__title {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #1a1a2e;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .section__title--left {
+    text-align: left;
+  }
+
+  /* ===========================
+     The Hook
+     =========================== */
+  .hook {
+    max-width: 750px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .hook__heading {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    color: #1a1a2e;
+    margin-bottom: 2rem;
+    font-weight: 700;
+  }
+
+  .hook__text {
+    font-size: 1.1rem;
+    line-height: 1.85;
+    color: #444;
+    margin-bottom: 1.5rem;
+  }
+
+  .hook__text:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ===========================
+     Phase Cards
+     =========================== */
+  .phase {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-bottom: 4rem;
+  }
+
+  .phase:last-child {
+    margin-bottom: 0;
+  }
+
+  .phase--right {
+    direction: ltr;
+  }
+
+  .phase__image-wrap {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .phase__badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: #e07730;
+    color: #fff;
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    z-index: 2;
+  }
+
+  .phase__placeholder {
+    width: 100%;
+    height: 350px;
+    background: #e8e4f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(100,80,140,0.5);
+    font-size: 0.9rem;
+    text-align: center;
+    border-radius: 12px;
+  }
+
+  .phase__image {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    display: block;
+    border-radius: 12px;
+  }
+
+  .phase__content {
+    padding: 1rem 0;
+  }
+
+  .phase__title {
+    font-size: 1.5rem;
+    color: #1a1a2e;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+
+  .phase__days {
+    font-size: 0.95rem;
+    color: #e07730;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .phase__text {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #444;
+  }
+
+  @media (max-width: 768px) {
+    .phase {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .phase--right .phase__content {
+      order: 2;
+    }
+
+    .phase--right .phase__image-wrap {
+      order: 1;
+    }
+  }
+
+  /* ===========================
+     Included Grid
+     =========================== */
+  .included-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+  }
+
+  .included-item {
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .included-item__icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+    color: #e07730;
+  }
+
+  .included-item__title {
+    font-size: 1.15rem;
+    color: #1a1a2e;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+  }
+
+  .included-item__text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #555;
+  }
+
+  /* ===========================
+     Profile Cards
+     =========================== */
+  .profiles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .profile-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    text-align: center;
+  }
+
+  .profile-card__icon {
+    color: #e07730;
+    margin-bottom: 1rem;
+  }
+
+  .profile-card__title {
+    font-size: 1.2rem;
+    color: #1a1a2e;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  .profile-card__text {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: #555;
+  }
+
+  .profiles-cta {
+    text-align: center;
+    padding-top: 1rem;
+  }
+
+  .profiles-cta p {
+    font-size: 1.05rem;
+    color: #444;
+    margin-bottom: 1rem;
+  }
+
+  .btn--outline {
+    display: inline-block;
+    border: 2px solid #e07730;
+    color: #e07730;
+    padding: 0.75rem 2rem;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .btn--outline:hover {
+    background: #e07730;
+    color: #fff;
+  }
+
+  /* ===========================
+     Destination Grid (Why Roldanillo)
+     =========================== */
+  .destination-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .destination-grid__features {
+    padding: 1rem 0;
+  }
+
+  .destination-feature {
+    margin-bottom: 2rem;
+  }
+
+  .destination-feature:last-child {
+    margin-bottom: 0;
+  }
+
+  .destination-feature h4 {
+    font-size: 1.1rem;
+    color: #1a1a2e;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+
+  .destination-feature p {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: #555;
+  }
+
+  .destination-grid__image {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .destination-grid__image img,
+  .destination-placeholder {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  .destination-placeholder {
+    height: 400px;
+    background: #e8e4f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(100,80,140,0.5);
+  }
+
+  @media (max-width: 768px) {
+    .destination-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ===========================
+     Instructor Grid
+     =========================== */
+  .instructor-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .instructor-grid__image img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+
+  .instructor-grid__content p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 1.25rem;
+  }
+
+  .instructor-grid__content p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    .instructor-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ===========================
+     Form Section
+     =========================== */
+  .form-section {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .form-section__intro {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: #555;
+    margin-bottom: 2.5rem;
+  }
+
+  .form-section__wrap {
+    text-align: left;
+  }
+
+  /* ===========================
+     Beyond Flying Grid
+     =========================== */
+  .beyond-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .beyond-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  .beyond-card__image img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .beyond-card__placeholder {
+    width: 100%;
+    height: 200px;
+    background: #e8e4f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(100,80,140,0.5);
+    font-size: 0.85rem;
+  }
+
+  .beyond-card__body {
+    padding: 1.5rem;
+  }
+
+  .beyond-card__body h3 {
+    font-size: 1.2rem;
+    color: #1a1a2e;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+  }
+
+  .beyond-card__body p {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: #555;
+  }
+
+  @media (max-width: 768px) {
+    .beyond-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ===========================
+     Testimonials Grid
+     =========================== */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .testimonial-note {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: #777;
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ===========================
+     Cross-link Grid
+     =========================== */
+  .crosslink-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .crosslink-card {
+    display: block;
+    background: #faf8f5;
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .crosslink-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .crosslink-card__image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .crosslink-card__body {
+    padding: 1.5rem;
+  }
+
+  .crosslink-card__body h3 {
+    font-size: 1.15rem;
+    color: #1a1a2e;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+
+  .crosslink-card__body p {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: #555;
+    margin-bottom: 1rem;
+  }
+
+  .crosslink-card__link {
+    color: #e07730;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 768px) {
+    .crosslink-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ===========================
+     Animation
+     =========================== */
+  .animate-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .animate-in.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  document.querySelectorAll('.animate-in').forEach((el) => {
+    observer.observe(el);
+  });
+</script>

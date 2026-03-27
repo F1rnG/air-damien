@@ -65,9 +65,7 @@ const faqItems = [
 
   <!-- 1. Hero -->
   <section class="dolomites-hero">
-    <div class="dolomites-hero__placeholder" aria-label="Placeholder for Dolomites hero image - paraglider flying above jagged limestone peaks in Val di Fassa">
-      <span class="dolomites-hero__img-label">[ Photo: Paraglider above Dolomites peaks, Val di Fassa ]</span>
-    </div>
+    <img class="dolomites-hero__bg" src="/images/fal di fassa.jpg" alt="Val di Fassa in the Italian Dolomites with dramatic mountain peaks" width="1920" height="1280" loading="eager" />
     <div class="dolomites-hero__overlay"></div>
     <div class="dolomites-hero__content">
       <h1 class="dolomites-hero__title">Paraglide the Dolomites, Italy</h1>
@@ -96,9 +94,7 @@ const faqItems = [
           <p>Val di Fassa sits at the crossroads of some of the most iconic peaks in the range - Marmolada, the Sella massif, the Catinaccio group. The valley funnels reliable alpine thermals, offers ridge soaring along dramatic rock faces, and provides generous landing zones on the valley floor. Damien leads guided trips here because it is one of the best places in Europe to experience true mountain flying with a safety net - expert briefings, live radio coaching, and a guide who has flown these valleys extensively.</p>
         </div>
         <div class="pitch-grid__image">
-          <div class="placeholder-image" aria-label="Placeholder for Val di Fassa valley view">
-            <span class="placeholder-image__label">[ Photo: Val di Fassa valley with Dolomite peaks ]</span>
-          </div>
+          <img src="/images/val di fassa 2.jpg" alt="Val di Fassa valley with dramatic Dolomite peaks rising above green meadows" width="800" height="600" loading="lazy" style="border-radius: 12px; width: 100%; height: auto; object-fit: cover;" />
         </div>
       </div>
     </div>
@@ -381,8 +377,8 @@ const faqItems = [
       </div>
       <div class="crosslink-grid animate-in">
         <a href="/tour/10-day-paraglide-mexico-package/" class="crosslink-card">
-          <div class="crosslink-card__placeholder" aria-label="Mexico trip link">
-            <span class="crosslink-card__img-label">[ Photo: Paragliding Valle de Bravo, Mexico ]</span>
+          <div class="crosslink-card__image">
+            <img src="/images/valle 1.jpg" alt="Valle de Bravo lakeside town" width="800" height="450" loading="lazy" />
           </div>
           <div class="crosslink-card__body">
             <h4>Mexico - Valle de Bravo</h4>
@@ -390,17 +386,17 @@ const faqItems = [
           </div>
         </a>
         <a href="/tours/colombia-paragliding-roldanillo/" class="crosslink-card">
-          <div class="crosslink-card__placeholder" aria-label="Colombia trip link">
-            <span class="crosslink-card__img-label">[ Photo: Paragliding Roldanillo, Colombia ]</span>
+          <div class="crosslink-card__image">
+            <img src="/images/IMG_5312.jpg" alt="Paragliders soaring over mountain terrain" width="800" height="450" loading="lazy" />
           </div>
           <div class="crosslink-card__body">
             <h4>Colombia - Roldanillo</h4>
             <p>Spring season. World-class XC flying in the Cauca Valley. Strong, consistent thermals and long cross-country routes.</p>
           </div>
         </a>
-        <a href="/tours/brazil-paragliding/" class="crosslink-card">
-          <div class="crosslink-card__placeholder" aria-label="Brazil trip link">
-            <span class="crosslink-card__img-label">[ Photo: Paragliding Brazil ]</span>
+        <a href="/tours/brazil-paragliding-governador-valadares/" class="crosslink-card">
+          <div class="crosslink-card__image">
+            <img src="/images/brazil_hero.jpg" alt="Paragliding in Governador Valadares, Brazil" width="800" height="450" loading="lazy" />
           </div>
           <div class="crosslink-card__body">
             <h4>Brazil</h4>
@@ -436,6 +432,15 @@ const faqItems = [
     align-items: center;
     justify-content: center;
     overflow: hidden;
+  }
+
+  .dolomites-hero__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
   }
 
   .dolomites-hero__placeholder {
@@ -802,6 +807,18 @@ const faqItems = [
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .crosslink-card__image {
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .crosslink-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
   .crosslink-card__img-label {
