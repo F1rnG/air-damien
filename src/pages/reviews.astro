@@ -1,100 +1,40 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ReviewCard from '../components/ReviewCard.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import SchemaMarkup from '../components/SchemaMarkup.astro';
+import reviews from '../data/reviews.json';
 
-const reviewSchemas = [
-  {
-    "@context": "https://schema.org",
-    "@type": "Review",
-    "author": { "@type": "Person", "name": "Pete" },
-    "reviewBody": "Great instruction, local knowledge, small groups, no attitude or pressure just great flying and even better times. Couldn't recommend more.",
-    "datePublished": "2024-01-30",
-    "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 },
-    "itemReviewed": { "@type": "LocalBusiness", "name": "Air Damien" }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Review",
-    "author": { "@type": "Person", "name": "Ryan" },
-    "reviewBody": "Went with only a year of flying and gained confidence I didn't think was possible. Saw my skills improve drastically over the week. The instruction was personalized and the flying was world-class.",
-    "datePublished": "2023-02-27",
-    "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 },
-    "itemReviewed": { "@type": "LocalBusiness", "name": "Air Damien" }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Review",
-    "author": { "@type": "Person", "name": "Jim" },
-    "reviewBody": "Weeklong thermaling clinic was everything I hoped for. Ground school in the morning, launch support, and in-sky coaching via radio. Already looking forward to next year.",
-    "datePublished": "2023-01-24",
-    "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 },
-    "itemReviewed": { "@type": "LocalBusiness", "name": "Air Damien" }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Review",
-    "author": { "@type": "Person", "name": "Charles Walsh" },
-    "reviewBody": "Great experience flying in Utah. Top notch instruction from Damien. He knows the local conditions better than anyone and makes sure every pilot feels comfortable and confident.",
-    "datePublished": "2022-10-08",
-    "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 },
-    "itemReviewed": { "@type": "LocalBusiness", "name": "Air Damien" }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Review",
-    "author": { "@type": "Person", "name": "Dune Flier" },
-    "reviewBody": "Third trip to Utah flying with Damien. Each time I come back I learn something new. Only regret this time was not flying Jupiter. Next year for sure.",
-    "datePublished": "2022-10-06",
-    "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 },
-    "itemReviewed": { "@type": "LocalBusiness", "name": "Air Damien" }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Review",
-    "author": { "@type": "Person", "name": "FlyGirl33" },
-    "reviewBody": "Annual Utah visit, living the van life and flew every opportunity I could. Damien's guidance helped me feel safe pushing my comfort zone. The community here is welcoming and supportive.",
-    "datePublished": "2022-08-14",
-    "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 },
-    "itemReviewed": { "@type": "LocalBusiness", "name": "Air Damien" }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Review",
-    "author": { "@type": "Person", "name": "Blaze" },
-    "reviewBody": "First time paragliding and I could not have asked for a better instructor. Patient, knowledgeable, and answered all my questions without making me feel like a beginner.",
-    "datePublished": "2022-07-24",
-    "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 },
-    "itemReviewed": { "@type": "LocalBusiness", "name": "Air Damien" }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Review",
-    "author": { "@type": "Person", "name": "Kara G" },
-    "reviewBody": "First time flying and it was an awesome experience. Damien was super helpful, made me feel at ease, and the whole team was welcoming. Would do it again in a heartbeat.",
-    "datePublished": "2022-07-23",
-    "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 },
-    "itemReviewed": { "@type": "LocalBusiness", "name": "Air Damien" }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Review",
-    "author": { "@type": "Person", "name": "DirtyBirdy" },
-    "reviewBody": "Incredible day in Utah. The views from above are something you have to experience to understand. Damien was a wonderful guide and made the whole experience feel natural and safe.",
-    "datePublished": "2022-07-17",
-    "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 },
-    "itemReviewed": { "@type": "LocalBusiness", "name": "Air Damien" }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Review",
-    "author": { "@type": "Person", "name": "GR3YGUY" },
-    "reviewBody": "The scariest part of the trip was driving up the switchbacks. Thanks for the doughnuts.",
-    "datePublished": "2022-07-15",
-    "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 },
-    "itemReviewed": { "@type": "LocalBusiness", "name": "Air Damien" }
+const avgRating = (reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1);
+const reviewCount = reviews.length;
+
+const reviewSchemas = reviews.map(r => ({
+  "@context": "https://schema.org",
+  "@type": "Review",
+  "author": { "@type": "Person", "name": r.name },
+  "reviewBody": r.body,
+  "datePublished": r.date,
+  "reviewRating": { "@type": "Rating", "ratingValue": r.rating, "bestRating": 5 },
+  "itemReviewed": { "@type": "LocalBusiness", "name": "Air Damien" }
+}));
+
+const aggregateSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Air Damien",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": avgRating,
+    "reviewCount": String(reviewCount),
+    "bestRating": "5",
+    "worstRating": "1"
   }
+};
+
+const locations = [...new Set(reviews.map(r => r.location))];
+
+const breadcrumbs = [
+  { name: "Home", url: "https://airdamien.com/" },
+  { name: "Reviews", url: "https://airdamien.com/reviews/" }
 ];
 ---
 
@@ -103,102 +43,255 @@ const reviewSchemas = [
   description="Real, authenticated paragliding reviews from new pilots to competition pilots, from Mexico, to Utah. Add your review now."
   canonicalUrl="https://airdamien.com/reviews/"
 >
+  <SchemaMarkup schema={aggregateSchema} />
   <SchemaMarkup schema={reviewSchemas} />
-  <section class="page-header">
-    <h1>Reviews</h1>
-  </section>
-  <Breadcrumbs items={[
-    { name: "Home", url: "https://airdamien.com/" },
-    { name: "Reviews", url: "https://airdamien.com/reviews/" }
-  ]} />
 
-  <section class="section section--white">
+  <div class="page-header">
     <div class="container">
-      <div class="reviews-summary animate-in text-center">
-        <div class="stars reviews-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="reviews-rating">5.0 out of 5 stars</p>
-        <p class="reviews-count">Based on 33 reviews</p>
+      <h1>Reviews</h1>
+    </div>
+  </div>
+
+  <Breadcrumbs items={breadcrumbs} />
+
+  <section class="section">
+    <div class="container">
+      <!-- Summary -->
+      <div class="reviews-summary animate-in">
+        <div class="reviews-summary__stars">
+          <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        </div>
+        <p class="reviews-summary__rating">{avgRating} out of 5 stars</p>
+        <p class="reviews-summary__count">Based on {reviewCount} reviews</p>
+        <a href="/add-site-review/" class="btn btn--primary">Write a Review</a>
       </div>
 
-      <div class="reviews-grid grid-2 animate-in">
-        <ReviewCard
-          author="Pete"
-          date="Jan 30, 2024"
-          text="Great instruction, local knowledge, small groups, no attitude or pressure just great flying and even better times. Couldn't recommend more."
-        />
-        <ReviewCard
-          author="Ryan"
-          date="Feb 27, 2023"
-          text="Went with only a year of flying and gained confidence I didn't think was possible. Saw my skills improve drastically over the week. The instruction was personalized and the flying was world-class."
-        />
-        <ReviewCard
-          author="Jim"
-          date="Jan 24, 2023"
-          text="Weeklong thermaling clinic was everything I hoped for. Ground school in the morning, launch support, and in-sky coaching via radio. Already looking forward to next year."
-        />
-        <ReviewCard
-          author="Charles Walsh"
-          date="Oct 8, 2022"
-          text="Great experience flying in Utah. Top notch instruction from Damien. He knows the local conditions better than anyone and makes sure every pilot feels comfortable and confident."
-        />
-        <ReviewCard
-          author="Dune Flier"
-          date="Oct 6, 2022"
-          text="Third trip to Utah flying with Damien. Each time I come back I learn something new. Only regret this time was not flying Jupiter. Next year for sure."
-        />
-        <ReviewCard
-          author="FlyGirl33"
-          date="Aug 14, 2022"
-          text="Annual Utah visit, living the van life and flew every opportunity I could. Damien's guidance helped me feel safe pushing my comfort zone. The community here is welcoming and supportive."
-        />
-        <ReviewCard
-          author="Blaze"
-          date="Jul 24, 2022"
-          text="First time paragliding and I could not have asked for a better instructor. Patient, knowledgeable, and answered all my questions without making me feel like a beginner."
-        />
-        <ReviewCard
-          author="Kara G"
-          date="Jul 23, 2022"
-          text="First time flying and it was an awesome experience. Damien was super helpful, made me feel at ease, and the whole team was welcoming. Would do it again in a heartbeat."
-        />
-        <ReviewCard
-          author="DirtyBirdy"
-          date="Jul 17, 2022"
-          text="Incredible day in Utah. The views from above are something you have to experience to understand. Damien was a wonderful guide and made the whole experience feel natural and safe."
-        />
-        <ReviewCard
-          author="GR3YGUY"
-          date="Jul 15, 2022"
-          text="The scariest part of the trip was driving up the switchbacks. Thanks for the doughnuts."
-        />
+      <!-- Filters -->
+      <div class="reviews-filters animate-in">
+        <button class="reviews-filter active" data-filter="all">All</button>
+        {locations.map(loc => (
+          <button class="reviews-filter" data-filter={loc}>{loc}</button>
+        ))}
+      </div>
+
+      <!-- Reviews Grid -->
+      <div class="reviews-grid animate-in">
+        {reviews.map(review => (
+          <div class="review-card" data-location={review.location}>
+            <div class="review-card__header">
+              <div class="review-card__stars">
+                {Array.from({length: 5}).map((_, i) => (
+                  <span class={i < review.rating ? 'star star--filled' : 'star'}>&#9733;</span>
+                ))}
+              </div>
+              <span class="review-card__date">
+                {new Date(review.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+              </span>
+            </div>
+            <h3 class="review-card__title">{review.title}</h3>
+            <p class="review-card__body">{review.body}</p>
+            <div class="review-card__footer">
+              <span class="review-card__author">{review.name}</span>
+              <div class="review-card__badges">
+                <span class="review-card__badge review-card__badge--location">{review.location}</span>
+                {review.pilotRating && (
+                  <span class="review-card__badge review-card__badge--rating">{review.pilotRating}</span>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Bottom CTA -->
+      <div class="reviews-cta animate-in">
+        <h2>Had a great experience? Share it.</h2>
+        <a href="/add-site-review/" class="btn btn--primary">Write a Review</a>
       </div>
     </div>
   </section>
-
 </BaseLayout>
+
+<script>
+  document.querySelectorAll('.reviews-filter').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.reviews-filter').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.getAttribute('data-filter');
+      document.querySelectorAll('.review-card').forEach(card => {
+        if (filter === 'all' || card.getAttribute('data-location') === filter) {
+          (card as HTMLElement).style.display = '';
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
 
 <style>
   .reviews-summary {
+    text-align: center;
     margin-bottom: 3rem;
   }
 
-  .reviews-stars {
-    font-size: 2.5rem;
+  .reviews-summary__stars {
+    font-size: 2rem;
+    color: #f5a623;
     margin-bottom: 0.5rem;
   }
 
-  .reviews-rating {
+  .reviews-summary__rating {
     font-size: 1.5rem;
     font-weight: 700;
+    color: var(--color-text, #2a2050);
     margin-bottom: 0.25rem;
   }
 
-  .reviews-count {
-    color: var(--color-gray-light);
-    margin: 0;
+  .reviews-summary__count {
+    color: var(--color-text-body, #5a5570);
+    margin-bottom: 1.5rem;
+  }
+
+  .reviews-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .reviews-filter {
+    background: var(--color-bg-warm, #f9f7f3);
+    border: 1.5px solid var(--color-border, #d8d4e0);
+    color: var(--color-text-body, #5a5570);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 150ms ease;
+    font-family: inherit;
+  }
+
+  .reviews-filter:hover {
+    border-color: var(--color-accent, #e07730);
+    color: var(--color-accent, #e07730);
+  }
+
+  .reviews-filter.active {
+    background: var(--color-accent, #e07730);
+    border-color: var(--color-accent, #e07730);
+    color: #fff;
   }
 
   .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
     gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .review-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 12px rgba(42, 32, 80, 0.06);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .review-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+
+  .review-card__stars {
+    display: flex;
+    gap: 2px;
+  }
+
+  .star {
+    color: #ddd;
+    font-size: 1.1rem;
+  }
+
+  .star--filled {
+    color: #f5a623;
+  }
+
+  .review-card__date {
+    font-size: 0.8rem;
+    color: var(--color-text-body, #5a5570);
+  }
+
+  .review-card__title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text, #2a2050);
+    margin-bottom: 0.75rem;
+  }
+
+  .review-card__body {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--color-text-body, #5a5570);
+    flex-grow: 1;
+    margin-bottom: 1rem;
+  }
+
+  .review-card__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    border-top: 1px solid var(--color-border, #d8d4e0);
+    padding-top: 0.75rem;
+  }
+
+  .review-card__author {
+    font-weight: 600;
+    color: var(--color-accent, #e07730);
+    font-size: 0.9rem;
+  }
+
+  .review-card__badges {
+    display: flex;
+    gap: 0.4rem;
+  }
+
+  .review-card__badge {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-weight: 500;
+  }
+
+  .review-card__badge--location {
+    background: var(--color-bg-lavender, #f4f2fa);
+    color: var(--color-primary, #3b3160);
+  }
+
+  .review-card__badge--rating {
+    background: var(--color-bg-warm, #f9f7f3);
+    color: var(--color-text-body, #5a5570);
+  }
+
+  .reviews-cta {
+    text-align: center;
+    padding: 2rem 0;
+  }
+
+  .reviews-cta h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    .reviews-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>

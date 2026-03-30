@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Pete",
+    "location": "Valle de Bravo, Mexico",
+    "rating": 5,
+    "title": "Go flying",
+    "body": "Great instruction, local knowledge, small groups, no attitude or pressure just great flying and even better times.",
+    "pilotRating": "P3",
+    "date": "2024-01-30"
+  },
+  {
+    "name": "Ryan",
+    "location": "Valle de Bravo, Mexico",
+    "rating": 5,
+    "title": "Skills improved drastically",
+    "body": "I gained a huge confidence boost and saw my flying mentality and my piloting skills improve drastically over the course of the week. The combination of daily flying, radio coaching, and evening debriefs created a learning environment that would take months to replicate at my home site.",
+    "pilotRating": "P3",
+    "date": "2023-02-27"
+  },
+  {
+    "name": "Jim",
+    "location": "Valle de Bravo, Mexico",
+    "rating": 5,
+    "title": "Incredible learning experience",
+    "body": "Weeklong thermaling clinic. The combination of ground school, launch support, and in-sky coaching provided an incredibly valuable learning experience. The accommodations and hospitality made for a great overall experience.",
+    "pilotRating": "P2",
+    "date": "2023-01-24"
+  },
+  {
+    "name": "Charles Walsh",
+    "location": "Utah",
+    "rating": 5,
+    "title": "Top notch instruction",
+    "body": "Great experience in Utah. Top notch instruction and guidance. Damien is patient, knowledgeable, and genuinely invested in making you a better pilot.",
+    "pilotRating": "P2",
+    "date": "2022-10-08"
+  },
+  {
+    "name": "Dune Flier",
+    "location": "Utah",
+    "rating": 5,
+    "title": "Third trip to Utah",
+    "body": "Third trip to Utah with Damien. Every time I come back I learn something new. This time I regretted not flying Jupiter when conditions were right - next time for sure. Damien knows every site in the Wasatch and always puts you in the best position to fly well.",
+    "pilotRating": "P3",
+    "date": "2022-10-06"
+  },
+  {
+    "name": "FlyGirl33",
+    "location": "Utah",
+    "rating": 5,
+    "title": "Annual Utah visit",
+    "body": "Annual Utah visit with Damien. Van camping, flew at every opportunity. Whether it was dawn patrol at the Point or chasing thermals at Steep Mountain, Damien always had a plan and always had our backs on the radio.",
+    "pilotRating": "P3",
+    "date": "2022-08-14"
+  },
+  {
+    "name": "Blaze",
+    "location": "Utah",
+    "rating": 5,
+    "title": "First time flying",
+    "body": "First time paragliding and the instructor was incredibly patient. Answered all my questions, never made me feel rushed, and helped me understand what was happening every step of the way.",
+    "pilotRating": "P2",
+    "date": "2022-07-24"
+  },
+  {
+    "name": "Kara G",
+    "location": "Utah",
+    "rating": 5,
+    "title": "Awesome first experience",
+    "body": "First time flying and it was an awesome experience. Damien was super helpful, made everything feel safe and manageable. Cannot wait to come back and do it again.",
+    "pilotRating": "P2",
+    "date": "2022-07-23"
+  },
+  {
+    "name": "DirtyBirdy",
+    "location": "Utah",
+    "rating": 5,
+    "title": "Incredible day in Utah",
+    "body": "Incredible day flying in Utah. Damien is a wonderful guide who knows the sites inside and out. The conditions were perfect and the instruction was tailored to exactly what I needed to work on.",
+    "pilotRating": "P3",
+    "date": "2022-07-17"
+  },
+  {
+    "name": "GR3YGUY",
+    "location": "Utah",
+    "rating": 5,
+    "title": "Scariest part was the drive",
+    "body": "The scariest part of the trip was driving up the switchbacks. Once we were on launch, everything was smooth. Great instruction, great conditions, and thanks for the doughnuts.",
+    "pilotRating": "P2",
+    "date": "2022-07-15"
+  }
+]
