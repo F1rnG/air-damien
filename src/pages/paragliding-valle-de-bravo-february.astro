@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Paragliding Valle de Bravo in February: Late Season Conditions",
+  "description": "February is the last full month of peak season in Valle de Bravo. Strong thermals, warm days, and excellent XC potential before the rainy season approaches.",
+  "datePublished": "2025-01-10",
+  "dateModified": "2025-01-10",
+  "wordCount": 1900,
+  "author": { "@type": "Person", "name": "Damien Mitchell", "url": "https://airdamien.com/about-us/", "jobTitle": "USHPA Advanced Instructor" },
+  "publisher": { "@type": "Organization", "name": "Air Damien", "url": "https://airdamien.com", "logo": { "@type": "ImageObject", "url": "https://airdamien.com/images/logo.png" } },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://airdamien.com/paragliding-valle-de-bravo-february/" }
+};
+
+const breadcrumbs = [
+  { name: "Home", url: "https://airdamien.com/" },
+  { name: "Blog", url: "https://airdamien.com/blog/" },
+  { name: "Valle de Bravo in February", url: "https://airdamien.com/paragliding-valle-de-bravo-february/" }
+];
+---
+
+<BaseLayout
+  title="Paragliding Valle de Bravo in February: Late Season Conditions | Air Damien"
+  description="February is the last full month of peak season in Valle de Bravo. Strong thermals, warm days, and excellent XC potential before the rainy season approaches."
+  canonicalUrl="https://airdamien.com/paragliding-valle-de-bravo-february/"
+>
+  <SchemaMarkup schema={blogSchema} />
+
+  <div class="page-header">
+    <div class="container">
+      <h1>Paragliding Valle de Bravo in February</h1>
+      <p class="page-header__byline">By Damien Mitchell, USHPA Advanced Instructor</p>
+    </div>
+  </div>
+
+  <Breadcrumbs items={breadcrumbs} />
+
+  <article class="section">
+    <div class="container article-body">
+
+      <p class="article-lead">February is the last full month of peak season at Valle de Bravo. Thermals are still strong and consistent, days are getting warmer, and the site delivers excellent flying conditions. It is also the month where Mexico and Colombia seasons overlap - making February uniquely attractive for pilots who want to fly both destinations in one trip.</p>
+
+      <h2>February Conditions</h2>
+
+      <p>The dry season pattern is fully established and holding strong in February. The Hair Dryer thermal cycle at El Penon fires reliably, cloudbase remains high, and the flying window is long enough for productive sessions. February conditions are slightly warmer than January, with mornings that are less biting and afternoons that feel properly tropical.</p>
+
+      <ul>
+        <li><strong>Thermal strength:</strong> 2-4 m/s average. Slightly less intense than December-January on average, but still strong and well-organized. Good days in February match anything the peak months produce.</li>
+        <li><strong>Cloudbase:</strong> 10,000-12,000 feet ASL. High enough for comfortable XC transitions.</li>
+        <li><strong>Temperature at launch:</strong> 48-75F (9-24C). Warmer mornings than January, pleasant afternoons.</li>
+        <li><strong>Flyable days:</strong> 5-6 out of 7. Still very reliable.</li>
+        <li><strong>Crowds:</strong> Low. This is one of the quietest months of peak season.</li>
+      </ul>
+
+      <h2>How February Compares</h2>
+
+      <p>February sits between the powerhouse months (November-January) and the transition month (March). The practical differences:</p>
+
+      <ul>
+        <li>Thermals are slightly less aggressive than December-January, which some pilots actually prefer. The air is smooth and well-organized without being punchy.</li>
+        <li>Warmer mornings mean less layering at launch - you can fly in a t-shirt by mid-morning on most days.</li>
+        <li>Fewer pilots at the site means more personalized instruction, less waiting at launch, and a more relaxed atmosphere.</li>
+        <li>XC conditions are still excellent. Cloudbase is high and thermal streets develop well on strong days.</li>
+        <li>The town is quieter. Restaurants are easier to get into, the market is less crowded, and Valle feels more like a local town than a tourist destination.</li>
+      </ul>
+
+      <h2>The Mexico-Colombia Overlap</h2>
+
+      <p>February is unique because it is the one month where both Valle de Bravo and <a href="/paragliding-roldanillo-colombia/">Roldanillo, Colombia</a> are in peak season. This creates an opportunity that serious pilots take advantage of: fly Mexico in early-to-mid February, then head to Colombia for late February and March.</p>
+
+      <p>The two sites complement each other perfectly. Valle de Bravo's moderate, consistent thermals build your skills and confidence. Roldanillo's stronger thermals and XC corridors test those skills and push your distance. Doing both in one winter season is one of the best development paths available to a US-based pilot.</p>
+
+      <p>Air Damien runs trips to both destinations. If you are interested in combining them, <a href="/contact/">talk to Damien</a> about structuring a back-to-back itinerary.</p>
+
+      <h2>Who Should Come in February</h2>
+
+      <h3>Value seekers</h3>
+      <p>February is likely the best value month of peak season. Fewer pilots competing for spots, potentially lower pricing, and conditions that are still genuinely excellent. If your budget is a factor, February gives you peak-season flying without peak-season demand.</p>
+
+      <h3>Pilots planning a Mexico + Colombia combo</h3>
+      <p>Start in Valle de Bravo in early February, build your skills in moderate thermals, then fly to Cali and head to Roldanillo for the strong XC conditions. This is the ultimate winter flying itinerary.</p>
+
+      <h3>Pilots who prefer warmer weather</h3>
+      <p>If the cold January mornings at 7,600 feet sound unappealing, February is warmer across the board. You still need a light layer for early morning, but by launch time you are comfortable in a t-shirt.</p>
+
+      <h3>Thermalling clinic pilots</h3>
+      <p>The slightly smoother February thermals are actually ideal for learning. The <a href="/paragliding-clinics-mexico/paragliding-thermalling-clinic-mexico/">thermalling clinic</a> works beautifully in February conditions - strong enough to learn on, smooth enough to build confidence without getting beat up.</p>
+
+      <h2>Availability</h2>
+
+      <p>February is one of the easiest months to book. Demand is lower than November through January, which means more flexibility with dates and group size. You can often book with shorter lead time than the peak months, though 6-8 weeks ahead is still recommended.</p>
+
+      <h2>Book Your February Trip</h2>
+
+      <p>February is your last shot at peak season before conditions start transitioning in March. The <a href="/tours/10-day-paraglide-mexico-package/">10 Day Package</a> and <a href="/paragliding-clinics-mexico/">clinics</a> are available throughout February.</p>
+
+      <p>Want to do Mexico AND Colombia? February is the overlap month. <a href="/tours/colombia-paragliding-roldanillo/">See our Colombia trip</a> and talk to Damien about combining the two.</p>
+
+      <p>Read our <a href="/paragliding-valle-de-bravo/">complete Valle de Bravo guide</a> for full site details, or compare all months in our <a href="/best-months-to-paraglide-mexico/">best months guide</a>.</p>
+
+    </div>
+  </article>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Book Your February Trip</h2>
+        <p>Last full month of peak season. Reach out to secure your dates.</p>
+      </div>
+      <div class="animate-in" style="max-width: 600px; margin: 0 auto;">
+        <ContactForm formName="february-guide-inquiry" messagePlaceholder="I'm interested in flying Valle de Bravo in February. My rating is P___..." buttonText="Check February Availability" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header__byline { color: var(--color-text-on-dark-muted, #c4b8e0); font-size: 1rem; margin-top: 0.5rem; }
+  .article-body { max-width: 780px; margin: 0 auto; }
+  .article-lead { font-size: 1.15rem; line-height: 1.8; font-weight: 500; margin-bottom: 1.5rem; color: var(--color-text, #2a2050); }
+  .article-body h2 { margin-top: 3rem; margin-bottom: 1rem; padding-top: 1rem; border-top: 1px solid var(--color-border, #d8d4e0); }
+  .article-body h2:first-of-type { border-top: none; padding-top: 0; }
+  .article-body h3 { margin-top: 2rem; margin-bottom: 0.75rem; }
+  .article-body p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.25rem; }
+  .article-body ul { margin: 1rem 0 1.5rem 1.5rem; list-style: disc; }
+  .article-body ul li { font-size: 1.05rem; line-height: 1.8; margin-bottom: 0.75rem; }
+  .article-body a { color: var(--color-accent, #e07730); font-weight: 500; }
+  .article-body a:hover { text-decoration: underline; }
+  .article-body strong { color: var(--color-text, #2a2050); }
+</style>

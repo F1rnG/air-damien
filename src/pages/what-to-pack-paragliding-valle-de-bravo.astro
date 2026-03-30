@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "What to Pack for a Paragliding Trip to Valle de Bravo",
+  "description": "The complete packing list for a paragliding trip to Valle de Bravo, Mexico. Flying gear, clothing, travel essentials, and what you can leave at home.",
+  "datePublished": "2025-11-05",
+  "dateModified": "2025-11-05",
+  "wordCount": 1800,
+  "author": { "@type": "Person", "name": "Damien Mitchell", "url": "https://airdamien.com/about-us/", "jobTitle": "USHPA Advanced Instructor" },
+  "publisher": { "@type": "Organization", "name": "Air Damien", "url": "https://airdamien.com", "logo": { "@type": "ImageObject", "url": "https://airdamien.com/images/logo.png" } },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://airdamien.com/what-to-pack-paragliding-valle-de-bravo/" }
+};
+
+const breadcrumbs = [
+  { name: "Home", url: "https://airdamien.com/" },
+  { name: "Blog", url: "https://airdamien.com/blog/" },
+  { name: "What to Pack", url: "https://airdamien.com/what-to-pack-paragliding-valle-de-bravo/" }
+];
+---
+
+<BaseLayout
+  title="What to Pack for a Paragliding Trip to Valle de Bravo | Air Damien"
+  description="The complete packing list for a paragliding trip to Valle de Bravo, Mexico. Flying gear, clothing, travel essentials, and what you can leave at home."
+  canonicalUrl="https://airdamien.com/what-to-pack-paragliding-valle-de-bravo/"
+>
+  <SchemaMarkup schema={blogSchema} />
+
+  <div class="page-header">
+    <div class="container">
+      <h1>What to Pack for a Paragliding Trip to Valle de Bravo</h1>
+      <p class="page-header__byline">By Damien Mitchell, USHPA Advanced Instructor</p>
+    </div>
+  </div>
+
+  <Breadcrumbs items={breadcrumbs} />
+
+  <article class="section">
+    <div class="container article-body">
+
+      <p class="article-lead">You do not need to overthink this. Bring your flying gear, a few layers, and your passport. We handle the rest. But since every pilot asks, here is the complete list so you can pack with confidence and not forget anything important.</p>
+
+      <h2>Flying Gear (bring this)</h2>
+
+      <ul>
+        <li><strong>Certified paraglider</strong> appropriate for your skill level. An EN-B or EN-C you are comfortable and current on. Valle thermals are moderate but active - fly a wing you trust, not one you are still learning.</li>
+        <li><strong>Certified harness with reserve parachute.</strong> Make sure your reserve has been repacked within the last 12 months. We check this on day one.</li>
+        <li><strong>Helmet.</strong> Full-face recommended. The rocky terrain at El Penon makes a full-face helmet worthwhile, and it also protects your face from the intense sun during long flights.</li>
+        <li><strong>Dual-band VHF radio.</strong> Frequency 144.445 is what we use. If you do not have a radio, we keep spares - but bringing your own means one less thing to coordinate.</li>
+        <li><strong>Vario / flight instrument.</strong> Bring one. Valle thermals are strong enough to feel, but a vario helps you optimize climb rate and makes the learning process significantly faster. If you have a GPS flight computer, bring that too.</li>
+        <li><strong>Flight gloves.</strong> Mornings at 7,600 feet can be cold, especially November through January. Thin gloves keep your hands functional during setup and early flights.</li>
+        <li><strong>Sunglasses.</strong> Polarized recommended. The sun at altitude is intense and you will be looking up at your wing and across bright terrain for hours.</li>
+        <li><strong>Sturdy shoes or boots.</strong> The launch at El Penon is rocky volcanic terrain. Sandals and running shoes do not cut it. Hiking boots or trail shoes with ankle support are ideal.</li>
+        <li><strong>Hydration.</strong> A water bottle or hydration bladder for your harness. Multi-hour flights in warm conditions at altitude will dehydrate you faster than you expect. Drink before you launch and carry water with you.</li>
+        <li><strong>Small backpack.</strong> For carrying your harness and gear from the vehicle to launch if needed. Something you can clip to your harness bag works fine.</li>
+        <li><strong>USB battery pack.</strong> For charging your vario, phone, and radio between flights. Power is not always available at launch.</li>
+      </ul>
+
+      <h2>Clothing and Personal</h2>
+
+      <ul>
+        <li><strong>Layers.</strong> Valle de Bravo has a significant temperature range during the day. Mornings at launch can be 45-55F. Afternoons in town can be 75-80F. Dress in layers you can add and remove easily.</li>
+        <li><strong>Light jacket or fleece.</strong> Essential for early mornings and evening dining outdoors. A packable down jacket or mid-weight fleece is ideal.</li>
+        <li><strong>Sunscreen.</strong> SPF 50+ recommended. You are at 7,600 feet in the tropics - the UV is no joke. Apply before launching and carry a small tube in your harness for reapplication.</li>
+        <li><strong>Hat or buff.</strong> For non-flying time. Sun protection for walking around town, sitting at the LZ, or hiking.</li>
+        <li><strong>Comfortable walking shoes.</strong> Valle de Bravo has cobblestone streets and you will walk around town in the evenings. Something comfortable that is not your flying boots.</li>
+        <li><strong>Swimsuit.</strong> Lake Avandaro is right there. Rest days often involve the lake.</li>
+        <li><strong>Light rain jacket.</strong> Just in case, especially if you are visiting in late February or March when the transition season can bring occasional afternoon clouds.</li>
+        <li><strong>Casual clothes for evenings.</strong> Valle has good restaurants. You do not need to dress up, but having something other than your flying kit for dinner is nice.</li>
+      </ul>
+
+      <h2>Travel Essentials</h2>
+
+      <ul>
+        <li><strong>Valid passport.</strong> Check the expiration date before you book your flight. Mexico requires a valid passport for entry.</li>
+        <li><strong>Travel insurance.</strong> We recommend it, especially for medical coverage. Mexican hospitals require upfront payment - your US insurance will reimburse you, but you need a way to pay first. Medical evacuation coverage is worth the cost.</li>
+        <li><strong>Credit card with decent limit.</strong> For the medical situation described above. Also useful for incidentals in town. Most places in Valle accept cards, but some smaller restaurants and the market are cash-only.</li>
+        <li><strong>Pesos or USD.</strong> ATMs are available in Valle de Bravo. USD is accepted at some places but pesos are better. Withdraw what you need from an ATM when you arrive.</li>
+        <li><strong>Phone with international plan or local SIM.</strong> You will want data for communication, maps, and weather apps. Most US carriers offer affordable Mexico roaming plans.</li>
+        <li><strong>Power adapter.</strong> Mexico uses the same plugs as the US (Type A/B). No adapter needed.</li>
+        <li><strong>Copies of important documents.</strong> Passport, insurance card, emergency contact info. Keep digital copies on your phone and a paper copy in your luggage.</li>
+      </ul>
+
+      <h2>What You Do NOT Need to Bring</h2>
+
+      <p>If you are flying with Air Damien, we handle these:</p>
+
+      <ul>
+        <li><strong>Spare radios and varios.</strong> We keep spares of both. If you forget yours or something breaks, we have you covered.</li>
+        <li><strong>USB chargers and cables.</strong> We stock common cables and chargers at the house.</li>
+        <li><strong>Extra sunscreen.</strong> We keep sunscreen stocked. Bring your own for the first day but you will not run out.</li>
+        <li><strong>Maps of the area.</strong> Damien knows every thermal trigger, ridge, convergence zone, and LZ. You do not need to study maps - just listen to the radio.</li>
+        <li><strong>A rental car.</strong> We handle all transport - airport pickup, daily shuttle to launch, retrieve service, and return to the airport. You never need to drive.</li>
+        <li><strong>Fancy clothing.</strong> Valle de Bravo is casual. Nobody is dressing up. Clean shorts and a t-shirt are fine for every restaurant in town.</li>
+      </ul>
+
+      <h2>Packing Tips</h2>
+
+      <p>Most pilots travel with their wing and harness as checked luggage (wing bag + harness bag) and a carry-on with personal items. Airlines flying to Mexico generally handle paragliding gear as standard checked baggage - it is not classified as sporting equipment at most carriers. Check your specific airline's policy, but we rarely have issues.</p>
+
+      <p>Pack your reserve parachute in your checked bag, not carry-on. TSA sometimes flags reserve handles. Your vario, radio, and battery pack can go in carry-on.</p>
+
+      <h2>Ready to Go?</h2>
+
+      <p>Got your gear? All you need now is the trip. Check out the <a href="/tours/10-day-paraglide-mexico-package/">10 Day Package</a> or our <a href="/paragliding-clinics-mexico/">clinic schedule</a>.</p>
+
+      <p>For details on conditions by month, read our <a href="/best-months-to-paraglide-mexico/">best months guide</a>. For a complete site overview, see the <a href="/paragliding-valle-de-bravo/">Valle de Bravo guide</a>.</p>
+
+    </div>
+  </article>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Got Your Gear? Book Your Trip.</h2>
+      </div>
+      <div class="animate-in" style="max-width: 600px; margin: 0 auto;">
+        <ContactForm formName="packing-guide-inquiry" messagePlaceholder="I'm planning a trip to Valle de Bravo. My rating is P___..." buttonText="Plan My Trip" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header__byline { color: var(--color-text-on-dark-muted, #c4b8e0); font-size: 1rem; margin-top: 0.5rem; }
+  .article-body { max-width: 780px; margin: 0 auto; }
+  .article-lead { font-size: 1.15rem; line-height: 1.8; font-weight: 500; margin-bottom: 1.5rem; color: var(--color-text, #2a2050); }
+  .article-body h2 { margin-top: 3rem; margin-bottom: 1rem; padding-top: 1rem; border-top: 1px solid var(--color-border, #d8d4e0); }
+  .article-body h2:first-of-type { border-top: none; padding-top: 0; }
+  .article-body p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.25rem; }
+  .article-body ul { margin: 1rem 0 1.5rem 1.5rem; list-style: disc; }
+  .article-body ul li { font-size: 1.05rem; line-height: 1.8; margin-bottom: 0.75rem; }
+  .article-body a { color: var(--color-accent, #e07730); font-weight: 500; }
+  .article-body a:hover { text-decoration: underline; }
+  .article-body strong { color: var(--color-text, #2a2050); }
+</style>

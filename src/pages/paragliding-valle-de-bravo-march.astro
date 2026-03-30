@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Paragliding Valle de Bravo in March: Transitional Season Flying",
+  "description": "March marks the end of peak paragliding season in Valle de Bravo. Conditions are still flyable but beginning to transition. Here is what to expect.",
+  "datePublished": "2025-01-10",
+  "dateModified": "2025-01-10",
+  "wordCount": 1800,
+  "author": { "@type": "Person", "name": "Damien Mitchell", "url": "https://airdamien.com/about-us/", "jobTitle": "USHPA Advanced Instructor" },
+  "publisher": { "@type": "Organization", "name": "Air Damien", "url": "https://airdamien.com", "logo": { "@type": "ImageObject", "url": "https://airdamien.com/images/logo.png" } },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://airdamien.com/paragliding-valle-de-bravo-march/" }
+};
+
+const breadcrumbs = [
+  { name: "Home", url: "https://airdamien.com/" },
+  { name: "Blog", url: "https://airdamien.com/blog/" },
+  { name: "Valle de Bravo in March", url: "https://airdamien.com/paragliding-valle-de-bravo-march/" }
+];
+---
+
+<BaseLayout
+  title="Paragliding Valle de Bravo in March: Transitional Season Flying | Air Damien"
+  description="March marks the end of peak paragliding season in Valle de Bravo. Conditions are still flyable but beginning to transition. Here is what to expect."
+  canonicalUrl="https://airdamien.com/paragliding-valle-de-bravo-march/"
+>
+  <SchemaMarkup schema={blogSchema} />
+
+  <div class="page-header">
+    <div class="container">
+      <h1>Paragliding Valle de Bravo in March</h1>
+      <p class="page-header__byline">By Damien Mitchell, USHPA Advanced Instructor</p>
+    </div>
+  </div>
+
+  <Breadcrumbs items={breadcrumbs} />
+
+  <article class="section">
+    <div class="container article-body">
+
+      <p class="article-lead">March is the last month of the flying season at Valle de Bravo. Conditions are transitioning - still flyable most days, but less consistent than the November through February peak. If you are flexible and comfortable with some variability, March can deliver outstanding flying at lower demand and potentially better value. But you should know what you are getting into.</p>
+
+      <h2>The Honest Assessment</h2>
+
+      <p>March is not November. The dry season is winding down, moisture is starting to build in the atmosphere, and the pattern that made the previous four months so predictable is loosening its grip. Some March days are as good as anything in peak season - strong thermals, high cloudbase, long flights. Other days, afternoon clouds build earlier than expected, the thermal window is shorter, or conditions just do not develop the way they did in January.</p>
+
+      <p>That said, March at Valle de Bravo is still better than most flying sites in the world on their best days. The Hair Dryer still cycles. Thermals still fire off the volcanic rock. The Fish Bowl still works. You are not gambling on whether you will fly - you are gambling on whether you will have a December-quality day or a merely-good day.</p>
+
+      <h2>Weather and Conditions</h2>
+
+      <ul>
+        <li><strong>Thermal strength:</strong> 2-4 m/s average, with more day-to-day variation than earlier months. Strong days match January. Weak days are still flyable but may not support long XC.</li>
+        <li><strong>Cloudbase:</strong> 9,000-11,000 feet ASL. Lower than peak season on average, but still adequate for thermal flying and short XC.</li>
+        <li><strong>Temperature:</strong> 52-80F (11-27C). Warmer than any other month. Mornings are pleasant, afternoons can feel properly hot on the ground.</li>
+        <li><strong>Flyable days:</strong> 4-6 out of 7. The range is wider than peak season. You might get a run of five great days, or you might have two lighter days in a week.</li>
+        <li><strong>Cloud development:</strong> Afternoon cumulus builds earlier in March than in November-February. This is the primary sign of the transition. The thermal window may close an hour or two earlier than peak season.</li>
+      </ul>
+
+      <h2>What Changes in March</h2>
+
+      <h3>Shorter thermal window</h3>
+      <p>The Hair Dryer still kicks on around 10:00 AM, but afternoon conditions may shut down by 1:00-2:00 PM on some days instead of sustaining until 3:00 PM or later. This means you get your flying in during the morning and early afternoon, then plan ground activities for later.</p>
+
+      <h3>More variable XC</h3>
+      <p>Big XC days are still possible in March, but they require more selective conditions. You cannot count on thermal streets developing every day the way you can in December. When they do develop, the flying is excellent. When they do not, you focus on local soaring and thermalling practice.</p>
+
+      <h3>Warmer temperatures</h3>
+      <p>March is the warmest month of the flying season. This is generally a positive - no cold mornings requiring heavy layers, comfortable flying conditions, and warm evenings in town. The warmth also contributes to earlier cloud development, which is the trade-off.</p>
+
+      <h2>Who Should Come in March</h2>
+
+      <h3>Flexible pilots</h3>
+      <p>If your schedule allows you to extend by a day or two if conditions warrant, March works well. The variability means some days are better than others, and having flexibility lets you make the most of the good days.</p>
+
+      <h3>Budget-conscious pilots</h3>
+      <p>March is the lowest-demand month of the flying season. This may translate to more flexible pricing and easier booking. If cost is a factor and you are comfortable with conditions that are good-but-not-guaranteed-great, March is worth considering.</p>
+
+      <h3>Thermalling clinic students</h3>
+      <p>The <a href="/paragliding-clinics-mexico/paragliding-thermalling-clinic-mexico/">thermalling clinic</a> actually works well in March. The thermals are still strong enough for productive learning, and the slightly shorter thermal window means more time for ground school and debriefing. You will not fly less - you will just have a different rhythm to the day.</p>
+
+      <h3>Pilots heading to Colombia next</h3>
+      <p>March is peak season in <a href="/paragliding-roldanillo-colombia/">Roldanillo</a>. Some pilots fly Valle de Bravo in early March, then head to Colombia for late March. The conditions in Roldanillo are at their strongest in March, so this combination gives you the tail end of Mexico and the peak of Colombia.</p>
+
+      <h2>What March is NOT</h2>
+
+      <p>March is not a gamble. You will fly. The site is still operational, the thermals still work, and the infrastructure is still running. It is just less consistent than the four months that came before it. If someone told you "you will fly 4-6 out of 7 days with thermals averaging 2-4 m/s," you would book that trip at most sites in the world. At Valle de Bravo, March is only "disappointing" compared to the absurd consistency of November through January.</p>
+
+      <h2>Book Your March Trip</h2>
+
+      <p>March is the last month of the season. The <a href="/tours/10-day-paraglide-mexico-package/">10 Day Package</a> runs through March with adjusted expectations for the transitional conditions.</p>
+
+      <p>If you are considering March, talk to Damien about what to realistically expect for your specific dates. He will give you an honest assessment based on the long-range forecast and historical patterns.</p>
+
+      <p>Read our <a href="/paragliding-valle-de-bravo/">complete Valle de Bravo guide</a> for full site details, or compare all months in our <a href="/best-months-to-paraglide-mexico/">best months guide</a>.</p>
+
+    </div>
+  </article>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Considering March?</h2>
+        <p>Talk to Damien about what to expect for your dates.</p>
+      </div>
+      <div class="animate-in" style="max-width: 600px; margin: 0 auto;">
+        <ContactForm formName="march-guide-inquiry" messagePlaceholder="I'm considering March for Valle de Bravo. My rating is P___..." buttonText="Ask About March Conditions" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header__byline { color: var(--color-text-on-dark-muted, #c4b8e0); font-size: 1rem; margin-top: 0.5rem; }
+  .article-body { max-width: 780px; margin: 0 auto; }
+  .article-lead { font-size: 1.15rem; line-height: 1.8; font-weight: 500; margin-bottom: 1.5rem; color: var(--color-text, #2a2050); }
+  .article-body h2 { margin-top: 3rem; margin-bottom: 1rem; padding-top: 1rem; border-top: 1px solid var(--color-border, #d8d4e0); }
+  .article-body h2:first-of-type { border-top: none; padding-top: 0; }
+  .article-body h3 { margin-top: 2rem; margin-bottom: 0.75rem; }
+  .article-body p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.25rem; }
+  .article-body ul { margin: 1rem 0 1.5rem 1.5rem; list-style: disc; }
+  .article-body ul li { font-size: 1.05rem; line-height: 1.8; margin-bottom: 0.75rem; }
+  .article-body a { color: var(--color-accent, #e07730); font-weight: 500; }
+  .article-body a:hover { text-decoration: underline; }
+  .article-body strong { color: var(--color-text, #2a2050); }
+</style>

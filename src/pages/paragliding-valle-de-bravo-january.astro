@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Paragliding Valle de Bravo in January: Conditions and Trip Planning",
+  "description": "January offers excellent paragliding conditions in Valle de Bravo with strong thermals, clear skies, and fewer crowds than the holiday months.",
+  "datePublished": "2025-01-10",
+  "dateModified": "2025-01-10",
+  "wordCount": 2000,
+  "author": { "@type": "Person", "name": "Damien Mitchell", "url": "https://airdamien.com/about-us/", "jobTitle": "USHPA Advanced Instructor" },
+  "publisher": { "@type": "Organization", "name": "Air Damien", "url": "https://airdamien.com", "logo": { "@type": "ImageObject", "url": "https://airdamien.com/images/logo.png" } },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://airdamien.com/paragliding-valle-de-bravo-january/" }
+};
+
+const breadcrumbs = [
+  { name: "Home", url: "https://airdamien.com/" },
+  { name: "Blog", url: "https://airdamien.com/blog/" },
+  { name: "Valle de Bravo in January", url: "https://airdamien.com/paragliding-valle-de-bravo-january/" }
+];
+---
+
+<BaseLayout
+  title="Paragliding Valle de Bravo in January: Conditions and Trip Planning | Air Damien"
+  description="January offers excellent paragliding conditions in Valle de Bravo with strong thermals, clear skies, and fewer crowds than the holiday months. Plan your January trip to El Penon."
+  canonicalUrl="https://airdamien.com/paragliding-valle-de-bravo-january/"
+>
+  <SchemaMarkup schema={blogSchema} />
+
+  <div class="page-header">
+    <div class="container">
+      <h1>Paragliding Valle de Bravo in January</h1>
+      <p class="page-header__byline">By Damien Mitchell, USHPA Advanced Instructor</p>
+    </div>
+  </div>
+
+  <Breadcrumbs items={breadcrumbs} />
+
+  <article class="section">
+    <div class="container article-body">
+
+      <p class="article-lead">January is the best-kept secret in the Valle de Bravo flying calendar. The conditions are virtually identical to <a href="/paragliding-valle-de-bravo-december/">December</a> - strong thermals, high cloudbase, reliable Hair Dryer cycles - but the holiday crowds have gone home. If you want peak-season flying without competing for launch slots and restaurant tables, January is your month.</p>
+
+      <h2>Why January Works</h2>
+
+      <p>The holiday rush ends in the first week of January. Mexico City weekenders head back to work, tourist accommodation opens up, and the flying sites quiet down. But the weather does not care about the calendar. The dry season pattern that makes November through March so consistent is fully established in January, and the thermals keep firing exactly the same way they did in December.</p>
+
+      <p>For pilots who avoided December because of crowds or holiday pricing, January gives you everything December offers with fewer people and more flexibility.</p>
+
+      <h2>Weather and Temperature</h2>
+
+      <ul>
+        <li><strong>Morning (7-9 AM):</strong> 43-50F (6-10C). The coldest mornings of the season. A proper fleece and gloves for the drive to launch are not optional. The upside is that cold mornings create stronger temperature differentials, which means more defined thermals once the sun heats the rock.</li>
+        <li><strong>Mid-day (10 AM - 2 PM):</strong> 63-70F (17-21C). Comfortable flying temperature. The sun is strong at altitude even on cool days.</li>
+        <li><strong>Evening:</strong> 50-60F (10-16C). Pleasant for walking around town. A light jacket for outdoor dining.</li>
+      </ul>
+
+      <p>Rain is extremely rare in January. Clear skies are the default. Visibility is excellent and the air is dry and clean.</p>
+
+      <h2>Thermal Conditions</h2>
+
+      <ul>
+        <li><strong>Thermal strength:</strong> 3-5 m/s average. On par with December. Well-organized, punchy thermals that reward good centering.</li>
+        <li><strong>Cloudbase:</strong> 11,000-13,000 feet ASL. High enough for comfortable XC transitions.</li>
+        <li><strong>Thermal window:</strong> 10:00 AM to 3:00 PM. The Hair Dryer kicks on reliably. Afternoon thermals sustain well.</li>
+        <li><strong>Consistency:</strong> 6-7 flyable days out of 7. January matches December for reliability.</li>
+        <li><strong>XC potential:</strong> Excellent. Thermal streets develop, cloudbase is high, and the long thermal window supports ambitious routes.</li>
+      </ul>
+
+      <h2>January vs November and December</h2>
+
+      <p>The honest comparison:</p>
+
+      <ul>
+        <li>January thermals are as strong as December (3-5 m/s vs 3-5 m/s)</li>
+        <li>January mornings are slightly cooler than both November and December</li>
+        <li>January is significantly less crowded than November or December</li>
+        <li>January pricing may be lower (no holiday premium)</li>
+        <li>XC conditions are excellent - comparable to December</li>
+        <li>The vibe is more relaxed. The group at the house is usually smaller and more focused on flying</li>
+      </ul>
+
+      <p>If you are optimizing purely for conditions, December has a slight edge in thermal consistency. If you are optimizing for the overall experience - great conditions PLUS fewer crowds, lower costs, and a more intimate group - January wins.</p>
+
+      <h2>Who Should Come in January</h2>
+
+      <h3>Pilots who missed the holiday window</h3>
+      <p>If you could not get time off in November or December, January is your best alternative. The conditions are just as good and you still have four months of peak season ahead. There is no reason to wait until next year.</p>
+
+      <h3>XC pilots</h3>
+      <p>January's high cloudbase and strong thermals make it ideal for cross-country flying. The <a href="/paragliding-clinics-mexico/mexico-cross-country-xc-paragliding-clinics/">XC clinic</a> runs well in January conditions. Thermal streets develop reliably and the long thermal window gives you the time to push distance.</p>
+
+      <h3>Pilots who prefer a quieter experience</h3>
+      <p>Smaller groups mean more radio time with Damien, less waiting at launch, and a more personal trip. If you are the type who prefers a focused flying trip over a social scene, January delivers.</p>
+
+      <h2>Availability and Booking</h2>
+
+      <p>January is easier to book than November or December. Fewer pilots compete for spots, and Damien has more flexibility with dates. That said, January is not empty - it is still peak season and spots do fill. Booking 2-3 months ahead is recommended.</p>
+
+      <p>January is a particularly good month to combine a <a href="/paragliding-clinics-mexico/paragliding-thermalling-clinic-mexico/">thermalling clinic</a> with additional free-flying days. The smaller group size means more personalized instruction during the clinic portion.</p>
+
+      <h2>What to Pack for January</h2>
+
+      <p>Same gear as any peak-season trip, but add warmer layers for mornings:</p>
+
+      <ul>
+        <li>Your certified paraglider, harness, and reserve</li>
+        <li>Helmet (full-face recommended)</li>
+        <li>Radio and vario</li>
+        <li><strong>Warm fleece or jacket for mornings</strong> (January mornings at 7,600 ft are cold)</li>
+        <li><strong>Gloves for setup and early flying</strong></li>
+        <li>Sunscreen, sunglasses, hydration</li>
+        <li>Passport valid for Mexico</li>
+      </ul>
+
+      <p>For a complete packing list, see our <a href="/what-to-pack-paragliding-valle-de-bravo/">what to pack guide</a>.</p>
+
+      <h2>Book Your January Trip</h2>
+
+      <p>January is peak season without the crowds. The <a href="/tours/10-day-paraglide-mexico-package/">10 Day Package</a> and <a href="/paragliding-clinics-mexico/paragliding-thermalling-clinic-mexico/">thermalling clinic</a> both run in January with excellent conditions.</p>
+
+      <p>Read our <a href="/paragliding-valle-de-bravo/">complete Valle de Bravo guide</a> for full details on the site, or compare months in our <a href="/best-months-to-paraglide-mexico/">best months guide</a>.</p>
+
+    </div>
+  </article>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Book Your January Trip</h2>
+        <p>Peak season, fewer crowds. Get in touch to secure your dates.</p>
+      </div>
+      <div class="animate-in" style="max-width: 600px; margin: 0 auto;">
+        <ContactForm formName="january-guide-inquiry" messagePlaceholder="I'm interested in flying Valle de Bravo in January. My rating is P___..." buttonText="Check January Availability" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header__byline { color: var(--color-text-on-dark-muted, #c4b8e0); font-size: 1rem; margin-top: 0.5rem; }
+  .article-body { max-width: 780px; margin: 0 auto; }
+  .article-lead { font-size: 1.15rem; line-height: 1.8; font-weight: 500; margin-bottom: 1.5rem; color: var(--color-text, #2a2050); }
+  .article-body h2 { margin-top: 3rem; margin-bottom: 1rem; padding-top: 1rem; border-top: 1px solid var(--color-border, #d8d4e0); }
+  .article-body h2:first-of-type { border-top: none; padding-top: 0; }
+  .article-body h3 { margin-top: 2rem; margin-bottom: 0.75rem; }
+  .article-body p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.25rem; }
+  .article-body ul { margin: 1rem 0 1.5rem 1.5rem; list-style: disc; }
+  .article-body ul li { font-size: 1.05rem; line-height: 1.8; margin-bottom: 0.75rem; }
+  .article-body a { color: var(--color-accent, #e07730); font-weight: 500; }
+  .article-body a:hover { text-decoration: underline; }
+  .article-body strong { color: var(--color-text, #2a2050); }
+</style>

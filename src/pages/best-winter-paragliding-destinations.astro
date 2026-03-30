@@ -1,0 +1,146 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Best Winter Paragliding Destinations from the US (2025-2026 Season)",
+  "description": "The top winter paragliding destinations for US pilots. Compare Valle de Bravo, Roldanillo, Oludeniz, and more - with conditions, travel time, cost, and skill requirements.",
+  "datePublished": "2025-10-01",
+  "dateModified": "2025-10-01",
+  "wordCount": 2800,
+  "author": { "@type": "Person", "name": "Damien Mitchell", "url": "https://airdamien.com/about-us/", "jobTitle": "USHPA Advanced Instructor" },
+  "publisher": { "@type": "Organization", "name": "Air Damien", "url": "https://airdamien.com", "logo": { "@type": "ImageObject", "url": "https://airdamien.com/images/logo.png" } },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://airdamien.com/best-winter-paragliding-destinations/" }
+};
+
+const breadcrumbs = [
+  { name: "Home", url: "https://airdamien.com/" },
+  { name: "Blog", url: "https://airdamien.com/blog/" },
+  { name: "Best Winter Destinations", url: "https://airdamien.com/best-winter-paragliding-destinations/" }
+];
+---
+
+<BaseLayout
+  title="Best Winter Paragliding Destinations from the US (2025-2026 Season) | Air Damien"
+  description="The top winter paragliding destinations for US pilots. Compare Valle de Bravo, Roldanillo, Oludeniz, and more - with conditions, travel time, cost, and skill requirements."
+  canonicalUrl="https://airdamien.com/best-winter-paragliding-destinations/"
+>
+  <SchemaMarkup schema={blogSchema} />
+
+  <div class="page-header">
+    <div class="container">
+      <h1>Best Winter Paragliding Destinations from the US</h1>
+      <p class="page-header__byline">By Damien Mitchell, USHPA Advanced Instructor</p>
+    </div>
+  </div>
+
+  <Breadcrumbs items={breadcrumbs} />
+
+  <article class="section">
+    <div class="container article-body">
+
+      <p class="article-lead">Winter in the US means most flying sites are shut down or producing marginal conditions. But the other hemisphere is in full swing. Here are the best winter paragliding destinations accessible from the US, ranked by the combination of conditions, travel logistics, cost, and overall experience. Some of these are sites where I lead guided trips. Others are places I have flown and can recommend independently. All of them will make you a better pilot.</p>
+
+      <h2 id="valle-de-bravo">1. Valle de Bravo, Mexico (Our Top Pick)</h2>
+      <p><strong>Season:</strong> November - March | <strong>Skill level:</strong> P2+ | <strong>Travel:</strong> 2-5hr flight + 2-3hr drive | <strong>Est. trip cost:</strong> $2,000-4,000 (all-inclusive with Air Damien)</p>
+
+      <p>Valle de Bravo is the best winter flying destination for US pilots, and it is not close. Two hours from Mexico City, 300+ flyable days per year, and the most consistent thermal cycle I have ever flown. The Hair Dryer at El Penon kicks on at 10:00 AM like clockwork. The thermals are moderate and well-organized - strong enough to climb thousands of feet but readable enough for P2 pilots to learn on. The town is charming, the food is great, the cost of living is reasonable, and you can be back at your home airport in a day.</p>
+
+      <p>No other winter destination combines this level of conditions with this level of accessibility from the US. The travel time alone makes it the default choice for a week-long trip.</p>
+
+      <p><strong>Air Damien runs guided trips here.</strong> <a href="/paragliding-valle-de-bravo/">Read our complete guide</a> | <a href="/tours/10-day-paraglide-mexico-package/">View the 10 Day Package</a></p>
+
+      <h2 id="roldanillo">2. Roldanillo, Colombia</h2>
+      <p><strong>Season:</strong> February - March | <strong>Skill level:</strong> P3+ | <strong>Travel:</strong> 4-5hr flight to Cali + 3hr drive | <strong>Est. trip cost:</strong> $2,500-4,500</p>
+
+      <p>If your goal is XC distance, Roldanillo is the site. The Cauca Valley produces some of the most powerful thermals in the Americas - 4-8 m/s climbs, cloudbase at 3,500-4,000 meters, and thermal streets along the Andes that pilots use to fly 100km+. The Colombian Open is held here annually for a reason. The flying is intense, the international pilot community is vibrant, and the potential for personal distance records is real.</p>
+
+      <p>The trade-off is that Roldanillo demands solid thermal skills. This is not a learning site. If you can thermal to cloudbase consistently, you are ready. If not, start at Valle de Bravo and come to Colombia the following season.</p>
+
+      <p><strong>Air Damien runs guided trips here.</strong> <a href="/paragliding-roldanillo-colombia/">Read our complete guide</a> | <a href="/tours/colombia-paragliding-roldanillo/">View the Colombia trip</a></p>
+
+      <h2 id="governador-valadares">3. Governador Valadares, Brazil</h2>
+      <p><strong>Season:</strong> September - March | <strong>Skill level:</strong> P3+ | <strong>Travel:</strong> 8-10hr flight + 4hr drive from Belo Horizonte | <strong>Est. trip cost:</strong> $3,000-5,000</p>
+
+      <p>GV is well-known in the paragliding world with a long history of free-flight. Pico da Ibituruna is an iconic launch - over three-thousand feet above a thriving city. The thermals here are soft and well-organized, ideal for logging long hours in the saddle and chasing 100km XC flights along the Rio Doce valley. The massive LZ right in town, the competition heritage, and the Brazilian flying community make GV a complete experience.</p>
+
+      <p>The travel is longer than Mexico or Colombia, and you need an E-visa for Brazil (easy to get online, lasts 10 years). But if you want a bucket-list launch, serious XC potential, and an immersion in Brazilian flying culture, GV delivers.</p>
+
+      <p><strong>Air Damien runs guided trips here.</strong> <a href="/paragliding-governador-valadares-brazil/">Read our complete guide</a> | <a href="/tours/brazil-paragliding-governador-valadares/">View the Brazil trip</a></p>
+
+      <h2 id="oludeniz">4. Oludeniz, Turkey</h2>
+      <p><strong>Season:</strong> April - November (NOT winter, but overlaps shoulder season) | <strong>Skill level:</strong> P2+ | <strong>Travel:</strong> 10-12hr flight + connections | <strong>Est. trip cost:</strong> $3,000-5,000</p>
+
+      <p>Oludeniz is one of the most famous paragliding destinations in the world, primarily because of the spectacular Blue Lagoon landing. Babadag Mountain at 1,969m provides good coastal thermal and ridge soaring conditions. The scenery is Mediterranean stunning. But Oludeniz is best in summer (opposite of what US pilots need for winter flying), the travel from the US is substantial, and the XC potential is limited by coastal terrain and airspace.</p>
+
+      <p>Worth visiting if you are already in Europe or want to combine paragliding with a Mediterranean vacation. But for a dedicated winter flying trip from the US, there are better options closer to home. <a href="/valle-de-bravo-vs-oludeniz-paragliding/">Read our detailed VdB vs Oludeniz comparison.</a></p>
+
+      <h2 id="bir-billing">5. Bir Billing, India</h2>
+      <p><strong>Season:</strong> October - June (best: March - May, Oct - Nov) | <strong>Skill level:</strong> P2+ | <strong>Travel:</strong> 15-20hr to Delhi + domestic flight + drive | <strong>Est. trip cost:</strong> $2,000-3,500 (very cheap on the ground)</p>
+
+      <p>Bir Billing hosted the 2015 Paragliding World Cup and has become one of the most popular flying destinations in Asia. The launch sits in the Himalayan foothills at about 2,400 meters with excellent thermal conditions. XC routes run along the Dhauladhar range. The town has a strong Tibetan Buddhist culture, the food is excellent, and the cost of living is extremely low. A day's accommodation and meals can cost less than a single meal at some European sites.</p>
+
+      <p>The travel is the barrier. From the US West Coast, plan on 20+ hours of flying plus ground transport. For pilots with time flexibility and a sense of adventure, Bir Billing is hard to beat on value.</p>
+
+      <h2 id="san-gil">6. San Gil, Colombia</h2>
+      <p><strong>Season:</strong> December - March | <strong>Skill level:</strong> P2+ | <strong>Travel:</strong> 5-6hr flight to Bogota + 4hr drive | <strong>Est. trip cost:</strong> $2,000-3,500</p>
+
+      <p>Less famous than Roldanillo but worth knowing about. San Gil sits in the Santander department of Colombia with its own thermal flying scene. The terrain is different from the Cauca Valley - deeper canyons, different thermal patterns, and a more adventure-tourism oriented town. The Chicamocha Canyon is dramatic from the air. Conditions are generally good but less consistent than Roldanillo for XC.</p>
+
+      <p>A good option for pilots who want to explore Colombia beyond the standard Roldanillo trip, or who want a site that is less crowded during peak season.</p>
+
+      <h2 id="pokhara">7. Pokhara, Nepal</h2>
+      <p><strong>Season:</strong> October - April (best: Nov - Feb) | <strong>Skill level:</strong> P3+ | <strong>Travel:</strong> 18-24hr to Kathmandu + domestic flight or drive | <strong>Est. trip cost:</strong> $2,500-4,500</p>
+
+      <p>Flying with the Annapurna range as your backdrop is a once-in-a-lifetime experience. Sarangkot launch above Pokhara offers thermal flying with views of 8,000-meter peaks that no other flying destination can match. The town is geared toward adventure tourism with excellent accommodation and food options. The cost of living is very low.</p>
+
+      <p>The travel is the longest on this list and the logistics require planning, but for pilots who want the ultimate mountain flying backdrop, nothing in the world compares to Pokhara.</p>
+
+      <h2>How to Choose</h2>
+
+      <ul>
+        <li><strong>Best overall for US pilots:</strong> <a href="/paragliding-valle-de-bravo/">Valle de Bravo</a> - closest, cheapest, most consistent, guided instruction available</li>
+        <li><strong>Best for XC distance:</strong> <a href="/paragliding-roldanillo-colombia/">Roldanillo</a> - nothing beats the Cauca Valley for going far</li>
+        <li><strong>Best for bucket-list launch + hours:</strong> <a href="/paragliding-governador-valadares-brazil/">Governador Valadares</a> - iconic site, soft thermals, long flying days</li>
+        <li><strong>Best for beach + flying combo:</strong> Oludeniz - if you are already in Europe</li>
+        <li><strong>Best budget option:</strong> Bir Billing - incredible value if you have the time</li>
+        <li><strong>Best for adventure:</strong> Pokhara - nothing else looks like this from the air</li>
+      </ul>
+
+      <h2>Plan Your Winter Trip</h2>
+
+      <p>I have been flying internationally for 25+ years and lead guided trips to <a href="/tours/10-day-paraglide-mexico-package/">Mexico</a>, <a href="/tours/colombia-paragliding-roldanillo/">Colombia</a>, and <a href="/tours/brazil-paragliding-governador-valadares/">Brazil</a>. If you want help picking the right destination for your skill level and goals, <a href="/contact/">get in touch</a>. I will give you an honest recommendation.</p>
+
+    </div>
+  </article>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Need Help Planning?</h2>
+        <p>Tell me your skill level and what you are looking for.</p>
+      </div>
+      <div class="animate-in" style="max-width: 600px; margin: 0 auto;">
+        <ContactForm formName="winter-destinations-inquiry" messagePlaceholder="I'm planning a winter flying trip. My rating is P___ and I'm interested in..." buttonText="Get a Recommendation" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header__byline { color: var(--color-text-on-dark-muted, #c4b8e0); font-size: 1rem; margin-top: 0.5rem; }
+  .article-body { max-width: 780px; margin: 0 auto; }
+  .article-lead { font-size: 1.15rem; line-height: 1.8; font-weight: 500; margin-bottom: 1.5rem; color: var(--color-text, #2a2050); }
+  .article-body h2 { margin-top: 3rem; margin-bottom: 1rem; padding-top: 1rem; border-top: 1px solid var(--color-border, #d8d4e0); }
+  .article-body h2:first-of-type { border-top: none; padding-top: 0; }
+  .article-body p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.25rem; }
+  .article-body ul { margin: 1rem 0 1.5rem 1.5rem; list-style: disc; }
+  .article-body ul li { font-size: 1.05rem; line-height: 1.8; margin-bottom: 0.75rem; }
+  .article-body a { color: var(--color-accent, #e07730); font-weight: 500; }
+  .article-body a:hover { text-decoration: underline; }
+  .article-body strong { color: var(--color-text, #2a2050); }
+</style>
