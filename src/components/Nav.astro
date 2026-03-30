@@ -27,7 +27,10 @@ const currentPath = Astro.url.pathname;
             Tours <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
           <ul class="nav__dropdown-menu">
-            <li><a href="/tours/10-day-paraglide-mexico-package/">Mexico - Valle de Bravo</a></li>
+            <li><a href="/tours/10-day-paraglide-mexico-package/"><strong>10 Day Mexico Package</strong></a></li>
+            <li><a href="/paragliding-clinics-mexico/paragliding-thermalling-clinic-mexico/">Thermalling Clinic - Mexico</a></li>
+            <li><a href="/paragliding-clinics-mexico/mexico-cross-country-xc-paragliding-clinics/">XC Clinic - Mexico</a></li>
+            <li class="nav__dropdown-divider"></li>
             <li><a href="/tours/colombia-paragliding-roldanillo/">Colombia - Roldanillo</a></li>
             <li><a href="/tours/brazil-paragliding-governador-valadares/">Brazil - Governador Valadares</a></li>
             <li><a href="/tours/italy-paragliding-dolomites/">Italy - Dolomites</a></li>
@@ -179,6 +182,11 @@ const currentPath = Astro.url.pathname;
   .nav__dropdown-menu a:hover {
     background: var(--color-cream);
     color: var(--color-sunset);
+  }
+
+  .nav__dropdown-divider {
+    border-top: 1px solid var(--color-gray-lighter, #ddd);
+    margin: 0.25rem 0;
   }
 
   .nav__phone {
