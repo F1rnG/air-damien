@@ -123,34 +123,51 @@ const breadcrumbs = [
       </div>
       <div class="included-grid animate-in">
         <div class="included-item">
+          <div class="included-item__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
           <h4>Housing</h4>
           <p>Comfortable accommodation near the flying site and town center.</p>
         </div>
         <div class="included-item">
-          <h4>Meals</h4>
-          <p>Home-cooked breakfast and dinner daily.</p>
-        </div>
-        <div class="included-item">
+          <div class="included-item__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5a1 1 0 0 1-1 1h-2"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
           <h4>Airport Transfer</h4>
           <p>Pickup and dropoff from Mexico City or Toluca airport.</p>
         </div>
         <div class="included-item">
+          <div class="included-item__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
           <h4>Daily Transport</h4>
           <p>Shuttle to El Penon launch and back every flying day.</p>
         </div>
         <div class="included-item">
+          <div class="included-item__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
           <h4>Radio Instruction</h4>
           <p>Damien coaches every flight in real time over the radio.</p>
         </div>
         <div class="included-item">
+          <div class="included-item__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
           <h4>Evening Debriefs</h4>
           <p>Review your flights, set goals for tomorrow.</p>
         </div>
         <div class="included-item">
+          <div class="included-item__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
           <h4>Gear Spares</h4>
           <p>Radios, varios, chargers if you forget something.</p>
         </div>
         <div class="included-item">
+          <div class="included-item__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
           <h4>Retrieve Service</h4>
           <p>XC retrieve support so you can fly without worrying about getting back.</p>
         </div>
@@ -310,6 +327,11 @@ const breadcrumbs = [
   .included-item {
     text-align: center;
     padding: 1.25rem;
+  }
+
+  .included-item__icon {
+    color: var(--color-accent, #e07730);
+    margin-bottom: 0.75rem;
   }
 
   .included-item h4 {
