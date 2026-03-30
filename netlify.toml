@@ -47,6 +47,16 @@
   to = "/tours/10-day-paraglide-mexico-package/"
   status = 301
 
+[[redirects]]
+  from = "/sitemap-index.xml"
+  to = "/sitemap.xml"
+  status = 301
+
+[[redirects]]
+  from = "/sitemap-0.xml"
+  to = "/sitemap.xml"
+  status = 301
+
 # Redirect www to non-www
 [[redirects]]
   from = "https://www.airdamien.com/*"

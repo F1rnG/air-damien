@@ -5,5 +5,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://airdamien.com',
   trailingSlash: 'always',
-  integrations: [sitemap()],
+  integrations: [sitemap({
+    entryLimit: 50000,
+  })],
 });
