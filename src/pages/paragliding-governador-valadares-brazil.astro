@@ -35,7 +35,7 @@ const breadcrumbs = [
   <div class="page-header">
     <div class="container">
       <h1>Paragliding Governador Valadares: The Complete Guide</h1>
-      <p class="page-header__byline">By <a href="/about-us/" style="color: inherit; text-decoration: none;">Damien Mitchell</a>, USHPA Advanced Instructor</p>
+      <div class="page-header__byline"><img src="/images/damion.jpg" alt="Damien Mitchell" width="32" height="32" class="byline-avatar" /><span>By <a href="/about-us/" style="color: inherit; text-decoration: none;">Damien Mitchell</a>, USHPA Advanced Instructor</span></div>
     </div>
   </div>
 
@@ -156,7 +156,19 @@ const breadcrumbs = [
   .page-header__byline {
     color: var(--color-text-on-dark-muted, #c4b8e0);
     font-size: 1rem;
-    margin-top: 0.5rem;
+    margin-top: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .byline-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.3);
   }
 
   .article-body {
