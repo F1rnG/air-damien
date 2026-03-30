@@ -57,6 +57,11 @@
   to = "/sitemap.xml"
   status = 301
 
+[[redirects]]
+  from = "/first-day-paragliding-valle-de-bravo/"
+  to = "/paragliding-valle-de-bravo/"
+  status = 301
+
 # Old WordPress sitemaps -> new sitemap
 [[redirects]]
   from = "/category-sitemap.xml"

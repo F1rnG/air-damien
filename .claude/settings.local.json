@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(start \"https://app.netlify.com/authorize?response_type=ticket&ticket=6223439e848dacd956f6cc279c67a393\")"
+    ]
+  }
+}
