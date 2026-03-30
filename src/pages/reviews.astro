@@ -103,6 +103,9 @@ const breadcrumbs = [
         ))}
       </div>
 
+      <!-- Pending reviews container (filled by JS) -->
+      <div id="pending-reviews"></div>
+
       <!-- Bottom CTA -->
       <div class="reviews-cta animate-in">
         <h2>Had a great experience? Share it.</h2>
@@ -111,6 +114,54 @@ const breadcrumbs = [
     </div>
   </section>
 </BaseLayout>
+
+<script is:inline>
+  // Load pending reviews from localStorage and prepend to grid
+  (function() {
+    const pending = JSON.parse(localStorage.getItem('pendingReviews') || '[]');
+    if (!pending.length) return;
+
+    const grid = document.querySelector('.reviews-grid');
+    const starHtml = (rating) => {
+      let s = '';
+      for (let i = 0; i < 5; i++) {
+        s += '<span class="' + (i < rating ? 'star star--filled' : 'star') + '">&#9733;</span>';
+      }
+      return s;
+    };
+
+    pending.forEach(r => {
+      const d = new Date(r.date);
+      const dateStr = d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+      const card = document.createElement('div');
+      card.className = 'review-card review-card--pending';
+      card.setAttribute('data-location', r.location);
+      card.innerHTML =
+        '<div class="review-card__pending-badge">Pending approval</div>' +
+        '<div class="review-card__header">' +
+          '<div class="review-card__stars">' + starHtml(r.rating) + '</div>' +
+          '<span class="review-card__date">' + dateStr + '</span>' +
+        '</div>' +
+        '<h3 class="review-card__title">' + r.title + '</h3>' +
+        '<p class="review-card__body">' + r.body + '</p>' +
+        '<div class="review-card__footer">' +
+          '<span class="review-card__author">' + r.name + '</span>' +
+          '<div class="review-card__badges">' +
+            '<span class="review-card__badge review-card__badge--location">' + r.location + '</span>' +
+            (r.pilotRating ? '<span class="review-card__badge review-card__badge--rating">' + r.pilotRating + '</span>' : '') +
+          '</div>' +
+        '</div>';
+      grid.insertBefore(card, grid.firstChild);
+    });
+
+    // Update count
+    const countEl = document.querySelector('.reviews-summary__count');
+    if (countEl) {
+      const base = parseInt(countEl.textContent.match(/\d+/)[0]);
+      countEl.textContent = 'Based on ' + (base + pending.length) + ' reviews';
+    }
+  })();
+</script>
 
 <script>
   document.querySelectorAll('.reviews-filter').forEach(btn => {
@@ -287,6 +338,25 @@ const breadcrumbs = [
 
   .reviews-cta h2 {
     margin-bottom: 1.5rem;
+  }
+
+  .review-card--pending {
+    border: 2px dashed var(--color-accent, #e07730);
+    position: relative;
+  }
+
+  .review-card__pending-badge {
+    position: absolute;
+    top: -0.6rem;
+    right: 1rem;
+    background: var(--color-accent, #e07730);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
   }
 
   @media (max-width: 480px) {
