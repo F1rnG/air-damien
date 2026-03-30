@@ -1,0 +1,332 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import SchemaMarkup from '../../components/SchemaMarkup.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+
+const tripSchema = {
+  "@context": "https://schema.org",
+  "@type": "TouristTrip",
+  "name": "Custom Paragliding Trip to Valle de Bravo",
+  "description": "Build a paragliding trip to Valle de Bravo around your schedule. 4 to 14 days with housing, meals, transport, and daily instruction.",
+  "provider": { "@type": "Organization", "name": "Air Damien", "url": "https://airdamien.com" },
+  "touristType": "Paragliding enthusiasts"
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Is there a minimum trip length?", "acceptedAnswer": { "@type": "Answer", "text": "We recommend at least 4 days to make the travel worthwhile. Shorter than that and you spend more time traveling than flying." } },
+    { "@type": "Question", "name": "Is it cheaper per day for longer trips?", "acceptedAnswer": { "@type": "Answer", "text": "Contact Damien for pricing. Longer trips generally offer better value per day since fixed costs like airport transport are spread across more flying days." } },
+    { "@type": "Question", "name": "Can I extend my trip if I am having a great time?", "acceptedAnswer": { "@type": "Answer", "text": "If housing and schedule allow, absolutely. It happens more often than you would think." } },
+    { "@type": "Question", "name": "Can I combine a clinic with extra free-flying days?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Many pilots do a 5-day thermalling clinic and add 2-3 days of independent flying with daily guidance. Talk to Damien about building a hybrid schedule." } }
+  ]
+};
+
+const faqItems = [
+  { question: "Is there a minimum trip length?", answer: "We recommend at least 4 days to make the travel worthwhile. Shorter than that and you spend more time traveling than flying." },
+  { question: "Is it cheaper per day for longer trips?", answer: "Contact Damien for pricing. Longer trips generally offer better value per day since fixed costs like airport transport are spread across more flying days." },
+  { question: "Can I extend my trip if I am having a great time?", answer: "If housing and schedule allow, absolutely. It happens more often than you would think." },
+  { question: "Can I combine a clinic with extra free-flying days?", answer: "Yes. Many pilots do a 5-day thermalling clinic and add 2-3 days of independent flying with daily guidance. Talk to Damien about building a hybrid schedule." }
+];
+
+const breadcrumbs = [
+  { name: "Home", url: "https://airdamien.com/" },
+  { name: "Tours", url: "https://airdamien.com/tours/" },
+  { name: "Custom Trip", url: "https://airdamien.com/tours/custom-paragliding-trip-mexico/" }
+];
+---
+
+<BaseLayout
+  title="Custom Paragliding Trip to Valle de Bravo | 4 to 14 Days | Air Damien"
+  description="Build a paragliding trip to Valle de Bravo around your schedule. 4 days, a week, two weeks - every trip includes housing, meals, transport, and daily instruction."
+  canonicalUrl="https://airdamien.com/tours/custom-paragliding-trip-mexico/"
+>
+  <SchemaMarkup schema={tripSchema} />
+  <SchemaMarkup schema={faqSchema} />
+
+  <section class="hero hero--full">
+    <img class="hero__bg" src="/images/GOOD.JPG" alt="Paraglider soaring over El Penon in Valle de Bravo" width="1920" height="1280" loading="eager" />
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <h1>Build Your Custom Valle de Bravo Trip</h1>
+      <p class="hero__sub">4 days, a week, two weeks. You tell us your dates, we handle the rest.</p>
+      <a href="#booking-form" class="btn btn--primary">Tell Us Your Dates</a>
+    </div>
+  </section>
+
+  <Breadcrumbs items={breadcrumbs} />
+
+  <!-- Intro -->
+  <section class="section">
+    <div class="container">
+      <div class="intro animate-in">
+        <p>Not everyone has 10 days. We get it. Whether you have a long weekend or half a month, Damien will put together a flying plan that makes the most of your time in Valle de Bravo. Every trip includes housing, meals, transport to launch, and daily radio-guided instruction. You tell us your dates, we handle the rest.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trip Length Cards -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Choose Your Trip Length</h2>
+      </div>
+      <div class="trip-cards animate-in">
+        <div class="trip-card">
+          <div class="trip-card__badge">4-5 Days</div>
+          <h3>Focused Thermalling</h3>
+          <p>You fly every day, twice a day when conditions allow. Perfect if you are short on time but want real improvement. You will not master the site in 4 days but you will leave with skills you did not have when you arrived.</p>
+          <div class="trip-card__details">
+            <p><strong>Best for:</strong> P2 pilots building thermal basics, or experienced pilots who just want a few days of great flying</p>
+            <p><strong>What to expect:</strong> 8-10 flights, daily ground school, evening debriefs</p>
+          </div>
+        </div>
+
+        <div class="trip-card trip-card--featured">
+          <div class="trip-card__badge">7 Days</div>
+          <span class="trip-card__popular">Most popular</span>
+          <h3>The Sweet Spot</h3>
+          <p>Enough time to get comfortable with the site, build solid thermal skills, and start working on XC fundamentals. You get a rest day to explore Valle de Bravo without feeling like you are wasting flying time.</p>
+          <div class="trip-card__details">
+            <p><strong>Best for:</strong> Pilots who want meaningful progression without committing to a full 10 days</p>
+            <p><strong>What to expect:</strong> 12-14+ flights, ground school, XC introduction, one rest day</p>
+          </div>
+        </div>
+
+        <div class="trip-card">
+          <div class="trip-card__badge">10-14 Days</div>
+          <h3>The Full Transformation</h3>
+          <p>By day five you stop thinking about mechanics and start reading the sky. By day eight you are flying routes you would not have attempted on day one. The extra days are where the real breakthroughs happen.</p>
+          <div class="trip-card__details">
+            <p><strong>Best for:</strong> Pilots who want to make the biggest jump in their flying, or pilots combining thermalling and XC instruction</p>
+            <p><strong>What to expect:</strong> 20+ flights, thermalling progression, XC flights with retrieve, multiple rest days, deep site knowledge</p>
+          </div>
+          <a href="/tours/10-day-paraglide-mexico-package/" class="trip-card__link">See the 10 Day Package details</a>
+        </div>
+      </div>
+
+      <div class="honest-note animate-in">
+        <h3>How long should you come for?</h3>
+        <p>Here is the honest truth: more days means more progression. The first 2-3 days are orientation and building comfort. Days 4-6 are where skills start clicking. Days 7-10 are where the real transformation happens. If you can swing 7+ days, you will get significantly more out of the trip than a 4-day visit. But even 4 days at El Penon is better than 4 days at most sites in the world.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Everything Included -->
+  <section class="section">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Every Trip Includes</h2>
+      </div>
+      <div class="included-grid animate-in">
+        <div class="included-item">
+          <h4>Housing</h4>
+          <p>Comfortable accommodation near the flying site and town center.</p>
+        </div>
+        <div class="included-item">
+          <h4>Meals</h4>
+          <p>Home-cooked breakfast and dinner daily.</p>
+        </div>
+        <div class="included-item">
+          <h4>Airport Transfer</h4>
+          <p>Pickup and dropoff from Mexico City or Toluca airport.</p>
+        </div>
+        <div class="included-item">
+          <h4>Daily Transport</h4>
+          <p>Shuttle to El Penon launch and back every flying day.</p>
+        </div>
+        <div class="included-item">
+          <h4>Radio Instruction</h4>
+          <p>Damien coaches every flight in real time over the radio.</p>
+        </div>
+        <div class="included-item">
+          <h4>Evening Debriefs</h4>
+          <p>Review your flights, set goals for tomorrow.</p>
+        </div>
+        <div class="included-item">
+          <h4>Gear Spares</h4>
+          <p>Radios, varios, chargers if you forget something.</p>
+        </div>
+        <div class="included-item">
+          <h4>Retrieve Service</h4>
+          <p>XC retrieve support so you can fly without worrying about getting back.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Form -->
+  <section class="section section--alt" id="booking-form">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Tell Us Your Dates</h2>
+        <p>Share your availability and skill level. Damien will build a trip around your schedule.</p>
+      </div>
+      <div class="animate-in" style="max-width: 600px; margin: 0 auto;">
+        <ContactForm
+          formName="custom-trip-inquiry"
+          messagePlaceholder="I'm interested in a ___-day trip. My rating is P___ and my preferred dates are..."
+          buttonText="Build My Trip"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container animate-in">
+      <FaqAccordion title="Common Questions" items={faqItems} />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .intro {
+    max-width: 750px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .intro p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-text-body, #5a5570);
+  }
+
+  .trip-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .trip-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 12px rgba(42, 32, 80, 0.06);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .trip-card--featured {
+    border: 2px solid var(--color-accent, #e07730);
+    box-shadow: 0 4px 20px rgba(224, 119, 48, 0.12);
+  }
+
+  .trip-card__badge {
+    background: var(--color-primary, #3b3160);
+    color: #fff;
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    align-self: flex-start;
+  }
+
+  .trip-card--featured .trip-card__badge {
+    background: var(--color-accent, #e07730);
+  }
+
+  .trip-card__popular {
+    position: absolute;
+    top: -0.6rem;
+    right: 1rem;
+    background: var(--color-accent, #e07730);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .trip-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text, #2a2050);
+  }
+
+  .trip-card > p {
+    color: var(--color-text-body, #5a5570);
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+
+  .trip-card__details {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border, #d8d4e0);
+  }
+
+  .trip-card__details p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-text-body, #5a5570);
+    margin-bottom: 0.5rem;
+  }
+
+  .trip-card__link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--color-accent, #e07730);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .honest-note {
+    max-width: 750px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 12px;
+    border-left: 4px solid var(--color-accent, #e07730);
+  }
+
+  .honest-note h3 {
+    margin-bottom: 1rem;
+    color: var(--color-text, #2a2050);
+  }
+
+  .honest-note p {
+    color: var(--color-text-body, #5a5570);
+    line-height: 1.8;
+  }
+
+  .included-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .included-item {
+    text-align: center;
+    padding: 1.25rem;
+  }
+
+  .included-item h4 {
+    color: var(--color-text, #2a2050);
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .included-item p {
+    font-size: 0.9rem;
+    color: var(--color-text-body, #5a5570);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .trip-cards {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
