@@ -111,7 +111,7 @@ const formattedDate = new Date(datePublished).toLocaleDateString('en-US', {
           <img src="/images/damion.jpg" alt="Damien Mitchell" width="48" height="48" />
         </div>
         <div class="blog-post__author-info">
-          <span class="blog-post__author-name">By {author.name}, {author.title}</span>
+          <span class="blog-post__author-name">By <a href="/about-us/" class="author-link">{author.name}</a>, {author.title}</span>
           <div class="blog-post__meta">
             <time datetime={datePublished}>{formattedDate}</time>
             <span class="blog-post__sep">|</span>
@@ -139,7 +139,7 @@ const formattedDate = new Date(datePublished).toLocaleDateString('en-US', {
         </div>
         <div class="blog-post__author-box-info">
           <h3>About the Author</h3>
-          <p class="blog-post__author-box-name">{author.name}</p>
+          <p class="blog-post__author-box-name"><a href="/about-us/" class="author-link">{author.name}</a></p>
           <p>{author.bio}</p>
           <a href="/about-us/">Learn more about Damien</a>
         </div>
@@ -181,6 +181,17 @@ const formattedDate = new Date(datePublished).toLocaleDateString('en-US', {
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  .author-link {
+    color: var(--color-primary, #3b3160);
+    text-decoration: none;
+    transition: color 150ms ease;
+  }
+
+  .author-link:hover {
+    color: var(--color-accent, #e07730);
+    text-decoration: underline;
   }
 
   .blog-post__author-name {
