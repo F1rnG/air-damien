@@ -96,11 +96,17 @@ const formattedDate = new Date(datePublished).toLocaleDateString('en-US', {
 >
   <SchemaMarkup schema={blogPostSchema} />
 
-  <div class="page-header">
-    <div class="container">
+  <section class="post-hero">
+    {featuredImage ? (
+      <img class="post-hero__bg" src={featuredImage} alt={featuredImageAlt || title} width="1920" height="800" loading="eager" />
+    ) : (
+      <div class="post-hero__bg post-hero__bg--fallback"></div>
+    )}
+    <div class="post-hero__overlay"></div>
+    <div class="post-hero__content">
       <h1>{title}</h1>
     </div>
-  </div>
+  </section>
 
   <Breadcrumbs items={breadcrumbs} />
 
@@ -113,14 +119,6 @@ const formattedDate = new Date(datePublished).toLocaleDateString('en-US', {
           <span class="author-card__title">USHPA Advanced Instructor</span>
           <span class="author-card__meta">Published {formattedDate} · {readingTime}</span>
         </div>
-      </div>
-
-      <div class="blog-post__featured-image">
-        {featuredImage ? (
-          <img src={featuredImage} alt={featuredImageAlt || title} width="750" height="420" loading="eager" />
-        ) : (
-          <span>Featured Image: {title}</span>
-        )}
       </div>
 
       <div class="blog-post__content">
@@ -146,6 +144,56 @@ const formattedDate = new Date(datePublished).toLocaleDateString('en-US', {
 </BaseLayout>
 
 <style>
+  .post-hero {
+    position: relative;
+    min-height: 45vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .post-hero__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .post-hero__bg--fallback {
+    background: linear-gradient(135deg, var(--color-primary-dark, #2a2050) 0%, var(--color-primary, #3b3160) 100%);
+  }
+
+  .post-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(42, 32, 80, 0.1) 0%,
+      rgba(42, 32, 80, 0.3) 40%,
+      rgba(42, 32, 80, 0.65) 70%,
+      rgba(42, 32, 80, 0.85) 100%
+    );
+    z-index: 1;
+  }
+
+  .post-hero__content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 2rem 1.5rem 2.5rem;
+    max-width: 800px;
+  }
+
+  .post-hero__content h1 {
+    color: #fff;
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    line-height: 1.25;
+  }
+
   .content-narrow {
     max-width: 750px;
     margin: 0 auto;
@@ -214,29 +262,6 @@ const formattedDate = new Date(datePublished).toLocaleDateString('en-US', {
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-
-  .blog-post__featured-image {
-    aspect-ratio: 16 / 9;
-    background: var(--color-bg-lavender, #f4f2fa);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 2rem;
-    overflow: hidden;
-  }
-
-  .blog-post__featured-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .blog-post__featured-image span {
-    color: #fff;
-    font-size: 0.9rem;
-    opacity: 0.8;
   }
 
   .blog-post__lead {
