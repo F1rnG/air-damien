@@ -57,6 +57,37 @@
   to = "/sitemap.xml"
   status = 301
 
+# Old WordPress sitemaps -> new sitemap
+[[redirects]]
+  from = "/category-sitemap.xml"
+  to = "/sitemap.xml"
+  status = 301
+
+[[redirects]]
+  from = "/page-sitemap.xml"
+  to = "/sitemap.xml"
+  status = 301
+
+[[redirects]]
+  from = "/post-sitemap.xml"
+  to = "/sitemap.xml"
+  status = 301
+
+[[redirects]]
+  from = "/product-sitemap.xml"
+  to = "/sitemap.xml"
+  status = 301
+
+[[redirects]]
+  from = "/product_cat-sitemap.xml"
+  to = "/sitemap.xml"
+  status = 301
+
+[[redirects]]
+  from = "/themo_tour-sitemap.xml"
+  to = "/sitemap.xml"
+  status = 301
+
 # Redirect www to non-www
 [[redirects]]
   from = "https://www.airdamien.com/*"
