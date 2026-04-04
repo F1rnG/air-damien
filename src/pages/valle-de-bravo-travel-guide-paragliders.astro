@@ -1,0 +1,185 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Valle de Bravo Travel Guide for Paragliders",
+  "description": "Everything a paraglider needs to know about traveling to Valle de Bravo. Flights, ground transport, the town, food, money, phones, and tips from a 25-year veteran.",
+  "datePublished": "2026-01-10",
+  "dateModified": "2026-01-10",
+  "wordCount": 2300,
+  "author": { "@type": "Person", "name": "Damien Mitchell", "url": "https://airdamien.com/about-us/", "jobTitle": "USHPA Advanced Instructor" },
+  "publisher": { "@type": "Organization", "name": "Air Damien", "url": "https://airdamien.com", "logo": { "@type": "ImageObject", "url": "https://airdamien.com/images/logo.png" } },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://airdamien.com/valle-de-bravo-travel-guide-paragliders/" }
+};
+
+const breadcrumbs = [
+  { name: "Home", url: "https://airdamien.com/" },
+  { name: "Blog", url: "https://airdamien.com/blog/" },
+  { name: "Travel Guide", url: "https://airdamien.com/valle-de-bravo-travel-guide-paragliders/" }
+];
+---
+
+<BaseLayout
+  title="Valle de Bravo Travel Guide for Paragliders: Getting There, Where to Stay, What to Know | Air Damien"
+  description="Everything a paraglider needs to know about traveling to Valle de Bravo. Flights, ground transport, the town, food, money, phones, and tips from a 25-year veteran."
+  canonicalUrl="https://airdamien.com/valle-de-bravo-travel-guide-paragliders/"
+>
+  <SchemaMarkup schema={blogSchema} />
+
+  <section class="post-hero">
+    <img class="post-hero__bg" src="/images/valle 1.jpg" alt="Valle de Bravo lakeside town with mountains" width="1920" height="800" loading="eager" />
+    <div class="post-hero__overlay"></div>
+    <div class="post-hero__content">
+      <h1>Valle de Bravo Travel Guide for Paragliders</h1>
+    </div>
+  </section>
+
+  <Breadcrumbs items={breadcrumbs} />
+
+  <div class="container" style="max-width: 780px; margin: 0 auto; padding: 0 1.5rem;">
+    <div class="author-card">
+      <img src="/images/damion.jpg" alt="Damien Mitchell" width="56" height="56" class="author-card__avatar" />
+      <div class="author-card__info">
+        <a href="/about-us/" class="author-card__name">Damien Mitchell</a>
+        <span class="author-card__title">USHPA Advanced Instructor</span>
+      </div>
+    </div>
+  </div>
+
+  <article class="section">
+    <div class="container article-body">
+
+      <p class="article-lead">This is the practical guide for getting yourself and your gear to <a href="/paragliding-valle-de-bravo/">Valle de Bravo</a>. If you are flying with Air Damien, we handle most of the logistics - but it helps to know what to expect. If you are traveling independently, this covers everything from booking flights to finding the best tacos near the LZ.</p>
+
+      <h2>Getting There: Flights</h2>
+
+      <p><strong>Mexico City International Airport (MEX)</strong> is the primary gateway. Direct flights from most major US cities: Dallas, Houston, Los Angeles, Chicago, New York, Miami, Phoenix, Denver, and more. Flight time is 2-5 hours depending on your origin. Round-trip tickets typically run $200-500 if booked 4-8 weeks ahead.</p>
+
+      <p><strong>Toluca International Airport (TLC)</strong> is closer to Valle de Bravo (1.5-2 hours drive vs 2.5-3 hours from MEX). Fewer flight options from the US, but sometimes cheaper and the shorter drive is nice after a long day of travel. Worth checking availability from your origin city.</p>
+
+      <p><strong>Booking tips:</strong> Fly on a weekday if possible - weekend flights to Mexico City are often pricier. Tuesday and Wednesday departures tend to be cheapest. Set price alerts 6-8 weeks before your trip. Airline choice matters less than schedule and price - all major carriers serve MEX well.</p>
+
+      <p>For more on costs, read our <a href="/paragliding-trip-mexico-cost/">complete budget breakdown</a>.</p>
+
+      <h2>Airport to Valle de Bravo</h2>
+
+      <p>If you are flying with Air Damien, airport pickup is included. Damien or the driver meets you at arrivals with an Air Damien sign. You load your gear and relax for the drive.</p>
+
+      <p>For independent travelers:</p>
+      <ul>
+        <li><strong>Private driver:</strong> The most comfortable option. Arrange through your accommodation or a transfer service. Cost is roughly $80-150 one way depending on the vehicle.</li>
+        <li><strong>Bus:</strong> First-class bus service from Mexico City (Terminal Poniente) to Valle de Bravo is comfortable, reliable, and cheap ($15-25). The ride takes about 3 hours. The bus drops you in the town center.</li>
+        <li><strong>Rental car:</strong> Possible but not recommended. Mexican mountain roads require confidence, insurance is complex, and parking in Valle's narrow streets is frustrating. If you are on an Air Damien trip, you never need to drive anywhere.</li>
+      </ul>
+
+      <h2>The Drive</h2>
+
+      <p>The drive from Mexico City to Valle de Bravo takes you west through the outskirts of the city, through toll roads lined with pine forest, and up into the mountains. The altitude climbs gradually from Mexico City's 7,350 feet to the mountains around Valle. About an hour in, the city gives way to rural landscape and you start seeing the terrain that creates <a href="/flying-el-penon-valle-de-bravo/">El Penon's thermals</a> - dark volcanic rock faces catching the sun, ridgelines running along the horizon.</p>
+
+      <p>The last stretch descends into the Valle de Bravo basin. The lake comes into view, the town appears below, and you realize you are about to spend the next week in one of the most beautiful flying destinations in the world.</p>
+
+      <h2>The Town</h2>
+
+      <p>Valle de Bravo is a colonial lakeside town of about 25,000 people. Cobblestone streets, colorful buildings, a central plaza with a church, and Lake Avandaro stretching out below. It is a popular weekend getaway for Mexico City residents, which means the infrastructure for dining, shopping, and entertainment is well-developed despite the small size.</p>
+
+      <p>The town is walkable. From the central area you can reach restaurants, the market, the lakefront, and the Beach LZ on foot. It is charming without being touristy, authentic without being rough. Your non-flying partner will not be bored - the lake, the markets, and the food scene provide plenty to do on rest days.</p>
+
+      <h2>Food and Drink</h2>
+
+      <p>The food in Valle de Bravo is excellent and affordable.</p>
+
+      <ul>
+        <li><strong>Breakfast:</strong> On Air Damien trips, breakfast is at the house. For independent pilots, cafes and restaurants serve Mexican breakfast staples - eggs, beans, chilaquiles, fresh juice, strong coffee. $3-6.</li>
+        <li><strong>Lunch:</strong> Usually grabbed between flights or in town. Taquerias, torta shops, and casual restaurants serve great food for $5-10. Mari's taco stand near the Beach LZ is a post-flight institution.</li>
+        <li><strong>Dinner:</strong> Valle has surprisingly good restaurants for a small town. From casual Mexican to upscale dining, $8-20 per person. Group dinners after flying are a highlight of every trip.</li>
+        <li><strong>Drinks:</strong> Beer is $2-3 at most places. Mezcal and tequila are excellent and affordable. The local beer culture includes both Mexican macro brands and increasingly good craft options.</li>
+      </ul>
+
+      <h2>Money</h2>
+
+      <p>Mexican pesos are the local currency. ATMs are available in Valle de Bravo and dispense pesos. Most restaurants and shops accept credit cards, but some smaller vendors and market stalls are cash-only. USD is accepted at some tourist-oriented places but pesos get you a better rate.</p>
+
+      <p>Tipping: 10-15% at restaurants is standard. Budget $50-100 in tips for your trip (driver, retrieve crew, etc).</p>
+
+      <h2>Phone and Internet</h2>
+
+      <p>Cell coverage in Valle de Bravo is generally good. On the mountain at El Penon launch, coverage can be spotty depending on your carrier. Most US cell plans include Mexico roaming at no extra charge (check with your carrier). If not, a local Telcel SIM card costs a few dollars and provides data and calls.</p>
+
+      <p>WiFi is available at the house (on Air Damien trips) and at most restaurants and cafes in town. It is generally fast enough for messaging and social media. Heavy video calls may struggle.</p>
+
+      <h2>Health and Safety</h2>
+
+      <ul>
+        <li><strong>Altitude:</strong> Valle de Bravo sits at approximately 5,000 feet (1,524m). El Penon launch is at 7,600 feet. If you are coming from sea level, drink extra water for the first day or two. Most people adjust without issues.</li>
+        <li><strong>Water:</strong> Drink bottled water. The tap water in Valle is not reliably safe for visitors. Bottled water is cheap and available everywhere.</li>
+        <li><strong>Sun:</strong> Intense at altitude. Sunscreen (SPF 50+), sunglasses, and a hat are essentials. Apply before launching. Read our <a href="/what-to-pack-paragliding-valle-de-bravo/">complete packing guide</a>.</li>
+        <li><strong>Medical:</strong> Local hospital for basic emergencies. Serious cases transfer to Toluca or Mexico City. <a href="/is-paragliding-in-mexico-safe/">Read about medical care and insurance</a>.</li>
+      </ul>
+
+      <h2>Weather and What to Wear</h2>
+
+      <p>Valle de Bravo has a comfortable climate during flying season (November through March). Mornings are cool (45-55F at launch), afternoons are warm (65-75F), and evenings are pleasant. Layer for the morning drive to launch and strip down as the day warms up. A fleece and a t-shirt cover most situations.</p>
+
+      <p>For detailed month-by-month conditions, see our guides for <a href="/paragliding-valle-de-bravo-november/">November</a>, <a href="/paragliding-valle-de-bravo-december/">December</a>, <a href="/paragliding-valle-de-bravo-january/">January</a>, <a href="/paragliding-valle-de-bravo-february/">February</a>, and <a href="/paragliding-valle-de-bravo-march/">March</a>.</p>
+
+      <h2>Rest Day Activities</h2>
+
+      <ul>
+        <li><strong>Lake Avandaro:</strong> Kayaking, paddleboarding, or just walking the waterfront.</li>
+        <li><strong>The market:</strong> Weekly tianguis (market day) with local crafts, produce, textiles, and street food.</li>
+        <li><strong>Hiking:</strong> Trails around the lake and in the surrounding mountains.</li>
+        <li><strong>Exploring:</strong> Walk the cobblestone streets, visit the church and plaza, browse galleries and shops.</li>
+        <li><strong>Eating:</strong> Valle has enough restaurants that you could eat somewhere different for every meal of a 10-day trip and not repeat.</li>
+      </ul>
+
+      <p>Check our <a href="/gallery/">photo gallery</a> for a visual taste of life in Valle de Bravo.</p>
+
+      <h2>Skip the Planning</h2>
+
+      <p>If all of this logistics planning sounds like work, that is exactly why our <a href="/tours/10-day-paraglide-mexico-package/">trip packages</a> exist. Airport pickup, housing, meals, daily transport, instruction - all handled. You pack your gear, get on a plane, and we take care of the rest. <a href="/tours/custom-paragliding-trip-mexico/">Custom trip lengths available</a> from 4 to 14 days.</p>
+
+      <p><a href="/contact/">Contact Damien</a> to start planning.</p>
+
+    </div>
+  </article>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__heading animate-in">
+        <h2>Let Us Handle the Logistics</h2>
+      </div>
+      <div class="animate-in" style="max-width: 600px; margin: 0 auto;">
+        <ContactForm formName="travel-guide-inquiry" messagePlaceholder="I'm planning a trip to Valle de Bravo. My dates are..." buttonText="Start Planning" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .post-hero { position: relative; min-height: 45vh; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; }
+  .post-hero__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+  .post-hero__overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(42,32,80,0.1) 0%, rgba(42,32,80,0.3) 40%, rgba(42,32,80,0.65) 70%, rgba(42,32,80,0.85) 100%); z-index: 1; }
+  .post-hero__content { position: relative; z-index: 2; text-align: center; padding: 2rem 1.5rem 2.5rem; max-width: 800px; }
+  .post-hero__content h1 { color: #fff; font-size: clamp(1.75rem, 4vw, 2.75rem); text-shadow: 0 2px 8px rgba(0,0,0,0.3); line-height: 1.25; }
+  .author-card { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.25rem; background: var(--color-bg-warm, #f9f7f3); border-left: 4px solid var(--color-accent, #e07730); border-radius: 8px; margin: 1.5rem 0; }
+  .author-card__avatar { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; border: 2px solid var(--color-accent, #e07730); flex-shrink: 0; }
+  .author-card__info { display: flex; flex-direction: column; gap: 0.15rem; }
+  .author-card__name { font-size: 1rem; font-weight: 500; color: var(--color-text, #2a2050); text-decoration: none; }
+  .author-card__name:hover { color: var(--color-accent, #e07730); }
+  .author-card__title { font-size: 0.8rem; font-weight: 500; color: var(--color-accent, #e07730); text-transform: uppercase; letter-spacing: 0.06em; }
+  .article-body { max-width: 780px; margin: 0 auto; }
+  .article-lead { font-size: 1.15rem; line-height: 1.8; font-weight: 500; margin-bottom: 1.5rem; color: var(--color-text, #2a2050); }
+  .article-body h2 { margin-top: 3rem; margin-bottom: 1rem; padding-top: 1rem; border-top: 1px solid var(--color-border, #d8d4e0); }
+  .article-body h2:first-of-type { border-top: none; padding-top: 0; }
+  .article-body p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.25rem; }
+  .article-body ul { margin: 1rem 0 1.5rem 1.5rem; list-style: disc; }
+  .article-body ul li { font-size: 1.05rem; line-height: 1.8; margin-bottom: 0.75rem; }
+  .article-body a { color: var(--color-accent, #e07730); font-weight: 500; }
+  .article-body a:hover { text-decoration: underline; }
+  .article-body strong { color: var(--color-text, #2a2050); }
+</style>
