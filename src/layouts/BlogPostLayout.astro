@@ -79,7 +79,7 @@ const blogPostSchema = {
     "@type": "WebPage",
     "@id": canonicalUrl
   },
-  "image": "https://airdamien.com/images/blog/placeholder.jpg"
+  "image": featuredImage ? `https://airdamien.com${featuredImage}` : "https://airdamien.com/images/logo.png"
 };
 
 const formattedDate = new Date(datePublished).toLocaleDateString('en-US', {
