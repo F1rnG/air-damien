@@ -289,7 +289,7 @@ const faqItems = [
   <section class="section">
     <div class="container text-center animate-in">
       <h2>Requirements</h2>
-      <p class="requirements-text">You need a P2 (Novice) rating or equivalent to join this clinic. If you can launch, fly, and land independently, you are ready.</p>
+      <p class="requirements-text">You need a P2 (Novice) rating or equivalent to join this clinic. If you can launch, fly, and land independently, you are ready. Many of our pilots use this clinic as a stepping stone in their <a href="/p2-to-p3-paragliding-progression/" style="color: var(--color-accent); font-weight: 500;">P2 to P3 progression</a>.</p>
     </div>
   </section>
 
@@ -333,20 +333,22 @@ const faqItems = [
         <h2>Looking for Something Different?</h2>
       </div>
       <div class="crosslink-grid animate-in">
-        <a href="/paragliding-clinics-mexico/mexico-cross-country-xc-paragliding-clinics/" class="crosslink-card">
+        <div class="crosslink-card">
           <div class="crosslink-card__image"><img src="/images/cross.jpg" alt="Cross country paragliding over Valle de Bravo terrain" width="800" height="450" loading="lazy" /></div>
           <div class="crosslink-card__body">
-            <h4>Cross Country (XC) Clinic</h4>
+            <h4><a href="/paragliding-clinics-mexico/mexico-cross-country-xc-paragliding-clinics/">XC Clinic</a></h4>
             <p>Ready to go beyond the local ridge? Our XC clinic teaches route planning, glide management, and multi-thermal transitions.</p>
+            <a href="/paragliding-clinics-mexico/mexico-cross-country-xc-paragliding-clinics/" class="crosslink-card__cta">View XC Clinic</a>
           </div>
-        </a>
-        <a href="/tours/10-day-paraglide-mexico-package/" class="crosslink-card">
+        </div>
+        <div class="crosslink-card">
           <div class="crosslink-card__image"><img src="/images/val5.jpg" alt="Paragliding over Valle de Bravo lake" width="800" height="450" loading="lazy" /></div>
           <div class="crosslink-card__body">
-            <h4>10 Day Paraglide Mexico Package</h4>
+            <h4><a href="/tours/10-day-paraglide-mexico-package/">10 Day Mexico Package</a></h4>
             <p>The full experience. Ten days of flying, instruction, housing, food, and transport. Everything handled so you just show up and fly.</p>
+            <a href="/tours/10-day-paraglide-mexico-package/" class="crosslink-card__cta">View 10 Day Package</a>
           </div>
-        </a>
+        </div>
       </div>
     </div>
   </section>
@@ -631,13 +633,10 @@ const faqItems = [
   }
 
   .crosslink-card {
-    display: block;
     background: var(--color-white, #fff);
     border: 1px solid var(--color-border, #e5e2ea);
     border-radius: 12px;
     overflow: hidden;
-    text-decoration: none;
-    color: inherit;
     transition: box-shadow 0.2s, transform 0.2s;
   }
 
@@ -658,13 +657,34 @@ const faqItems = [
   }
 
   .crosslink-card__body h4 {
-    color: var(--color-accent, #e07730);
     margin-bottom: 0.5rem;
+  }
+
+  .crosslink-card__body h4 a {
+    color: var(--color-accent, #e07730);
+    text-decoration: none;
+  }
+
+  .crosslink-card__body h4 a:hover {
+    text-decoration: underline;
   }
 
   .crosslink-card__body p {
     color: var(--color-text-body, #5a5570);
     line-height: 1.6;
     font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  .crosslink-card__cta {
+    display: inline-block;
+    color: var(--color-accent, #e07730);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+  }
+
+  .crosslink-card__cta:hover {
+    text-decoration: underline;
   }
 </style>
