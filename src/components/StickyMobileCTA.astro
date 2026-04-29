@@ -1,9 +1,12 @@
 ---
+const { pathname } = Astro.url;
+const isContactPage = pathname === '/contact' || pathname === '/contact/';
+const bookHref = isContactPage ? '#contact-form' : '/contact/';
 ---
 
 <div class="sticky-mobile-cta">
   <a href="tel:+18012444791" class="sticky-mobile-cta__btn sticky-mobile-cta__btn--call">Call Now</a>
-  <a href="/contact/" class="sticky-mobile-cta__btn sticky-mobile-cta__btn--book">Book a Session</a>
+  <a href={bookHref} class="sticky-mobile-cta__btn sticky-mobile-cta__btn--book">Book a Session</a>
 </div>
 
 <style>

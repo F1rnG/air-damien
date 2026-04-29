@@ -107,7 +107,7 @@ const faqSchema = {
 const faqItems = [
   {
     question: "How much does the 10-day package cost?",
-    answer: "Contact Damien directly for current pricing. The package covers housing, food, transport, and instruction - most pilots find it is significantly cheaper than arranging everything separately."
+    answer: `Contact Damien directly for current pricing. The package covers housing, food, transport, and instruction - most pilots find it is significantly cheaper than arranging everything separately. For a full breakdown of what a Mexico paragliding trip typically runs, see our <a href="/paragliding-trip-mexico-cost/">Mexico trip cost breakdown</a>.`
   },
   {
     question: "When is the best time to go?",
@@ -127,7 +127,7 @@ const faqItems = [
   },
   {
     question: "How do I get to Mexico?",
-    answer: "Fly into Mexico City (MEX) or Toluca (TLC). We handle airport pickup and the drive to Valle de Bravo. No need to rent a car."
+    answer: `Fly into Mexico City (MEX) or Toluca (TLC). We handle airport pickup and the drive to Valle de Bravo. No need to rent a car. For full travel logistics, see our <a href="/valle-de-bravo-travel-guide-paragliders/">Valle de Bravo travel guide for paragliders</a>.`
   },
   {
     question: "Can I combine this with a specific clinic?",
@@ -473,26 +473,26 @@ const faqItems = [
     <div class="container">
       <h2 class="section__title animate-in">Want to Focus on Specific Skills?</h2>
       <div class="crosslink-grid animate-in">
-        <a href="/paragliding-clinics-mexico/paragliding-thermalling-clinic-mexico/" class="crosslink-card">
+        <div class="crosslink-card">
           <div class="crosslink-card__image">
             <img src="/images/coaching 1.jpg" alt="Thermalling clinic instruction in Valle de Bravo" width="800" height="500" loading="lazy" />
           </div>
           <div class="crosslink-card__body">
-            <h3>Thermalling Clinic</h3>
+            <h3><a href="/paragliding-clinics-mexico/paragliding-thermalling-clinic-mexico/">Thermalling Clinic</a></h3>
             <p>A focused clinic on finding, centering, and climbing in thermals. Build the foundation skill that everything else depends on.</p>
-            <span class="crosslink-card__link">Learn More</span>
+            <a href="/paragliding-clinics-mexico/paragliding-thermalling-clinic-mexico/" class="crosslink-card__link">View Thermalling Clinic</a>
           </div>
-        </a>
-        <a href="/paragliding-clinics-mexico/mexico-cross-country-xc-paragliding-clinics/" class="crosslink-card">
+        </div>
+        <div class="crosslink-card">
           <div class="crosslink-card__image">
             <img src="/images/landing 1.jpg" alt="Cross-country paragliding flight over the Mexican landscape" width="800" height="500" loading="lazy" />
           </div>
           <div class="crosslink-card__body">
-            <h3>XC Clinic</h3>
+            <h3><a href="/paragliding-clinics-mexico/mexico-cross-country-xc-paragliding-clinics/">XC Clinic</a></h3>
             <p>Ready to go places? Learn route planning, transition strategy, and the mental game of cross-country flying with full retrieve support.</p>
-            <span class="crosslink-card__link">Learn More</span>
+            <a href="/paragliding-clinics-mexico/mexico-cross-country-xc-paragliding-clinics/" class="crosslink-card__link">View XC Clinic</a>
           </div>
-        </a>
+        </div>
       </div>
     </div>
   </section>
@@ -1019,11 +1019,9 @@ const faqItems = [
   }
 
   .crosslink-card {
-    display: block;
     background: #faf8f5;
     border-radius: 12px;
     overflow: hidden;
-    text-decoration: none;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
@@ -1046,9 +1044,17 @@ const faqItems = [
 
   .crosslink-card__body h3 {
     font-size: 1.15rem;
-    color: #1a1a2e;
     margin-bottom: 0.5rem;
     font-weight: 700;
+  }
+
+  .crosslink-card__body h3 a {
+    color: #1a1a2e;
+    text-decoration: none;
+  }
+
+  .crosslink-card__body h3 a:hover {
+    color: #e07730;
   }
 
   .crosslink-card__body p {
@@ -1059,9 +1065,15 @@ const faqItems = [
   }
 
   .crosslink-card__link {
+    display: inline-block;
     color: #e07730;
     font-weight: 600;
     font-size: 0.95rem;
+    text-decoration: none;
+  }
+
+  .crosslink-card__link:hover {
+    text-decoration: underline;
   }
 
   @media (max-width: 768px) {

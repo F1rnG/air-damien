@@ -370,33 +370,36 @@ const faqItems = [
         <h2>Fly Year-Round with Air Damien</h2>
       </div>
       <div class="crosslink-grid animate-in">
-        <a href="/tours/10-day-paraglide-mexico-package/" class="crosslink-card">
+        <div class="crosslink-card">
           <div class="crosslink-card__image">
             <img src="/images/valle 1.jpg" alt="Valle de Bravo lakeside town" width="800" height="450" loading="lazy" />
           </div>
           <div class="crosslink-card__body">
-            <h4>Mexico - Valle de Bravo</h4>
+            <h4><a href="/tours/10-day-paraglide-mexico-package/">Mexico - Valle de Bravo</a></h4>
             <p>Winter season. The most consistent thermal flying in North America. Ten-day all-inclusive packages with instruction, housing, and transport.</p>
+            <a href="/tours/10-day-paraglide-mexico-package/" class="crosslink-card__cta">View Mexico Trip</a>
           </div>
-        </a>
-        <a href="/tours/colombia-paragliding-roldanillo/" class="crosslink-card">
+        </div>
+        <div class="crosslink-card">
           <div class="crosslink-card__image">
             <img src="/images/IMG_5312.jpg" alt="Paragliders soaring over mountain terrain" width="800" height="450" loading="lazy" />
           </div>
           <div class="crosslink-card__body">
-            <h4>Colombia - Roldanillo</h4>
+            <h4><a href="/tours/colombia-paragliding-roldanillo/">Colombia - Roldanillo</a></h4>
             <p>Spring season. World-class XC flying in the Cauca Valley. Strong, consistent thermals and long cross-country routes.</p>
+            <a href="/tours/colombia-paragliding-roldanillo/" class="crosslink-card__cta">View Colombia Trip</a>
           </div>
-        </a>
-        <a href="/tours/brazil-paragliding-governador-valadares/" class="crosslink-card">
+        </div>
+        <div class="crosslink-card">
           <div class="crosslink-card__image">
             <img src="/images/brazil_hero.jpg" alt="Paragliding in Governador Valadares, Brazil" width="800" height="450" loading="lazy" />
           </div>
           <div class="crosslink-card__body">
-            <h4>Brazil</h4>
+            <h4><a href="/tours/brazil-paragliding-governador-valadares/">Brazil</a></h4>
             <p>Spring season. Incredible flying terrain, vibrant culture, and some of the best conditions in South America.</p>
+            <a href="/tours/brazil-paragliding-governador-valadares/" class="crosslink-card__cta">View Brazil Trip</a>
           </div>
-        </a>
+        </div>
       </div>
     </div>
   </section>
@@ -790,13 +793,10 @@ const faqItems = [
   }
 
   .crosslink-card {
-    display: block;
     background: var(--color-white, #fff);
     border: 1px solid var(--color-border, #e5e2ea);
     border-radius: 12px;
     overflow: hidden;
-    text-decoration: none;
-    color: inherit;
     transition: box-shadow 0.2s, transform 0.2s;
   }
 
@@ -838,14 +838,35 @@ const faqItems = [
   }
 
   .crosslink-card__body h4 {
-    color: var(--color-accent, #e07730);
     margin-bottom: 0.5rem;
+  }
+
+  .crosslink-card__body h4 a {
+    color: var(--color-accent, #e07730);
+    text-decoration: none;
+  }
+
+  .crosslink-card__body h4 a:hover {
+    text-decoration: underline;
   }
 
   .crosslink-card__body p {
     color: var(--color-text-body, #5a5570);
     line-height: 1.6;
     font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  .crosslink-card__cta {
+    display: inline-block;
+    color: var(--color-accent, #e07730);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+  }
+
+  .crosslink-card__cta:hover {
+    text-decoration: underline;
   }
 
   /* ========================================
