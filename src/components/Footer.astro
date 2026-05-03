@@ -1,4 +1,7 @@
 ---
+const { pathname } = Astro.url;
+const isContactPage = pathname === '/contact' || pathname === '/contact/';
+const bookHref = isContactPage ? '#contact-form' : '/contact/';
 ---
 
 <!-- Pre-footer CTA band -->
@@ -7,7 +10,7 @@
     <h2 class="pre-footer-cta__heading">Ready to fly Valle de Bravo?</h2>
     <p class="pre-footer-cta__sub">Tell us your dates and we'll build a trip around you.</p>
     <div class="pre-footer-cta__buttons">
-      <a href="/contact/" class="btn btn--primary">Book Your Trip</a>
+      <a href={bookHref} class="btn btn--primary">Book Your Trip</a>
       <a href="tel:+18012444791" class="btn btn--outline">Call 801-244-4791</a>
     </div>
   </div>

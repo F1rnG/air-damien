@@ -62,11 +62,6 @@
   to = "/paragliding-valle-de-bravo/"
   status = 301
 
-[[redirects]]
-  from = "/tools/valle-de-bravo-conditions/"
-  to = "/valle-de-bravo-conditions/"
-  status = 301
-
 # Old WordPress sitemaps -> new sitemap
 [[redirects]]
   from = "/category-sitemap.xml"

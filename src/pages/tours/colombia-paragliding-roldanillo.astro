@@ -192,6 +192,9 @@ const faqItems = [
         <p class="hook__text">
           Whether you are chasing distance records or flying your first big XC, this is the right sky with the right guidance.
         </p>
+        <p class="hook__text">
+          Not sure which destination is right for you? Read our <a href="/valle-de-bravo-vs-roldanillo-paragliding/">Valle de Bravo vs Roldanillo comparison</a>.
+        </p>
       </div>
     </div>
   </section>
@@ -466,36 +469,36 @@ const faqItems = [
     <div class="container">
       <h2 class="section__title animate-in">Explore Other Destinations</h2>
       <div class="crosslink-grid animate-in">
-        <a href="/tours/10-day-paraglide-mexico-package/" class="crosslink-card">
+        <div class="crosslink-card">
           <div class="crosslink-card__image">
             <img src="/images/valle 1.jpg" alt="Valle de Bravo lakeside town" width="800" height="500" loading="lazy" />
           </div>
           <div class="crosslink-card__body">
-            <h3>Mexico - Valle de Bravo</h3>
+            <h3><a href="/tours/10-day-paraglide-mexico-package/">Mexico - Valle de Bravo</a></h3>
             <p>The Hair Dryer at El Penon. 300+ flyable days a year, clockwork thermals, and a charming lakeside town.</p>
-            <span class="crosslink-card__link">View Mexico Trip</span>
+            <a href="/tours/10-day-paraglide-mexico-package/" class="crosslink-card__link">View Mexico Trip</a>
           </div>
-        </a>
-        <a href="/tours/brazil-paragliding-governador-valadares/" class="crosslink-card">
+        </div>
+        <div class="crosslink-card">
           <div class="crosslink-card__image">
             <img src="/images/pico.jpg" alt="View from Pico da Ibituruna in Governador Valadares" width="800" height="500" loading="lazy" />
           </div>
           <div class="crosslink-card__body">
-            <h3>Brazil - Governador Valadares</h3>
+            <h3><a href="/tours/brazil-paragliding-governador-valadares/">Brazil - Governador Valadares</a></h3>
             <p>Fly from Pico da Ibituruna, the capital of free flight. Soft thermals, long XC corridors, and Brazilian flying culture.</p>
-            <span class="crosslink-card__link">View Brazil Trip</span>
+            <a href="/tours/brazil-paragliding-governador-valadares/" class="crosslink-card__link">View Brazil Trip</a>
           </div>
-        </a>
-        <a href="/tours/italy-paragliding-dolomites/" class="crosslink-card">
+        </div>
+        <div class="crosslink-card">
           <div class="crosslink-card__image">
             <img src="/images/fal di fassa.jpg" alt="Val di Fassa in the Italian Dolomites" width="800" height="500" loading="lazy" />
           </div>
           <div class="crosslink-card__body">
-            <h3>Italy - Dolomites</h3>
+            <h3><a href="/tours/italy-paragliding-dolomites/">Italy - Dolomites</a></h3>
             <p>Alpine flying through the most dramatic mountain scenery on earth.</p>
-            <span class="crosslink-card__link">View Italy Trip</span>
+            <a href="/tours/italy-paragliding-dolomites/" class="crosslink-card__link">View Italy Trip</a>
           </div>
-        </a>
+        </div>
       </div>
     </div>
   </section>
@@ -1082,11 +1085,9 @@ const faqItems = [
   }
 
   .crosslink-card {
-    display: block;
     background: #faf8f5;
     border-radius: 12px;
     overflow: hidden;
-    text-decoration: none;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
@@ -1109,9 +1110,17 @@ const faqItems = [
 
   .crosslink-card__body h3 {
     font-size: 1.15rem;
-    color: #1a1a2e;
     margin-bottom: 0.5rem;
     font-weight: 700;
+  }
+
+  .crosslink-card__body h3 a {
+    color: #1a1a2e;
+    text-decoration: none;
+  }
+
+  .crosslink-card__body h3 a:hover {
+    color: #e07730;
   }
 
   .crosslink-card__body p {
@@ -1122,9 +1131,15 @@ const faqItems = [
   }
 
   .crosslink-card__link {
+    display: inline-block;
     color: #e07730;
     font-weight: 600;
     font-size: 0.95rem;
+    text-decoration: none;
+  }
+
+  .crosslink-card__link:hover {
+    text-decoration: underline;
   }
 
   @media (max-width: 768px) {
