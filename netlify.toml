@@ -3,7 +3,7 @@
   publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "22.12.0"
 
 [[headers]]
   for = "/*"
@@ -60,6 +60,11 @@
 [[redirects]]
   from = "/first-day-paragliding-valle-de-bravo/"
   to = "/paragliding-valle-de-bravo/"
+  status = 301
+
+[[redirects]]
+  from = "/tools/valle-de-bravo-conditions/"
+  to = "/valle-de-bravo-conditions/"
   status = 301
 
 # Old WordPress sitemaps -> new sitemap
