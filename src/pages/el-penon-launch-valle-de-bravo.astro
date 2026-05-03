@@ -21,8 +21,8 @@ const placeSchema = {
   image: 'https://airdamien.com/images/el%20penon.jpg',
   geo: {
     '@type': 'GeoCoordinates',
-    latitude: 19.21,
-    longitude: -100.15
+    latitude: 19.061997,
+    longitude: -100.090997
   },
   address: {
     '@type': 'PostalAddress',
@@ -146,20 +146,31 @@ const photos = [
 const mapPoints = [
   {
     name: 'El Penon launch',
-    coords: 'Approx. 19.21, -100.15',
-    detail: 'Primary Valle de Bravo mountain launch, approximately 7,600 ft / 2,316m ASL.'
+    lat: 19.061997,
+    lng: -100.090997,
+    coords: '19.061997, -100.090997',
+    detail: 'Primary Valle de Bravo mountain launch, approximately 7,600 ft / 2,316m ASL.',
+    type: 'launch'
   },
   {
     name: 'Piano LZ',
-    coords: 'Approximate coordinates to verify',
-    detail: 'Large landing zone roughly 1.5 miles from launch, named for its shape.'
+    lat: 19.041882,
+    lng: -100.104940,
+    coords: '19.041882, -100.104940',
+    detail: 'Large landing zone roughly 1.5 miles from launch, named for its piano-key shape.',
+    type: 'piano'
   },
   {
     name: 'Beach LZ / Aterrizaje Parapente',
+    lat: 19.183792,
+    lng: -100.127785,
     coords: '19.183792, -100.127785',
-    detail: 'Lakefront landing area near town at Marina Nacional 202.'
+    detail: 'Lakefront landing area in town at Marina Nacional 202.',
+    type: 'beach'
   }
 ];
+
+const mapPointsJSON = JSON.stringify(mapPoints);
 ---
 
 <BaseLayout
@@ -202,7 +213,6 @@ const mapPoints = [
         <p>The launch sits at approximately 7,600 ft / 2,316m ASL above Valle de Bravo. El Penon means "the big rock" in Spanish, a fitting name for a volcanic peak on the rim of an ancient caldera overlooking Lake Avandaro and the town below.</p>
         <p>I have flown this site for 25+ years - more than 10,000 flights - and run guided trips here every winter. What makes El Penon special is not one feature but the combination: a wide forgiving launch, consistent thermal cycles, oversized landing zones, predictable wind patterns, and a town you actually want to spend time in. Most launches optimize for one of those. El Penon optimizes for all of them, which is why pilots from around the world keep coming back.</p>
         <p>For visiting pilots, El Penon is both a big-mountain launch and a repeatable learning environment. Volcanic ridges, rock faces, valley terrain, and lake-influenced air combine into a flying area with a reliable daily rhythm. The site rewards repetition - by day three of a trip, the air starts to feel familiar; by day seven, you are reading conditions that would have looked random on day one. For the full site picture see our <a href="/paragliding-valle-de-bravo/">Valle de Bravo paragliding guide</a>.</p>
-        <!-- DAMIEN TO VERIFY: Exact El Penon launch coordinates. Current page uses approximately 19.21, -100.15 per draft brief. -->
       </div>
 
       <aside class="fact-panel" aria-label="El Penon quick facts">
@@ -222,7 +232,7 @@ const mapPoints = [
           </div>
           <div>
             <dt>Coordinates</dt>
-            <dd>Approx. 19.21, -100.15</dd>
+            <dd>19.061997, -100.090997</dd>
           </div>
           <div>
             <dt>Primary LZs</dt>
@@ -242,33 +252,84 @@ const mapPoints = [
       </div>
 
       <div class="map-layout">
-        <div class="map-frame">
-          <iframe
-            title="OpenStreetMap centered on El Penon launch in Valle de Bravo"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=-100.175%2C19.165%2C-100.105%2C19.225&amp;layer=mapnik&amp;marker=19.21%2C-100.15"
-            loading="lazy"
-          ></iframe>
-          <div class="map-pins" aria-hidden="true">
-            <span class="map-pin map-pin--launch" style="--x: 36%; --y: 25%;"><span>El Penon launch</span></span>
-            <!-- DAMIEN TO VERIFY: Piano LZ coordinate and exact map placement. -->
-            <span class="map-pin map-pin--piano" style="--x: 51%; --y: 45%;"><span>Piano LZ approx.</span></span>
-            <span class="map-pin map-pin--beach" style="--x: 68%; --y: 69%;"><span>Beach LZ</span></span>
-          </div>
+        <div
+          id="el-penon-map"
+          class="map-frame"
+          role="application"
+          aria-label="Interactive map of El Penon launch and landing zones"
+          data-map-points={mapPointsJSON}
+        >
+          <noscript>
+            <iframe
+              title="OpenStreetMap centered on El Penon launch"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=-100.155%2C19.030%2C-100.070%2C19.200&amp;layer=mapnik&amp;marker=19.061997%2C-100.090997"
+              loading="lazy"
+            ></iframe>
+          </noscript>
         </div>
 
         <div class="map-points">
           {mapPoints.map((point) => (
             <article class="map-point">
               <h3>{point.name}</h3>
-              <p class="map-point__coords">{point.coords}</p>
+              <p class="map-point__coords"><a href={`https://www.google.com/maps/search/?api=1&query=${point.lat},${point.lng}`} target="_blank" rel="noopener noreferrer">{point.coords}</a></p>
               <p>{point.detail}</p>
             </article>
           ))}
-          <!-- DAMIEN TO VERIFY: Piano LZ exact coordinates and current access status. -->
         </div>
       </div>
     </div>
   </section>
+
+  <Fragment slot="head">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  </Fragment>
+
+  <script
+    is:inline
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+
+  <script is:inline>
+    (function () {
+      const container = document.getElementById('el-penon-map');
+      if (!container || typeof L === 'undefined') return;
+
+      const points = JSON.parse(container.dataset.mapPoints || '[]');
+      if (!points.length) return;
+
+      const map = L.map(container, { scrollWheelZoom: false });
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 18
+      }).addTo(map);
+
+      const colors = { launch: '#e07730', piano: '#3b3160', beach: '#2d7a4f' };
+
+      const bounds = [];
+      points.forEach((p) => {
+        const color = colors[p.type] || '#e07730';
+        const icon = L.divIcon({
+          className: 'el-penon-marker',
+          html: '<span class="el-penon-marker__pin" style="background:' + color + '"></span><span class="el-penon-marker__label">' + p.name + '</span>',
+          iconSize: [180, 40],
+          iconAnchor: [12, 36]
+        });
+        L.marker([p.lat, p.lng], { icon: icon, title: p.name })
+          .addTo(map)
+          .bindPopup(
+            '<strong>' + p.name + '</strong><br />' +
+            '<span style="color:#5a5570">' + p.coords + '</span><br />' +
+            p.detail
+          );
+        bounds.push([p.lat, p.lng]);
+      });
+
+      map.fitBounds(bounds, { padding: [40, 40] });
+    })();
+  </script>
 
   <section class="section section--white" aria-labelledby="flying-area-heading">
     <div class="container reference-body">
@@ -338,11 +399,10 @@ const mapPoints = [
             </div>
             <div>
               <dt>Coordinates</dt>
-              <dd>DAMIEN TO VERIFY</dd>
+              <dd>19.041882, -100.104940</dd>
             </div>
           </dl>
           <p>Piano LZ is the main landing zone for El Penon, named for its piano-key shape when viewed from the air. It is a large flat field with good approach options from multiple directions, and it is where the retrieve vehicle picks pilots up after a typical morning flight. From the air it is impossible to miss - you can see it clearly from anywhere in the Fish Bowl. Land-out anxiety, which is real at most US sites with tight LZs, is essentially absent here. Confirm current access, approach notes, and any local restrictions during your daily site briefing.</p>
-          <!-- DAMIEN TO VERIFY: Piano LZ exact coordinates and current access status. -->
         </article>
       </div>
 
@@ -656,61 +716,53 @@ const mapPoints = [
     box-shadow: 0 16px 36px rgba(42, 32, 80, 0.13);
   }
 
-  .map-frame iframe {
+  .map-frame iframe,
+  .map-frame :global(.leaflet-container) {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     border: 0;
+    border-radius: 8px;
   }
 
-  .map-pins {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
+  /* Custom Leaflet marker pin + label */
+  :global(.el-penon-marker) {
+    position: relative;
   }
 
-  .map-pin {
-    position: absolute;
-    left: var(--x);
-    top: var(--y);
-    transform: translate(-50%, -100%);
-    display: grid;
-    justify-items: center;
-    gap: 0.3rem;
-  }
-
-  .map-pin::before {
-    content: "";
+  :global(.el-penon-marker__pin) {
+    display: block;
     width: 18px;
     height: 18px;
     border: 3px solid #ffffff;
     border-radius: 50% 50% 50% 0;
-    background: var(--color-accent, #e07730);
     transform: rotate(-45deg);
     box-shadow: 0 4px 12px rgba(42, 32, 80, 0.35);
   }
 
-  .map-pin span {
+  :global(.el-penon-marker__label) {
+    position: absolute;
+    left: 24px;
+    top: -2px;
     border-radius: 4px;
     background: rgba(42, 32, 80, 0.92);
     color: #ffffff;
-    padding: 0.3rem 0.5rem;
-    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.72rem;
     font-weight: 800;
     white-space: nowrap;
   }
 
-  .map-pin--launch::before {
-    background: var(--color-accent, #e07730);
+  :global(.leaflet-popup-content-wrapper) {
+    border-radius: 8px;
+    box-shadow: 0 10px 24px rgba(42, 32, 80, 0.2);
   }
 
-  .map-pin--piano::before {
-    background: var(--color-primary, #3b3160);
-  }
-
-  .map-pin--beach::before {
-    background: var(--color-success, #2d7a4f);
+  :global(.leaflet-popup-content) {
+    margin: 0.85rem 1rem;
+    line-height: 1.55;
+    font-size: 0.9rem;
   }
 
   .map-points {
