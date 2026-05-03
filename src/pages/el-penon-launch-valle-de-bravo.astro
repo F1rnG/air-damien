@@ -3,13 +3,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import SchemaMarkup from '../components/SchemaMarkup.astro';
 
-const pageTitle = "El Penon Launch: Valle de Bravo's Paragliding Launch Site | Air Damien";
-const pageDescription = "Everything you need to know about El Penon, the primary paragliding launch at Valle de Bravo. Location, elevation, conditions, and what makes it one of the best launches in the world.";
+const pageTitle = "El Penon Site Guide: Paragliding at Valle de Bravo | Air Damien";
+const pageDescription = "The complete site guide to El Penon, the primary paragliding launch at Valle de Bravo. Location, elevation, terrain, the Hair Dryer thermal cycle, landing zones, and what makes it one of the best launches in the world.";
 
 const breadcrumbs = [
   { name: 'Home', url: 'https://airdamien.com/' },
   { name: 'Valle de Bravo Guide', url: 'https://airdamien.com/paragliding-valle-de-bravo/' },
-  { name: 'El Penon Launch Guide', url: 'https://airdamien.com/el-penon-launch-valle-de-bravo/' }
+  { name: 'El Penon Site Guide', url: 'https://airdamien.com/el-penon-launch-valle-de-bravo/' }
 ];
 
 const placeSchema = {
@@ -39,7 +39,7 @@ const placeSchema = {
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: "El Penon: Valle de Bravo's World-Class Paragliding Launch",
+  headline: "El Penon Site Guide: Paragliding at Valle de Bravo",
   description: pageDescription,
   url: 'https://airdamien.com/el-penon-launch-valle-de-bravo/',
   image: 'https://airdamien.com/images/el%20penon.jpg',
@@ -186,9 +186,9 @@ const mapPointsJSON = JSON.stringify(mapPoints);
     <img class="launch-hero__bg" src="/images/el penon.jpg" alt="El Penon launch site in Valle de Bravo" width="1920" height="1280" loading="eager" />
     <div class="launch-hero__overlay"></div>
     <div class="launch-hero__content">
-      <p class="eyebrow">Launch guide</p>
-      <h1>El Penon: Valle de Bravo's World-Class Launch</h1>
-      <p>The complete pilot's guide to El Penon - location, terrain, landing zones, the Hair Dryer thermal cycle, and what 25+ years of flying this site has taught me about getting the most out of it.</p>
+      <p class="eyebrow">Site guide</p>
+      <h1>El Penon Site Guide</h1>
+      <p>The complete pilot's site guide to El Penon - location, terrain, landing zones, the Hair Dryer thermal cycle, and what 25+ years of flying this site has taught me about getting the most out of it.</p>
     </div>
   </section>
 
