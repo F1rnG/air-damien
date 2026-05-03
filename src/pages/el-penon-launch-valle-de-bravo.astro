@@ -1,0 +1,690 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
+
+const pageTitle = "El Penon Launch: Valle de Bravo's Paragliding Launch Site | Air Damien";
+const pageDescription = "Everything you need to know about El Penon, the primary paragliding launch at Valle de Bravo. Location, elevation, conditions, and what makes it one of the best launches in the world.";
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://airdamien.com/' },
+  { name: 'Valle de Bravo Guide', url: 'https://airdamien.com/paragliding-valle-de-bravo/' },
+  { name: 'El Penon Launch Guide', url: 'https://airdamien.com/el-penon-launch-valle-de-bravo/' }
+];
+
+const placeSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Place',
+  name: 'El Penon Launch',
+  description: pageDescription,
+  url: 'https://airdamien.com/el-penon-launch-valle-de-bravo/',
+  image: 'https://airdamien.com/images/el%20penon.jpg',
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 19.21,
+    longitude: -100.15
+  },
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Valle de Bravo',
+    addressRegion: 'State of Mexico',
+    addressCountry: 'MX'
+  },
+  containedInPlace: {
+    '@type': 'Place',
+    name: 'Valle de Bravo'
+  }
+};
+
+const photos = [
+  {
+    src: '/images/el penon.jpg',
+    alt: 'El Penon launch terrain in Valle de Bravo',
+    caption: 'El Penon launch terrain'
+  },
+  {
+    src: '/images/val6.jpg',
+    alt: 'Paraglider flying above the volcanic ridges near El Penon',
+    caption: 'Volcanic ridges and launch area'
+  },
+  {
+    src: '/images/cross.jpg',
+    alt: 'The cross above El Penon overlooking Valle de Bravo',
+    caption: 'The view from the upper terrain'
+  },
+  {
+    src: '/images/landing 1.jpg',
+    alt: 'Pilot landing in Valle de Bravo',
+    caption: 'Landing practice in Valle de Bravo'
+  },
+  {
+    src: '/images/valle 1.jpg',
+    alt: 'Lake Avandaro and Valle de Bravo town',
+    caption: 'Lake Avandaro and town'
+  }
+];
+
+const mapPoints = [
+  {
+    name: 'El Penon launch',
+    coords: 'Approx. 19.21, -100.15',
+    detail: 'Primary Valle de Bravo mountain launch, approximately 7,600 ft / 2,316m ASL.'
+  },
+  {
+    name: 'Piano LZ',
+    coords: 'Approximate coordinates to verify',
+    detail: 'Large landing zone roughly 1.5 miles from launch, named for its shape.'
+  },
+  {
+    name: 'Beach LZ / Aterrizaje Parapente',
+    coords: '19.183792, -100.127785',
+    detail: 'Lakefront landing area near town at Marina Nacional 202.'
+  }
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalUrl="https://airdamien.com/el-penon-launch-valle-de-bravo/"
+>
+  <SchemaMarkup schema={placeSchema} />
+
+  <section class="launch-hero">
+    <img class="launch-hero__bg" src="/images/el penon.jpg" alt="El Penon launch site in Valle de Bravo" width="1920" height="1280" loading="eager" />
+    <div class="launch-hero__overlay"></div>
+    <div class="launch-hero__content">
+      <p class="eyebrow">Launch guide</p>
+      <h1>El Penon: Valle de Bravo's World-Class Launch</h1>
+      <p>A pilot's reference for the primary paragliding launch at Valle de Bravo: location, terrain, landing zones, access, and the local thermal cycle.</p>
+    </div>
+  </section>
+
+  <Breadcrumbs items={breadcrumbs} />
+
+  <div class="container author-wrap">
+    <div class="author-card">
+      <img src="/images/damion.jpg" alt="Damien Mitchell" width="56" height="56" class="author-card__avatar" />
+      <div class="author-card__info">
+        <a href="/about-us/" class="author-card__name">Damien Mitchell</a>
+        <span class="author-card__title">USHPA Advanced Instructor</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="section section--white overview-section" aria-labelledby="overview-heading">
+    <div class="container guide-grid">
+      <div class="guide-copy">
+        <p class="eyebrow">Section 1</p>
+        <h2 id="overview-heading">Overview</h2>
+        <p class="lead">El Penon is the primary paragliding launch at Valle de Bravo and one of the best-known mountain thermal sites in North America.</p>
+        <p>The launch sits at approximately 7,600 ft / 2,316m ASL above Valle de Bravo. El Penon means "the big rock" in Spanish, a fitting name for a volcanic peak on the rim of an ancient caldera overlooking Lake Avandaro and the town below.</p>
+        <p>For visiting pilots, El Penon is both a big-mountain launch and a repeatable learning environment: volcanic ridges, rock faces, valley terrain, and lake-influenced air all combine into a flying area with a reliable daily rhythm.</p>
+        <!-- DAMIEN TO VERIFY: Exact El Penon launch coordinates. Current page uses approximately 19.21, -100.15 per draft brief. -->
+      </div>
+
+      <aside class="fact-panel" aria-label="El Penon quick facts">
+        <h3>Quick Reference</h3>
+        <dl>
+          <div>
+            <dt>Launch</dt>
+            <dd>El Penon</dd>
+          </div>
+          <div>
+            <dt>Area</dt>
+            <dd>Valle de Bravo, Mexico</dd>
+          </div>
+          <div>
+            <dt>Elevation</dt>
+            <dd>Approx. 7,600 ft / 2,316m ASL</dd>
+          </div>
+          <div>
+            <dt>Coordinates</dt>
+            <dd>Approx. 19.21, -100.15</dd>
+          </div>
+          <div>
+            <dt>Primary LZs</dt>
+            <dd>Piano LZ and Beach LZ</dd>
+          </div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section--cream map-section" aria-labelledby="map-heading">
+    <div class="container">
+      <div class="section-intro">
+        <p class="eyebrow">Section 2</p>
+        <h2 id="map-heading">Map</h2>
+        <p>El Penon sits above Valle de Bravo, with Lake Avandaro and the main landing zones below.</p>
+      </div>
+
+      <div class="map-layout">
+        <div class="map-frame">
+          <iframe
+            title="OpenStreetMap centered on El Penon launch in Valle de Bravo"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-100.175%2C19.165%2C-100.105%2C19.225&amp;layer=mapnik&amp;marker=19.21%2C-100.15"
+            loading="lazy"
+          ></iframe>
+          <div class="map-pins" aria-hidden="true">
+            <span class="map-pin map-pin--launch" style="--x: 36%; --y: 25%;"><span>El Penon launch</span></span>
+            <!-- DAMIEN TO VERIFY: Piano LZ coordinate and exact map placement. -->
+            <span class="map-pin map-pin--piano" style="--x: 51%; --y: 45%;"><span>Piano LZ approx.</span></span>
+            <span class="map-pin map-pin--beach" style="--x: 68%; --y: 69%;"><span>Beach LZ</span></span>
+          </div>
+        </div>
+
+        <div class="map-points">
+          {mapPoints.map((point) => (
+            <article class="map-point">
+              <h3>{point.name}</h3>
+              <p class="map-point__coords">{point.coords}</p>
+              <p>{point.detail}</p>
+            </article>
+          ))}
+          <!-- DAMIEN TO VERIFY: Piano LZ exact coordinates and current access status. -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white" aria-labelledby="flying-area-heading">
+    <div class="container reference-body">
+      <p class="eyebrow">Section 3</p>
+      <h2 id="flying-area-heading">The Flying Area</h2>
+      <p>The primary flying area in front of launch is commonly known as the Fish Bowl. It is an amphitheater-like piece of volcanic terrain where pilots work lift in view of launch, the lake, and the valley floor.</p>
+      <p>The landscape includes volcanic ridges, rock faces, the lake, and open valley terrain. The shape of the terrain gives visiting pilots clear visual references while they learn how the air moves through the site.</p>
+      <p>This guide intentionally stays general on route details. Specific thermal triggers, terrain-feature names, and cross-country lines should come from a current local briefing.</p>
+      <!-- DAMIEN TO VERIFY: Specific names of terrain features such as spines, walls, mesas, The Rock, and other local route references. -->
+    </div>
+  </section>
+
+  <section class="section section--cream" aria-labelledby="hair-dryer-heading">
+    <div class="container reference-body">
+      <p class="eyebrow">Section 4</p>
+      <h2 id="hair-dryer-heading">The Hair Dryer</h2>
+      <p>The Hair Dryer is the local name for El Penon's reliable daily thermal cycle. In general terms, thermals begin cycling around mid-morning with strong regularity, giving the site its reputation for repeatable flying days.</p>
+      <p>The reliability comes from a combination of terrain and weather: volcanic rock absorbing heat, consistent solar exposure, and interaction between the lake, valley wind, and the surrounding slopes.</p>
+      <p>For Air Damien pilots, the important part is not memorizing a clock time. It is learning how Damien reads the actual day: wind at launch, cloud development, thermal spacing, and how the air feels as the cycle turns on.</p>
+      <!-- DAMIEN TO VERIFY: Exact Hair Dryer timing, typical thermal strengths, and how the cycle varies by season. -->
+    </div>
+  </section>
+
+  <section class="section section--white" aria-labelledby="landing-zones-heading">
+    <div class="container">
+      <div class="section-intro">
+        <p class="eyebrow">Section 5</p>
+        <h2 id="landing-zones-heading">Landing Zones</h2>
+        <p>The main landing zones give pilots multiple ways to end a flight depending on the session, the day, and the plan.</p>
+      </div>
+
+      <div class="lz-grid">
+        <article class="lz-card">
+          <h3>Beach LZ / Aterrizaje Parapente Paragliding Landing</h3>
+          <dl>
+            <div>
+              <dt>Address</dt>
+              <dd>Marina Nacional 202, Sin Nombre, Valle de Bravo, Mexico</dd>
+            </div>
+            <div>
+              <dt>Coordinates</dt>
+              <dd>19.183792, -100.127785</dd>
+            </div>
+          </dl>
+          <p>The Beach LZ is a lakefront landing area near town and Lake Avandaro. It is also the location listed in the site footer as Air Damien's Valle de Bravo landing reference.</p>
+        </article>
+
+        <article class="lz-card">
+          <h3>Piano LZ</h3>
+          <dl>
+            <div>
+              <dt>Location</dt>
+              <dd>Approximately 1.5 miles from launch</dd>
+            </div>
+            <div>
+              <dt>Coordinates</dt>
+              <dd>DAMIEN TO VERIFY</dd>
+            </div>
+          </dl>
+          <p>Piano LZ is a large landing zone named for its shape. Confirm current access, approach notes, and any local restrictions during the daily site briefing.</p>
+          <!-- DAMIEN TO VERIFY: Piano LZ exact coordinates and current access status. -->
+        </article>
+      </div>
+
+      <!-- DAMIEN TO VERIFY: Any other LZs, LZ rules, restricted areas, and current approach requirements. -->
+    </div>
+  </section>
+
+  <section class="section section--cream" aria-labelledby="pilot-requirements-heading">
+    <div class="container reference-body">
+      <p class="eyebrow">Section 6</p>
+      <h2 id="pilot-requirements-heading">Who Can Fly Here</h2>
+      <p>El Penon is a mountain thermal site. Independent pilots should be current, properly rated for the conditions, comfortable with active-air decision-making, and briefed on the local rules before flying.</p>
+      <p>Local requirements can change. Visiting pilots should confirm rating expectations, launch access, landing zone rules, and any club or site requirements before planning an independent flight.</p>
+      <p><strong>If you fly with Air Damien, Damien handles all local coordination and logistics.</strong></p>
+      <!-- DAMIEN TO VERIFY: Local club rules, membership requirements, time-of-day restrictions by rating, and any fees. -->
+    </div>
+  </section>
+
+  <section class="section section--white" aria-labelledby="getting-to-launch-heading">
+    <div class="container reference-body">
+      <p class="eyebrow">Section 7</p>
+      <h2 id="getting-to-launch-heading">Getting to Launch</h2>
+      <p>Getting to El Penon generally means driving up a mountain road from Valle de Bravo town. Air Damien trips include launch logistics, so pilots can focus on the weather, the briefing, and their flying plan.</p>
+      <p>Independent pilots should verify access details before going up: road condition, parking, current launch rules, and the best way to coordinate a retrieve after landing.</p>
+      <!-- DAMIEN TO VERIFY: Road conditions, drive time from town, parking situation, and any access restrictions. -->
+    </div>
+  </section>
+
+  <section class="section section--cream" aria-labelledby="photos-heading">
+    <div class="container">
+      <div class="section-intro">
+        <p class="eyebrow">Section 8</p>
+        <h2 id="photos-heading">Photos from El Penon and Valle de Bravo</h2>
+        <p>A few existing Air Damien images from the launch area, flying terrain, views, and landing environment.</p>
+      </div>
+
+      <div class="photo-grid">
+        {photos.map((photo) => (
+          <figure class="photo-card">
+            <img src={photo.src} alt={photo.alt} width="800" height="600" loading="lazy" />
+            <figcaption>{photo.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--purple launch-cta" aria-labelledby="launch-cta-heading">
+    <div class="container">
+      <div class="launch-cta__content">
+        <h2 id="launch-cta-heading">Ready to Fly El Penon?</h2>
+        <p>Air Damien offers guided trips and clinics at Valle de Bravo with daily instruction, transport to launch, and everything handled.</p>
+        <div class="launch-cta__buttons">
+          <a href="/tours/10-day-paraglide-mexico-package/" class="btn btn--primary">10-day Mexico package</a>
+          <a href="/paragliding-clinics-mexico/paragliding-thermalling-clinic-mexico/" class="btn btn--outline">Thermalling clinic</a>
+          <a href="/tours/custom-paragliding-trip-mexico/" class="btn btn--outline">Custom trip</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .launch-hero {
+    position: relative;
+    min-height: 64vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .launch-hero__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .launch-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(42, 32, 80, 0.08), rgba(42, 32, 80, 0.88));
+  }
+
+  .launch-hero__content {
+    position: relative;
+    z-index: 1;
+    max-width: 880px;
+    padding: calc(var(--nav-height) + 3rem) 1.5rem 4rem;
+  }
+
+  .launch-hero h1,
+  .launch-hero p {
+    color: #ffffff;
+  }
+
+  .launch-hero h1 {
+    margin-bottom: 1rem;
+    font-size: clamp(2rem, 4.4vw, 3.45rem);
+  }
+
+  .launch-hero p:not(.eyebrow) {
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: 1.15rem;
+    line-height: 1.7;
+  }
+
+  .eyebrow {
+    margin-bottom: 0.65rem;
+    color: var(--color-accent, #e07730);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .author-wrap {
+    max-width: 980px;
+  }
+
+  .author-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--color-bg-warm, #f9f7f3);
+    border-left: 4px solid var(--color-accent, #e07730);
+    border-radius: 8px;
+    margin: 1.5rem 0 0;
+  }
+
+  .author-card__avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color-accent, #e07730);
+    flex-shrink: 0;
+  }
+
+  .author-card__info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .author-card__name {
+    color: var(--color-text, #2a2050);
+    font-weight: 600;
+  }
+
+  .author-card__title {
+    color: var(--color-accent, #e07730);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .guide-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+
+  .guide-copy,
+  .reference-body,
+  .section-intro {
+    max-width: 820px;
+  }
+
+  .lead {
+    color: var(--color-text, #2a2050);
+    font-size: 1.18rem;
+    font-weight: 600;
+    line-height: 1.75;
+  }
+
+  .guide-copy p,
+  .reference-body p,
+  .section-intro p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .guide-copy h2,
+  .reference-body h2,
+  .section-intro h2 {
+    margin-bottom: 1rem;
+  }
+
+  .fact-panel,
+  .map-point,
+  .lz-card,
+  .photo-card {
+    border: 1px solid var(--color-border, #d8d4e0);
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 10px 28px rgba(42, 32, 80, 0.08);
+  }
+
+  .fact-panel {
+    padding: 1.4rem;
+  }
+
+  .fact-panel h3 {
+    margin-bottom: 1rem;
+  }
+
+  .fact-panel dl,
+  .lz-card dl {
+    display: grid;
+    gap: 0.85rem;
+    margin: 0;
+  }
+
+  .fact-panel dl div,
+  .lz-card dl div {
+    border-bottom: 1px solid var(--color-border, #d8d4e0);
+    padding-bottom: 0.75rem;
+  }
+
+  .fact-panel dt,
+  .lz-card dt {
+    color: var(--color-text-body, #5a5570);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .fact-panel dd,
+  .lz-card dd {
+    color: var(--color-text, #2a2050);
+    font-weight: 700;
+  }
+
+  .map-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.7fr);
+    gap: 1.25rem;
+    align-items: stretch;
+  }
+
+  .map-frame {
+    position: relative;
+    min-height: 520px;
+    overflow: hidden;
+    border: 1px solid var(--color-border, #d8d4e0);
+    border-radius: 8px;
+    background: var(--color-bg-lavender, #f4f2fa);
+    box-shadow: 0 16px 36px rgba(42, 32, 80, 0.13);
+  }
+
+  .map-frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .map-pins {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .map-pin {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    transform: translate(-50%, -100%);
+    display: grid;
+    justify-items: center;
+    gap: 0.3rem;
+  }
+
+  .map-pin::before {
+    content: "";
+    width: 18px;
+    height: 18px;
+    border: 3px solid #ffffff;
+    border-radius: 50% 50% 50% 0;
+    background: var(--color-accent, #e07730);
+    transform: rotate(-45deg);
+    box-shadow: 0 4px 12px rgba(42, 32, 80, 0.35);
+  }
+
+  .map-pin span {
+    border-radius: 4px;
+    background: rgba(42, 32, 80, 0.92);
+    color: #ffffff;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+
+  .map-pin--launch::before {
+    background: var(--color-accent, #e07730);
+  }
+
+  .map-pin--piano::before {
+    background: var(--color-primary, #3b3160);
+  }
+
+  .map-pin--beach::before {
+    background: var(--color-success, #2d7a4f);
+  }
+
+  .map-points {
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .map-point {
+    padding: 1rem;
+  }
+
+  .map-point h3 {
+    margin-bottom: 0.35rem;
+    font-size: 1.05rem;
+  }
+
+  .map-point__coords {
+    margin-bottom: 0.35rem;
+    color: var(--color-accent, #e07730);
+    font-weight: 800;
+  }
+
+  .map-point p:last-child {
+    margin-bottom: 0;
+    line-height: 1.55;
+  }
+
+  .lz-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .lz-card {
+    padding: 1.35rem;
+  }
+
+  .lz-card h3 {
+    margin-bottom: 1rem;
+  }
+
+  .lz-card p {
+    margin: 1rem 0 0;
+    line-height: 1.7;
+  }
+
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+
+  .photo-card {
+    overflow: hidden;
+  }
+
+  .photo-card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .photo-card figcaption {
+    padding: 0.8rem;
+    color: var(--color-text, #2a2050);
+    font-size: 0.86rem;
+    font-weight: 800;
+  }
+
+  .launch-cta {
+    text-align: center;
+  }
+
+  .launch-cta__content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .launch-cta h2 {
+    margin-bottom: 0.75rem;
+  }
+
+  .launch-cta p {
+    color: var(--color-text-on-dark-muted, #c4b8e0);
+    font-size: 1.1rem;
+    line-height: 1.75;
+  }
+
+  .launch-cta__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.85rem;
+    margin-top: 1.5rem;
+  }
+
+  @media (max-width: 980px) {
+    .guide-grid,
+    .map-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .photo-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 720px) {
+    .launch-hero {
+      min-height: 66vh;
+    }
+
+    .map-frame {
+      min-height: 420px;
+    }
+
+    .map-pin span {
+      font-size: 0.68rem;
+    }
+
+    .lz-grid,
+    .photo-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

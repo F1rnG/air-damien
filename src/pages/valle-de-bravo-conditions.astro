@@ -1,0 +1,2450 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
+
+const pageTitle = 'Valle de Bravo Paragliding Conditions: Weather, Thermals, and Season Guide | Air Damien';
+const pageDescription = 'Check paragliding conditions in Valle de Bravo by month. Thermal patterns, temperature ranges, cloudbase estimates, wind patterns, and flyability ratings.';
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://airdamien.com/' },
+  { name: 'Valle de Bravo Guide', url: 'https://airdamien.com/paragliding-valle-de-bravo/' },
+  { name: 'Valle de Bravo Conditions', url: 'https://airdamien.com/valle-de-bravo-conditions/' }
+];
+
+const pageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Valle de Bravo Paragliding Conditions',
+  headline: 'Valle de Bravo Paragliding Conditions',
+  description: pageDescription,
+  url: 'https://airdamien.com/valle-de-bravo-conditions/',
+  dateModified: '2026-05-03',
+  author: {
+    '@type': 'Person',
+    name: 'Damien Mitchell',
+    url: 'https://airdamien.com/about-us/',
+    jobTitle: 'USHPA Advanced Instructor'
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Air Damien',
+    url: 'https://airdamien.com',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://airdamien.com/images/logo.png'
+    }
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': 'https://airdamien.com/valle-de-bravo-conditions/'
+  },
+  image: 'https://airdamien.com/images/val6.jpg'
+};
+
+const monthlyConditions = [
+  {
+    name: 'November',
+    slug: 'november',
+    rating: 5,
+    temp: '50-75F',
+    thermals: 'Strong thermals',
+    cloudbase: '9,500-10,500 ft',
+    window: '10am-3pm',
+    rain: 'Low rain',
+    crowds: 'Moderate crowds',
+    xc: 'Excellent XC',
+    season: 'Peak',
+    recommendation: 'One of the best all-around months for clean air, reliable cycles, and skill-building flights.'
+  },
+  {
+    name: 'December',
+    slug: 'december',
+    rating: 5,
+    temp: '50-75F',
+    thermals: 'Strong thermals',
+    cloudbase: '9,500-10,500 ft',
+    window: '10am-3pm',
+    rain: 'Low rain',
+    crowds: 'High crowds',
+    xc: 'Excellent XC',
+    season: 'Peak',
+    recommendation: 'Peak-season power and consistency, with the busiest launch environment of the year.'
+  },
+  {
+    name: 'January',
+    slug: 'january',
+    rating: 5,
+    temp: '48-73F',
+    thermals: 'Strong thermals',
+    cloudbase: '9,000-10,000 ft',
+    window: '10am-2:30pm',
+    rain: 'Low rain',
+    crowds: 'Moderate crowds',
+    xc: 'Excellent XC',
+    season: 'Peak',
+    recommendation: 'Excellent peak-season flying with cooler mornings and fewer holiday crowds.'
+  },
+  {
+    name: 'February',
+    slug: 'february',
+    rating: 4.5,
+    temp: '50-78F',
+    thermals: 'Strong thermals',
+    cloudbase: '9,500-10,500 ft',
+    window: '10am-3pm',
+    rain: 'Low rain',
+    crowds: 'Low-moderate crowds',
+    xc: 'Excellent XC',
+    season: 'Peak',
+    recommendation: 'A strong value month for pilots who want reliable conditions and smaller groups.'
+  },
+  {
+    name: 'March',
+    slug: 'march',
+    rating: 4,
+    temp: '55-82F',
+    thermals: 'Moderate-strong thermals',
+    cloudbase: '8,500-9,500 ft',
+    window: '10am-2pm',
+    rain: 'Increasing rain',
+    crowds: 'Low crowds',
+    xc: 'Good XC',
+    season: 'Shoulder',
+    recommendation: 'Good for flexible pilots who can work with a more variable shoulder-season pattern.'
+  },
+  {
+    name: 'April',
+    slug: 'april',
+    rating: 3,
+    temp: '58-85F',
+    thermals: 'Moderate thermals',
+    cloudbase: 'Variable',
+    window: '10am-1pm',
+    rain: 'Moderate rain',
+    crowds: 'Low crowds',
+    xc: 'Moderate XC',
+    season: 'Shoulder',
+    recommendation: 'Best for pilots with flexible dates and a willingness to fly around changing weather.'
+  },
+  {
+    name: 'May',
+    slug: 'may',
+    rating: 2.5,
+    temp: '60-85F',
+    thermals: 'Moderate thermals',
+    cloudbase: 'Variable',
+    window: '10am-12pm',
+    rain: 'High rain afternoons',
+    crowds: 'Very low crowds',
+    xc: 'Limited XC',
+    season: 'Rainy',
+    recommendation: 'A morning-focused rainy-season option, not a first choice for a fly-every-day trip.'
+  },
+  {
+    name: 'June',
+    slug: 'june',
+    rating: 2,
+    temp: '60-80F',
+    thermals: 'Light-moderate thermals',
+    cloudbase: 'Variable',
+    window: 'Mornings only',
+    rain: 'High rain',
+    crowds: 'Very low crowds',
+    xc: 'Limited XC',
+    season: 'Rainy',
+    recommendation: 'Rainy-season flying is mainly a local or flexible-pilot play.'
+  },
+  {
+    name: 'July',
+    slug: 'july',
+    rating: 2,
+    temp: '60-80F',
+    thermals: 'Light-moderate thermals',
+    cloudbase: 'Variable',
+    window: 'Mornings only',
+    rain: 'High rain',
+    crowds: 'Very low crowds',
+    xc: 'Limited XC',
+    season: 'Rainy',
+    recommendation: 'Expect morning chances and afternoon weather management rather than full flying days.'
+  },
+  {
+    name: 'August',
+    slug: 'august',
+    rating: 2,
+    temp: '60-80F',
+    thermals: 'Light-moderate thermals',
+    cloudbase: 'Variable',
+    window: 'Mornings only',
+    rain: 'High rain',
+    crowds: 'Very low crowds',
+    xc: 'Limited XC',
+    season: 'Rainy',
+    recommendation: 'Better for experienced pilots already in town than for a dedicated travel window.'
+  },
+  {
+    name: 'September',
+    slug: 'september',
+    rating: 2,
+    temp: '60-80F',
+    thermals: 'Light-moderate thermals',
+    cloudbase: 'Variable',
+    window: 'Mornings only',
+    rain: 'High rain',
+    crowds: 'Very low crowds',
+    xc: 'Limited XC',
+    season: 'Rainy',
+    recommendation: 'Still rainy-season flying, with useful mornings possible when the pattern cooperates.'
+  },
+  {
+    name: 'October',
+    slug: 'october',
+    rating: 3,
+    temp: '55-78F',
+    thermals: 'Moderate thermals',
+    cloudbase: 'Improving',
+    window: '10am-1pm',
+    rain: 'Decreasing rain',
+    crowds: 'Low crowds',
+    xc: 'Moderate XC',
+    season: 'Shoulder',
+    recommendation: 'The transition back toward peak season, with improving chances late in the month.'
+  }
+].map((month) => ({
+  ...month,
+  ratingPercent: `${(month.rating / 5) * 100}%`,
+  ratingLabel: `${month.rating}/5`
+}));
+
+const guideLinks = [
+  { name: 'November guide', href: '/paragliding-valle-de-bravo-november/' },
+  { name: 'December guide', href: '/paragliding-valle-de-bravo-december/' },
+  { name: 'January guide', href: '/paragliding-valle-de-bravo-january/' },
+  { name: 'February guide', href: '/paragliding-valle-de-bravo-february/' },
+  { name: 'March guide', href: '/paragliding-valle-de-bravo-march/' }
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalUrl="https://airdamien.com/valle-de-bravo-conditions/"
+>
+  <SchemaMarkup schema={pageSchema} />
+
+  <section class="conditions-hero">
+    <img class="conditions-hero__bg" src="/images/val6.jpg" alt="Paraglider flying over the volcanic terrain at El Penon" width="1920" height="1280" loading="eager" />
+    <div class="conditions-hero__overlay"></div>
+    <div class="conditions-hero__content">
+      <p class="eyebrow">Weather and season reference</p>
+      <h1>Valle de Bravo Paragliding Conditions</h1>
+      <p>Current town-level weather, a 7-day planning forecast, and month-by-month flying season notes for Valle de Bravo.</p>
+    </div>
+  </section>
+
+  <Breadcrumbs items={breadcrumbs} />
+
+  <div class="container author-wrap">
+    <div class="author-card">
+      <img src="/images/damion.jpg" alt="Damien Mitchell" width="56" height="56" class="author-card__avatar" />
+      <div class="author-card__info">
+        <a href="/about-us/" class="author-card__name">Damien Mitchell</a>
+        <span class="author-card__title">USHPA Advanced Instructor</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="section section--white current-conditions" aria-labelledby="current-conditions-heading">
+    <div class="container">
+      <div class="section-intro">
+        <p class="eyebrow">Section A</p>
+        <h2 id="current-conditions-heading">Current Conditions</h2>
+        <p>Live weather is fetched from Open-Meteo for Valle de Bravo town coordinates: 19.1838, -100.1278, with town-level current conditions, short-range hourly data, and a 7-day planning forecast.</p>
+      </div>
+
+      <div class="weather-toolbar">
+        <div>
+          <p class="weather-toolbar__label">Live town weather</p>
+          <p class="weather-toolbar__meta">Valle de Bravo local time. Open-Meteo model data.</p>
+        </div>
+        <div class="unit-toggle" role="group" aria-label="Weather units">
+          <button type="button" class="is-active" data-unit-system="us" aria-pressed="true">F / mph</button>
+          <button type="button" data-unit-system="metric" aria-pressed="false">C / km/h</button>
+        </div>
+      </div>
+
+      <div class="source-grid" aria-label="Weather data sources">
+        <a class="source-card source-card--launch" href="https://holfuy.com/en/weather/609" target="_blank" rel="noopener noreferrer">
+          <span>Launch station</span>
+          <strong>Holfuy El Peñón Launch</strong>
+          <em>Live station at about 2,350m AMSL</em>
+        </a>
+        <a class="source-card" href="https://www.windguru.cz/766336" target="_blank" rel="noopener noreferrer">
+          <span>Launch forecast</span>
+          <strong>Windguru El Peñón Takeoff</strong>
+          <em>Spot forecast for the launch area</em>
+        </a>
+        <a class="source-card" href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">
+          <span>Town model</span>
+          <strong>Open-Meteo Valle de Bravo</strong>
+          <em>Used below for the meteogram and forecast</em>
+        </a>
+      </div>
+
+      <div class="graph-source-note">
+        <strong>Graph data source:</strong> The custom meteogram below uses Open-Meteo model data for Valle de Bravo town coordinates. For launch-level wind, check <a href="https://holfuy.com/en/weather/609" target="_blank" rel="noopener noreferrer">Holfuy El Peñón Launch</a>. For the launch-area forecast, check <a href="https://www.windguru.cz/766336" target="_blank" rel="noopener noreferrer">Windguru El Peñón Takeoff</a>.
+      </div>
+
+      <div class="weather-widget" data-weather-widget>
+        <div class="weather-dashboard">
+          <div class="weather-card weather-card--primary" data-weather-card>
+            <div class="weather-card__header">
+              <div>
+                <p class="weather-card__label">Valle de Bravo town</p>
+                <h3>Right Now</h3>
+              </div>
+              <span class="weather-card__status" data-weather-status>Loading weather...</span>
+            </div>
+            <div class="weather-card__body" data-current-weather>
+              <div class="weather-placeholder">Fetching current temperature, wind, humidity, and cloud cover.</div>
+            </div>
+          </div>
+
+          <div class="planning-card" data-planning-card>
+            <div class="weather-placeholder">Loading today's planning snapshot.</div>
+          </div>
+        </div>
+
+        <div class="meteogram-panel">
+          <div class="forecast-panel__header">
+            <div>
+              <h3>5-Day Meteogram</h3>
+              <p>Hourly temperature, cloud cover, precipitation, wind speed, gusts, and wind direction.</p>
+            </div>
+            <div class="meteogram-links" aria-label="Launch wind source links">
+              <a href="https://holfuy.com/en/weather/609" target="_blank" rel="noopener noreferrer">Holfuy launch wind</a>
+              <a href="https://www.windguru.cz/766336" target="_blank" rel="noopener noreferrer">Windguru launch forecast</a>
+            </div>
+          </div>
+          <div class="meteogram-frame" data-meteogram aria-live="polite">
+            <div class="forecast-loading">Loading meteogram...</div>
+          </div>
+        </div>
+
+        <div class="hourly-panel">
+          <div class="forecast-panel__header">
+            <div>
+              <h3>Next 12 Hours</h3>
+              <p>Town-level trend for wind, precipitation probability, and cloud cover.</p>
+            </div>
+          </div>
+          <div class="hourly-strip" data-hourly-strip aria-live="polite">
+            <div class="forecast-loading">Loading hourly outlook...</div>
+          </div>
+        </div>
+
+        <div class="forecast-panel">
+          <div class="forecast-panel__header">
+            <div>
+              <h3>7-Day Forecast</h3>
+              <p>Green borders mark low wind and low precipitation probability at town level.</p>
+            </div>
+          </div>
+          <div class="forecast-strip" data-forecast-strip aria-live="polite">
+            <div class="forecast-loading">Loading forecast...</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="weather-disclaimer">This is general weather data for Valle de Bravo town. Flying conditions at El Penon launch (7,600 ft) differ from town level (5,000 ft). Wind, temperature, and cloud patterns change significantly with altitude. Always consult with your instructor for current flying conditions. This data is for trip planning reference only, not flight decision-making.</p>
+    </div>
+  </section>
+
+  <section class="section section--cream monthly-reference" aria-labelledby="monthly-reference-heading">
+    <div class="container">
+      <div class="section-intro">
+        <p class="eyebrow">Section B</p>
+        <h2 id="monthly-reference-heading">Monthly Conditions Reference</h2>
+        <p>Approximate seasonal patterns by month. Tap a month to expand the details.</p>
+      </div>
+
+      <div class="verification-note">
+        <strong>DAMIEN TO VERIFY:</strong> These are approximate conditions based on general data. Exact thermal strengths, cloudbase heights, and flying windows should be confirmed with Damien before finalizing this page.
+      </div>
+
+      <div class="month-grid">
+        {monthlyConditions.map((condition) => (
+          <details class="month-card" data-season={condition.season.toLowerCase()}>
+            <summary>
+              <span class="month-card__summary-main">
+                <span class="month-card__name">{condition.name}</span>
+                <span class="season-tag">{condition.season}</span>
+              </span>
+              <span class="rating-meter" aria-label={`Flyability rating ${condition.ratingLabel}`}>
+                <span class="rating-meter__track">
+                  <span class="rating-meter__fill" style={`width: ${condition.ratingPercent}`}></span>
+                </span>
+                <span class="rating-meter__label">{condition.ratingLabel}</span>
+              </span>
+            </summary>
+
+            <div class="month-card__details">
+              <dl>
+                <div>
+                  <dt>Temperature</dt>
+                  <dd>{condition.temp}</dd>
+                </div>
+                <div>
+                  <dt>Thermals</dt>
+                  <dd>{condition.thermals}</dd>
+                </div>
+                <div>
+                  <dt>Cloudbase</dt>
+                  <dd>{condition.cloudbase}</dd>
+                </div>
+                <div>
+                  <dt>Flying window</dt>
+                  <dd>{condition.window}</dd>
+                </div>
+                <div>
+                  <dt>Precipitation</dt>
+                  <dd>{condition.rain}</dd>
+                </div>
+                <div>
+                  <dt>Crowds</dt>
+                  <dd>{condition.crowds}</dd>
+                </div>
+                <div>
+                  <dt>XC potential</dt>
+                  <dd>{condition.xc}</dd>
+                </div>
+              </dl>
+              <p>{condition.recommendation}</p>
+              <a href="/tours/10-day-paraglide-mexico-package/" class="btn btn--primary">Book a {condition.name} trip</a>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white conditions-links" aria-labelledby="conditions-links-heading">
+    <div class="container">
+      <div class="section-intro">
+        <p class="eyebrow">Section C</p>
+        <h2 id="conditions-links-heading">Plan Around the Season</h2>
+        <p>Use the monthly guides for deeper planning, then choose the trip format that fits your schedule.</p>
+      </div>
+
+      <div class="link-grid">
+        {guideLinks.map((link) => (
+          <a class="reference-link" href={link.href}>{link.name}</a>
+        ))}
+        <a class="reference-link" href="/paragliding-valle-de-bravo/">Valle de Bravo pillar guide</a>
+        <a class="reference-link" href="/what-to-pack-paragliding-valle-de-bravo/">Packing guide</a>
+      </div>
+
+      <div class="planning-cta">
+        <h2>Ready to pick your dates?</h2>
+        <p><a href="/tour/10-day-paraglide-mexico-package/">Book your trip</a> or <a href="/tours/custom-paragliding-trip-mexico/">build a custom trip</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    const widget = document.querySelector('[data-weather-widget]');
+    const statusEl = document.querySelector('[data-weather-status]');
+    const currentEl = document.querySelector('[data-current-weather]');
+    const planningEl = document.querySelector('[data-planning-card]');
+    const meteogramEl = document.querySelector('[data-meteogram]');
+    const hourlyEl = document.querySelector('[data-hourly-strip]');
+    const forecastEl = document.querySelector('[data-forecast-strip]');
+    const unitButtons = document.querySelectorAll('[data-unit-system]');
+
+    const weatherUrl = 'https://api.open-meteo.com/v1/forecast?latitude=19.1838&longitude=-100.1278&current=temperature_2m,apparent_temperature,relative_humidity_2m,precipitation,weather_code,cloud_cover,surface_pressure,wind_speed_10m,wind_direction_10m,wind_gusts_10m&hourly=temperature_2m,apparent_temperature,relative_humidity_2m,precipitation_probability,precipitation,showers,cloud_cover,wind_speed_10m,wind_direction_10m,wind_gusts_10m,uv_index,visibility&daily=weather_code,temperature_2m_max,temperature_2m_min,apparent_temperature_max,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant,cloud_cover_mean,precipitation_probability_max,uv_index_max,sunrise,sunset&timezone=auto&forecast_days=7&wind_speed_unit=kmh';
+
+    let weatherData = null;
+    let unitSystem = 'us';
+
+    const cToF = (tempC) => Math.round((tempC * 9) / 5 + 32);
+    const kmhToMph = (kmh) => Math.round(Number(kmh) * 0.621371);
+    const round = (value) => Math.round(Number(value));
+    const formatTemp = (tempC) => unitSystem === 'us' ? `${cToF(tempC)}F` : `${round(tempC)}C`;
+    const formatAltTemp = (tempC) => unitSystem === 'us' ? `${round(tempC)}C` : `${cToF(tempC)}F`;
+    const formatWind = (kmh) => unitSystem === 'us' ? `${kmhToMph(kmh)} mph` : `${round(kmh)} km/h`;
+    const formatPrecip = (mm) => unitSystem === 'us' ? `${(Number(mm || 0) / 25.4).toFixed(2)} in` : `${Number(mm || 0).toFixed(1)} mm`;
+    const formatVisibility = (meters) => {
+      if (meters === undefined || meters === null) return 'n/a';
+      const km = Number(meters) / 1000;
+      return unitSystem === 'us' ? `${(km * 0.621371).toFixed(1)} mi` : `${km.toFixed(1)} km`;
+    };
+    const windCompass = (degrees) => {
+      const directions = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
+      return directions[Math.round(Number(degrees) / 22.5) % 16];
+    };
+    const formatDay = (dateString) => new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(new Date(`${dateString}T12:00:00`));
+    const formatDate = (dateString) => new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric' }).format(new Date(`${dateString}T12:00:00`));
+    const formatTime = (dateTimeString) => {
+      const time = dateTimeString.split('T')[1] || dateTimeString;
+      const [rawHour, minute] = time.split(':');
+      const hour = Number(rawHour);
+      const suffix = hour >= 12 ? 'PM' : 'AM';
+      const hour12 = hour % 12 || 12;
+      return `${hour12}:${minute} ${suffix}`;
+    };
+    const formatUpdated = (dateString) => {
+      const [datePart] = dateString.split('T');
+      return `${formatDate(datePart)}, ${formatTime(dateString)} Valle local`;
+    };
+    const cloudClass = (cover) => {
+      if (cover < 25) return 'cloud-icon--clear';
+      if (cover < 65) return 'cloud-icon--partly';
+      return 'cloud-icon--cloudy';
+    };
+    const weatherLabel = (code) => {
+      const labels = {
+        0: 'Clear',
+        1: 'Mainly clear',
+        2: 'Partly cloudy',
+        3: 'Overcast',
+        45: 'Fog',
+        48: 'Rime fog',
+        51: 'Light drizzle',
+        53: 'Drizzle',
+        55: 'Heavy drizzle',
+        61: 'Light rain',
+        63: 'Rain',
+        65: 'Heavy rain',
+        80: 'Rain showers',
+        81: 'Rain showers',
+        82: 'Heavy showers',
+        95: 'Thunderstorm',
+        96: 'Thunderstorm',
+        99: 'Thunderstorm'
+      };
+      return labels[Number(code)] || 'Weather update';
+    };
+    const conditionTone = (current, today) => {
+      const wind = Number(current.wind_speed_10m);
+      const gust = Number(current.wind_gusts_10m || wind);
+      const precip = Number(today.precipitation_probability_max || 0);
+
+      if (wind <= 16 && gust <= 24 && precip <= 25) return { label: 'Calmer town trend', className: 'is-good' };
+      if (wind <= 24 && gust <= 34 && precip <= 45) return { label: 'Mixed town trend', className: 'is-watch' };
+      return { label: 'Weather to watch', className: 'is-caution' };
+    };
+    const getHourlyStartIndex = (hourly, currentTime) => {
+      const index = hourly.time.findIndex((time) => time >= currentTime);
+      return index >= 0 ? index : 0;
+    };
+    const getHourlyPoint = (hourly, index) => ({
+      time: hourly.time[index],
+      temp: hourly.temperature_2m[index],
+      apparent: hourly.apparent_temperature[index],
+      humidity: hourly.relative_humidity_2m[index],
+      precip: hourly.precipitation_probability[index] ?? 0,
+      precipitation: hourly.precipitation[index] ?? 0,
+      showers: hourly.showers[index] ?? 0,
+      cloud: hourly.cloud_cover[index],
+      wind: hourly.wind_speed_10m[index],
+      direction: hourly.wind_direction_10m[index],
+      gust: hourly.wind_gusts_10m[index],
+      uv: hourly.uv_index[index] ?? 0,
+      visibility: hourly.visibility[index]
+    });
+    const metricRow = (label, value) => `<div class="metric-row"><span>${label}</span><strong>${value}</strong></div>`;
+    const toTempNumber = (tempC) => unitSystem === 'us' ? (Number(tempC) * 9) / 5 + 32 : Number(tempC);
+    const toWindNumber = (kmh) => unitSystem === 'us' ? Number(kmh) * 0.621371 : Number(kmh);
+    const toPrecipNumber = (mm) => unitSystem === 'us' ? Number(mm || 0) / 25.4 : Number(mm || 0);
+    const niceCeil = (value, step) => Math.ceil(value / step) * step;
+    const pathFromPoints = (points) => points.map((point, index) => `${index === 0 ? 'M' : 'L'}${point.x.toFixed(1)} ${point.y.toFixed(1)}`).join(' ');
+    const areaPath = (points, baseline) => `${pathFromPoints(points)} L${points[points.length - 1].x.toFixed(1)} ${baseline.toFixed(1)} L${points[0].x.toFixed(1)} ${baseline.toFixed(1)} Z`;
+    const getDatePart = (dateTimeString) => dateTimeString.split('T')[0];
+    const getHourPart = (dateTimeString) => Number((dateTimeString.split('T')[1] || '00:00').split(':')[0]);
+    const axisTicks = (min, max, count) => Array.from({ length: count }, (_, index) => min + ((max - min) * index) / (count - 1));
+
+    function renderMeteogram(hourly, currentTime) {
+      if (!meteogramEl) return;
+
+      const startIndex = getHourlyStartIndex(hourly, currentTime);
+      const count = Math.min(120, hourly.time.length - startIndex);
+      const points = hourly.time.slice(startIndex, startIndex + count).map((time, offset) => getHourlyPoint(hourly, startIndex + offset));
+
+      if (points.length < 2) {
+        meteogramEl.innerHTML = '<p class="weather-error">Not enough hourly data to draw the meteogram.</p>';
+        return;
+      }
+
+      const width = 1180;
+      const height = 760;
+      const left = 88;
+      const right = 60;
+      const chartWidth = width - left - right;
+      const stepX = chartWidth / (points.length - 1);
+      const tempPanel = { y: 96, h: 220 };
+      const precipPanel = { y: 360, h: 142 };
+      const windPanel = { y: 548, h: 108 };
+      const panelBottom = windPanel.y + windPanel.h;
+      const xFor = (index) => left + index * stepX;
+
+      const tempValues = points.map((point) => toTempNumber(point.temp));
+      const rawTempMin = Math.min(...tempValues);
+      const rawTempMax = Math.max(...tempValues);
+      const tempMin = Math.floor((rawTempMin - 4) / 5) * 5;
+      const tempMax = Math.ceil((rawTempMax + 4) / 5) * 5;
+      const yTemp = (value) => tempPanel.y + tempPanel.h - ((value - tempMin) / (tempMax - tempMin)) * tempPanel.h;
+
+      const precipValues = points.map((point) => toPrecipNumber(point.precipitation));
+      const showerValues = points.map((point) => toPrecipNumber(point.showers));
+      const precipMax = Math.max(unitSystem === 'us' ? 0.04 : 1, niceCeil(Math.max(...precipValues, ...showerValues), unitSystem === 'us' ? 0.02 : 0.5));
+      const yPrecip = (value) => precipPanel.y + precipPanel.h - (value / precipMax) * precipPanel.h;
+
+      const windValues = points.flatMap((point) => [toWindNumber(point.wind), toWindNumber(point.gust)]);
+      const windMax = Math.max(unitSystem === 'us' ? 25 : 40, niceCeil(Math.max(...windValues), unitSystem === 'us' ? 5 : 10));
+      const yWind = (value) => windPanel.y + windPanel.h - (value / windMax) * windPanel.h;
+
+      const tempLinePoints = points.map((point, index) => ({ x: xFor(index), y: yTemp(toTempNumber(point.temp)) }));
+      const gustLinePoints = points.map((point, index) => ({ x: xFor(index), y: yWind(toWindNumber(point.gust)) }));
+      const windLinePoints = points.map((point, index) => ({ x: xFor(index), y: yWind(toWindNumber(point.wind)) }));
+      const cloudLinePoints = points.map((point, index) => ({
+        x: xFor(index),
+        y: precipPanel.y + (1 - Number(point.cloud) / 100) * (precipPanel.h * 0.72)
+      }));
+
+      const daySegments = [];
+      let segmentStart = 0;
+      for (let index = 1; index < points.length; index += 1) {
+        if (getDatePart(points[index].time) !== getDatePart(points[index - 1].time)) {
+          daySegments.push({ start: segmentStart, end: index - 1, date: getDatePart(points[index - 1].time) });
+          segmentStart = index;
+        }
+      }
+      daySegments.push({ start: segmentStart, end: points.length - 1, date: getDatePart(points[points.length - 1].time) });
+
+      const nightBands = points.map((point, index) => {
+        const hour = getHourPart(point.time);
+        if (hour >= 7 && hour < 19) return '';
+        return `<rect x="${(xFor(index) - stepX / 2).toFixed(1)}" y="${tempPanel.y}" width="${(stepX + 1).toFixed(1)}" height="${panelBottom - tempPanel.y}" fill="#12151c" opacity="0.72" />`;
+      }).join('');
+
+      const dayLabels = daySegments.map((segment) => {
+        const middle = (xFor(segment.start) + xFor(segment.end)) / 2;
+        const isCurrentDay = segment.start === 0;
+        return `
+          <line x1="${xFor(segment.start).toFixed(1)}" y1="${tempPanel.y}" x2="${xFor(segment.start).toFixed(1)}" y2="${panelBottom}" stroke="#5d6670" stroke-width="1" />
+          <text x="${middle.toFixed(1)}" y="74" fill="${isCurrentDay ? '#ff6a4a' : '#f5f7fb'}" font-size="18" font-weight="800" text-anchor="middle">${formatDay(segment.date)}</text>
+          <text x="${middle.toFixed(1)}" y="96" fill="${isCurrentDay ? '#ff6a4a' : '#f5f7fb'}" font-size="16" font-weight="700" text-anchor="middle">${segment.date.slice(8)}.${segment.date.slice(5, 7)}</text>
+        `;
+      }).join('');
+
+      const hourTicks = points.map((point, index) => {
+        const hour = getHourPart(point.time);
+        if (hour % 6 !== 0) return '';
+        const x = xFor(index);
+        const label = hour === 0 ? formatDay(getDatePart(point.time)) : String(hour).padStart(2, '0');
+        return `
+          <line x1="${x.toFixed(1)}" y1="${tempPanel.y}" x2="${x.toFixed(1)}" y2="${panelBottom}" stroke="#ffffff" stroke-opacity="0.12" />
+          <text x="${x.toFixed(1)}" y="${tempPanel.y + tempPanel.h + 24}" fill="#f5f7fb" font-size="15" text-anchor="middle">${label}</text>
+          <text x="${x.toFixed(1)}" y="${precipPanel.y + precipPanel.h + 24}" fill="#f5f7fb" font-size="15" text-anchor="middle">${label}</text>
+          <text x="${x.toFixed(1)}" y="${windPanel.y + windPanel.h + 24}" fill="#f5f7fb" font-size="15" text-anchor="middle">${label}</text>
+        `;
+      }).join('');
+
+      const tempGrid = axisTicks(tempMin, tempMax, 5).map((tick) => {
+        const y = yTemp(tick);
+        return `
+          <line x1="${left}" y1="${y.toFixed(1)}" x2="${width - right}" y2="${y.toFixed(1)}" stroke="#ffffff" stroke-opacity="0.16" stroke-dasharray="2 4" />
+          <text x="${left - 10}" y="${(y + 5).toFixed(1)}" fill="#f5f7fb" font-size="15" text-anchor="end">${Math.round(tick)}</text>
+        `;
+      }).join('');
+
+      const precipGrid = axisTicks(0, precipMax, 4).map((tick) => {
+        const y = yPrecip(tick);
+        const label = unitSystem === 'us' ? tick.toFixed(2).replace(/^0/, '0') : tick.toFixed(1);
+        return `
+          <line x1="${left}" y1="${y.toFixed(1)}" x2="${width - right}" y2="${y.toFixed(1)}" stroke="#ffffff" stroke-opacity="0.14" stroke-dasharray="2 4" />
+          <text x="${left - 10}" y="${(y + 5).toFixed(1)}" fill="#f5f7fb" font-size="15" text-anchor="end">${label}</text>
+        `;
+      }).join('');
+
+      const windGrid = axisTicks(0, windMax, 4).map((tick) => {
+        const y = yWind(tick);
+        return `
+          <line x1="${left}" y1="${y.toFixed(1)}" x2="${width - right}" y2="${y.toFixed(1)}" stroke="#ffffff" stroke-opacity="0.14" stroke-dasharray="2 4" />
+          <text x="${left - 10}" y="${(y + 5).toFixed(1)}" fill="#f5f7fb" font-size="15" text-anchor="end">${Math.round(tick)}</text>
+        `;
+      }).join('');
+
+      const precipBars = points.map((point, index) => {
+        const value = toPrecipNumber(point.precipitation);
+        const showerValue = toPrecipNumber(point.showers);
+        const x = xFor(index) - Math.max(2, stepX * 0.22);
+        const barWidth = Math.max(2, stepX * 0.44);
+        const precipHeight = precipPanel.y + precipPanel.h - yPrecip(value);
+        const showerHeight = precipPanel.y + precipPanel.h - yPrecip(showerValue);
+        return `
+          ${value > 0 ? `<rect x="${x.toFixed(1)}" y="${yPrecip(value).toFixed(1)}" width="${barWidth.toFixed(1)}" height="${precipHeight.toFixed(1)}" fill="#1a35ff" />` : ''}
+          ${showerValue > 0 ? `<rect x="${(x + barWidth * 0.42).toFixed(1)}" y="${yPrecip(showerValue).toFixed(1)}" width="${(barWidth * 0.45).toFixed(1)}" height="${showerHeight.toFixed(1)}" fill="#7ee6f2" />` : ''}
+        `;
+      }).join('');
+
+      const windArrows = points.map((point, index) => {
+        if (index % 6 !== 0) return '';
+        const x = xFor(index);
+        const rotation = Number(point.direction) + 180;
+        return `
+          <g transform="translate(${x.toFixed(1)} ${windPanel.y + 14}) rotate(${rotation})">
+            <line x1="-10" y1="0" x2="10" y2="0" stroke="#f5f7fb" stroke-width="2.5" stroke-linecap="round" />
+            <path d="M10 0 L3 -5 L3 5 Z" fill="#f5f7fb" />
+          </g>
+        `;
+      }).join('');
+
+      const dailyHighLowLabels = daySegments.map((segment) => {
+        const segmentPoints = points.slice(segment.start, segment.end + 1);
+        const temps = segmentPoints.map((point) => toTempNumber(point.temp));
+        const high = Math.max(...temps);
+        const low = Math.min(...temps);
+        const highPointIndex = segment.start + temps.indexOf(high);
+        const lowPointIndex = segment.start + temps.indexOf(low);
+        return `
+          <text x="${xFor(highPointIndex).toFixed(1)}" y="${(yTemp(high) + 18).toFixed(1)}" fill="#151a20" font-size="17" font-weight="900" text-anchor="middle">${Math.round(high)}</text>
+          <text x="${xFor(lowPointIndex).toFixed(1)}" y="${(yTemp(low) - 8).toFixed(1)}" fill="#f5f7fb" font-size="16" font-weight="800" text-anchor="middle">${Math.round(low)}</text>
+        `;
+      }).join('');
+
+      meteogramEl.innerHTML = `
+        <svg class="meteogram-svg" viewBox="0 0 ${width} ${height}" role="img" aria-label="5-day hourly meteogram for Valle de Bravo town">
+          <defs>
+            <linearGradient id="tempFill" x1="0" y1="${tempPanel.y}" x2="0" y2="${tempPanel.y + tempPanel.h}" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#ff2d2d" />
+              <stop offset="28%" stop-color="#f6ee26" />
+              <stop offset="52%" stop-color="#8ded2f" />
+              <stop offset="75%" stop-color="#0aa15c" />
+              <stop offset="100%" stop-color="#00d66b" />
+            </linearGradient>
+          </defs>
+
+          <rect x="0" y="0" width="${width}" height="${height}" rx="6" fill="#211c1f" />
+          <text x="24" y="38" fill="#ffffff" font-size="28" font-weight="900">Valle de Bravo</text>
+          <text x="24" y="68" fill="#ffffff" font-size="19" font-weight="700">19.18N, 100.13W - town level weather</text>
+          <text x="${width - 24}" y="42" fill="#e07730" font-size="22" font-weight="900" text-anchor="end">Air Damien</text>
+
+          <rect x="${left}" y="${tempPanel.y}" width="${chartWidth}" height="${panelBottom - tempPanel.y}" fill="#2f3f49" opacity="0.78" />
+          ${nightBands}
+          ${dayLabels}
+          ${hourTicks}
+
+          <rect x="${left}" y="${tempPanel.y}" width="${chartWidth}" height="${tempPanel.h}" fill="none" stroke="#7f858d" stroke-width="1" />
+          ${tempGrid}
+          <path d="${areaPath(tempLinePoints, tempPanel.y + tempPanel.h)}" fill="url(#tempFill)" opacity="0.96" />
+          <path d="${pathFromPoints(tempLinePoints)}" fill="none" stroke="#ff1717" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" />
+          ${dailyHighLowLabels}
+          <text x="30" y="${tempPanel.y + tempPanel.h / 2}" fill="#f5f7fb" font-size="17" font-weight="800" transform="rotate(-90 30 ${tempPanel.y + tempPanel.h / 2})">Temperature (${unitSystem === 'us' ? 'F' : 'C'})</text>
+
+          <rect x="${left}" y="${precipPanel.y}" width="${chartWidth}" height="${precipPanel.h}" fill="none" stroke="#7f858d" stroke-width="1" />
+          ${precipGrid}
+          <path d="${pathFromPoints(cloudLinePoints)} L${xFor(points.length - 1).toFixed(1)} ${precipPanel.y} L${xFor(0).toFixed(1)} ${precipPanel.y} Z" fill="#d5d8dc" opacity="0.68" />
+          ${precipBars}
+          <text x="30" y="${precipPanel.y + precipPanel.h / 2}" fill="#f5f7fb" font-size="17" font-weight="800" transform="rotate(-90 30 ${precipPanel.y + precipPanel.h / 2})">Precipitation (${unitSystem === 'us' ? 'in/hr' : 'mm/hr'})</text>
+
+          <rect x="${left}" y="${windPanel.y}" width="${chartWidth}" height="${windPanel.h}" fill="none" stroke="#7f858d" stroke-width="1" />
+          ${windGrid}
+          ${windArrows}
+          <path d="${pathFromPoints(gustLinePoints)}" fill="none" stroke="#11a6a8" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round" />
+          <path d="${pathFromPoints(windLinePoints)}" fill="none" stroke="#4fbaff" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round" />
+          <text x="30" y="${windPanel.y + windPanel.h / 2}" fill="#4fbaff" font-size="17" font-weight="800" transform="rotate(-90 30 ${windPanel.y + windPanel.h / 2})">Wind speed (${unitSystem === 'us' ? 'mph' : 'km/h'})</text>
+          <text x="${width - 18}" y="${windPanel.y + windPanel.h / 2}" fill="#11d3d5" font-size="17" font-weight="800" transform="rotate(90 ${width - 18} ${windPanel.y + windPanel.h / 2})">Wind gust (${unitSystem === 'us' ? 'mph' : 'km/h'})</text>
+
+          <g transform="translate(${left + 20} ${height - 30})">
+            <circle cx="0" cy="0" r="7" fill="#d5d8dc" opacity="0.75" /><text x="18" y="6" fill="#f5f7fb" font-size="16" font-weight="800">Cloud cover</text>
+            <circle cx="154" cy="0" r="7" fill="#1a35ff" /><text x="172" y="6" fill="#f5f7fb" font-size="16" font-weight="800">Precipitation</text>
+            <circle cx="348" cy="0" r="7" fill="#7ee6f2" /><text x="366" y="6" fill="#f5f7fb" font-size="16" font-weight="800">Showers</text>
+            <line x1="530" y1="0" x2="570" y2="0" stroke="#4fbaff" stroke-width="5" stroke-linecap="round" /><text x="584" y="6" fill="#f5f7fb" font-size="16" font-weight="800">Wind</text>
+            <line x1="670" y1="0" x2="710" y2="0" stroke="#11a6a8" stroke-width="4" stroke-linecap="round" /><text x="724" y="6" fill="#f5f7fb" font-size="16" font-weight="800">Gusts</text>
+          </g>
+        </svg>
+        <p class="meteogram-caption">Graph data source: Open-Meteo model data for Valle de Bravo town coordinates, including the wind and gust lines shown here. Last updated: ${formatUpdated(weatherData.current.time)}. For launch-level wind, use the Holfuy and Windguru links above.</p>
+      `;
+    }
+
+    function renderWeather() {
+      if (!weatherData || !currentEl || !planningEl || !meteogramEl || !hourlyEl || !forecastEl) return;
+
+      const current = weatherData.current;
+      const daily = weatherData.daily;
+      const hourly = weatherData.hourly;
+      const today = {
+        weather_code: daily.weather_code[0],
+        temperature_2m_max: daily.temperature_2m_max[0],
+        temperature_2m_min: daily.temperature_2m_min[0],
+        apparent_temperature_max: daily.apparent_temperature_max[0],
+        wind_speed_10m_max: daily.wind_speed_10m_max[0],
+        wind_gusts_10m_max: daily.wind_gusts_10m_max[0],
+        wind_direction_10m_dominant: daily.wind_direction_10m_dominant[0],
+        cloud_cover_mean: daily.cloud_cover_mean[0],
+        precipitation_probability_max: daily.precipitation_probability_max[0] ?? 0,
+        uv_index_max: daily.uv_index_max[0] ?? 0,
+        sunrise: daily.sunrise[0],
+        sunset: daily.sunset[0]
+      };
+      const startIndex = getHourlyStartIndex(hourly, current.time);
+      const currentHour = getHourlyPoint(hourly, startIndex);
+      const tone = conditionTone(current, today);
+      const compassRotation = Number(current.wind_direction_10m) + 180;
+
+      currentEl.innerHTML = `
+        <div class="current-hero">
+          <div>
+            <p class="condition-label">${weatherLabel(current.weather_code)}</p>
+            <div class="current-temp">
+              <span class="current-temp__value">${formatTemp(current.temperature_2m)}</span>
+              <span class="current-temp__alt">${formatAltTemp(current.temperature_2m)}</span>
+            </div>
+            <p class="feels-like">Feels like ${formatTemp(current.apparent_temperature)} at town level</p>
+          </div>
+          <div class="wind-compass" aria-label="Wind from ${windCompass(current.wind_direction_10m)}">
+            <span class="wind-compass__arrow" style="transform: rotate(${compassRotation}deg)"></span>
+            <strong>${windCompass(current.wind_direction_10m)}</strong>
+          </div>
+        </div>
+
+        <div class="condition-badge ${tone.className}">
+          <span>${tone.label}</span>
+          <strong>${formatUpdated(current.time)}</strong>
+        </div>
+
+        <div class="current-metrics">
+          ${metricRow('Wind', `${formatWind(current.wind_speed_10m)} ${windCompass(current.wind_direction_10m)}`)}
+          ${metricRow('Gusts', formatWind(current.wind_gusts_10m || current.wind_speed_10m))}
+          ${metricRow('Humidity', `${round(current.relative_humidity_2m)}%`)}
+          ${metricRow('Cloud cover', `${round(current.cloud_cover)}%`)}
+          ${metricRow('Pressure', `${round(current.surface_pressure)} hPa`)}
+          ${metricRow('Precip now', formatPrecip(current.precipitation))}
+          ${metricRow('UV now', Number(currentHour.uv || 0).toFixed(1))}
+          ${metricRow('Visibility', formatVisibility(currentHour.visibility))}
+        </div>
+      `;
+
+      planningEl.innerHTML = `
+        <div class="planning-card__header">
+          <p class="weather-card__label">Today</p>
+          <h3>${weatherLabel(today.weather_code)}</h3>
+        </div>
+        <div class="planning-stats">
+          <div>
+            <span>High / low</span>
+            <strong>${formatTemp(today.temperature_2m_max)} / ${formatTemp(today.temperature_2m_min)}</strong>
+          </div>
+          <div>
+            <span>Max wind</span>
+            <strong>${formatWind(today.wind_speed_10m_max)} ${windCompass(today.wind_direction_10m_dominant)}</strong>
+          </div>
+          <div>
+            <span>Max gust</span>
+            <strong>${formatWind(today.wind_gusts_10m_max)}</strong>
+          </div>
+          <div>
+            <span>Precip chance</span>
+            <strong>${round(today.precipitation_probability_max)}%</strong>
+          </div>
+          <div>
+            <span>Cloud mean</span>
+            <strong>${round(today.cloud_cover_mean)}%</strong>
+          </div>
+          <div>
+            <span>UV max</span>
+            <strong>${Number(today.uv_index_max).toFixed(1)}</strong>
+          </div>
+        </div>
+        <div class="sun-row">
+          <span>Sunrise ${formatTime(today.sunrise)}</span>
+          <span>Sunset ${formatTime(today.sunset)}</span>
+        </div>
+      `;
+
+      hourlyEl.innerHTML = hourly.time.slice(startIndex, startIndex + 12).map((time, offset) => {
+        const point = getHourlyPoint(hourly, startIndex + offset);
+        const calm = Number(point.wind) <= 20 && Number(point.precip) <= 30;
+
+        return `
+          <article class="hour-card${calm ? ' is-calm' : ''}">
+            <strong>${offset === 0 ? 'Now' : formatTime(time)}</strong>
+            <span class="cloud-icon ${cloudClass(point.cloud)}" aria-label="${round(point.cloud)}% cloud cover"></span>
+            <div class="hour-card__temp">${formatTemp(point.temp)}</div>
+            <dl>
+              <div><dt>Wind</dt><dd>${formatWind(point.wind)}</dd></div>
+              <div><dt>Gust</dt><dd>${formatWind(point.gust)}</dd></div>
+              <div><dt>Precip</dt><dd>${round(point.precip)}%</dd></div>
+              <div><dt>Cloud</dt><dd>${round(point.cloud)}%</dd></div>
+            </dl>
+          </article>
+        `;
+      }).join('');
+
+      forecastEl.innerHTML = daily.time.map((date, index) => {
+        const high = daily.temperature_2m_max[index];
+        const low = daily.temperature_2m_min[index];
+        const wind = daily.wind_speed_10m_max[index];
+        const gust = daily.wind_gusts_10m_max[index];
+        const direction = daily.wind_direction_10m_dominant[index];
+        const cloud = round(daily.cloud_cover_mean[index]);
+        const precip = round(daily.precipitation_probability_max[index] ?? 0);
+        const plannerFriendly = Number(wind) <= 20 && precip <= 30;
+
+        return `
+          <article class="forecast-day${plannerFriendly ? ' is-flyable' : ''}">
+            <div class="forecast-day__top">
+              <div>
+                <strong>${formatDay(date)}</strong>
+                <span>${formatDate(date)}</span>
+              </div>
+              ${plannerFriendly ? '<span class="forecast-day__signal">Low wind/precip</span>' : ''}
+            </div>
+            <span class="cloud-icon ${cloudClass(cloud)}" aria-label="${cloud}% cloud cover"></span>
+            <div class="forecast-day__condition">${weatherLabel(daily.weather_code[index])}</div>
+            <div class="forecast-day__temps">${formatTemp(high)} / ${formatTemp(low)}</div>
+            <dl>
+              <div><dt>Wind</dt><dd>${formatWind(wind)} ${windCompass(direction)}</dd></div>
+              <div><dt>Gust</dt><dd>${formatWind(gust)}</dd></div>
+              <div><dt>Cloud</dt><dd>${cloud}%</dd></div>
+              <div><dt>Precip</dt><dd>${precip}%</dd></div>
+            </dl>
+          </article>
+          `;
+      }).join('');
+
+      renderMeteogram(hourly, current.time);
+    }
+
+    unitButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        unitSystem = button.getAttribute('data-unit-system') || 'us';
+        unitButtons.forEach((unitButton) => {
+          const isActive = unitButton === button;
+          unitButton.classList.toggle('is-active', isActive);
+          unitButton.setAttribute('aria-pressed', String(isActive));
+        });
+        renderWeather();
+      });
+    });
+
+    async function loadWeather() {
+      if (!widget || !statusEl || !currentEl || !planningEl || !meteogramEl || !hourlyEl || !forecastEl) return;
+
+      try {
+        const response = await fetch(weatherUrl);
+        if (!response.ok) throw new Error('Weather request failed');
+
+        weatherData = await response.json();
+
+        statusEl.textContent = 'Live data';
+        statusEl.classList.add('is-live');
+        renderWeather();
+      } catch (error) {
+        statusEl.textContent = 'Weather unavailable';
+        currentEl.innerHTML = '<p class="weather-error">The live weather feed is not available right now. Please try again later.</p>';
+        planningEl.innerHTML = '<p class="weather-error">Today\'s planning data could not be loaded.</p>';
+        meteogramEl.innerHTML = '<p class="weather-error">Meteogram data could not be loaded.</p>';
+        hourlyEl.innerHTML = '<p class="weather-error">Hourly outlook could not be loaded.</p>';
+        forecastEl.innerHTML = '<p class="weather-error">Forecast data could not be loaded.</p>';
+      }
+    }
+
+    loadWeather();
+  </script>
+</BaseLayout>
+
+<style>
+  .conditions-hero {
+    position: relative;
+    min-height: 58vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .conditions-hero__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .conditions-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(42, 32, 80, 0.12), rgba(42, 32, 80, 0.88));
+  }
+
+  .conditions-hero__content {
+    position: relative;
+    z-index: 1;
+    max-width: 820px;
+    padding: calc(var(--nav-height) + 3rem) 1.5rem 4rem;
+  }
+
+  .conditions-hero h1,
+  .conditions-hero p {
+    color: #ffffff;
+  }
+
+  .conditions-hero h1 {
+    font-size: clamp(2rem, 4vw, 3.35rem);
+    margin-bottom: 1rem;
+  }
+
+  .conditions-hero p:not(.eyebrow) {
+    max-width: 680px;
+    margin: 0 auto;
+    font-size: 1.15rem;
+    line-height: 1.7;
+  }
+
+  .eyebrow {
+    margin-bottom: 0.65rem;
+    color: var(--color-accent, #e07730);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .author-wrap {
+    max-width: 820px;
+  }
+
+  .author-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--color-bg-warm, #f9f7f3);
+    border-left: 4px solid var(--color-accent, #e07730);
+    border-radius: 8px;
+    margin: 1.5rem 0 0;
+  }
+
+  .author-card__avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color-accent, #e07730);
+    flex-shrink: 0;
+  }
+
+  .author-card__info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .author-card__name {
+    color: var(--color-text, #2a2050);
+    font-weight: 600;
+  }
+
+  .author-card__title {
+    color: var(--color-accent, #e07730);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .section-intro {
+    max-width: 760px;
+    margin-bottom: 2rem;
+  }
+
+  .section-intro h2 {
+    margin-bottom: 0.8rem;
+  }
+
+  .section-intro p:last-child {
+    margin-bottom: 0;
+    font-size: 1.05rem;
+  }
+
+  .weather-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--color-border, #d8d4e0);
+    border-radius: 8px;
+    background: var(--color-bg-warm, #f9f7f3);
+    padding: 0.85rem 1rem;
+  }
+
+  .weather-toolbar__label {
+    margin: 0 0 0.1rem;
+    color: var(--color-text, #2a2050);
+    font-weight: 800;
+  }
+
+  .weather-toolbar__meta {
+    margin: 0;
+    color: var(--color-text-body, #5a5570);
+    font-size: 0.88rem;
+  }
+
+  .unit-toggle {
+    display: inline-grid;
+    grid-template-columns: repeat(2, minmax(88px, 1fr));
+    overflow: hidden;
+    border: 1px solid var(--color-border, #d8d4e0);
+    border-radius: 8px;
+    background: #ffffff;
+  }
+
+  .unit-toggle button {
+    border: 0;
+    background: transparent;
+    color: var(--color-text, #2a2050);
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 800;
+    padding: 0.65rem 0.85rem;
+  }
+
+  .unit-toggle button + button {
+    border-left: 1px solid var(--color-border, #d8d4e0);
+  }
+
+  .unit-toggle button.is-active {
+    background: var(--color-primary, #3b3160);
+    color: #ffffff;
+  }
+
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .source-card {
+    display: grid;
+    min-height: 118px;
+    border: 1px solid var(--color-border, #d8d4e0);
+    border-radius: 8px;
+    background: #ffffff;
+    padding: 1rem;
+    box-shadow: 0 10px 28px rgba(42, 32, 80, 0.06);
+  }
+
+  .source-card--launch {
+    border-color: rgba(45, 122, 79, 0.55);
+    background: linear-gradient(135deg, rgba(45, 122, 79, 0.09), #ffffff 55%);
+  }
+
+  .source-card span {
+    color: var(--color-accent, #e07730);
+    font-size: 0.76rem;
+    font-weight: 900;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .source-card strong {
+    color: var(--color-text, #2a2050);
+    font-size: 1.02rem;
+    line-height: 1.25;
+  }
+
+  .source-card em {
+    color: var(--color-text-body, #5a5570);
+    font-size: 0.88rem;
+    font-style: normal;
+    line-height: 1.45;
+  }
+
+  .graph-source-note {
+    margin-bottom: 1.25rem;
+    border: 1px solid rgba(224, 119, 48, 0.28);
+    border-left: 4px solid var(--color-accent, #e07730);
+    border-radius: 8px;
+    background: rgba(224, 119, 48, 0.06);
+    color: var(--color-text, #2a2050);
+    padding: 0.95rem 1rem;
+    line-height: 1.65;
+  }
+
+  .graph-source-note strong {
+    color: var(--color-text, #2a2050);
+  }
+
+  .graph-source-note a {
+    color: var(--color-accent, #e07730);
+    font-weight: 900;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .weather-widget {
+    display: grid;
+    gap: 1.25rem;
+    min-width: 0;
+  }
+
+  .weather-dashboard {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+    gap: 1.25rem;
+    align-items: stretch;
+    min-width: 0;
+  }
+
+  .weather-card,
+  .planning-card,
+  .meteogram-panel,
+  .hourly-panel,
+  .forecast-panel,
+  .month-card,
+  .reference-link {
+    border: 1px solid var(--color-border, #d8d4e0);
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 10px 28px rgba(42, 32, 80, 0.08);
+  }
+
+  .weather-card,
+  .planning-card,
+  .meteogram-panel,
+  .hourly-panel,
+  .forecast-panel {
+    min-width: 0;
+    padding: 1.5rem;
+  }
+
+  .weather-card--primary {
+    position: relative;
+    overflow: hidden;
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(249, 247, 243, 0.92)),
+      linear-gradient(135deg, rgba(224, 119, 48, 0.12), rgba(59, 49, 96, 0.12));
+  }
+
+  .weather-card--primary::after {
+    content: "";
+    position: absolute;
+    right: -46px;
+    top: -46px;
+    width: 150px;
+    height: 150px;
+    border: 28px solid rgba(224, 119, 48, 0.13);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .weather-card__header,
+  .forecast-panel__header,
+  .forecast-day__top {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .weather-card__label {
+    margin-bottom: 0.2rem;
+    color: var(--color-text-body, #5a5570);
+    font-size: 0.86rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .weather-card__status {
+    border-radius: 999px;
+    background: var(--color-bg-lavender, #f4f2fa);
+    color: var(--color-primary, #3b3160);
+    padding: 0.35rem 0.7rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .weather-card__status.is-live {
+    background: rgba(45, 122, 79, 0.12);
+    color: var(--color-success, #2d7a4f);
+  }
+
+  .weather-card__body {
+    position: relative;
+    z-index: 1;
+    margin-top: 1.5rem;
+  }
+
+  .weather-placeholder,
+  .forecast-loading,
+  .weather-error {
+    margin: 0;
+    color: var(--color-text-body, #5a5570);
+  }
+
+  .current-hero {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .condition-label {
+    margin-bottom: 0.3rem;
+    color: var(--color-accent, #e07730);
+    font-size: 1rem;
+    font-weight: 800;
+  }
+
+  .current-temp {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+  }
+
+  .current-temp__value {
+    color: var(--color-text, #2a2050);
+    font-size: clamp(3.2rem, 7vw, 5.2rem);
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .current-temp__alt {
+    color: var(--color-accent, #e07730);
+    font-size: 1.2rem;
+    font-weight: 800;
+  }
+
+  .feels-like {
+    margin: 0.55rem 0 0;
+    color: var(--color-text-body, #5a5570);
+    font-weight: 700;
+  }
+
+  .wind-compass {
+    position: relative;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 98px;
+    height: 98px;
+    border: 1px solid var(--color-border, #d8d4e0);
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: inset 0 0 0 8px var(--color-bg-lavender, #f4f2fa);
+  }
+
+  .wind-compass::before {
+    content: "N";
+    position: absolute;
+    top: 7px;
+    color: var(--color-text-body, #5a5570);
+    font-size: 0.72rem;
+    font-weight: 800;
+  }
+
+  .wind-compass__arrow {
+    position: absolute;
+    width: 2px;
+    height: 58px;
+    transform-origin: 50% 50%;
+  }
+
+  .wind-compass__arrow::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 18px solid var(--color-accent, #e07730);
+  }
+
+  .wind-compass strong {
+    position: relative;
+    z-index: 1;
+    color: var(--color-text, #2a2050);
+    font-size: 1.05rem;
+  }
+
+  .condition-badge {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 1.35rem 0;
+    border-radius: 8px;
+    padding: 0.85rem 1rem;
+    line-height: 1.4;
+  }
+
+  .condition-badge span,
+  .condition-badge strong {
+    font-size: 0.9rem;
+  }
+
+  .condition-badge span {
+    font-weight: 800;
+  }
+
+  .condition-badge strong {
+    color: inherit;
+    text-align: right;
+  }
+
+  .condition-badge.is-good {
+    background: rgba(45, 122, 79, 0.12);
+    color: var(--color-success, #2d7a4f);
+  }
+
+  .condition-badge.is-watch {
+    background: rgba(224, 119, 48, 0.12);
+    color: var(--color-accent-hover, #c86520);
+  }
+
+  .condition-badge.is-caution {
+    background: rgba(59, 49, 96, 0.1);
+    color: var(--color-primary, #3b3160);
+  }
+
+  .current-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .metric-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    border: 1px solid var(--color-border, #d8d4e0);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.68);
+    padding: 0.75rem;
+  }
+
+  .metric-row span {
+    color: var(--color-text-body, #5a5570);
+    font-size: 0.9rem;
+  }
+
+  .metric-row strong {
+    color: var(--color-text, #2a2050);
+    text-align: right;
+  }
+
+  .planning-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .planning-card__header {
+    margin-bottom: 1rem;
+  }
+
+  .planning-stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .planning-stats div {
+    border-radius: 8px;
+    background: var(--color-bg-warm, #f9f7f3);
+    padding: 0.85rem;
+  }
+
+  .planning-stats span,
+  .planning-stats strong {
+    display: block;
+  }
+
+  .planning-stats span {
+    margin-bottom: 0.2rem;
+    color: var(--color-text-body, #5a5570);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .planning-stats strong {
+    color: var(--color-text, #2a2050);
+    font-size: 1rem;
+  }
+
+  .sun-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.65rem;
+    margin-top: 1rem;
+    border-top: 1px solid var(--color-border, #d8d4e0);
+    padding-top: 1rem;
+    color: var(--color-primary, #3b3160);
+    font-size: 0.9rem;
+    font-weight: 800;
+  }
+
+  .forecast-panel {
+    min-width: 0;
+  }
+
+  .meteogram-panel {
+    min-width: 0;
+    background: #151922;
+    border-color: #2d3742;
+  }
+
+  .meteogram-panel h3 {
+    color: #ffffff;
+  }
+
+  .meteogram-panel .forecast-panel__header p {
+    color: #c4ccd6;
+  }
+
+  .meteogram-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.55rem;
+    max-width: 360px;
+  }
+
+  .meteogram-links a {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    color: #ffffff;
+    padding: 0.42rem 0.7rem;
+    font-size: 0.78rem;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .meteogram-links a:hover {
+    border-color: var(--color-accent, #e07730);
+    color: var(--color-accent, #e07730);
+  }
+
+  .meteogram-frame {
+    overflow: hidden;
+    border: 12px solid #2c3641;
+    border-radius: 8px;
+    background: #211c1f;
+  }
+
+  .meteogram-svg {
+    display: block;
+    min-width: 0;
+    width: 100%;
+    height: auto;
+  }
+
+  .meteogram-caption {
+    margin: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: #2c3641;
+    color: #c4ccd6;
+    padding: 0.8rem 1rem;
+    font-size: 0.92rem;
+    font-weight: 700;
+  }
+
+  .forecast-panel__header {
+    margin-bottom: 1rem;
+  }
+
+  .forecast-panel__header p {
+    margin: 0;
+    color: var(--color-text-body, #5a5570);
+    font-size: 0.88rem;
+  }
+
+  .hourly-strip,
+  .forecast-strip {
+    display: flex;
+    gap: 0.9rem;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    padding: 0.15rem 0.1rem 0.75rem;
+    scroll-snap-type: x proximity;
+    scrollbar-color: var(--color-primary-subtle, #a99cc4) transparent;
+  }
+
+  .hour-card,
+  .forecast-day {
+    flex: 0 0 166px;
+    scroll-snap-align: start;
+    border: 1px solid var(--color-border, #d8d4e0);
+    border-radius: 8px;
+    background: var(--color-bg-warm, #f9f7f3);
+  }
+
+  .forecast-day {
+    flex-basis: 178px;
+    min-height: 248px;
+    padding: 1rem;
+  }
+
+  .forecast-day.is-flyable {
+    border-color: rgba(45, 122, 79, 0.7);
+    box-shadow: inset 0 0 0 1px rgba(45, 122, 79, 0.15);
+  }
+
+  .hour-card {
+    min-height: 226px;
+    padding: 0.9rem;
+  }
+
+  .hour-card.is-calm {
+    border-color: rgba(45, 122, 79, 0.55);
+    background: rgba(45, 122, 79, 0.08);
+  }
+
+  .hour-card > strong {
+    display: block;
+    color: var(--color-text, #2a2050);
+    font-size: 0.98rem;
+  }
+
+  .hour-card__temp {
+    margin-bottom: 0.6rem;
+    color: var(--color-text, #2a2050);
+    font-size: 1.35rem;
+    font-weight: 800;
+  }
+
+  .forecast-day__top strong {
+    display: block;
+    color: var(--color-text, #2a2050);
+  }
+
+  .forecast-day__top span:not(.forecast-day__signal) {
+    color: var(--color-text-body, #5a5570);
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+
+  .forecast-day__signal {
+    color: var(--color-success, #2d7a4f);
+    font-size: 0.72rem;
+    font-weight: 800;
+    line-height: 1.25;
+    text-align: right;
+  }
+
+  .cloud-icon {
+    position: relative;
+    display: block;
+    width: 52px;
+    height: 32px;
+    margin: 1.15rem 0 0.85rem;
+  }
+
+  .cloud-icon::before,
+  .cloud-icon::after {
+    content: "";
+    position: absolute;
+    border-radius: 999px;
+  }
+
+  .cloud-icon::before {
+    left: 5px;
+    bottom: 4px;
+    width: 42px;
+    height: 18px;
+    background: #d8d4e0;
+  }
+
+  .cloud-icon::after {
+    left: 15px;
+    bottom: 12px;
+    width: 21px;
+    height: 21px;
+    background: #d8d4e0;
+  }
+
+  .cloud-icon--clear::before {
+    left: 9px;
+    bottom: 3px;
+    width: 30px;
+    height: 30px;
+    background: #f2b94b;
+  }
+
+  .cloud-icon--clear::after {
+    display: none;
+  }
+
+  .cloud-icon--partly::before {
+    background: linear-gradient(90deg, #f2b94b 0 36%, #d8d4e0 36% 100%);
+  }
+
+  .forecast-day__temps {
+    color: var(--color-text, #2a2050);
+    font-size: 1.2rem;
+    font-weight: 800;
+  }
+
+  .forecast-day__condition {
+    min-height: 2.6em;
+    margin-bottom: 0.35rem;
+    color: var(--color-accent, #e07730);
+    font-size: 0.86rem;
+    font-weight: 800;
+    line-height: 1.3;
+  }
+
+  .hour-card dl,
+  .forecast-day dl {
+    display: grid;
+    gap: 0.3rem;
+    margin: 0;
+  }
+
+  .hour-card dl div,
+  .forecast-day dl div {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.65rem;
+    font-size: 0.85rem;
+  }
+
+  .hour-card dt,
+  .forecast-day dt {
+    color: var(--color-text-body, #5a5570);
+  }
+
+  .hour-card dd,
+  .forecast-day dd {
+    color: var(--color-text, #2a2050);
+    font-weight: 700;
+  }
+
+  .weather-disclaimer,
+  .verification-note {
+    margin: 1.5rem 0 0;
+    border-left: 4px solid var(--color-accent, #e07730);
+    border-radius: 8px;
+    background: var(--color-bg-warm, #f9f7f3);
+    padding: 1rem 1.2rem;
+    color: var(--color-text, #2a2050);
+    font-weight: 600;
+    line-height: 1.65;
+  }
+
+  .verification-note {
+    margin-bottom: 1.5rem;
+  }
+
+  .month-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .month-card {
+    overflow: hidden;
+  }
+
+  .month-card[data-season="peak"] {
+    border-top: 4px solid var(--color-success, #2d7a4f);
+  }
+
+  .month-card[data-season="shoulder"] {
+    border-top: 4px solid var(--color-accent, #e07730);
+  }
+
+  .month-card[data-season="rainy"] {
+    border-top: 4px solid var(--color-primary-subtle, #a99cc4);
+  }
+
+  .month-card summary {
+    display: grid;
+    gap: 1rem;
+    padding: 1.15rem;
+    cursor: pointer;
+  }
+
+  .month-card summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .month-card__summary-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .month-card__name {
+    color: var(--color-text, #2a2050);
+    font-size: 1.25rem;
+    font-weight: 800;
+  }
+
+  .season-tag {
+    border-radius: 999px;
+    background: var(--color-bg-lavender, #f4f2fa);
+    color: var(--color-primary, #3b3160);
+    padding: 0.25rem 0.6rem;
+    font-size: 0.74rem;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  .rating-meter {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .rating-meter__track {
+    height: 9px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: var(--color-bg-lavender, #f4f2fa);
+  }
+
+  .rating-meter__fill {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--color-accent, #e07730), var(--color-success, #2d7a4f));
+  }
+
+  .rating-meter__label {
+    color: var(--color-text, #2a2050);
+    font-weight: 800;
+  }
+
+  .month-card__details {
+    border-top: 1px solid var(--color-border, #d8d4e0);
+    padding: 0 1.15rem 1.15rem;
+  }
+
+  .month-card dl {
+    display: grid;
+    gap: 0.65rem;
+    margin: 1rem 0;
+  }
+
+  .month-card dl div {
+    display: grid;
+    grid-template-columns: minmax(105px, 0.75fr) 1fr;
+    gap: 0.75rem;
+  }
+
+  .month-card dt {
+    color: var(--color-text-body, #5a5570);
+    font-size: 0.86rem;
+    font-weight: 700;
+  }
+
+  .month-card dd {
+    color: var(--color-text, #2a2050);
+    font-weight: 700;
+  }
+
+  .month-card__details p {
+    color: var(--color-text-body, #5a5570);
+    line-height: 1.65;
+  }
+
+  .month-card .btn {
+    width: 100%;
+    margin-top: 0.3rem;
+  }
+
+  .link-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+
+  .reference-link {
+    display: flex;
+    align-items: center;
+    min-height: 88px;
+    padding: 1rem;
+    color: var(--color-text, #2a2050);
+    font-weight: 800;
+  }
+
+  .reference-link:hover {
+    color: var(--color-accent, #e07730);
+    transform: translateY(-2px);
+  }
+
+  .planning-cta {
+    margin-top: 2rem;
+    padding: 2rem;
+    border-radius: 8px;
+    background: var(--color-primary, #3b3160);
+    color: #ffffff;
+  }
+
+  .planning-cta h2,
+  .planning-cta a {
+    color: #ffffff;
+  }
+
+  .planning-cta h2 {
+    margin-bottom: 0.5rem;
+  }
+
+  .planning-cta p {
+    margin: 0;
+    color: var(--color-text-on-dark-muted, #c4b8e0);
+    font-size: 1.1rem;
+  }
+
+  .planning-cta a {
+    font-weight: 800;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  @media (max-width: 980px) {
+    .source-grid,
+    .month-grid,
+    .link-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .weather-dashboard {
+      grid-template-columns: 1fr;
+    }
+
+    .weather-card,
+    .planning-card,
+    .meteogram-panel,
+    .hourly-panel,
+    .forecast-panel {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .current-conditions {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .conditions-hero {
+      min-height: 62vh;
+    }
+
+    .weather-toolbar {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .unit-toggle {
+      width: 100%;
+    }
+
+    .weather-dashboard,
+    .source-grid,
+    .month-grid,
+    .link-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .weather-card,
+    .planning-card,
+    .meteogram-panel,
+    .hourly-panel,
+    .forecast-panel {
+      padding: 1rem;
+    }
+
+    .current-hero {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .wind-compass {
+      width: 86px;
+      height: 86px;
+    }
+
+    .condition-badge {
+      display: grid;
+    }
+
+    .condition-badge strong {
+      text-align: left;
+    }
+
+    .current-metrics,
+    .planning-stats {
+      grid-template-columns: 1fr;
+    }
+
+    .forecast-panel__header {
+      display: block;
+    }
+
+    .meteogram-links {
+      justify-content: flex-start;
+      margin-top: 0.8rem;
+      max-width: none;
+    }
+
+    .forecast-panel__header p {
+      margin-top: 0.4rem;
+      text-align: left;
+    }
+
+    .meteogram-frame {
+      border-width: 8px;
+      overflow-x: auto;
+    }
+
+    .meteogram-svg {
+      min-width: 760px;
+    }
+
+    .hour-card,
+    .forecast-day {
+      flex-basis: min(74vw, 190px);
+    }
+
+    .month-card dl div {
+      grid-template-columns: 1fr;
+      gap: 0.1rem;
+    }
+
+    .metric-row {
+      display: grid;
+      gap: 0.2rem;
+    }
+
+    .metric-row strong {
+      text-align: left;
+    }
+  }
+</style>
+
+<style is:global>
+  .current-conditions .current-hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .current-conditions .condition-label {
+    margin: 0 0 0.35rem;
+    color: var(--color-accent, #e07730);
+    font-size: 1rem;
+    font-weight: 900;
+  }
+
+  .current-conditions .current-temp {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin: 0;
+  }
+
+  .current-conditions .current-temp__value {
+    color: var(--color-text, #2a2050);
+    font-size: clamp(3.25rem, 7vw, 5.1rem);
+    font-weight: 900;
+    letter-spacing: 0;
+    line-height: 0.95;
+  }
+
+  .current-conditions .current-temp__alt {
+    color: var(--color-accent, #e07730);
+    font-size: 1.15rem;
+    font-weight: 900;
+  }
+
+  .current-conditions .feels-like {
+    margin: 0.65rem 0 0;
+    color: var(--color-text-body, #5a5570);
+    font-weight: 700;
+  }
+
+  .current-conditions .wind-compass {
+    position: relative;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 98px;
+    height: 98px;
+    border: 1px solid var(--color-border, #d8d4e0);
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: inset 0 0 0 8px var(--color-bg-lavender, #f4f2fa), 0 12px 24px rgba(42, 32, 80, 0.08);
+  }
+
+  .current-conditions .wind-compass::before {
+    content: "N";
+    position: absolute;
+    top: 7px;
+    color: var(--color-text-body, #5a5570);
+    font-size: 0.72rem;
+    font-weight: 900;
+  }
+
+  .current-conditions .wind-compass__arrow {
+    position: absolute;
+    width: 2px;
+    height: 58px;
+    transform-origin: 50% 50%;
+  }
+
+  .current-conditions .wind-compass__arrow::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 18px solid var(--color-accent, #e07730);
+  }
+
+  .current-conditions .wind-compass strong {
+    position: relative;
+    z-index: 1;
+    color: var(--color-text, #2a2050);
+    font-size: 1.05rem;
+    font-weight: 900;
+  }
+
+  .current-conditions .condition-badge {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 1.35rem 0;
+    border-radius: 8px;
+    padding: 0.85rem 1rem;
+    line-height: 1.4;
+  }
+
+  .current-conditions .condition-badge span,
+  .current-conditions .condition-badge strong {
+    font-size: 0.9rem;
+    font-weight: 900;
+  }
+
+  .current-conditions .condition-badge strong {
+    color: inherit;
+    text-align: right;
+  }
+
+  .current-conditions .condition-badge.is-good {
+    background: rgba(45, 122, 79, 0.12);
+    color: var(--color-success, #2d7a4f);
+  }
+
+  .current-conditions .condition-badge.is-watch {
+    background: rgba(224, 119, 48, 0.12);
+    color: var(--color-accent-hover, #c86520);
+  }
+
+  .current-conditions .condition-badge.is-caution {
+    background: rgba(59, 49, 96, 0.1);
+    color: var(--color-primary, #3b3160);
+  }
+
+  .current-conditions .current-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .current-conditions .metric-row {
+    display: grid;
+    gap: 0.2rem;
+    border: 1px solid var(--color-border, #d8d4e0);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.76);
+    padding: 0.75rem;
+  }
+
+  .current-conditions .metric-row span {
+    color: var(--color-text-body, #5a5570);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .current-conditions .metric-row strong {
+    color: var(--color-text, #2a2050);
+    font-size: 1rem;
+    font-weight: 900;
+  }
+
+  .current-conditions .planning-card__header {
+    margin-bottom: 1rem;
+  }
+
+  .current-conditions .planning-stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .current-conditions .planning-stats div {
+    border-radius: 8px;
+    background: var(--color-bg-warm, #f9f7f3);
+    padding: 0.85rem;
+  }
+
+  .current-conditions .planning-stats span,
+  .current-conditions .planning-stats strong {
+    display: block;
+  }
+
+  .current-conditions .planning-stats span {
+    margin-bottom: 0.2rem;
+    color: var(--color-text-body, #5a5570);
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .current-conditions .planning-stats strong {
+    color: var(--color-text, #2a2050);
+    font-size: 1rem;
+    font-weight: 900;
+  }
+
+  .current-conditions .sun-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.65rem;
+    margin-top: 1rem;
+    border-top: 1px solid var(--color-border, #d8d4e0);
+    padding-top: 1rem;
+    color: var(--color-primary, #3b3160);
+    font-size: 0.9rem;
+    font-weight: 900;
+  }
+
+  .current-conditions .meteogram-caption {
+    margin: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: #2c3641;
+    color: #c4ccd6;
+    padding: 0.8rem 1rem;
+    font-size: 0.92rem;
+    font-weight: 800;
+  }
+
+  .current-conditions .hour-card,
+  .current-conditions .forecast-day {
+    flex: 0 0 166px;
+    scroll-snap-align: start;
+    border: 1px solid var(--color-border, #d8d4e0);
+    border-radius: 8px;
+    background: var(--color-bg-warm, #f9f7f3);
+    padding: 1rem;
+  }
+
+  .current-conditions .forecast-day {
+    flex-basis: 178px;
+  }
+
+  .current-conditions .hour-card {
+    min-height: 226px;
+  }
+
+  .current-conditions .hour-card.is-calm,
+  .current-conditions .forecast-day.is-flyable {
+    border-color: rgba(45, 122, 79, 0.65);
+    box-shadow: inset 0 0 0 1px rgba(45, 122, 79, 0.12);
+  }
+
+  .current-conditions .hour-card.is-calm {
+    background: rgba(45, 122, 79, 0.08);
+  }
+
+  .current-conditions .hour-card > strong,
+  .current-conditions .forecast-day__top strong {
+    display: block;
+    color: var(--color-text, #2a2050);
+    font-size: 1rem;
+    font-weight: 900;
+  }
+
+  .current-conditions .forecast-day__top {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+
+  .current-conditions .forecast-day__top span:not(.forecast-day__signal) {
+    color: var(--color-text-body, #5a5570);
+    font-size: 0.8rem;
+    font-weight: 800;
+  }
+
+  .current-conditions .forecast-day__signal {
+    color: var(--color-success, #2d7a4f);
+    font-size: 0.72rem;
+    font-weight: 900;
+    line-height: 1.25;
+    text-align: right;
+  }
+
+  .current-conditions .cloud-icon {
+    position: relative;
+    display: block;
+    width: 52px;
+    height: 32px;
+    margin: 1rem 0 0.75rem;
+  }
+
+  .current-conditions .cloud-icon::before,
+  .current-conditions .cloud-icon::after {
+    content: "";
+    position: absolute;
+    border-radius: 999px;
+  }
+
+  .current-conditions .cloud-icon::before {
+    left: 5px;
+    bottom: 4px;
+    width: 42px;
+    height: 18px;
+    background: #d8d4e0;
+  }
+
+  .current-conditions .cloud-icon::after {
+    left: 15px;
+    bottom: 12px;
+    width: 21px;
+    height: 21px;
+    background: #d8d4e0;
+  }
+
+  .current-conditions .cloud-icon--clear::before {
+    left: 9px;
+    bottom: 3px;
+    width: 30px;
+    height: 30px;
+    background: #f2b94b;
+  }
+
+  .current-conditions .cloud-icon--clear::after {
+    display: none;
+  }
+
+  .current-conditions .cloud-icon--partly::before {
+    background: linear-gradient(90deg, #f2b94b 0 36%, #d8d4e0 36% 100%);
+  }
+
+  .current-conditions .hour-card__temp,
+  .current-conditions .forecast-day__temps {
+    color: var(--color-text, #2a2050);
+    font-weight: 900;
+  }
+
+  .current-conditions .hour-card__temp {
+    margin-bottom: 0.7rem;
+    font-size: 1.35rem;
+  }
+
+  .current-conditions .forecast-day__condition {
+    min-height: 2.6em;
+    margin-bottom: 0.35rem;
+    color: var(--color-accent, #e07730);
+    font-size: 0.86rem;
+    font-weight: 900;
+    line-height: 1.3;
+  }
+
+  .current-conditions .forecast-day__temps {
+    margin-bottom: 0.65rem;
+    font-size: 1.15rem;
+  }
+
+  .current-conditions .hour-card dl,
+  .current-conditions .forecast-day dl {
+    display: grid;
+    gap: 0.3rem;
+    margin: 0;
+  }
+
+  .current-conditions .hour-card dl div,
+  .current-conditions .forecast-day dl div {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.65rem;
+    font-size: 0.85rem;
+  }
+
+  .current-conditions .hour-card dt,
+  .current-conditions .forecast-day dt {
+    color: var(--color-text-body, #5a5570);
+  }
+
+  .current-conditions .hour-card dd,
+  .current-conditions .forecast-day dd {
+    color: var(--color-text, #2a2050);
+    font-weight: 900;
+  }
+
+  @media (max-width: 980px) {
+    .current-conditions .current-metrics {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 680px) {
+    .current-conditions .hour-card,
+    .current-conditions .forecast-day {
+      flex-basis: min(74vw, 190px);
+    }
+
+    .current-conditions .current-hero {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .current-conditions .wind-compass {
+      width: 86px;
+      height: 86px;
+    }
+
+    .current-conditions .condition-badge {
+      display: grid;
+    }
+
+    .current-conditions .condition-badge strong {
+      text-align: left;
+    }
+
+    .current-conditions .current-metrics,
+    .current-conditions .planning-stats {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

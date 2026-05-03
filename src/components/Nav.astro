@@ -37,6 +37,15 @@ const currentPath = Astro.url.pathname;
             <li><a href="/tours/italy-paragliding-dolomites/">Italy - Dolomites</a></li>
           </ul>
         </li>
+        <li class="nav__dropdown">
+          <button class="nav__dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+            Flying Info <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <ul class="nav__dropdown-menu">
+            <li><a href="/valle-de-bravo-conditions/" class:list={[{ active: currentPath.startsWith('/valle-de-bravo-conditions') }]}>Valle de Bravo Conditions</a></li>
+            <li><a href="/el-penon-launch-valle-de-bravo/" class:list={[{ active: currentPath.startsWith('/el-penon-launch-valle-de-bravo') }]}>El Penon Launch Guide</a></li>
+          </ul>
+        </li>
         <li><a href="/gallery/" class:list={[{ active: currentPath.startsWith('/gallery') }]}>Gallery</a></li>
         <li><a href="/faq/" class:list={[{ active: currentPath.startsWith('/faq') }]}>FAQs</a></li>
         <li><a href="/blog/" class:list={[{ active: currentPath.startsWith('/blog') }]}>Blog</a></li>
