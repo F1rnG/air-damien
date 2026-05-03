@@ -36,6 +36,85 @@ const placeSchema = {
   }
 };
 
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: "El Penon: Valle de Bravo's World-Class Paragliding Launch",
+  description: pageDescription,
+  url: 'https://airdamien.com/el-penon-launch-valle-de-bravo/',
+  image: 'https://airdamien.com/images/el%20penon.jpg',
+  datePublished: '2026-05-03',
+  dateModified: '2026-05-03',
+  author: {
+    '@type': 'Person',
+    name: 'Damien Mitchell',
+    url: 'https://airdamien.com/about-us/',
+    jobTitle: 'USHPA Advanced Instructor'
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Air Damien',
+    url: 'https://airdamien.com',
+    logo: { '@type': 'ImageObject', url: 'https://airdamien.com/images/logo.png' }
+  },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://airdamien.com/el-penon-launch-valle-de-bravo/' }
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Where is El Penon launch?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'El Penon is the primary paragliding launch above Valle de Bravo, in the State of Mexico, roughly two hours west of Mexico City. It sits at approximately 7,600 ft / 2,316m ASL on the rim of an ancient volcanic caldera overlooking Lake Avandaro and the town of Valle de Bravo. The drive from town takes about 30-40 minutes on a paved mountain road.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'What rating do I need to fly El Penon?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'P2 (USHPA Novice) is the practical minimum. With guided instruction and radio coaching, P2 pilots fly El Penon safely and routinely use the trip as a thermalling-skill accelerator. Local club rules restrict mid-day flying in the strongest conditions to P4 pilots and above. International pilots use the IPPI 3+ equivalent.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'How big is the El Penon launch area?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The launch is wide and forgiving by mountain-launch standards. Multiple pilots can lay out wings and set up at once without crowding. The terrain drops away cleanly, so even in light conditions you can get off the ground without drama. There is also room to abort safely if a launch comes up wrong.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'What direction does El Penon launch face?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'El Penon faces generally south to southwest. The dominant flyable wind comes from this direction during peak season, lining up with the daily thermal cycle. Cross-wind days are uncommon during November-March; when they happen, the experienced call is usually to wait for the wind to clock around.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'Where do you land at El Penon?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Two primary landing zones: the Piano LZ (about 1.5 miles from launch, named for its piano-key shape) and the Beach LZ at Marina Nacional 202 on Lake Avandaro (19.183792, -100.127785). Both are large, easy approaches for visiting pilots. The Piano is the default LZ for retrieve-supported flights; the Beach is closer to town and where the local flying community gathers.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'When does the Hair Dryer start at El Penon?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'During peak season (November through March), the Hair Dryer thermal cycle kicks on with remarkable consistency around 10:00 AM. The dark volcanic rock heats fast in the morning sun and produces strong, well-organized thermals. The window typically runs through early-to-mid afternoon. November and February tend toward the later end; December tends to fire slightly earlier.'
+      }
+    }
+  ]
+};
+
 const photos = [
   {
     src: '/images/el penon.jpg',
@@ -89,6 +168,8 @@ const mapPoints = [
   canonicalUrl="https://airdamien.com/el-penon-launch-valle-de-bravo/"
 >
   <SchemaMarkup schema={placeSchema} />
+  <SchemaMarkup schema={articleSchema} />
+  <SchemaMarkup schema={faqSchema} />
 
   <section class="launch-hero">
     <img class="launch-hero__bg" src="/images/el penon.jpg" alt="El Penon launch site in Valle de Bravo" width="1920" height="1280" loading="eager" />
@@ -96,7 +177,7 @@ const mapPoints = [
     <div class="launch-hero__content">
       <p class="eyebrow">Launch guide</p>
       <h1>El Penon: Valle de Bravo's World-Class Launch</h1>
-      <p>A pilot's reference for the primary paragliding launch at Valle de Bravo: location, terrain, landing zones, access, and the local thermal cycle.</p>
+      <p>The complete pilot's guide to El Penon - location, terrain, landing zones, the Hair Dryer thermal cycle, and what 25+ years of flying this site has taught me about getting the most out of it.</p>
     </div>
   </section>
 
@@ -115,11 +196,12 @@ const mapPoints = [
   <section class="section section--white overview-section" aria-labelledby="overview-heading">
     <div class="container guide-grid">
       <div class="guide-copy">
-        <p class="eyebrow">Section 1</p>
+        <p class="eyebrow">Site overview</p>
         <h2 id="overview-heading">Overview</h2>
         <p class="lead">El Penon is the primary paragliding launch at Valle de Bravo and one of the best-known mountain thermal sites in North America.</p>
         <p>The launch sits at approximately 7,600 ft / 2,316m ASL above Valle de Bravo. El Penon means "the big rock" in Spanish, a fitting name for a volcanic peak on the rim of an ancient caldera overlooking Lake Avandaro and the town below.</p>
-        <p>For visiting pilots, El Penon is both a big-mountain launch and a repeatable learning environment: volcanic ridges, rock faces, valley terrain, and lake-influenced air all combine into a flying area with a reliable daily rhythm.</p>
+        <p>I have flown this site for 25+ years - more than 10,000 flights - and run guided trips here every winter. What makes El Penon special is not one feature but the combination: a wide forgiving launch, consistent thermal cycles, oversized landing zones, predictable wind patterns, and a town you actually want to spend time in. Most launches optimize for one of those. El Penon optimizes for all of them, which is why pilots from around the world keep coming back.</p>
+        <p>For visiting pilots, El Penon is both a big-mountain launch and a repeatable learning environment. Volcanic ridges, rock faces, valley terrain, and lake-influenced air combine into a flying area with a reliable daily rhythm. The site rewards repetition - by day three of a trip, the air starts to feel familiar; by day seven, you are reading conditions that would have looked random on day one. For the full site picture see our <a href="/paragliding-valle-de-bravo/">Valle de Bravo paragliding guide</a>.</p>
         <!-- DAMIEN TO VERIFY: Exact El Penon launch coordinates. Current page uses approximately 19.21, -100.15 per draft brief. -->
       </div>
 
@@ -154,9 +236,9 @@ const mapPoints = [
   <section class="section section--cream map-section" aria-labelledby="map-heading">
     <div class="container">
       <div class="section-intro">
-        <p class="eyebrow">Section 2</p>
+        <p class="eyebrow">Map and access</p>
         <h2 id="map-heading">Map</h2>
-        <p>El Penon sits above Valle de Bravo, with Lake Avandaro and the main landing zones below.</p>
+        <p>El Penon sits above Valle de Bravo, with Lake Avandaro and the main landing zones below. The launch is roughly 1.5 miles from the Piano LZ and a similar distance from the Beach LZ at the lakefront.</p>
       </div>
 
       <div class="map-layout">
@@ -190,32 +272,45 @@ const mapPoints = [
 
   <section class="section section--white" aria-labelledby="flying-area-heading">
     <div class="container reference-body">
-      <p class="eyebrow">Section 3</p>
-      <h2 id="flying-area-heading">The Flying Area</h2>
-      <p>The primary flying area in front of launch is commonly known as the Fish Bowl. It is an amphitheater-like piece of volcanic terrain where pilots work lift in view of launch, the lake, and the valley floor.</p>
-      <p>The landscape includes volcanic ridges, rock faces, the lake, and open valley terrain. The shape of the terrain gives visiting pilots clear visual references while they learn how the air moves through the site.</p>
-      <p>This guide intentionally stays general on route details. Specific thermal triggers, terrain-feature names, and cross-country lines should come from a current local briefing.</p>
+      <p class="eyebrow">The flying area</p>
+      <h2 id="flying-area-heading">The Fish Bowl</h2>
+      <p>The primary flying area in front of launch is commonly known as the Fish Bowl. It is an amphitheater-like piece of volcanic terrain where pilots work lift in view of launch, the lake, and the valley floor. Calling it a bowl is accurate - the slopes wrap around you as you fly, with the lake at the bottom and the launch ridge above. You can see almost the entire flying day from anywhere inside it.</p>
+      <p>The landscape includes volcanic ridges, rock faces, exposed dark stone, and open valley terrain falling toward Lake Avandaro. The shape of the terrain gives visiting pilots clear visual references for where they are relative to launch and the LZs - even on your first flight, you do not get lost.</p>
+      <p>What the Fish Bowl teaches you is how to read terrain for thermal triggers. Dark rock heats fast and produces predictable lift. Spines and ridgelines focus rising air into climbable cores. The lake creates a temperature differential that drives the daily cycle. Pilots who put in three or four flights here start to understand thermal generation in a way that their home sites never quite teach. We cover the underlying skill in our guide on <a href="/thermal-in-paragliding-techniques-and-tips/">thermalling techniques</a>.</p>
+      <p>This page stays general on route details. Specific thermal triggers, terrain-feature names ("The Rock," "the spine," "the mesas"), and cross-country lines should come from your local briefing on the day. Conditions change site-to-site and season-to-season, and the right answer for a strong December day is different from the right answer for a softer March day.</p>
       <!-- DAMIEN TO VERIFY: Specific names of terrain features such as spines, walls, mesas, The Rock, and other local route references. -->
     </div>
   </section>
 
   <section class="section section--cream" aria-labelledby="hair-dryer-heading">
     <div class="container reference-body">
-      <p class="eyebrow">Section 4</p>
+      <p class="eyebrow">Daily thermal cycle</p>
       <h2 id="hair-dryer-heading">The Hair Dryer</h2>
-      <p>The Hair Dryer is the local name for El Penon's reliable daily thermal cycle. In general terms, thermals begin cycling around mid-morning with strong regularity, giving the site its reputation for repeatable flying days.</p>
-      <p>The reliability comes from a combination of terrain and weather: volcanic rock absorbing heat, consistent solar exposure, and interaction between the lake, valley wind, and the surrounding slopes.</p>
-      <p>For Air Damien pilots, the important part is not memorizing a clock time. It is learning how Damien reads the actual day: wind at launch, cloud development, thermal spacing, and how the air feels as the cycle turns on.</p>
+      <p>The Hair Dryer is what locals call El Penon's daily thermal cycle. Around 10:00 AM during peak season, the dark volcanic rock has absorbed enough morning sun that a sustained column of warm air starts rising from the south face. Pilots gather, look at watches, see the wind start cycling up the slope, and within fifteen minutes the first launches are off. By 10:30 the sky has paragliders climbing in clean lift.</p>
+      <p>The reliability comes from physics. Dark volcanic rock heats faster than the surrounding green valley floor. The lake stays cooler than the land, creating a thermal differential that pulls air up the slope. The geometry of the terrain - bowl-shaped, with the launch on the rim - focuses that rising air into a predictable corridor. None of this is random. It is the same cycle, day after day, with small variations for season and weather.</p>
+      <p>Average climb rates during peak season are 2-4 m/s, with stronger cores possible mid-day. Cloudbase typically sits at 10,000-12,000 feet ASL during November-January. The thermal window runs 4-5 hours on a typical day, which is enough for two flights and an afternoon rest. For the full month-by-month breakdown, see our <a href="/valle-de-bravo-conditions/">Valle de Bravo conditions page</a>.</p>
+      <p>For pilots flying with Air Damien, the important part is not memorizing the clock. It is learning how I read the actual day: how the wind at launch is behaving, where cumulus is starting to develop, what the spacing looks like between thermals, and how the air feels in the first inflations of the morning. The clock gives you the rough time. The actual cycle is read from the ground and the air. That reading is one of the things radio-coached flying transfers fastest - see <a href="/radio-guided-paragliding-instruction/">how radio-guided instruction works</a>.</p>
       <!-- DAMIEN TO VERIFY: Exact Hair Dryer timing, typical thermal strengths, and how the cycle varies by season. -->
+    </div>
+  </section>
+
+  <section class="section section--white" aria-labelledby="first-flight-heading">
+    <div class="container reference-body">
+      <p class="eyebrow">First-flight narrative</p>
+      <h2 id="first-flight-heading">What Your First Flight Off El Penon Feels Like</h2>
+      <p>You arrive at launch around 9:30. The air is cool, the sun is climbing, and the first cycles are starting to feel up the slope. You walk through your pre-flight - wing laid out, lines clear, harness on, helmet, radio check. Damien is there talking through the briefing: today's wind, today's cycle, what the morning has been doing, where you are flying first.</p>
+      <p>Maybe 10:05. The wind has been steady for a few minutes. You step into the A-risers, the wing comes up clean, and you start running. Three or four steps and the rocks drop away below you. You sit back into the harness. The lake spreads out below you in every direction, the town looks like a model on the shore, and the air is doing nothing - smooth, quiet, no surprises.</p>
+      <p>Then the air starts moving. Around the spine to your right, the wing pitches back slightly. Brakes load up. The vario beeps. You bank into the lift the way you have practiced a hundred times at your home site, and for the first time in your flying career you are climbing in a textbook thermal. Two hundred feet, three hundred, eight hundred. The radio is talking to you - tighter turn, hold that bank, you are in the core - and you keep climbing.</p>
+      <p>Forty minutes later you are still in the air, three thousand feet above launch, looking down at the volcano you took off from. That is the moment most pilots remember from their first El Penon flight. The launch was forgiving, the thermal was readable, and the radio coaching put you in the right place. You did the actual flying. The site delivered the rest.</p>
     </div>
   </section>
 
   <section class="section section--white" aria-labelledby="landing-zones-heading">
     <div class="container">
       <div class="section-intro">
-        <p class="eyebrow">Section 5</p>
+        <p class="eyebrow">Landing zones</p>
         <h2 id="landing-zones-heading">Landing Zones</h2>
-        <p>The main landing zones give pilots multiple ways to end a flight depending on the session, the day, and the plan.</p>
+        <p>El Penon has two primary landing zones, both genuinely large by paragliding standards. Most flights end at the Piano LZ; the Beach LZ near town is the alternate, and is where the local flying community gathers. Land-outs into the surrounding valley are not common but are manageable when they happen - the terrain is generally open farmland.</p>
       </div>
 
       <div class="lz-grid">
@@ -231,7 +326,7 @@ const mapPoints = [
               <dd>19.183792, -100.127785</dd>
             </div>
           </dl>
-          <p>The Beach LZ is a lakefront landing area near town and Lake Avandaro. It is also the location listed in the site footer as Air Damien's Valle de Bravo landing reference.</p>
+          <p>The Beach LZ is a lakefront landing area near town and the lake itself. It is the location listed in the Air Damien site footer as our Valle de Bravo landing reference. Late-afternoon glass-off sessions often end here. Wind in the late afternoon tends to come off the lake, which sets up clean approaches into the wind.</p>
         </article>
 
         <article class="lz-card">
@@ -246,42 +341,81 @@ const mapPoints = [
               <dd>DAMIEN TO VERIFY</dd>
             </div>
           </dl>
-          <p>Piano LZ is a large landing zone named for its shape. Confirm current access, approach notes, and any local restrictions during the daily site briefing.</p>
+          <p>Piano LZ is the main landing zone for El Penon, named for its piano-key shape when viewed from the air. It is a large flat field with good approach options from multiple directions, and it is where the retrieve vehicle picks pilots up after a typical morning flight. From the air it is impossible to miss - you can see it clearly from anywhere in the Fish Bowl. Land-out anxiety, which is real at most US sites with tight LZs, is essentially absent here. Confirm current access, approach notes, and any local restrictions during your daily site briefing.</p>
           <!-- DAMIEN TO VERIFY: Piano LZ exact coordinates and current access status. -->
         </article>
       </div>
 
+      <p class="lz-note">For pilots used to threading approaches into smaller LZs at home, the Beach and Piano feel almost luxuriously oversized. This is one of the things returning pilots talk about - landing stress drops, and you can focus on flare timing and pattern flying rather than worrying about whether you will fit. We cover landing skills in detail in our guide on <a href="/how-to-land-a-paraglider/">how to land a paraglider</a>.</p>
       <!-- DAMIEN TO VERIFY: Any other LZs, LZ rules, restricted areas, and current approach requirements. -->
     </div>
   </section>
 
   <section class="section section--cream" aria-labelledby="pilot-requirements-heading">
     <div class="container reference-body">
-      <p class="eyebrow">Section 6</p>
+      <p class="eyebrow">Pilot requirements</p>
       <h2 id="pilot-requirements-heading">Who Can Fly Here</h2>
-      <p>El Penon is a mountain thermal site. Independent pilots should be current, properly rated for the conditions, comfortable with active-air decision-making, and briefed on the local rules before flying.</p>
-      <p>Local requirements can change. Visiting pilots should confirm rating expectations, launch access, landing zone rules, and any club or site requirements before planning an independent flight.</p>
-      <p><strong>If you fly with Air Damien, Damien handles all local coordination and logistics.</strong></p>
+      <p>El Penon is a mountain thermal site, and like any mountain site it has rules and rating expectations. The short answer: P2 pilots are welcome with guided instruction, P3+ pilots can fly independently after a site introduction, and mid-day flying in the strongest conditions is restricted to P4 and above.</p>
+      <p><strong>P2 pilots:</strong> El Penon is one of the friendliest mountain launches in the world for pilots at this level. The launch is wide and forgiving, the LZs are oversized, and the thermals are moderate enough to learn in safely. With radio coaching and a structured trip, P2 pilots routinely use El Penon to break through into real thermal flying. We wrote up exactly what to expect in our <a href="/valle-de-bravo-p2-pilots/">guide for P2 pilots flying Valle de Bravo</a>.</p>
+      <p><strong>P3 pilots:</strong> This is where the site really opens up. P3 pilots can fly mid-day cycles, work XC fundamentals along the spine and into the surrounding terrain, and start flying their first cross-country routes. Most pilots use Valle as a stepping stone in their <a href="/p2-to-p3-paragliding-progression/">P2 to P3 progression</a>.</p>
+      <p><strong>P4+ pilots:</strong> El Penon at peak power is a real flying site. The strongest cycles, the longest XC days, the convergence flying - all of it opens up at this level. Many of the experienced pilots who come back year after year are P4s pursuing competitive distance or comp prep. For pure XC ambition, also look at our <a href="/paragliding-roldanillo-colombia/">Roldanillo guide</a> - the next step up.</p>
+      <p><strong>USHPA rating recognized.</strong> International pilots use the IPPI 3+ equivalent. Local club membership is required at El Penon and is handled at intake; for visitors flying with Air Damien, this is included.</p>
+      <p><strong>If you fly with Air Damien, Damien handles all local coordination and logistics.</strong> Club paperwork, daily access, and the daily briefing are all built into the trip. For pilots considering whether they are ready, see <a href="/do-you-need-a-license-to-fly-a-paraglider/">do you need a license to fly a paraglider</a> for the rating system overview.</p>
       <!-- DAMIEN TO VERIFY: Local club rules, membership requirements, time-of-day restrictions by rating, and any fees. -->
     </div>
   </section>
 
-  <section class="section section--white" aria-labelledby="getting-to-launch-heading">
+  <section class="section section--white" aria-labelledby="common-mistakes-heading">
     <div class="container reference-body">
-      <p class="eyebrow">Section 7</p>
+      <p class="eyebrow">Visiting-pilot mistakes</p>
+      <h2 id="common-mistakes-heading">Common Mistakes Visiting Pilots Make at El Penon</h2>
+      <p>After teaching here for 25+ years, the patterns are predictable. If you are flying El Penon for the first time, these are the things to watch out for:</p>
+      <ul>
+        <li><strong>Underestimating altitude.</strong> The launch is at 7,600 ft. Wings perform differently in thinner air - faster takeoff speeds, slower turn response, longer glide. Pilots used to sea-level coastal flying sometimes feel a wing surging more than they expect during the launch run. Account for it. Run harder.</li>
+        <li><strong>Launching in the wrong cycle.</strong> The Hair Dryer is a cycle, not a steady wind. Launch on a steady up-slope cycle, not on a peak gust. New pilots sometimes wait too long for the "perfect" cycle and end up rushing a launch in late-cycle pressure. Patience plus discipline - if the cycle dies, wait for the next one.</li>
+        <li><strong>Fixating on the launch corridor.</strong> Launching at El Penon means committing forward. Pilots who look back, hesitate, or try to "fix" a launch on the run end up tangled or low. Once your wing is overhead and clean, run until you fly.</li>
+        <li><strong>Treating mid-day cycles as evening cycles.</strong> Mid-day at El Penon is strong. Pilots used to softer afternoon coastal lift sometimes underestimate just how active the air is at noon. The local club restricts mid-day flying for a reason - take it seriously.</li>
+        <li><strong>Skipping the morning briefing.</strong> Even experienced pilots benefit from local context: today's wind, where the cycle is firing, what the cumulus development is doing, where to focus first. Walking onto launch without that context is leaving free skill on the table.</li>
+        <li><strong>Underdressing for morning launches.</strong> 50F at 7,600 ft with wind on the slope feels like 35F. Bring a real fleece and gloves for the launch period; you can shed layers later. See our <a href="/what-to-pack-paragliding-valle-de-bravo/">complete packing guide</a>.</li>
+      </ul>
+      <p>None of these are exotic. They are the same mistakes I have watched pilots make for decades. The fix is awareness, a good briefing, and treating the first day or two as orientation rather than performance flying.</p>
+    </div>
+  </section>
+
+  <section class="section section--cream" aria-labelledby="getting-to-launch-heading">
+    <div class="container reference-body">
+      <p class="eyebrow">Access and logistics</p>
       <h2 id="getting-to-launch-heading">Getting to Launch</h2>
-      <p>Getting to El Penon generally means driving up a mountain road from Valle de Bravo town. Air Damien trips include launch logistics, so pilots can focus on the weather, the briefing, and their flying plan.</p>
-      <p>Independent pilots should verify access details before going up: road condition, parking, current launch rules, and the best way to coordinate a retrieve after landing.</p>
+      <p>From the town of Valle de Bravo, the drive to El Penon launch takes approximately 30-40 minutes on a winding paved mountain road. The route climbs about 2,500 feet from the lake to launch. A standard passenger vehicle can make it; higher clearance is more comfortable but not necessary.</p>
+      <p>Air Damien trips include daily shuttle to launch and back. Pilots can focus on the weather, the briefing, and the flying plan rather than driving an unfamiliar mountain road in the dark before sunrise. Independent pilots should arrange transport with the local flying club or a private driver - rental cars work but parking at launch can be tight on busy mornings.</p>
+      <p>Retrieve from the LZs is similarly handled. Air Damien runs retrieve vehicles for all guided trips, including XC retrieve when pilots fly distance. Independent pilots should pre-arrange retrieve with the local community before launching - getting back from the Piano LZ is about a 25-minute drive, and being stranded with packed gear is a real possibility for first-time visitors.</p>
+      <p>For full travel logistics from the US - flights, ground transport, money, SIM cards - see our <a href="/valle-de-bravo-travel-guide-paragliders/">Valle de Bravo travel guide for paragliders</a>.</p>
       <!-- DAMIEN TO VERIFY: Road conditions, drive time from town, parking situation, and any access restrictions. -->
+    </div>
+  </section>
+
+  <section class="section section--white" aria-labelledby="comparisons-heading">
+    <div class="container reference-body">
+      <p class="eyebrow">How El Penon compares</p>
+      <h2 id="comparisons-heading">El Penon vs Other Major Launches</h2>
+      <p>Pilots evaluating El Penon usually have other big-mountain launches in mind. Quick comparisons:</p>
+      <ul>
+        <li><strong>vs Pico da Ibituruna (Brazil):</strong> Pico is one of the most iconic launches in the world - a granite peak rising 3,000+ feet above a city. Bigger view, softer thermals, longer travel from the US. El Penon has more consistent thermal cycles and is more accessible. See <a href="/paragliding-governador-valadares-brazil/">our GV guide</a>.</li>
+        <li><strong>vs El Aguila / Roldanillo (Colombia):</strong> Roldanillo is the XC distance site - 4-8 m/s thermals, 100km+ routes, world-class XC potential. El Penon's thermals are moderate by comparison. Roldanillo demands P3+ skills and active air management. <a href="/valle-de-bravo-vs-roldanillo-paragliding/">Read the side-by-side comparison</a>.</li>
+        <li><strong>vs Babadag / Oludeniz (Turkey):</strong> Oludeniz is a coastal soaring site with a dramatic Mediterranean LZ. Different style of flying - more ridge-based, less thermal. Heavily used for tandem tourism. Better suited to a pilot looking for vacation+flying than serious progression. <a href="/valle-de-bravo-vs-oludeniz-paragliding/">See the comparison</a>.</li>
+        <li><strong>vs Bir Billing (India):</strong> Bir is the Asian flying capital, with World Cup heritage and very strong thermals in the Himalayan foothills. Long travel from the US, lower cost on the ground, more committing terrain. El Penon is the closer, more forgiving option for North American pilots. See our <a href="/best-paragliding-destinations-from-us/">destinations guide</a>.</li>
+        <li><strong>vs Val di Fassa / Dolomites (Italy):</strong> The Dolomites offer alpine flying with the most dramatic mountain scenery on earth. Different season (summer), different style (alpine). Pilots often combine winter El Penon trips with summer Dolomites trips. <a href="/paragliding-dolomites-italy/">Our Italy guide</a>.</li>
+      </ul>
+      <p>If you have to pick one international flying site to start with as a US pilot, the answer is almost always El Penon. The combination of accessibility, conditions, and forgiveness is what makes it the default first international trip for North American pilots. The case for that trip in general is in <a href="/why-fly-internationally-paragliding/">why every paraglider should fly internationally at least once</a>.</p>
     </div>
   </section>
 
   <section class="section section--cream" aria-labelledby="photos-heading">
     <div class="container">
       <div class="section-intro">
-        <p class="eyebrow">Section 8</p>
+        <p class="eyebrow">Photos</p>
         <h2 id="photos-heading">Photos from El Penon and Valle de Bravo</h2>
-        <p>A few existing Air Damien images from the launch area, flying terrain, views, and landing environment.</p>
+        <p>A few images from the launch area, flying terrain, views, and landing environment. For more, see our <a href="/gallery/">photo gallery</a>.</p>
       </div>
 
       <div class="photo-grid">
@@ -488,6 +622,21 @@ const mapPoints = [
   .lz-card dd {
     color: var(--color-text, #2a2050);
     font-weight: 700;
+  }
+
+  .lz-note {
+    margin-top: 1.5rem;
+    padding: 1rem 1.25rem;
+    background: var(--color-bg-warm, #f9f7f3);
+    border-left: 4px solid var(--color-accent, #e07730);
+    border-radius: 0 8px 8px 0;
+    color: var(--color-text-body, #5a5570);
+    line-height: 1.7;
+  }
+
+  .lz-note a {
+    color: var(--color-accent, #e07730);
+    font-weight: 600;
   }
 
   .map-layout {

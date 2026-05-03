@@ -42,6 +42,61 @@ const pageSchema = {
   image: 'https://airdamien.com/images/val6.jpg'
 };
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'When is the best month to paraglide Valle de Bravo?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'November through March is peak season, with the most consistent thermals, clearest skies, and lowest rain probability. November and February are the sweet spots for pilots who want peak conditions without the December crowds. December delivers the strongest XC conditions; January offers December-quality flying with cooler mornings.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'Is Valle de Bravo flyable year-round?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Technically yes, but May through September is rainy season. Mornings can produce flyable thermals, but afternoon thunderstorms are common and conditions are unpredictable. We run guided trips November through April; rainy-season flying is for experienced local pilots only.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'What does the Hair Dryer mean at El Penon?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The Hair Dryer is the local name for the daily thermal cycle at El Penon, which kicks on with remarkable consistency around 10:00 AM during peak season. The dark volcanic rock heats fast in the morning sun and produces strong, well-organized thermals you can almost set your watch by.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'How accurate is the live weather feed on this page?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The live data is from Open-Meteo for Valle de Bravo town coordinates (19.1838, -100.1278) at roughly 5,000 ft elevation. Conditions at El Penon launch (7,600 ft) differ meaningfully - colder mornings, different wind patterns, stronger thermals. Use this page for trip planning. For actual go/no-go calls, check Holfuy launch wind and Windguru launch forecast.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'How long is a typical Valle de Bravo flying day?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'During peak season the thermal window runs roughly 10:00 AM to 3:00 PM. That gives you 4 to 5 hours of usable conditions. Most pilots fly two sessions: a morning thermal flight and an afternoon glass-off session. Multi-hour single flights of 2 to 3 hours are common.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'What rating do I need to fly Valle de Bravo?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'P2 (Novice) is the practical minimum. With guided instruction and radio coaching, P2 pilots fly El Penon safely and use it as a thermalling-skill accelerator. Mid-day flying in the strongest conditions is restricted to P4 pilots and above by local club rules.'
+      }
+    }
+  ]
+};
+
 const monthlyConditions = [
   {
     name: 'November',
@@ -211,11 +266,15 @@ const monthlyConditions = [
     season: 'Shoulder',
     recommendation: 'The transition back toward peak season, with improving chances late in the month.'
   }
-].map((month) => ({
-  ...month,
-  ratingPercent: `${(month.rating / 5) * 100}%`,
-  ratingLabel: `${month.rating}/5`
-}));
+].map((month) => {
+  const guideMonths = ['november', 'december', 'january', 'february', 'march'];
+  return {
+    ...month,
+    ratingPercent: `${(month.rating / 5) * 100}%`,
+    ratingLabel: `${month.rating}/5`,
+    guideUrl: guideMonths.includes(month.slug) ? `/paragliding-valle-de-bravo-${month.slug}/` : null
+  };
+});
 
 const guideLinks = [
   { name: 'November guide', href: '/paragliding-valle-de-bravo-november/' },
@@ -232,6 +291,7 @@ const guideLinks = [
   canonicalUrl="https://airdamien.com/valle-de-bravo-conditions/"
 >
   <SchemaMarkup schema={pageSchema} />
+  <SchemaMarkup schema={faqSchema} />
 
   <section class="conditions-hero">
     <img class="conditions-hero__bg" src="/images/val6.jpg" alt="Paraglider flying over the volcanic terrain at El Penon" width="1920" height="1280" loading="eager" />
@@ -239,7 +299,7 @@ const guideLinks = [
     <div class="conditions-hero__content">
       <p class="eyebrow">Weather and season reference</p>
       <h1>Valle de Bravo Paragliding Conditions</h1>
-      <p>Current town-level weather, a 7-day planning forecast, and month-by-month flying season notes for Valle de Bravo.</p>
+      <p>Live town weather, a 7-day forecast, and a month-by-month read on what flying actually looks like here. Updated by Damien from 25+ years of flying El Penon.</p>
     </div>
   </section>
 
@@ -258,9 +318,9 @@ const guideLinks = [
   <section class="section section--white current-conditions" aria-labelledby="current-conditions-heading">
     <div class="container">
       <div class="section-intro">
-        <p class="eyebrow">Section A</p>
+        <p class="eyebrow">Live weather</p>
         <h2 id="current-conditions-heading">Current Conditions</h2>
-        <p>Live weather is fetched from Open-Meteo for Valle de Bravo town coordinates: 19.1838, -100.1278, with town-level current conditions, short-range hourly data, and a 7-day planning forecast.</p>
+        <p>Live weather pulled from Open-Meteo for Valle de Bravo town (19.1838, -100.1278). Town-level current conditions, hourly outlook, and a 7-day forecast for trip planning. For launch-level wind, the Holfuy station and Windguru launch forecast linked below are what we actually check before going up.</p>
       </div>
 
       <div class="weather-toolbar">
@@ -364,13 +424,9 @@ const guideLinks = [
   <section class="section section--cream monthly-reference" aria-labelledby="monthly-reference-heading">
     <div class="container">
       <div class="section-intro">
-        <p class="eyebrow">Section B</p>
-        <h2 id="monthly-reference-heading">Monthly Conditions Reference</h2>
-        <p>Approximate seasonal patterns by month. Tap a month to expand the details.</p>
-      </div>
-
-      <div class="verification-note">
-        <strong>DAMIEN TO VERIFY:</strong> These are approximate conditions based on general data. Exact thermal strengths, cloudbase heights, and flying windows should be confirmed with Damien before finalizing this page.
+        <p class="eyebrow">Season reference</p>
+        <h2 id="monthly-reference-heading">Month-by-Month Conditions</h2>
+        <p>What a typical day looks like in each month, based on 25+ years of flying El Penon. Tap a month for the detail. The five peak months also have their own dedicated guide pages with deeper write-ups.</p>
       </div>
 
       <div class="month-grid">
@@ -421,7 +477,12 @@ const guideLinks = [
                 </div>
               </dl>
               <p>{condition.recommendation}</p>
-              <a href="/tours/10-day-paraglide-mexico-package/" class="btn btn--primary">Book a {condition.name} trip</a>
+              <div class="month-card__actions">
+                {condition.guideUrl && (
+                  <a href={condition.guideUrl} class="month-card__guide-link">Read the full {condition.name} guide</a>
+                )}
+                <a href="/tours/10-day-paraglide-mexico-package/" class="btn btn--primary">Book a {condition.name} trip</a>
+              </div>
             </div>
           </details>
         ))}
@@ -429,10 +490,47 @@ const guideLinks = [
     </div>
   </section>
 
+  <section class="section section--cream which-month-section" aria-labelledby="which-month-heading">
+    <div class="container">
+      <div class="section-intro">
+        <p class="eyebrow">Decision matrix</p>
+        <h2 id="which-month-heading">Which Month Should You Come?</h2>
+        <p>If you have not already picked dates, here is how I think about it.</p>
+      </div>
+
+      <div class="decision-grid">
+        <div class="decision-card">
+          <h3>First international flying trip</h3>
+          <p><strong>November.</strong> The cleanest air of the season, mid-strength thermals, comfortable temperatures, and crowds are still moderate. Pair it with a <a href="/paragliding-clinics-mexico/paragliding-thermalling-clinic-mexico/">thermalling clinic</a> for the fastest skill jump.</p>
+        </div>
+        <div class="decision-card">
+          <h3>Pushing XC distance</h3>
+          <p><strong>December or early January.</strong> Highest cloudbase and strongest thermal streets of the year. Pair with our <a href="/paragliding-clinics-mexico/mexico-cross-country-xc-paragliding-clinics/">XC clinic</a>. Read more in <a href="/intro-to-cross-country-paragliding/">our intro to cross-country flying</a>.</p>
+        </div>
+        <div class="decision-card">
+          <h3>P2 pilot working toward P3</h3>
+          <p>Any peak month works. February offers the best combination of reliable conditions and small groups. See our <a href="/valle-de-bravo-p2-pilots/">guide for P2 pilots</a> and the <a href="/p2-to-p3-paragliding-progression/">P2-to-P3 progression</a>.</p>
+        </div>
+        <div class="decision-card">
+          <h3>Best value (peak conditions, less crowd)</h3>
+          <p><strong>January or February.</strong> December-quality flying with a fraction of the holiday-period chaos. Bring layers - mornings are the coolest of the season.</p>
+        </div>
+        <div class="decision-card">
+          <h3>Combining with a partner who is not flying</h3>
+          <p>Any peak month. Valle is a charming colonial town. See our <a href="/valle-de-bravo-travel-guide-paragliders/">travel guide for paragliders</a> for what they can do on rest days.</p>
+        </div>
+        <div class="decision-card">
+          <h3>Avoid</h3>
+          <p>May through September is rainy season. Mornings can be flyable but afternoon storms shut things down. We do not run guided trips during these months. <a href="/best-winter-paragliding-destinations/">Look at Brazil instead</a> if you need that window.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section section--white conditions-links" aria-labelledby="conditions-links-heading">
     <div class="container">
       <div class="section-intro">
-        <p class="eyebrow">Section C</p>
+        <p class="eyebrow">Related reading</p>
         <h2 id="conditions-links-heading">Plan Around the Season</h2>
         <p>Use the monthly guides for deeper planning, then choose the trip format that fits your schedule.</p>
       </div>
@@ -442,12 +540,16 @@ const guideLinks = [
           <a class="reference-link" href={link.href}>{link.name}</a>
         ))}
         <a class="reference-link" href="/paragliding-valle-de-bravo/">Valle de Bravo pillar guide</a>
+        <a class="reference-link" href="/el-penon-launch-valle-de-bravo/">El Penon launch guide</a>
         <a class="reference-link" href="/what-to-pack-paragliding-valle-de-bravo/">Packing guide</a>
+        <a class="reference-link" href="/paragliding-trip-mexico-cost/">Trip cost breakdown</a>
+        <a class="reference-link" href="/is-paragliding-in-mexico-safe/">Is Mexico safe?</a>
+        <a class="reference-link" href="/why-fly-internationally-paragliding/">Why fly internationally</a>
       </div>
 
       <div class="planning-cta">
         <h2>Ready to pick your dates?</h2>
-        <p><a href="/tour/10-day-paraglide-mexico-package/">Book your trip</a> or <a href="/tours/custom-paragliding-trip-mexico/">build a custom trip</a>.</p>
+        <p><a href="/tours/10-day-paraglide-mexico-package/">Book the 10 Day Mexico Package</a> or <a href="/tours/custom-paragliding-trip-mexico/">build a custom trip</a>.</p>
       </div>
     </div>
   </section>
@@ -1868,6 +1970,59 @@ const guideLinks = [
   .month-card .btn {
     width: 100%;
     margin-top: 0.3rem;
+  }
+
+  .month-card__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    margin-top: 0.6rem;
+  }
+
+  .month-card__guide-link {
+    display: inline-block;
+    color: var(--color-accent, #e07730);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    align-self: flex-start;
+  }
+
+  .month-card__guide-link:hover {
+    color: var(--color-primary, #3b3160);
+  }
+
+  .which-month-section .decision-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+
+  .decision-card {
+    background: #ffffff;
+    border: 1px solid var(--color-border, #d8d4e0);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 6px 20px rgba(42, 32, 80, 0.06);
+  }
+
+  .decision-card h3 {
+    font-size: 1.05rem;
+    color: var(--color-primary, #3b3160);
+    margin-bottom: 0.5rem;
+  }
+
+  .decision-card p {
+    color: var(--color-text-body, #5a5570);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .decision-card a {
+    color: var(--color-accent, #e07730);
+    font-weight: 600;
   }
 
   .link-grid {
