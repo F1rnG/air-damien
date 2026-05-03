@@ -356,19 +356,114 @@ const guideLinks = [
         <strong>Graph data source:</strong> The custom meteogram below uses Open-Meteo model data for Valle de Bravo town coordinates. For launch-level wind, the live Holfuy widget below is the actual reading at the El Peñón Launch station. For a launch-area forecast, check <a href="https://www.windguru.cz/766336" target="_blank" rel="noopener noreferrer">Windguru El Peñón Takeoff</a>.
       </div>
 
-      <div class="holfuy-panel">
+      <div class="holfuy-panel" data-holfuy-panel>
         <div class="holfuy-panel__header">
           <div>
-            <p class="weather-toolbar__label">Live launch wind</p>
+            <p class="weather-toolbar__label">Live launch wind &amp; webcam</p>
             <h3>Holfuy El Peñón Launch <span class="holfuy-panel__elevation">~2,350m AMSL</span></h3>
-            <p class="holfuy-panel__meta">Live reading direct from the launch ramp - this is what we check before going up. Updates every minute.</p>
+            <p class="holfuy-panel__meta">Live sensor reading and webcam from the launch itself. This is what we check before going up.</p>
           </div>
           <div class="holfuy-panel__actions">
+            <span class="holfuy-panel__freshness" data-holfuy-freshness>Loading live data...</span>
             <a href="https://holfuy.com/en/weather/609" target="_blank" rel="noopener noreferrer" class="holfuy-panel__link">Open on Holfuy</a>
-            <a href="https://holfuy.com/en/weather/609#chart" target="_blank" rel="noopener noreferrer" class="holfuy-panel__link holfuy-panel__link--secondary">View 24-hour chart</a>
+            <a href="https://holfuy.com/en/camera/609" target="_blank" rel="noopener noreferrer" class="holfuy-panel__link holfuy-panel__link--secondary">Camera history</a>
           </div>
         </div>
-        <div class="holfuy-frame-wrapper">
+
+        <div class="holfuy-camera">
+          <figure class="holfuy-camera__frame">
+            <img
+              data-holfuy-camera
+              src="https://api.holfuy.com/cam/s609.jpg"
+              alt="Live webcam view from El Peñón Launch in Valle de Bravo"
+              width="1280"
+              height="720"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+              onerror="this.closest('.holfuy-camera').setAttribute('hidden','');"
+            />
+            <figcaption class="holfuy-camera__caption">
+              <span>Webcam at the launch ramp</span>
+              <span data-holfuy-camera-updated>updating...</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="holfuy-data" data-holfuy-data hidden>
+          <div class="holfuy-data__hero">
+            <div class="holfuy-compass" aria-hidden="true">
+              <svg viewBox="0 0 120 120" class="holfuy-compass__svg">
+                <circle cx="60" cy="60" r="54" class="holfuy-compass__ring" />
+                <text x="60" y="14" class="holfuy-compass__cardinal">N</text>
+                <text x="60" y="114" class="holfuy-compass__cardinal">S</text>
+                <text x="10" y="64" class="holfuy-compass__cardinal">W</text>
+                <text x="110" y="64" class="holfuy-compass__cardinal">E</text>
+                <g class="holfuy-compass__arrow" data-holfuy-compass-arrow>
+                  <path d="M60 18 L52 54 L60 48 L68 54 Z" />
+                </g>
+                <circle cx="60" cy="60" r="6" class="holfuy-compass__hub" />
+              </svg>
+              <span class="holfuy-compass__label" data-holfuy-dir>--</span>
+            </div>
+
+            <div class="holfuy-readout">
+              <p class="holfuy-readout__label">Wind now</p>
+              <p class="holfuy-readout__value">
+                <span data-holfuy-speed>--</span><span class="holfuy-readout__unit">mph</span>
+                <span class="holfuy-readout__gust">gust <strong data-holfuy-gust>--</strong></span>
+              </p>
+              <p class="holfuy-readout__direction">
+                Direction <strong data-holfuy-dir-text>--</strong>
+              </p>
+              <div class="holfuy-readout__avgs">
+                <div>
+                  <span>15-min avg</span>
+                  <strong><span data-holfuy-avg-speed>--</span> mph <span data-holfuy-avg-dir>--</span></strong>
+                </div>
+                <div>
+                  <span>15-min peak gust</span>
+                  <strong><span data-holfuy-avg-gust>--</span> mph</strong>
+                </div>
+                <div>
+                  <span>Daily avg / max gust</span>
+                  <strong><span data-holfuy-daily-avg>--</span> / <span data-holfuy-daily-max>--</span> mph</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="holfuy-metrics">
+            <div class="holfuy-metric">
+              <span>Air temp</span>
+              <strong><span data-holfuy-temp>--</span>F</strong>
+              <span class="holfuy-metric__sub">High <span data-holfuy-temp-max>--</span> / Low <span data-holfuy-temp-min>--</span></span>
+            </div>
+            <div class="holfuy-metric">
+              <span>Humidity</span>
+              <strong><span data-holfuy-humidity>--</span>%</strong>
+            </div>
+            <div class="holfuy-metric holfuy-metric--cloudbase">
+              <span>Cloud base</span>
+              <strong><span data-holfuy-cloudbase>--</span>m AMSL</strong>
+              <span class="holfuy-metric__sub" data-holfuy-cloudbase-launch>--</span>
+            </div>
+            <div class="holfuy-metric">
+              <span>Pressure</span>
+              <strong><span data-holfuy-pressure>--</span> hPa</strong>
+            </div>
+            <div class="holfuy-metric">
+              <span>Rain today</span>
+              <strong><span data-holfuy-rain>--</span> mm</strong>
+            </div>
+          </div>
+
+          <p class="holfuy-attribution">
+            Live sensor data via <a href="https://holfuy.com/en/weather/609" target="_blank" rel="noopener noreferrer">Holfuy El Peñón Launch (station 609)</a>. Refreshes when the page loads. Independent local pilots own and maintain the station.
+          </p>
+        </div>
+
+        <div class="holfuy-fallback" data-holfuy-fallback hidden>
+          <p class="holfuy-fallback__note">Could not load the parsed live feed - showing the original Holfuy widget instead.</p>
           <iframe
             title="Holfuy El Peñón Launch live readings"
             src="https://widget.holfuy.com/?station=609&su=mph&t=F&lang=en&type=2"
@@ -1183,6 +1278,162 @@ const guideLinks = [
     }
 
     loadWeather();
+
+    // ============================================================
+    // Holfuy launch data (via /api/holfuy proxy) + webcam auto-refresh.
+    // The proxy parses Holfuy's public widget HTML server-side and
+    // returns JSON so we can render in our own UI.
+    // ============================================================
+
+    const holfuyPanel = document.querySelector('[data-holfuy-panel]');
+    const holfuyDataEl = document.querySelector('[data-holfuy-data]');
+    const holfuyFallbackEl = document.querySelector('[data-holfuy-fallback]');
+    const holfuyCameraImg = document.querySelector('[data-holfuy-camera]');
+    const holfuyCameraUpdated = document.querySelector('[data-holfuy-camera-updated]');
+    const holfuyFreshnessEl = document.querySelector('[data-holfuy-freshness]');
+
+    function setText(selector, text) {
+      const el = document.querySelector(selector);
+      if (el) el.textContent = text;
+    }
+
+    function dirToDegrees(label) {
+      // Map cardinal/intercardinal labels to degrees for compass arrow.
+      // Holfuy returns labels like "SW", "WSW", "N", etc.
+      const map = {
+        N: 0, NNE: 22.5, NE: 45, ENE: 67.5,
+        E: 90, ESE: 112.5, SE: 135, SSE: 157.5,
+        S: 180, SSW: 202.5, SW: 225, WSW: 247.5,
+        W: 270, WNW: 292.5, NW: 315, NNW: 337.5,
+        VRB: null, '--': null
+      };
+      if (typeof label !== 'string') return null;
+      return map[label.trim().toUpperCase()] ?? null;
+    }
+
+    function formatRelativeTime(secondsAgo) {
+      if (!Number.isFinite(secondsAgo)) return 'just now';
+      if (secondsAgo < 60) return `${Math.round(secondsAgo)} sec ago`;
+      const m = Math.floor(secondsAgo / 60);
+      if (m < 60) return `${m} min ${Math.round(secondsAgo % 60)} sec ago`;
+      return `${Math.floor(m / 60)}h ${m % 60}m ago`;
+    }
+
+    function holfuyDirArrow(deg) {
+      const arrow = document.querySelector('[data-holfuy-compass-arrow]');
+      if (!arrow) return;
+      if (deg === null || deg === undefined) {
+        arrow.style.opacity = '0.3';
+        return;
+      }
+      arrow.style.opacity = '1';
+      // SVG arrow points up (toward N). Wind direction in compass convention
+      // is the direction wind is COMING FROM, so we rotate the arrow to point
+      // FROM that direction (i.e., visually it points the way the wind is going).
+      // For pilots: rotate so arrow tail points to the bearing.
+      arrow.style.transform = `rotate(${deg}deg)`;
+      arrow.style.transformOrigin = '60px 60px';
+    }
+
+    function applyHolfuy(data) {
+      if (!data || data.ok === false) {
+        showHolfuyFallback();
+        return;
+      }
+
+      // Fill all data points - tolerate nulls.
+      const wind = data.wind || {};
+      const avg = data.avg15 || {};
+      const daily = data.daily || {};
+      const temp = data.temperature || {};
+      const atmos = data.atmosphere || {};
+
+      setText('[data-holfuy-speed]', wind.speedMph != null ? wind.speedMph.toFixed(1) : '--');
+      setText('[data-holfuy-gust]', wind.gustMph != null ? wind.gustMph.toFixed(1) : '--');
+      setText('[data-holfuy-dir]', wind.directionLabel || '--');
+      setText('[data-holfuy-dir-text]', wind.directionLabel || '--');
+
+      setText('[data-holfuy-avg-speed]', avg.speedMph != null ? avg.speedMph.toFixed(1) : '--');
+      setText('[data-holfuy-avg-gust]', avg.maxGustMph != null ? avg.maxGustMph.toFixed(1) : '--');
+      setText('[data-holfuy-avg-dir]', avg.directionLabel || '--');
+
+      setText('[data-holfuy-daily-avg]', daily.avgSpeedMph != null ? daily.avgSpeedMph.toFixed(1) : '--');
+      setText('[data-holfuy-daily-max]', daily.maxGustMph != null ? daily.maxGustMph.toFixed(1) : '--');
+
+      setText('[data-holfuy-temp]', temp.airF != null ? temp.airF.toFixed(1) : '--');
+      setText('[data-holfuy-temp-max]', temp.dailyMaxF != null ? temp.dailyMaxF.toFixed(1) : '--');
+      setText('[data-holfuy-temp-min]', temp.dailyMinF != null ? temp.dailyMinF.toFixed(1) : '--');
+
+      setText('[data-holfuy-humidity]', atmos.humidityPct != null ? atmos.humidityPct.toFixed(0) : '--');
+      setText('[data-holfuy-cloudbase]', atmos.cloudBaseM != null ? atmos.cloudBaseM.toLocaleString() : '--');
+      setText('[data-holfuy-pressure]', atmos.pressureHpa != null ? atmos.pressureHpa.toFixed(0) : '--');
+      setText('[data-holfuy-rain]', atmos.rainMmToday != null ? atmos.rainMmToday.toFixed(1) : '0');
+
+      // Cloud base relative to launch (7,600 ft / 2,316m)
+      const cloudbaseLaunchEl = document.querySelector('[data-holfuy-cloudbase-launch]');
+      if (cloudbaseLaunchEl && atmos.cloudBaseM != null) {
+        const aboveLaunchM = atmos.cloudBaseM - 2316;
+        const aboveLaunchFt = Math.round((aboveLaunchM * 3.28084) / 100) * 100;
+        cloudbaseLaunchEl.textContent = aboveLaunchM > 0
+          ? `+${aboveLaunchFt.toLocaleString()} ft over launch`
+          : `${aboveLaunchFt.toLocaleString()} ft - below launch`;
+      }
+
+      holfuyDirArrow(dirToDegrees(wind.directionLabel));
+
+      if (holfuyFreshnessEl) {
+        const fresh = formatRelativeTime(data.lastReadingSecondsAgo);
+        holfuyFreshnessEl.innerHTML = `<span class="holfuy-panel__dot"></span> ${fresh}`;
+        holfuyFreshnessEl.classList.add('is-live');
+      }
+
+      if (holfuyDataEl) holfuyDataEl.hidden = false;
+      if (holfuyFallbackEl) holfuyFallbackEl.hidden = true;
+    }
+
+    function showHolfuyFallback() {
+      if (holfuyDataEl) holfuyDataEl.hidden = true;
+      if (holfuyFallbackEl) holfuyFallbackEl.hidden = false;
+      if (holfuyFreshnessEl) {
+        holfuyFreshnessEl.textContent = 'Live feed unavailable';
+        holfuyFreshnessEl.classList.add('is-error');
+      }
+    }
+
+    async function loadHolfuy() {
+      if (!holfuyPanel) return;
+      try {
+        const response = await fetch('/api/holfuy', { cache: 'no-store' });
+        if (!response.ok) throw new Error('proxy ' + response.status);
+        const data = await response.json();
+        applyHolfuy(data);
+      } catch (err) {
+        showHolfuyFallback();
+      }
+    }
+
+    // Camera: bust cache so we get the latest image when the page loads,
+    // then refresh every 60 seconds while the page is visible.
+    function refreshCamera() {
+      if (!holfuyCameraImg) return;
+      const ts = Date.now();
+      const base = 'https://api.holfuy.com/cam/s609.jpg';
+      holfuyCameraImg.src = `${base}?ts=${ts}`;
+      if (holfuyCameraUpdated) {
+        holfuyCameraUpdated.textContent = `refreshed ${new Intl.DateTimeFormat('en-US', { hour: 'numeric', minute: '2-digit' }).format(new Date())}`;
+      }
+    }
+
+    if (holfuyPanel) {
+      loadHolfuy();
+      refreshCamera();
+      setInterval(() => {
+        if (document.visibilityState === 'visible') {
+          loadHolfuy();
+          refreshCamera();
+        }
+      }, 60000);
+    }
   </script>
 </BaseLayout>
 
@@ -1474,6 +1725,45 @@ const guideLinks = [
     flex-shrink: 0;
   }
 
+  .holfuy-panel__freshness {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(42, 32, 80, 0.06);
+    color: var(--color-text-body, #5a5570);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .holfuy-panel__freshness.is-live {
+    background: rgba(45, 122, 79, 0.12);
+    color: #1f5a37;
+  }
+
+  .holfuy-panel__freshness.is-error {
+    background: rgba(184, 60, 60, 0.12);
+    color: #6b1f1f;
+  }
+
+  .holfuy-panel__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 0 0 currentColor;
+    animation: holfuyPulse 2s ease-out infinite;
+  }
+
+  @keyframes holfuyPulse {
+    0% { box-shadow: 0 0 0 0 rgba(45, 122, 79, 0.45); }
+    70% { box-shadow: 0 0 0 8px rgba(45, 122, 79, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(45, 122, 79, 0); }
+  }
+
   .holfuy-panel__link {
     color: var(--color-accent, #e07730);
     font-weight: 700;
@@ -1495,15 +1785,252 @@ const guideLinks = [
     font-weight: 600;
   }
 
-  .holfuy-frame-wrapper {
+  /* Webcam */
+  .holfuy-camera {
+    margin-bottom: 1.25rem;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #1a1428;
+    box-shadow: 0 10px 28px rgba(42, 32, 80, 0.18);
+  }
+
+  .holfuy-camera__frame {
+    margin: 0;
+    position: relative;
+  }
+
+  .holfuy-camera__frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  .holfuy-camera__caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.85rem 1rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
+    color: #ffffff;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  /* Native data card */
+  .holfuy-data {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .holfuy-data__hero {
+    display: grid;
+    grid-template-columns: 200px minmax(0, 1fr);
+    gap: 1.5rem;
+    padding: 1.25rem;
     background: #ffffff;
     border: 1px solid var(--color-border, #d8d4e0);
-    border-radius: 8px;
-    overflow: hidden;
-    padding: 0.5rem;
+    border-radius: 12px;
+  }
+
+  .holfuy-compass {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+  }
+
+  .holfuy-compass__svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .holfuy-compass__ring {
+    fill: var(--color-bg-warm, #f9f7f3);
+    stroke: var(--color-border, #d8d4e0);
+    stroke-width: 1.5;
+  }
+
+  .holfuy-compass__cardinal {
+    text-anchor: middle;
+    dominant-baseline: middle;
+    fill: var(--color-text-body, #5a5570);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+  }
+
+  .holfuy-compass__arrow {
+    fill: var(--color-accent, #e07730);
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    filter: drop-shadow(0 2px 4px rgba(224, 119, 48, 0.35));
+  }
+
+  .holfuy-compass__hub {
+    fill: var(--color-primary, #3b3160);
+  }
+
+  .holfuy-compass__label {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, calc(-50% + 22px));
+    font-size: 1.05rem;
+    font-weight: 900;
+    color: var(--color-text, #2a2050);
+    letter-spacing: 0.05em;
+  }
+
+  .holfuy-readout__label {
+    margin: 0;
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: var(--color-text-body, #5a5570);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .holfuy-readout__value {
+    margin: 0.2rem 0 0.5rem;
+    font-size: 2.6rem;
+    font-weight: 900;
+    color: var(--color-text, #2a2050);
+    line-height: 1;
+    display: flex;
+    align-items: baseline;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+  }
+
+  .holfuy-readout__unit {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-text-body, #5a5570);
+  }
+
+  .holfuy-readout__gust {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-accent, #e07730);
+    background: rgba(224, 119, 48, 0.1);
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    margin-left: 0.5rem;
+  }
+
+  .holfuy-readout__direction {
+    margin: 0 0 1rem;
+    color: var(--color-text-body, #5a5570);
+    font-size: 0.95rem;
+  }
+
+  .holfuy-readout__direction strong {
+    color: var(--color-text, #2a2050);
+    font-weight: 800;
+  }
+
+  .holfuy-readout__avgs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border, #d8d4e0);
+  }
+
+  .holfuy-readout__avgs > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    line-height: 1.3;
+  }
+
+  .holfuy-readout__avgs span {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-body, #5a5570);
+    font-weight: 700;
+  }
+
+  .holfuy-readout__avgs strong {
+    font-size: 0.95rem;
+    color: var(--color-text, #2a2050);
+    font-weight: 800;
+  }
+
+  .holfuy-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 0.85rem;
+  }
+
+  .holfuy-metric {
+    background: #ffffff;
+    border: 1px solid var(--color-border, #d8d4e0);
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .holfuy-metric > span:first-child {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--color-text-body, #5a5570);
+    font-weight: 800;
+  }
+
+  .holfuy-metric strong {
+    font-size: 1.4rem;
+    color: var(--color-text, #2a2050);
+    font-weight: 900;
+    line-height: 1.05;
+  }
+
+  .holfuy-metric__sub {
+    font-size: 0.78rem;
+    color: var(--color-text-body, #5a5570);
+    font-weight: 600;
+  }
+
+  .holfuy-metric--cloudbase {
+    border-color: rgba(224, 119, 48, 0.3);
+    background: linear-gradient(135deg, #ffffff 60%, rgba(224, 119, 48, 0.06) 100%);
+  }
+
+  .holfuy-attribution {
+    margin: 0;
+    padding: 0.65rem 0 0;
+    color: var(--color-text-body, #5a5570);
+    font-size: 0.82rem;
+    line-height: 1.55;
+  }
+
+  .holfuy-attribution a {
+    color: var(--color-accent, #e07730);
+    font-weight: 600;
+  }
+
+  /* Iframe fallback */
+  .holfuy-fallback {
+    border: 1px dashed var(--color-border, #d8d4e0);
+    border-radius: 10px;
+    padding: 1rem;
+    background: #fff;
+  }
+
+  .holfuy-fallback__note {
+    margin: 0 0 0.75rem;
+    font-size: 0.85rem;
+    color: var(--color-text-body, #5a5570);
   }
 
   .holfuy-frame {
@@ -1512,6 +2039,7 @@ const guideLinks = [
     height: 320px;
     border: 0;
     display: block;
+    margin: 0 auto;
   }
 
   @media (max-width: 720px) {
@@ -1524,6 +2052,19 @@ const guideLinks = [
       flex-wrap: wrap;
       align-items: center;
       gap: 0.85rem;
+    }
+
+    .holfuy-data__hero {
+      grid-template-columns: minmax(0, 1fr);
+      text-align: center;
+    }
+
+    .holfuy-readout__value {
+      justify-content: center;
+    }
+
+    .holfuy-readout__direction {
+      text-align: center;
     }
 
     .holfuy-frame {
