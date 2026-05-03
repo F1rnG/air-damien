@@ -329,8 +329,8 @@ const guideLinks = [
           <p class="weather-toolbar__meta">Valle de Bravo local time. Open-Meteo model data.</p>
         </div>
         <div class="unit-toggle" role="group" aria-label="Weather units">
-          <button type="button" class="is-active" data-unit-system="us" aria-pressed="true">F / mph</button>
-          <button type="button" data-unit-system="metric" aria-pressed="false">C / km/h</button>
+          <button type="button" class="is-active" data-unit-system="us" aria-pressed="true">F &middot; mph &middot; ft</button>
+          <button type="button" data-unit-system="metric" aria-pressed="false">C &middot; km/h &middot; m</button>
         </div>
       </div>
 
@@ -360,7 +360,7 @@ const guideLinks = [
         <div class="holfuy-panel__header">
           <div>
             <p class="weather-toolbar__label">Live launch wind &amp; webcam</p>
-            <h3>Holfuy El Peñón Launch <span class="holfuy-panel__elevation">~2,350m AMSL</span></h3>
+            <h3>Holfuy El Peñón Launch <span class="holfuy-panel__elevation" data-holfuy-elevation>~2,350m AMSL</span></h3>
             <p class="holfuy-panel__meta">Live sensor reading and webcam from the launch itself. This is what we check before going up.</p>
           </div>
           <div class="holfuy-panel__actions">
@@ -409,7 +409,7 @@ const guideLinks = [
             <div class="holfuy-readout">
               <p class="holfuy-readout__label">Wind now</p>
               <p class="holfuy-readout__value">
-                <span data-holfuy-speed>--</span><span class="holfuy-readout__unit">mph</span>
+                <span data-holfuy-speed>--</span><span class="holfuy-readout__unit" data-holfuy-speed-unit>mph</span>
                 <span class="holfuy-readout__gust">gust <strong data-holfuy-gust>--</strong></span>
               </p>
               <p class="holfuy-readout__direction">
@@ -426,15 +426,15 @@ const guideLinks = [
               <div class="holfuy-readout__avgs">
                 <div>
                   <span>15-min avg</span>
-                  <strong><span data-holfuy-avg-speed>--</span> mph <span data-holfuy-avg-dir>--</span></strong>
+                  <strong data-holfuy-avg-line>--</strong>
                 </div>
                 <div>
                   <span>15-min peak gust</span>
-                  <strong><span data-holfuy-avg-gust>--</span> mph</strong>
+                  <strong data-holfuy-avg-gust-line>--</strong>
                 </div>
                 <div>
                   <span>Daily avg / max gust</span>
-                  <strong><span data-holfuy-daily-avg>--</span> / <span data-holfuy-daily-max>--</span> mph</strong>
+                  <strong data-holfuy-daily-line>--</strong>
                 </div>
               </div>
             </div>
@@ -443,8 +443,8 @@ const guideLinks = [
           <div class="holfuy-metrics">
             <div class="holfuy-metric">
               <span>Air temp</span>
-              <strong><span data-holfuy-temp>--</span>F</strong>
-              <span class="holfuy-metric__sub">High <span data-holfuy-temp-max>--</span> / Low <span data-holfuy-temp-min>--</span></span>
+              <strong data-holfuy-temp-line>--</strong>
+              <span class="holfuy-metric__sub" data-holfuy-temp-range>High -- / Low --</span>
             </div>
             <div class="holfuy-metric">
               <span>Humidity</span>
@@ -452,7 +452,7 @@ const guideLinks = [
             </div>
             <div class="holfuy-metric holfuy-metric--cloudbase">
               <span>Cloud base</span>
-              <strong><span data-holfuy-cloudbase>--</span>m AMSL</strong>
+              <strong data-holfuy-cloudbase-line>--</strong>
               <span class="holfuy-metric__sub" data-holfuy-cloudbase-launch>--</span>
             </div>
             <div class="holfuy-metric">
@@ -461,7 +461,7 @@ const guideLinks = [
             </div>
             <div class="holfuy-metric">
               <span>Rain today</span>
-              <strong><span data-holfuy-rain>--</span> mm</strong>
+              <strong data-holfuy-rain-line>--</strong>
             </div>
           </div>
 
@@ -1260,6 +1260,9 @@ const guideLinks = [
           unitButton.setAttribute('aria-pressed', String(isActive));
         });
         renderWeather();
+        // Re-render the Holfuy launch panel from cache so its units
+        // also swap (cloud base ft/m, temps F/C, wind mph/(km/h), etc).
+        if (lastHolfuyData) applyHolfuy(lastHolfuyData);
       });
     });
 
@@ -1308,6 +1311,35 @@ const guideLinks = [
     // then refresh the displayed string every 5 seconds.
     let holfuyReadingTakenAt = null;
     let cameraFrameTakenAt = null;
+    // Cache the last-fetched Holfuy payload so we can re-render on
+    // unit-toggle change without re-hitting the proxy.
+    let lastHolfuyData = null;
+
+    // ---------- Unit-aware Holfuy formatters ----------
+    // Holfuy returns values in our requested units (mph, F). When the
+    // page is in metric mode we convert. Heights from Holfuy are always
+    // in meters; we convert to feet for US mode.
+    const fmtSpeed = (mph) => {
+      if (!Number.isFinite(mph)) return '--';
+      return unitSystem === 'us' ? `${mph.toFixed(1)} mph` : `${(mph * 1.60934).toFixed(1)} km/h`;
+    };
+    const fmtTemp = (f) => {
+      if (!Number.isFinite(f)) return '--';
+      return unitSystem === 'us' ? `${f.toFixed(1)}°F` : `${((f - 32) * 5 / 9).toFixed(1)}°C`;
+    };
+    const fmtHeightM = (meters) => {
+      if (!Number.isFinite(meters)) return '--';
+      if (unitSystem === 'us') {
+        const ft = Math.round((meters * 3.28084) / 10) * 10;
+        return `${ft.toLocaleString()} ft`;
+      }
+      return `${Math.round(meters).toLocaleString()} m`;
+    };
+    const fmtRainMm = (mm) => {
+      if (!Number.isFinite(mm)) return '--';
+      return unitSystem === 'us' ? `${(mm / 25.4).toFixed(2)} in` : `${mm.toFixed(1)} mm`;
+    };
+    const speedUnitLabel = () => (unitSystem === 'us' ? 'mph' : 'km/h');
 
     function setText(selector, text) {
       const el = document.querySelector(selector);
@@ -1383,11 +1415,17 @@ const guideLinks = [
 
     function trendCopy(trend) {
       if (!trend) return null;
-      const speedDelta = trend.speedDeltaMph;
       const dirShift = trend.directionShiftDeg;
       const parts = [];
-      if (trend.speedTrend === 'rising') parts.push(`Wind picking up (+${speedDelta.toFixed(1)} mph)`);
-      else if (trend.speedTrend === 'dropping') parts.push(`Wind dropping (${speedDelta.toFixed(1)} mph)`);
+      // Convert the speed delta into the active unit system so the
+      // trend pill reads consistently with the rest of the panel.
+      const deltaMph = trend.speedDeltaMph;
+      const deltaInActive = unitSystem === 'us' ? deltaMph : deltaMph * 1.60934;
+      const unitLabel = unitSystem === 'us' ? 'mph' : 'km/h';
+      const sign = deltaInActive >= 0 ? '+' : '';
+      const deltaStr = `${sign}${deltaInActive.toFixed(1)} ${unitLabel}`;
+      if (trend.speedTrend === 'rising') parts.push(`Wind picking up (${deltaStr})`);
+      else if (trend.speedTrend === 'dropping') parts.push(`Wind dropping (${deltaStr})`);
       else parts.push('Wind steady');
       if (trend.directionShiftTrend === 'clocking-right') parts.push(`clocking right ${dirShift}°`);
       else if (trend.directionShiftTrend === 'clocking-left') parts.push(`clocking left ${dirShift}°`);
@@ -1399,6 +1437,7 @@ const guideLinks = [
         showHolfuyFallback();
         return;
       }
+      lastHolfuyData = data;
 
       // Fill all data points - tolerate nulls.
       const wind = data.wind || {};
@@ -1407,35 +1446,60 @@ const guideLinks = [
       const temp = data.temperature || {};
       const atmos = data.atmosphere || {};
 
-      setText('[data-holfuy-speed]', wind.speedMph != null ? wind.speedMph.toFixed(1) : '--');
-      setText('[data-holfuy-gust]', wind.gustMph != null ? wind.gustMph.toFixed(1) : '--');
+      // ----- Live wind (current) -----
+      // Speed value goes into the big number; unit goes into the adjacent label.
+      const liveSpeed = Number.isFinite(wind.speedMph)
+        ? (unitSystem === 'us' ? wind.speedMph.toFixed(1) : (wind.speedMph * 1.60934).toFixed(1))
+        : '--';
+      setText('[data-holfuy-speed]', liveSpeed);
+      setText('[data-holfuy-speed-unit]', speedUnitLabel());
+      setText('[data-holfuy-gust]', fmtSpeed(wind.gustMph));
       setText('[data-holfuy-dir]', wind.directionLabel || '--');
       setText('[data-holfuy-dir-text]', wind.directionLabel || '--');
 
-      setText('[data-holfuy-avg-speed]', avg.speedMph != null ? avg.speedMph.toFixed(1) : '--');
-      setText('[data-holfuy-avg-gust]', avg.maxGustMph != null ? avg.maxGustMph.toFixed(1) : '--');
-      setText('[data-holfuy-avg-dir]', avg.directionLabel || '--');
+      // ----- 15-min and daily averages (combined into one strong line each) -----
+      const avgLine = `${fmtSpeed(avg.speedMph)} ${avg.directionLabel || ''}`.trim();
+      setText('[data-holfuy-avg-line]', avgLine || '--');
+      setText('[data-holfuy-avg-gust-line]', fmtSpeed(avg.maxGustMph));
+      setText('[data-holfuy-daily-line]',
+        `${fmtSpeed(daily.avgSpeedMph)} / ${fmtSpeed(daily.maxGustMph)}`);
 
-      setText('[data-holfuy-daily-avg]', daily.avgSpeedMph != null ? daily.avgSpeedMph.toFixed(1) : '--');
-      setText('[data-holfuy-daily-max]', daily.maxGustMph != null ? daily.maxGustMph.toFixed(1) : '--');
+      // ----- Temperature -----
+      setText('[data-holfuy-temp-line]', fmtTemp(temp.airF));
+      const rangeEl = document.querySelector('[data-holfuy-temp-range]');
+      if (rangeEl) {
+        rangeEl.textContent = `High ${fmtTemp(temp.dailyMaxF)} / Low ${fmtTemp(temp.dailyMinF)}`;
+      }
 
-      setText('[data-holfuy-temp]', temp.airF != null ? temp.airF.toFixed(1) : '--');
-      setText('[data-holfuy-temp-max]', temp.dailyMaxF != null ? temp.dailyMaxF.toFixed(1) : '--');
-      setText('[data-holfuy-temp-min]', temp.dailyMinF != null ? temp.dailyMinF.toFixed(1) : '--');
-
+      // ----- Humidity / cloud base / pressure / rain -----
       setText('[data-holfuy-humidity]', atmos.humidityPct != null ? atmos.humidityPct.toFixed(0) : '--');
-      setText('[data-holfuy-cloudbase]', atmos.cloudBaseM != null ? atmos.cloudBaseM.toLocaleString() : '--');
+      const cloudBaseLine = atmos.cloudBaseM != null
+        ? `${fmtHeightM(atmos.cloudBaseM)} AMSL`
+        : '--';
+      setText('[data-holfuy-cloudbase-line]', cloudBaseLine);
       setText('[data-holfuy-pressure]', atmos.pressureHpa != null ? atmos.pressureHpa.toFixed(0) : '--');
-      setText('[data-holfuy-rain]', atmos.rainMmToday != null ? atmos.rainMmToday.toFixed(1) : '0');
+      setText('[data-holfuy-rain-line]', fmtRainMm(atmos.rainMmToday));
 
-      // Cloud base relative to launch (7,600 ft / 2,316m)
+      // ----- Cloud base relative to launch (Holfuy station at 2316m) -----
       const cloudbaseLaunchEl = document.querySelector('[data-holfuy-cloudbase-launch]');
-      if (cloudbaseLaunchEl && atmos.cloudBaseM != null) {
-        const aboveLaunchM = atmos.cloudBaseM - 2316;
-        const aboveLaunchFt = Math.round((aboveLaunchM * 3.28084) / 100) * 100;
-        cloudbaseLaunchEl.textContent = aboveLaunchM > 0
-          ? `+${aboveLaunchFt.toLocaleString()} ft over launch`
-          : `${aboveLaunchFt.toLocaleString()} ft - below launch`;
+      if (cloudbaseLaunchEl) {
+        if (atmos.cloudBaseM == null) {
+          cloudbaseLaunchEl.textContent = '';
+        } else {
+          const aboveLaunchM = atmos.cloudBaseM - 2316;
+          const above = unitSystem === 'us'
+            ? `${(Math.round((aboveLaunchM * 3.28084) / 100) * 100).toLocaleString()} ft`
+            : `${(Math.round(aboveLaunchM / 50) * 50).toLocaleString()} m`;
+          cloudbaseLaunchEl.textContent = aboveLaunchM > 0
+            ? `+${above} over launch`
+            : `${above} - below launch`;
+        }
+      }
+
+      // ----- Launch elevation pill in the panel header -----
+      const elevationEl = document.querySelector('[data-holfuy-elevation]');
+      if (elevationEl) {
+        elevationEl.textContent = unitSystem === 'us' ? '~7,710 ft AMSL' : '~2,350 m AMSL';
       }
 
       // Use precise degrees from the latest recent reading if available,
