@@ -353,7 +353,36 @@ const guideLinks = [
       </div>
 
       <div class="graph-source-note">
-        <strong>Graph data source:</strong> The custom meteogram below uses Open-Meteo model data for Valle de Bravo town coordinates. For launch-level wind, check <a href="https://holfuy.com/en/weather/609" target="_blank" rel="noopener noreferrer">Holfuy El Peñón Launch</a>. For the launch-area forecast, check <a href="https://www.windguru.cz/766336" target="_blank" rel="noopener noreferrer">Windguru El Peñón Takeoff</a>.
+        <strong>Graph data source:</strong> The custom meteogram below uses Open-Meteo model data for Valle de Bravo town coordinates. For launch-level wind, the live Holfuy widget below is the actual reading at the El Peñón Launch station. For a launch-area forecast, check <a href="https://www.windguru.cz/766336" target="_blank" rel="noopener noreferrer">Windguru El Peñón Takeoff</a>.
+      </div>
+
+      <div class="holfuy-panel">
+        <div class="holfuy-panel__header">
+          <div>
+            <p class="weather-toolbar__label">Live launch wind</p>
+            <h3>Holfuy El Peñón Launch (~2,350m AMSL)</h3>
+            <p class="holfuy-panel__meta">Live reading from the launch station - the actual wind on the launch ramp right now. This is what we check before going up.</p>
+          </div>
+          <a href="https://holfuy.com/en/weather/609" target="_blank" rel="noopener noreferrer" class="holfuy-panel__link">Open Holfuy &rarr;</a>
+        </div>
+        <div class="holfuy-frames">
+          <iframe
+            title="Holfuy El Peñón Launch wind compass"
+            src="https://widget.holfuy.com/?station=609&su=mph&t=F&lang=en&type=1"
+            frameborder="0"
+            scrolling="no"
+            loading="lazy"
+            class="holfuy-frame holfuy-frame--compass"
+          ></iframe>
+          <iframe
+            title="Holfuy El Peñón Launch wind chart"
+            src="https://widget.holfuy.com/?station=609&su=mph&t=F&lang=en&type=2"
+            frameborder="0"
+            scrolling="no"
+            loading="lazy"
+            class="holfuy-frame holfuy-frame--chart"
+          ></iframe>
+        </div>
       </div>
 
       <div class="weather-widget" data-weather-widget>
@@ -407,8 +436,8 @@ const guideLinks = [
         <div class="forecast-panel">
           <div class="forecast-panel__header">
             <div>
-              <h3>7-Day Forecast</h3>
-              <p>Green borders mark low wind and low precipitation probability at town level.</p>
+              <h3>7-Day Forecast With Flyability Score</h3>
+              <p>A 0-5 paragliding flyability score per day, weighted by max wind, gust, cloud cover, and precip probability. Green border = good or better. Trust day 1-3 most; day 5-7 is indicative.</p>
             </div>
           </div>
           <div class="forecast-strip" data-forecast-strip aria-live="polite">
@@ -656,6 +685,103 @@ const guideLinks = [
       visibility: hourly.visibility[index]
     });
     const metricRow = (label, value) => `<div class="metric-row"><span>${label}</span><strong>${value}</strong></div>`;
+
+    // Cloudbase estimate using Magnus formula for dewpoint, then 125m * spread.
+    // Returns elevation ASL (feet and meters) plus height above launch (7,600 ft).
+    const VALLE_TOWN_ELEVATION_M = 1800;
+    const LAUNCH_ELEVATION_FT = 7600;
+    const estimateCloudbase = (tempC, humidity) => {
+      const t = Number(tempC);
+      const rh = Number(humidity);
+      if (!Number.isFinite(t) || !Number.isFinite(rh) || rh <= 0) return null;
+      const a = 17.625;
+      const b = 243.04;
+      const alpha = Math.log(rh / 100) + (a * t) / (b + t);
+      const dewpoint = (b * alpha) / (a - alpha);
+      const baseAboveSurfaceM = 125 * (t - dewpoint);
+      if (!Number.isFinite(baseAboveSurfaceM) || baseAboveSurfaceM < 0) return null;
+      const aslM = VALLE_TOWN_ELEVATION_M + baseAboveSurfaceM;
+      const aslFt = aslM * 3.28084;
+      const aboveLaunchFt = aslFt - LAUNCH_ELEVATION_FT;
+      return {
+        aslM: Math.round(aslM / 50) * 50,
+        aslFt: Math.round(aslFt / 100) * 100,
+        aboveLaunchFt: Math.round(aboveLaunchFt / 100) * 100
+      };
+    };
+    const formatCloudbase = (tempC, humidity) => {
+      const cb = estimateCloudbase(tempC, humidity);
+      if (!cb) return 'n/a';
+      const aboveLaunch = cb.aboveLaunchFt > 0
+        ? `+${cb.aboveLaunchFt.toLocaleString()} ft over launch`
+        : `${cb.aboveLaunchFt.toLocaleString()} ft - below launch`;
+      const primary = unitSystem === 'us'
+        ? `${cb.aslFt.toLocaleString()} ft ASL`
+        : `${cb.aslM.toLocaleString()} m ASL`;
+      return `${primary} (${aboveLaunch})`;
+    };
+
+    // Paragliding flyability score 0-5 from a daily forecast row.
+    // Inputs: wind_speed_10m_max (km/h), wind_gusts_10m_max (km/h),
+    // cloud_cover_mean (%), precipitation_probability_max (%).
+    const flyabilityScore = (wind, gust, cloud, precip) => {
+      const w = Number(wind) || 0;
+      const g = Number(gust) || 0;
+      const c = Number(cloud) || 0;
+      const p = Number(precip) || 0;
+
+      // Wind: ideal 5-19 km/h. Light wind still flyable. Strong wind grounds you.
+      let windScore;
+      if (w < 5) windScore = 0.55;
+      else if (w <= 19) windScore = 1.0;
+      else if (w <= 28) windScore = 0.6;
+      else if (w <= 36) windScore = 0.3;
+      else windScore = 0.05;
+
+      // Gusts: anything over 35 km/h is sketchy.
+      let gustScore;
+      if (g <= 25) gustScore = 1.0;
+      else if (g <= 35) gustScore = 0.65;
+      else if (g <= 45) gustScore = 0.35;
+      else gustScore = 0.1;
+
+      // Cloud cover: 25-75% is the sweet spot for cumulus. Blue sky still works.
+      let cloudScore;
+      if (c < 15) cloudScore = 0.75;
+      else if (c <= 75) cloudScore = 1.0;
+      else if (c <= 90) cloudScore = 0.5;
+      else cloudScore = 0.2;
+
+      // Precip probability: under 20% is good.
+      let precipScore;
+      if (p < 20) precipScore = 1.0;
+      else if (p < 40) precipScore = 0.65;
+      else if (p < 60) precipScore = 0.35;
+      else precipScore = 0.1;
+
+      const weighted = windScore * 0.35 + gustScore * 0.25 + cloudScore * 0.2 + precipScore * 0.2;
+      return Math.round(weighted * 5 * 10) / 10;
+    };
+    const flyabilityLabel = (score) => {
+      if (score >= 4.2) return 'Excellent';
+      if (score >= 3.4) return 'Good';
+      if (score >= 2.5) return 'Marginal';
+      if (score >= 1.5) return 'Poor';
+      return 'No fly';
+    };
+    const flyabilityClass = (score) => {
+      if (score >= 4.2) return 'fly-score--excellent';
+      if (score >= 3.4) return 'fly-score--good';
+      if (score >= 2.5) return 'fly-score--marginal';
+      if (score >= 1.5) return 'fly-score--poor';
+      return 'fly-score--nofly';
+    };
+    const flyBadge = (score) => `
+      <span class="fly-score ${flyabilityClass(score)}" aria-label="Flyability score ${score} out of 5">
+        <strong>${score.toFixed(1)}</strong>
+        <span>${flyabilityLabel(score)}</span>
+      </span>
+    `;
     const toTempNumber = (tempC) => unitSystem === 'us' ? (Number(tempC) * 9) / 5 + 32 : Number(tempC);
     const toWindNumber = (kmh) => unitSystem === 'us' ? Number(kmh) * 0.621371 : Number(kmh);
     const toPrecipNumber = (mm) => unitSystem === 'us' ? Number(mm || 0) / 25.4 : Number(mm || 0);
@@ -922,6 +1048,7 @@ const guideLinks = [
           ${metricRow('Gusts', formatWind(current.wind_gusts_10m || current.wind_speed_10m))}
           ${metricRow('Humidity', `${round(current.relative_humidity_2m)}%`)}
           ${metricRow('Cloud cover', `${round(current.cloud_cover)}%`)}
+          ${metricRow('Est. cloudbase', formatCloudbase(current.temperature_2m, current.relative_humidity_2m))}
           ${metricRow('Pressure', `${round(current.surface_pressure)} hPa`)}
           ${metricRow('Precip now', formatPrecip(current.precipitation))}
           ${metricRow('UV now', Number(currentHour.uv || 0).toFixed(1))}
@@ -929,10 +1056,15 @@ const guideLinks = [
         </div>
       `;
 
+      const todayScore = flyabilityScore(today.wind_speed_10m_max, today.wind_gusts_10m_max, today.cloud_cover_mean, today.precipitation_probability_max);
+
       planningEl.innerHTML = `
         <div class="planning-card__header">
-          <p class="weather-card__label">Today</p>
-          <h3>${weatherLabel(today.weather_code)}</h3>
+          <div>
+            <p class="weather-card__label">Today</p>
+            <h3>${weatherLabel(today.weather_code)}</h3>
+          </div>
+          ${flyBadge(todayScore)}
         </div>
         <div class="planning-stats">
           <div>
@@ -993,16 +1125,17 @@ const guideLinks = [
         const direction = daily.wind_direction_10m_dominant[index];
         const cloud = round(daily.cloud_cover_mean[index]);
         const precip = round(daily.precipitation_probability_max[index] ?? 0);
-        const plannerFriendly = Number(wind) <= 20 && precip <= 30;
+        const score = flyabilityScore(wind, gust, daily.cloud_cover_mean[index], daily.precipitation_probability_max[index]);
+        const flyable = score >= 3.4;
 
         return `
-          <article class="forecast-day${plannerFriendly ? ' is-flyable' : ''}">
+          <article class="forecast-day${flyable ? ' is-flyable' : ''}">
             <div class="forecast-day__top">
               <div>
                 <strong>${formatDay(date)}</strong>
                 <span>${formatDate(date)}</span>
               </div>
-              ${plannerFriendly ? '<span class="forecast-day__signal">Low wind/precip</span>' : ''}
+              ${flyBadge(score)}
             </div>
             <span class="cloud-icon ${cloudClass(cloud)}" aria-label="${cloud}% cloud cover"></span>
             <div class="forecast-day__condition">${weatherLabel(daily.weather_code[index])}</div>
@@ -1291,6 +1424,109 @@ const guideLinks = [
     text-underline-offset: 3px;
   }
 
+  .holfuy-panel {
+    margin-bottom: 1.25rem;
+    border: 1px solid var(--color-border, #d8d4e0);
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 10px 28px rgba(42, 32, 80, 0.08);
+    padding: 1.25rem;
+  }
+
+  .holfuy-panel__header {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .holfuy-panel__header h3 {
+    margin: 0.2rem 0 0.4rem;
+    color: var(--color-text, #2a2050);
+  }
+
+  .holfuy-panel__meta {
+    color: var(--color-text-body, #5a5570);
+    line-height: 1.5;
+    margin: 0;
+    max-width: 60ch;
+  }
+
+  .holfuy-panel__link {
+    align-self: flex-start;
+    color: var(--color-accent, #e07730);
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 2px solid currentColor;
+    padding-bottom: 0.1rem;
+    white-space: nowrap;
+  }
+
+  .holfuy-frames {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .holfuy-frame {
+    width: 100%;
+    border: 0;
+    background: var(--color-bg-warm, #f9f7f3);
+    border-radius: 6px;
+    box-shadow: inset 0 0 0 1px var(--color-border, #d8d4e0);
+  }
+
+  .holfuy-frame--compass {
+    height: 240px;
+  }
+
+  .holfuy-frame--chart {
+    height: 240px;
+  }
+
+  @media (max-width: 720px) {
+    .holfuy-frames {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  /* Flyability score badge */
+  .fly-score {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.05rem;
+    padding: 0.4rem 0.65rem;
+    border-radius: 8px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-align: center;
+    min-width: 72px;
+    line-height: 1.15;
+  }
+
+  .fly-score strong {
+    font-size: 1rem;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .fly-score span {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+  }
+
+  .fly-score--excellent { background: rgba(45, 122, 79, 0.15); color: #1f5a37; border: 1px solid rgba(45, 122, 79, 0.3); }
+  .fly-score--good { background: rgba(99, 156, 91, 0.18); color: #2c5d29; border: 1px solid rgba(99, 156, 91, 0.35); }
+  .fly-score--marginal { background: rgba(224, 168, 48, 0.18); color: #7a5611; border: 1px solid rgba(224, 168, 48, 0.4); }
+  .fly-score--poor { background: rgba(224, 119, 48, 0.18); color: #7a3911; border: 1px solid rgba(224, 119, 48, 0.4); }
+  .fly-score--nofly { background: rgba(184, 60, 60, 0.18); color: #6b1f1f; border: 1px solid rgba(184, 60, 60, 0.4); }
+
   .weather-widget {
     display: grid;
     gap: 1.25rem;
@@ -1554,6 +1790,10 @@ const guideLinks = [
 
   .planning-card__header {
     margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.85rem;
   }
 
   .planning-stats {
@@ -1734,7 +1974,7 @@ const guideLinks = [
     color: var(--color-text, #2a2050);
   }
 
-  .forecast-day__top span:not(.forecast-day__signal) {
+  .forecast-day__top > div > span {
     color: var(--color-text-body, #5a5570);
     font-size: 0.78rem;
     font-weight: 700;
@@ -2455,7 +2695,7 @@ const guideLinks = [
     align-items: flex-start;
   }
 
-  .current-conditions .forecast-day__top span:not(.forecast-day__signal) {
+  .current-conditions .forecast-day__top > div > span {
     color: var(--color-text-body, #5a5570);
     font-size: 0.8rem;
     font-weight: 800;
