@@ -415,6 +415,14 @@ const guideLinks = [
               <p class="holfuy-readout__direction">
                 Direction <strong data-holfuy-dir-text>--</strong>
               </p>
+              <div class="holfuy-trend" data-holfuy-trend hidden>
+                <div class="holfuy-trend__item">
+                  <span>Trend</span>
+                  <strong data-holfuy-trend-summary>--</strong>
+                </div>
+                <div class="holfuy-trend__sparkline" data-holfuy-sparkline aria-label="Recent wind speed sparkline"></div>
+              </div>
+
               <div class="holfuy-readout__avgs">
                 <div>
                   <span>15-min avg</span>
@@ -1291,6 +1299,15 @@ const guideLinks = [
     const holfuyCameraImg = document.querySelector('[data-holfuy-camera]');
     const holfuyCameraUpdated = document.querySelector('[data-holfuy-camera-updated]');
     const holfuyFreshnessEl = document.querySelector('[data-holfuy-freshness]');
+    const holfuyTrendEl = document.querySelector('[data-holfuy-trend]');
+    const holfuyTrendSummaryEl = document.querySelector('[data-holfuy-trend-summary]');
+    const holfuySparklineEl = document.querySelector('[data-holfuy-sparkline]');
+
+    // Anchors for live-updating relative timestamps.
+    // We track "when did the underlying reading come in" as a Date,
+    // then refresh the displayed string every 5 seconds.
+    let holfuyReadingTakenAt = null;
+    let cameraFrameTakenAt = null;
 
     function setText(selector, text) {
       const el = document.querySelector(selector);
@@ -1322,17 +1339,59 @@ const guideLinks = [
     function holfuyDirArrow(deg) {
       const arrow = document.querySelector('[data-holfuy-compass-arrow]');
       if (!arrow) return;
-      if (deg === null || deg === undefined) {
+      if (deg === null || deg === undefined || !Number.isFinite(deg)) {
         arrow.style.opacity = '0.3';
         return;
       }
       arrow.style.opacity = '1';
-      // SVG arrow points up (toward N). Wind direction in compass convention
-      // is the direction wind is COMING FROM, so we rotate the arrow to point
-      // FROM that direction (i.e., visually it points the way the wind is going).
-      // For pilots: rotate so arrow tail points to the bearing.
+      // SVG arrow points up (toward N). Holfuy direction is the bearing
+      // the wind is coming FROM. Rotating by `deg` makes the arrow point
+      // toward that bearing on the compass face - i.e., where the wind is
+      // coming from. (Pilots read compass arrows as "wind FROM that direction".)
       arrow.style.transform = `rotate(${deg}deg)`;
       arrow.style.transformOrigin = '60px 60px';
+    }
+
+    function renderSparkline(readings) {
+      if (!holfuySparklineEl) return;
+      if (!readings || readings.length < 2) {
+        holfuySparklineEl.innerHTML = '';
+        return;
+      }
+      const speeds = readings.map(r => r.speedMph);
+      const max = Math.max(...speeds, 1);
+      const min = Math.min(...speeds, 0);
+      const range = Math.max(max - min, 1);
+      const w = 80;
+      const h = 28;
+      const step = w / (speeds.length - 1);
+      const pts = speeds.map((v, i) => {
+        const x = i * step;
+        const y = h - ((v - min) / range) * h;
+        return `${x.toFixed(1)},${y.toFixed(1)}`;
+      });
+      holfuySparklineEl.innerHTML = `
+        <svg viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" aria-hidden="true">
+          <polyline points="${pts.join(' ')}" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          ${pts.map(p => {
+            const [x, y] = p.split(',');
+            return `<circle cx="${x}" cy="${y}" r="2" fill="currentColor" />`;
+          }).join('')}
+        </svg>
+      `;
+    }
+
+    function trendCopy(trend) {
+      if (!trend) return null;
+      const speedDelta = trend.speedDeltaMph;
+      const dirShift = trend.directionShiftDeg;
+      const parts = [];
+      if (trend.speedTrend === 'rising') parts.push(`Wind picking up (+${speedDelta.toFixed(1)} mph)`);
+      else if (trend.speedTrend === 'dropping') parts.push(`Wind dropping (${speedDelta.toFixed(1)} mph)`);
+      else parts.push('Wind steady');
+      if (trend.directionShiftTrend === 'clocking-right') parts.push(`clocking right ${dirShift}°`);
+      else if (trend.directionShiftTrend === 'clocking-left') parts.push(`clocking left ${dirShift}°`);
+      return parts.join(' · ');
     }
 
     function applyHolfuy(data) {
@@ -1379,16 +1438,65 @@ const guideLinks = [
           : `${aboveLaunchFt.toLocaleString()} ft - below launch`;
       }
 
-      holfuyDirArrow(dirToDegrees(wind.directionLabel));
+      // Use precise degrees from the latest recent reading if available,
+      // falling back to the cardinal-label approximation.
+      const recent = Array.isArray(data.recentReadings) ? data.recentReadings : [];
+      const latestReading = recent[recent.length - 1];
+      const preciseDeg = latestReading && Number.isFinite(latestReading.directionDeg)
+        ? latestReading.directionDeg
+        : dirToDegrees(wind.directionLabel);
+      holfuyDirArrow(preciseDeg);
 
-      if (holfuyFreshnessEl) {
-        const fresh = formatRelativeTime(data.lastReadingSecondsAgo);
-        holfuyFreshnessEl.innerHTML = `<span class="holfuy-panel__dot"></span> ${fresh}`;
-        holfuyFreshnessEl.classList.add('is-live');
+      // Trend summary + sparkline
+      const trend = data.trend;
+      const summary = trendCopy(trend);
+      if (summary && holfuyTrendEl && holfuyTrendSummaryEl) {
+        holfuyTrendSummaryEl.textContent = summary;
+        holfuyTrendEl.dataset.trend = trend.speedTrend;
+        holfuyTrendEl.hidden = false;
+      } else if (holfuyTrendEl) {
+        holfuyTrendEl.hidden = true;
       }
+      renderSparkline(recent);
+
+      // Anchor "X sec ago" to a wall-clock time so the displayed string
+      // stays accurate as the user sits on the page.
+      if (Number.isFinite(data.lastReadingSecondsAgo)) {
+        holfuyReadingTakenAt = new Date(Date.now() - data.lastReadingSecondsAgo * 1000);
+      } else {
+        holfuyReadingTakenAt = new Date();
+      }
+      updateLiveTimestamps();
+
+      // Camera freshness from server-side HEAD response.
+      if (data.camera && Number.isFinite(data.camera.ageSeconds)) {
+        cameraFrameTakenAt = new Date(Date.now() - data.camera.ageSeconds * 1000);
+      } else if (data.camera && data.camera.lastModifiedIso) {
+        cameraFrameTakenAt = new Date(data.camera.lastModifiedIso);
+      }
+      updateCameraTimestamp();
 
       if (holfuyDataEl) holfuyDataEl.hidden = false;
       if (holfuyFallbackEl) holfuyFallbackEl.hidden = true;
+    }
+
+    function updateLiveTimestamps() {
+      if (holfuyFreshnessEl && holfuyReadingTakenAt) {
+        const ageSec = Math.max(0, Math.floor((Date.now() - holfuyReadingTakenAt.getTime()) / 1000));
+        holfuyFreshnessEl.innerHTML = `<span class="holfuy-panel__dot"></span> Reading ${formatRelativeTime(ageSec)}`;
+        holfuyFreshnessEl.classList.add('is-live');
+        holfuyFreshnessEl.classList.remove('is-error');
+      }
+    }
+
+    function updateCameraTimestamp() {
+      if (!holfuyCameraUpdated) return;
+      if (!cameraFrameTakenAt) {
+        holfuyCameraUpdated.textContent = 'frame age unknown';
+        return;
+      }
+      const ageSec = Math.max(0, Math.floor((Date.now() - cameraFrameTakenAt.getTime()) / 1000));
+      holfuyCameraUpdated.textContent = `frame ${formatRelativeTime(ageSec)}`;
     }
 
     function showHolfuyFallback() {
@@ -1413,26 +1521,31 @@ const guideLinks = [
     }
 
     // Camera: bust cache so we get the latest image when the page loads,
-    // then refresh every 60 seconds while the page is visible.
-    function refreshCamera() {
+    // then refresh every 60 seconds while the page is visible. Note the
+    // *frame age* is set from the proxy's HEAD response (Last-Modified)
+    // and updated independently below.
+    function refreshCameraImage() {
       if (!holfuyCameraImg) return;
       const ts = Date.now();
       const base = 'https://api.holfuy.com/cam/s609.jpg';
       holfuyCameraImg.src = `${base}?ts=${ts}`;
-      if (holfuyCameraUpdated) {
-        holfuyCameraUpdated.textContent = `refreshed ${new Intl.DateTimeFormat('en-US', { hour: 'numeric', minute: '2-digit' }).format(new Date())}`;
-      }
     }
 
     if (holfuyPanel) {
       loadHolfuy();
-      refreshCamera();
+      refreshCameraImage();
+      // Re-fetch data + camera every 60s while the tab is visible.
       setInterval(() => {
         if (document.visibilityState === 'visible') {
           loadHolfuy();
-          refreshCamera();
+          refreshCameraImage();
         }
       }, 60000);
+      // Tick the relative timestamps every 5s so they stay live.
+      setInterval(() => {
+        updateLiveTimestamps();
+        updateCameraTimestamp();
+      }, 5000);
     }
   </script>
 </BaseLayout>
@@ -1933,6 +2046,55 @@ const guideLinks = [
   .holfuy-readout__direction strong {
     color: var(--color-text, #2a2050);
     font-weight: 800;
+  }
+
+  .holfuy-trend {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.85rem;
+    padding: 0.65rem 0.85rem;
+    margin-bottom: 0.85rem;
+    background: var(--color-bg-warm, #f9f7f3);
+    border-radius: 8px;
+    color: var(--color-text-body, #5a5570);
+    flex-wrap: wrap;
+  }
+
+  .holfuy-trend[data-trend="rising"] {
+    background: rgba(224, 119, 48, 0.1);
+    color: #7a3911;
+  }
+
+  .holfuy-trend[data-trend="dropping"] {
+    background: rgba(45, 122, 79, 0.1);
+    color: #1f5a37;
+  }
+
+  .holfuy-trend__item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    line-height: 1.25;
+  }
+
+  .holfuy-trend__item span {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    font-weight: 800;
+    opacity: 0.75;
+  }
+
+  .holfuy-trend__item strong {
+    font-size: 0.95rem;
+    font-weight: 800;
+  }
+
+  .holfuy-trend__sparkline {
+    color: currentColor;
+    line-height: 0;
+    opacity: 0.7;
   }
 
   .holfuy-readout__avgs {

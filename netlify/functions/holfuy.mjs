@@ -8,6 +8,7 @@
 
 const HOLFUY_STATION_ID = 609; // El Peñón Launch
 const WIDGET_URL = `https://widget.holfuy.com/?station=${HOLFUY_STATION_ID}&su=mph&t=F&lang=en&type=2`;
+const CAMERA_URL = `https://api.holfuy.com/cam/s${HOLFUY_STATION_ID}.jpg`;
 
 // Pull a single value out of the widget HTML by its DOM id.
 function pickById(html, id) {
@@ -34,6 +35,68 @@ function parseUpdatedSeconds(html) {
   return Number.isFinite(n) ? n : null;
 }
 
+// Pull the owind array: var owind=[[speedMph, dirDeg], ...]
+// Holfuy stores the last 4 wind readings in oldest-to-newest order.
+function parseRecentReadings(html) {
+  const m = html.match(/var\s+owind\s*=\s*(\[\s*\[[^\]]+\][^;]*\]\s*);/);
+  if (!m) return [];
+  try {
+    const arr = JSON.parse(m[1]);
+    if (!Array.isArray(arr)) return [];
+    return arr
+      .filter(pair => Array.isArray(pair) && pair.length >= 2)
+      .map(([speed, dir]) => ({
+        speedMph: Number(speed),
+        directionDeg: Number(dir),
+      }))
+      .filter(p => Number.isFinite(p.speedMph) && Number.isFinite(p.directionDeg));
+  } catch {
+    return [];
+  }
+}
+
+// Derive a trend from the recent readings.
+// Returns: { speed: 'rising'|'steady'|'dropping', shift: degrees, summary: string }
+function computeWindTrend(readings) {
+  if (!readings || readings.length < 2) return null;
+  const first = readings[0];
+  const last = readings[readings.length - 1];
+  const speedDelta = last.speedMph - first.speedMph;
+  // Smallest signed angular delta between two bearings.
+  const rawShift = ((last.directionDeg - first.directionDeg + 540) % 360) - 180;
+
+  let speedTrend = 'steady';
+  if (speedDelta >= 2) speedTrend = 'rising';
+  else if (speedDelta <= -2) speedTrend = 'dropping';
+
+  let shiftTrend = 'steady';
+  if (Math.abs(rawShift) >= 25) shiftTrend = rawShift > 0 ? 'clocking-right' : 'clocking-left';
+
+  return {
+    speedTrend,
+    speedDeltaMph: Number(speedDelta.toFixed(1)),
+    directionShiftDeg: Math.round(rawShift),
+    directionShiftTrend: shiftTrend,
+  };
+}
+
+async function fetchCameraMeta() {
+  try {
+    const head = await fetch(CAMERA_URL, { method: 'HEAD' });
+    if (!head.ok) return null;
+    const lastModified = head.headers.get('last-modified');
+    if (!lastModified) return null;
+    const ageMs = Date.now() - new Date(lastModified).getTime();
+    return {
+      url: CAMERA_URL,
+      lastModifiedIso: new Date(lastModified).toISOString(),
+      ageSeconds: Math.max(0, Math.floor(ageMs / 1000)),
+    };
+  } catch {
+    return null;
+  }
+}
+
 export default async (request, context) => {
   try {
     const upstream = await fetch(WIDGET_URL, {
@@ -51,6 +114,9 @@ export default async (request, context) => {
     }
 
     const html = await upstream.text();
+    const recentReadings = parseRecentReadings(html);
+    const windTrend = computeWindTrend(recentReadings);
+    const cameraMeta = await fetchCameraMeta();
 
     const data = {
       ok: true,
@@ -95,6 +161,15 @@ export default async (request, context) => {
         rainMmToday: pickNumber(html, 'j_rain'),
       },
 
+      // Recent wind readings (oldest -> newest, ~10-15s apart)
+      recentReadings,
+
+      // Trend analysis derived from recentReadings
+      trend: windTrend,
+
+      // Webcam metadata (separate fetch, may be null if HEAD failed)
+      camera: cameraMeta,
+
       // Freshness
       lastReadingSecondsAgo: parseUpdatedSeconds(html),
       fetchedAtIso: new Date().toISOString(),
@@ -104,6 +179,7 @@ export default async (request, context) => {
         provider: 'Holfuy',
         stationUrl: `https://holfuy.com/en/weather/${HOLFUY_STATION_ID}`,
         widgetUrl: WIDGET_URL,
+        cameraUrl: `https://holfuy.com/en/camera/${HOLFUY_STATION_ID}`,
       },
     };
 
