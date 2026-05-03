@@ -1,29 +1,320 @@
 ---
 import BlogPostLayout from '../layouts/BlogPostLayout.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
 
 const relatedPosts = [
-  { title: "The Art of Thermal in Paragliding", url: "/thermal-in-paragliding-techniques-and-tips/", description: "Master the art of thermaling in paragliding with our in-depth guide. Discover techniques for identifying, entering, and riding thermals.", date: "2023-09-15", readingTime: "4 min read" },
-  { title: "The Best Months for Paragliding in Valle de Bravo, Mexico", url: "/best-months-to-paraglide-mexico/", description: "In November and December, Valle de Bravo enjoys mild temperatures ranging from 50F to 75F. During these months the conditions are ideal.", date: "2023-11-15", readingTime: "3 min read" },
-  { title: "How to launch a paraglider?", url: "/how-to-launch-a-paraglider/", description: "Learn to launch a paraglider by reading this guide from a USHPA Advanced Instructor with over 25 years of experience.", date: "2023-07-10", readingTime: "7 min read" },
+  {
+    title: "Thermalling in paragliding: techniques and tips",
+    url: "/thermal-in-paragliding-techniques-and-tips/",
+    description: "How to find, enter, and center thermals to climb efficiently.",
+    date: "2023-08-25",
+    readingTime: "13 min read",
+  },
+  {
+    title: "P2 to P3 paragliding progression",
+    url: "/p2-to-p3-paragliding-progression/",
+    description: "How to develop the skills required to advance from P2 to P3 rating.",
+    date: "2026-01-05",
+    readingTime: "10 min read",
+  },
+  {
+    title: "Best paragliding destinations from the US",
+    url: "/best-paragliding-destinations-from-us/",
+    description: "Top international destinations for cross-country flying, with skill requirements.",
+    date: "2024-01-15",
+    readingTime: "13 min read",
+  },
 ];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is cross-country paragliding?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cross-country (XC) paragliding is flying from launch to a destination beyond the immediate landing zone, using thermals to gain and conserve altitude across distance. XC flights range from 5km local triangles to 100km+ long-distance routes. The skill builds on thermalling and adds glide management, route planning, and decision-making."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What rating do I need to fly cross-country?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most pilots fly their first real XC flights at the P3 (Intermediate) level. P3 requires 90 logged flights and demonstrated thermalling skill. Some P2 pilots fly small XC routes under guided supervision. P3 is the practical minimum for unsupervised XC flying."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How far can a paraglider fly cross-country?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Recreational XC flights typically range from 20 to 80 km. Strong intermediate pilots routinely fly 50 to 100 km in good conditions. The current open-distance world record is over 580 km. Realistic expectations for a P3 pilot in their first XC season are 20 to 50 km flights."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What gear do I need for cross-country flying?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "XC requires standard paragliding gear plus: a pod harness for long flights, a GPS flight instrument for navigation and tracking, a SPOT or InReach satellite tracker for retrieve coordination, water, food, and a phone with maps. Total XC-specific gear adds $1,500 to $3,000 to a standard P2 setup."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I plan a cross-country route?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Plan XC routes by identifying thermal triggers along your intended line, mapping the airspace, checking sectional charts for restricted areas, identifying retrieve points and bailout LZs, and matching the route to expected wind direction. Most pilots fly downwind routes early on; experienced pilots fly triangles or out-and-returns."
+      }
+    }
+  ]
+};
 ---
 
 <BlogPostLayout
-  title="An Introduction to Cross-Country Paragliding: Soaring Beyond Limits"
-  description="Cross-country paragliding is a form of free-flight where pilots use paragliders to cover significant distances across diverse terrains."
+  title="Introduction to Cross-Country Paragliding: How to Start Flying XC"
+  description="Cross-country paragliding is the art of flying from launch to a destination using thermals. Here is how to start - the skills you need, the gear, the route planning, and how to actually develop the discipline."
   canonicalUrl="https://airdamien.com/intro-to-cross-country-paragliding/"
   datePublished="2023-10-20"
-  readingTime="4 min read"
-  wordCount={754}
+  dateModified="2026-04-29"
+  readingTime="12 min read"
+  wordCount={2350}
   relatedPosts={relatedPosts}
   featuredImage="/images/pg 1.jpg"
-  featuredImageAlt="Two paragliders flying cross-country over Valle de Bravo"
+  featuredImageAlt="Two paragliders flying cross-country over Mexican terrain"
 >
-  <p>Cross-country paragliding is a form of free-flight where pilots use paragliders to cover significant distances across diverse terrains.</p>
+  <SchemaMarkup schema={faqSchema} />
 
-  <p>Full article content to be added by the site owner.</p>
+  <h2>What Cross-Country Flying Actually Means</h2>
 
-  <p>Ready for your first XC flight? <a href="/paragliding-clinics-mexico/mexico-cross-country-xc-paragliding-clinics/">Join our Cross Country Clinic</a> at <a href="/paragliding-valle-de-bravo/">Valle de Bravo</a>, one of the best XC training sites in the Americas.</p>
+  <p>Cross-country paragliding (XC) is flying from your launch to a destination beyond the local LZ, using thermals to climb and glide to conserve altitude across distance. A pilot doing local soaring stays close to launch and lands at the standard LZ. A pilot flying XC heads off somewhere - downwind, on a triangle, to a turnpoint - and lands wherever the conditions take them.</p>
 
-  <p>For expert paragliding instruction in Valle de Bravo, Mexico or at the Point of the Mountain in Utah, <a href="/contact/">contact Air Damien</a> to book your session with a USHPA Advanced Instructor with over 25 years of experience.</p>
+  <p>XC is what most experienced pilots eventually want to do. It is what makes paragliding feel like real flight rather than carnival ride. It is also where the sport's depth lives - route planning, weather analysis, decision-making under pressure, and the strategic patience to make good calls.</p>
+
+  <p>This guide covers what XC requires, the skills that matter most, the gear, route planning basics, and how to actually transition from local pilot to XC pilot.</p>
+
+  <h2>The Skill Foundation</h2>
+
+  <p>You cannot fly XC without first being able to thermal. XC is fundamentally "thermal, glide, thermal, glide, thermal, land." If your thermalling is weak, you fall out of every climb and land short.</p>
+
+  <p>Pilots typically attempt their first XC flights at the P3 (Intermediate) level. By the P3 rating, you have logged 90 flights, demonstrated consistent thermalling, and earned the skills to fly in moderate conditions. We covered the path to P3 in detail in our <a href="/p2-to-p3-paragliding-progression/">P2 to P3 progression guide</a>.</p>
+
+  <p>Specifically, XC pilots need:</p>
+
+  <ul>
+    <li><strong>Consistent thermalling.</strong> You can find, enter, and center thermals reliably. See our <a href="/thermal-in-paragliding-techniques-and-tips/">thermalling techniques guide</a>.</li>
+    <li><strong>Glide management.</strong> You know how far your wing can glide, when to push speed bar, and when to go slow.</li>
+    <li><strong>Reading terrain.</strong> You can identify thermal triggers from the air without local knowledge.</li>
+    <li><strong>Decision-making under altitude pressure.</strong> When you are low and have to choose between landing and trying for one more thermal.</li>
+    <li><strong>Comfort with land-outs.</strong> Landing at unfamiliar fields is normal in XC.</li>
+    <li><strong>Navigation.</strong> Reading sectional charts, GPS routes, and airspace.</li>
+  </ul>
+
+  <h2>Glide Theory and Speed-to-Fly</h2>
+
+  <p>Your wing has a glide ratio - the horizontal distance it travels per unit of altitude lost. An EN-B wing might glide 9:1 in still air; an EN-D wing might glide 11:1. These numbers shift with conditions:</p>
+
+  <ul>
+    <li><strong>Headwind:</strong> Reduces glide.</li>
+    <li><strong>Tailwind:</strong> Improves glide.</li>
+    <li><strong>Sinking air:</strong> Reduces glide.</li>
+    <li><strong>Lifting air:</strong> Improves glide (sometimes you do not need to thermal at all - you just dolphin through lift bands).</li>
+  </ul>
+
+  <p>The "speed-to-fly" theory teaches you when to push speedbar and when to fly slowly:</p>
+
+  <ul>
+    <li><strong>In strong sink:</strong> Push speedbar. Get out of the bad air faster.</li>
+    <li><strong>In weak lift:</strong> Slow down. Stay in the lift longer to gain more.</li>
+    <li><strong>In headwind:</strong> Push speedbar. Net glide improves.</li>
+    <li><strong>In tailwind:</strong> Fly minimum sink speed. Maximize altitude retention.</li>
+  </ul>
+
+  <p>Most modern flight computers have a speed-to-fly indicator that does these calculations in real time. Whether or not you have one, the principle matters.</p>
+
+  <h2>Reading Terrain for Thermals</h2>
+
+  <p>At your home site, you know where thermals trigger from experience. On an XC flight, you fly over terrain you have never seen and have to read it cold.</p>
+
+  <h3>Strong thermal terrain</h3>
+
+  <ul>
+    <li>South-facing slopes (Northern Hemisphere)</li>
+    <li>Dark surfaces - rock outcrops, asphalt, plowed soil</li>
+    <li>Spines and ridgelines that funnel air upward</li>
+    <li>Lakeshore boundaries with land</li>
+    <li>Convergence zones - look for cumulus lines</li>
+    <li>Towns and parking lots (urban heat islands)</li>
+  </ul>
+
+  <h3>Weak thermal terrain</h3>
+
+  <ul>
+    <li>Forested valleys</li>
+    <li>Bodies of water</li>
+    <li>North-facing slopes (Northern Hemisphere)</li>
+    <li>Snow-covered ground</li>
+    <li>Marshes and irrigated farmland</li>
+  </ul>
+
+  <p>Pilots who can read terrain make better route choices. The skill is built by flying many sites - your home site teaches you patterns that transfer, but real XC fluency comes from time at multiple sites with varied terrain.</p>
+
+  <h2>Route Planning Basics</h2>
+
+  <h3>Downwind flights</h3>
+
+  <p>The simplest XC route. Pick a launch with prevailing wind direction blowing toward distant land you can fly to. Climb as high as possible, then glide downwind to the next thermal trigger, climb again, glide again. Continue until you run out of altitude or reach your destination.</p>
+
+  <p>Downwind XC is what most pilots fly first. It is forgiving because the wind helps your glide between thermals. Retrieve is straightforward - you go pick the pilot up wherever they land.</p>
+
+  <h3>Out-and-return</h3>
+
+  <p>Fly upwind to a turnpoint, then return downwind to launch. Harder than pure downwind because half the route is into the wind. Requires better thermalling and altitude management.</p>
+
+  <h3>Triangle flights</h3>
+
+  <p>Three turnpoints forming a triangle, returning to launch. The most demanding XC format and the basis for most competition tasks. Triangles eliminate the wind benefit because at least one leg is into the wind.</p>
+
+  <h3>Linear distance flights</h3>
+
+  <p>Maximum straight-line distance regardless of return path. The format used for distance records. Pilots fly until conditions die, then catch a retrieve home from wherever they land.</p>
+
+  <h2>The Gear You Need for XC</h2>
+
+  <p>Standard P2 gear handles XC, but several upgrades pay off significantly:</p>
+
+  <h3>Pod harness</h3>
+
+  <p>Aerodynamic pod harnesses reduce drag for long flights. They also have more storage for water, food, and gear. Plan to spend $1,500 to $2,500 on a quality pod harness when you start serious XC. We cover gear in detail in <a href="/how-much-is-a-paraglider/">how much is a paraglider</a>.</p>
+
+  <h3>Flight computer with GPS</h3>
+
+  <p>A GPS flight computer ($800 to $1,500) tells you airspace, navigation, glide range to LZs, and tracks your flight for review. Worth the investment for any pilot serious about XC. The Naviter Oudie, Skytraxx, and ProGuide are common choices.</p>
+
+  <h3>Live tracker</h3>
+
+  <p>SPOT or InReach satellite trackers ($150 to $400 plus subscription) let your retrieve crew know where you are in real time. Mandatory for serious XC, especially in remote areas. Some sites require live tracking.</p>
+
+  <h3>Bigger reserve or twin reserves</h3>
+
+  <p>XC pilots often fly with larger reserves or two reserves for extra safety margin. Worth considering once you are flying over rougher terrain.</p>
+
+  <h3>Hydration and food</h3>
+
+  <p>Multi-hour flights dehydrate you fast. A 2L hydration bladder in your harness, plus snacks. Sounds minor but pilots make bad decisions when dehydrated and hungry.</p>
+
+  <h2>Retrieve and Logistics</h2>
+
+  <p>XC means landing somewhere other than the LZ. You need a way to get back to your gear, your car, and your starting point.</p>
+
+  <h3>Self-retrieve</h3>
+
+  <p>Land, pack up, hitchhike or rideshare back. Works in some areas. Slow and unreliable.</p>
+
+  <h3>Bus or train retrieve</h3>
+
+  <p>In Europe, public transit retrieve is standard. Land near a train station, take the train back. Works in countries with developed transit.</p>
+
+  <h3>Friend or partner retrieve</h3>
+
+  <p>A non-flying companion drives to wherever you land. Works for short XC routes near home.</p>
+
+  <h3>Professional retrieve service</h3>
+
+  <p>Some destinations have dedicated retrieve crews who track pilots and pick them up. Includes Roldanillo, Bir Billing, GV, and our trips at <a href="/paragliding-valle-de-bravo/">Valle de Bravo</a>. The retrieve service alone is worth the trip cost - it lets you fly aggressively without worrying about how you get back.</p>
+
+  <h2>The Mental Game of XC</h2>
+
+  <p>XC is more mental than physical. The decisions you make at altitude shape the flight more than your stick skills. Common mental patterns to develop:</p>
+
+  <h3>Patience</h3>
+
+  <p>Bad pilots leave thermals early. Good pilots top out before transitioning. The patience to climb to cloudbase before pushing on is what makes long flights possible.</p>
+
+  <h3>Aggressiveness when conditions are right</h3>
+
+  <p>The opposite skill. When the day is on, push faster and harder. Conservative pilots leave hours of flying on the table because they could not commit to a long glide.</p>
+
+  <h3>Acceptance of land-outs</h3>
+
+  <p>You will land somewhere unexpected. Often. Pilots who fight this and only fly when they can guarantee a return to the home LZ never develop XC skill.</p>
+
+  <h3>Reading the day</h3>
+
+  <p>Some days are XC days; others are not. Reading the conditions before you launch saves you from frustrating sleds when you should have stayed home and grilled out instead.</p>
+
+  <h2>Common XC Mistakes</h2>
+
+  <h3>Pushing on too low</h3>
+
+  <p>The pilot is below the next thermal trigger and committed - no escape route. They land out short of where they wanted to be. Better discipline: never glide somewhere you cannot land safely.</p>
+
+  <h3>Leaving climb early</h3>
+
+  <p>The pilot is climbing at 1.5 m/s, sees a cloud farther downwind, leaves to chase it. The new thermal does not work. Now they are below glide for the previous thermal too. Discipline: top out the climb you have before leaving.</p>
+
+  <h3>Ignoring airspace</h3>
+
+  <p>The pilot is climbing well, drifts into restricted airspace they did not check. FAA violation, USHPA membership at risk. Always check airspace before flight. We covered this in <a href="/can-i-paraglide-anywhere/">can I paraglide anywhere</a>.</p>
+
+  <h3>Picking too long a route</h3>
+
+  <p>New XC pilot wants to fly 80km on a day that is good for 30. Spends the day struggling instead of flying within the actual conditions. Better: pick achievable goals matched to the day.</p>
+
+  <h3>Not checking weather</h3>
+
+  <p>Conditions change during the flight. A pilot launches in stable air and ends up in convective storms three hours later. XC pilots need to read forecasts, watch the sky during flight, and bail out when conditions deteriorate.</p>
+
+  <h2>The Best Place to Learn XC</h2>
+
+  <p>You cannot learn XC from articles or even from videos. You learn it by:</p>
+
+  <ol>
+    <li>Logging hours in conditions where XC is possible.</li>
+    <li>Having someone debrief your flights and explain better decisions.</li>
+    <li>Repeating the same site so you build pattern recognition.</li>
+  </ol>
+
+  <p>Most US pilots cannot do this at home because their sites have limited XC potential or inconsistent conditions. The fix is to travel.</p>
+
+  <p><a href="/paragliding-valle-de-bravo/">Valle de Bravo</a>, Mexico is one of the best XC training grounds in the world for one reason: the conditions repeat. The Hair Dryer fires at 10 AM. The thermal triggers are predictable. You fly the same terrain over multiple days, and your understanding deepens with each flight. By the end of a 10-day trip, you understand the site at a level that would take 2-3 years at a less consistent home site.</p>
+
+  <p><a href="/paragliding-roldanillo-colombia/">Roldanillo, Colombia</a> is the next step up - stronger thermals, longer routes, and the most epic XC potential in the Americas. We run <a href="/tours/colombia-paragliding-roldanillo/">guided trips there</a> in February and March.</p>
+
+  <p>For the case for traveling internationally to develop your flying, see <a href="/why-fly-internationally-paragliding/">why every paraglider should fly internationally at least once</a>.</p>
+
+  <h2>Our XC Clinic</h2>
+
+  <p>Our <a href="/paragliding-clinics-mexico/mexico-cross-country-xc-paragliding-clinics/">XC clinic</a> in Valle de Bravo is built specifically for the transition from local thermalling to true cross-country flying. The clinic covers:</p>
+
+  <ul>
+    <li>Reading the day and forecasting conditions</li>
+    <li>Route planning for the prevailing winds</li>
+    <li>Decision-making at altitude pressure points</li>
+    <li>Glide management and speed-to-fly</li>
+    <li>Working thermals along XC lines (different from local thermalling)</li>
+    <li>Land-out planning and execution</li>
+    <li>Live retrieve coordination</li>
+    <li>Daily flight reviews on tracklog</li>
+    <li>Radio coaching during every flight</li>
+  </ul>
+
+  <p>The combination of consistent conditions, structured curriculum, retrieve support, and radio guidance compresses what would take years of trial-and-error at home into a single week of accelerated learning.</p>
+
+  <h2>What XC Actually Feels Like</h2>
+
+  <p>Your first real XC flight is one of the most memorable experiences in the sport. Three hours after launch, you look around and realize you are 40km from where you started, climbing in a thermal you found yourself, with no familiar terrain in sight. You picked the line. You read the lift. You made it work.</p>
+
+  <p>That feeling - "I am actually flying somewhere" - is what most pilots come to the sport for, even if they cannot articulate it on day one of training. It is also what keeps experienced pilots flying for decades.</p>
+
+  <h2>Ready to Start Flying XC?</h2>
+
+  <p>If you have your P3 (or your P2 with strong thermalling skills), the step from local pilot to XC pilot is mostly about putting yourself in the right conditions with the right guidance.</p>
+
+  <p>Our <a href="/paragliding-clinics-mexico/mexico-cross-country-xc-paragliding-clinics/">XC clinic</a> in Valle de Bravo or our <a href="/tours/colombia-paragliding-roldanillo/">Colombia trip</a> in February-March are the most direct paths from "I want to fly XC" to "I can fly XC." Both include retrieve service, structured curriculum, and radio coaching.</p>
+
+  <p>Have questions about your readiness, choosing between Mexico and Colombia, or planning your first XC trip? <a href="/contact/">Reach out to Damien</a> for honest guidance from a USHPA Advanced Instructor with 25+ years of XC flying and teaching experience.</p>
 </BlogPostLayout>

@@ -1,29 +1,307 @@
 ---
 import BlogPostLayout from '../layouts/BlogPostLayout.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
 
 const relatedPosts = [
-  { title: "An Introduction to Cross-Country Paragliding", url: "/intro-to-cross-country-paragliding/", description: "Cross-country paragliding is a form of free-flight where pilots use paragliders to cover significant distances across diverse terrains.", date: "2023-10-20", readingTime: "4 min read" },
-  { title: "The Best Months for Paragliding in Valle de Bravo, Mexico", url: "/best-months-to-paraglide-mexico/", description: "In November and December, Valle de Bravo enjoys mild temperatures ranging from 50F to 75F. During these months the conditions are ideal.", date: "2023-11-15", readingTime: "3 min read" },
-  { title: "How dangerous is paragliding?", url: "/how-dangerous-is-paragliding/", description: "The short answer is paragliding is extremely safe when practiced with proper training and equipment.", date: "2023-06-05", readingTime: "10 min read" },
+  {
+    title: "Introduction to cross-country paragliding",
+    url: "/intro-to-cross-country-paragliding/",
+    description: "How to start flying XC routes once you can thermal consistently.",
+    date: "2023-10-20",
+    readingTime: "12 min read",
+  },
+  {
+    title: "P2 to P3 paragliding progression",
+    url: "/p2-to-p3-paragliding-progression/",
+    description: "How to develop the skills required to advance from P2 to P3 rating.",
+    date: "2026-01-05",
+    readingTime: "10 min read",
+  },
+  {
+    title: "Paragliding Valle de Bravo: complete guide",
+    url: "/paragliding-valle-de-bravo/",
+    description: "Everything about flying El Penon - the most consistent thermal site in the Americas.",
+    date: "2024-01-15",
+    readingTime: "18 min read",
+  },
 ];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do you find a thermal in paragliding?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Find thermals by reading visual cues on the ground (dark surfaces, rocks, fields, parking lots), looking for cumulus cloud formation, watching birds circling, observing other gliders, and feeling for sudden lift on your wing. Most thermals trigger predictably from the same terrain features each day. Site experience teaches you where to look first."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you center a thermal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Center a thermal by entering with a 30 to 45-degree bank turn, observing where your climb rate is strongest in the circle, then shifting your turn toward that quadrant. If lift is strongest at the back of your turn, delay the turn. If strongest at the front, tighten earlier. The goal is to keep your wing in the strongest part of the lift consistently."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What bank angle should I use in a thermal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bank angle in a thermal depends on the thermal's size and strength. Tight thermals require 45 to 60 degrees; large thermals work best at 25 to 35 degrees. The principle: tighter bank for smaller, stronger cores; flatter bank for wider, weaker thermals. Match the turn radius to the thermal's diameter."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do I keep falling out of thermals?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most pilots fall out of thermals because they fly through the core instead of into it, then turn too late or in the wrong direction. Solutions: enter with a deliberate bank in the direction of strongest lift, use weight shift and brake together, and pay attention to how the lift changes through your circle. Practice and radio coaching close this skill gap fastest."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the best site to learn thermalling?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The best thermal-learning site has consistent thermal cycles, moderate strength (not too strong for newer pilots), readable terrain, and large landing zones. Valle de Bravo Mexico is widely considered the best in the Americas - the Hair Dryer thermal cycle fires at 10 AM nearly every day during peak season, and El Penon's terrain produces textbook thermal triggers."
+      }
+    }
+  ]
+};
 ---
 
 <BlogPostLayout
-  title="The Art of Thermal in Paragliding: Techniques and Tips"
-  description="Master the art of thermaling in paragliding with our in-depth guide. Discover techniques for identifying, entering, and riding thermals."
+  title="Thermalling in Paragliding: Techniques, Tips, and How to Actually Climb"
+  description="Thermalling is the skill that separates pilots who fly for hours from pilots who sled. Here is how to find thermals, enter them, center them, and climb efficiently - with the techniques that actually work."
   canonicalUrl="https://airdamien.com/thermal-in-paragliding-techniques-and-tips/"
-  datePublished="2023-09-15"
-  readingTime="4 min read"
-  wordCount={871}
+  datePublished="2023-08-25"
+  dateModified="2026-04-29"
+  readingTime="13 min read"
+  wordCount={2450}
   relatedPosts={relatedPosts}
   featuredImage="/images/gaggle.jpg"
-  featuredImageAlt="Gaggle of paragliders thermalling together"
+  featuredImageAlt="Gaggle of paragliders thermalling together over Valle de Bravo"
 >
-  <p>Master the art of thermaling in paragliding with our in-depth guide. Discover techniques for identifying, entering, and riding thermals.</p>
+  <SchemaMarkup schema={faqSchema} />
 
-  <p>Full article content to be added by the site owner.</p>
+  <h2>Thermalling Is the Whole Sport</h2>
 
-  <p>Ready to master thermalling in person? <a href="/paragliding-clinics-mexico/paragliding-thermalling-clinic-mexico/">Join our Thermalling Clinic in Mexico</a> at El Penon, one of the <a href="/paragliding-valle-de-bravo/">best paragliding sites in the world</a>. See what <a href="/reviews/">past pilots say</a> about the experience.</p>
+  <p>If you cannot thermal, paragliding is a 15-minute sled ride from launch to LZ. If you can thermal, the same launch becomes a 3-hour cross-country flight. The skill of finding and using thermals is what separates pilots who go places from pilots who do not.</p>
 
-  <p>For expert paragliding instruction in Valle de Bravo, Mexico or at the Point of the Mountain in Utah, <a href="/contact/">contact Air Damien</a> to book your session with a USHPA Advanced Instructor with over 25 years of experience.</p>
+  <p>This guide covers the full thermalling stack: what thermals are, how to find them, how to enter them, how to center the core, how to climb efficiently, and how to actually develop the skill. The tactics here come from 25+ years of teaching pilots in the most consistent thermal conditions in the Americas.</p>
+
+  <h2>What a Thermal Actually Is</h2>
+
+  <p>A thermal is a column or bubble of warm air rising through cooler surrounding air. The sun heats the ground unevenly - dark surfaces, exposed rock, plowed fields, parking lots, and south-facing slopes heat faster than grass, water, or shaded terrain. The air directly above the warmer surface heats by conduction, becomes less dense than the surrounding air, and rises.</p>
+
+  <p>Thermals can be:</p>
+
+  <ul>
+    <li><strong>Bubbles:</strong> Discrete pockets of rising air, common in early morning or in light conditions.</li>
+    <li><strong>Columns:</strong> Continuous chimneys of rising air with a steady source on the ground.</li>
+    <li><strong>Streets:</strong> Lines of thermals organized by wind, often marked by rows of cumulus clouds.</li>
+  </ul>
+
+  <p>From the pilot's perspective, the difference between bubbles and columns matters. Bubbles you ride up briefly and lose; columns you can stay in for thousands of feet.</p>
+
+  <h2>Visual Cues for Finding Thermals</h2>
+
+  <p>Thermals are invisible, but their effects are not. Experienced pilots find thermals by reading multiple cues simultaneously:</p>
+
+  <h3>Cumulus clouds</h3>
+
+  <p>Cumulus (puffy white clouds with flat bottoms) form where thermals rise to dewpoint. The cloud sits roughly above the thermal's source on the ground. A growing cumulus is being fed; a dying one is shutting off.</p>
+
+  <p>Read clouds by:</p>
+
+  <ul>
+    <li><strong>Cloud age:</strong> Sharp, white edges = active. Soft, fuzzy edges = dying.</li>
+    <li><strong>Cloud base height:</strong> Higher cloudbase = stronger thermals.</li>
+    <li><strong>Cloud distribution:</strong> Cumulus in lines indicates organized convection (street day).</li>
+  </ul>
+
+  <h3>Ground features</h3>
+
+  <p>Even on blue-sky days (no cumulus), the ground tells you where thermals trigger:</p>
+
+  <ul>
+    <li><strong>Rock outcrops:</strong> Heat fast, generate strong thermals.</li>
+    <li><strong>Plowed fields:</strong> Dark soil heats well, produces consistent thermals.</li>
+    <li><strong>Parking lots and roads:</strong> Asphalt is among the strongest thermal generators.</li>
+    <li><strong>South-facing slopes (Northern Hemisphere):</strong> Direct sun exposure all day.</li>
+    <li><strong>Wind convergence zones:</strong> Where two air masses meet, lift forms.</li>
+    <li><strong>Lakeshores and water boundaries:</strong> Differential heating between water and land creates predictable lift patterns.</li>
+  </ul>
+
+  <h3>Birds and other pilots</h3>
+
+  <p>Soaring birds - hawks, eagles, vultures - are far better at finding thermals than humans. Watch them. If a bird is circling, there is lift.</p>
+
+  <p>Other paragliders are equally informative. A pilot who is climbing has found a thermal. Fly to that lift and join the gaggle (with proper etiquette - more on that below).</p>
+
+  <h3>Wing feedback</h3>
+
+  <p>The wing tells you about lift before you consciously notice it:</p>
+
+  <ul>
+    <li><strong>Brake pressure increases:</strong> Wing flying through rising air loads up.</li>
+    <li><strong>Wing pitches back:</strong> The wing slows briefly as it enters lift.</li>
+    <li><strong>Wing rolls toward lift:</strong> Asymmetric lift tilts the wing toward the side of stronger rising air.</li>
+    <li><strong>Vario beeps:</strong> The audible feedback of climb rate. This is your most direct cue once you are inside lift.</li>
+  </ul>
+
+  <h2>Entering a Thermal</h2>
+
+  <p>The transition from gliding to thermalling is where most pilots lose the lift. The wing hits the thermal, the pilot reacts late or wrong, and the wing flies back out.</p>
+
+  <h3>The entry sequence</h3>
+
+  <ol>
+    <li><strong>Feel the lift.</strong> Wing surges, brakes load up, vario beeps.</li>
+    <li><strong>Identify which side has stronger lift.</strong> Did the wing roll left or right? That tells you which way to turn.</li>
+    <li><strong>Bank into the lift immediately.</strong> Use weight shift plus brake on the lift side. A 30 to 45-degree bank is appropriate for most thermals.</li>
+    <li><strong>Tighten as needed.</strong> If the climb rate stays strong as you turn, the bank is right. If you fly out of lift, tighten the turn.</li>
+    <li><strong>Settle in.</strong> Once you are climbing consistently, hold your bank, watch the vario, and adjust as the lift changes.</li>
+  </ol>
+
+  <h3>Common entry mistakes</h3>
+
+  <ul>
+    <li><strong>Turning too late:</strong> The wing has already flown out the back of the thermal before the pilot reacts.</li>
+    <li><strong>Turning the wrong way:</strong> Misreading which side had stronger lift, banking away from the core.</li>
+    <li><strong>Bank too shallow:</strong> The turn radius is bigger than the thermal, so you keep flying out.</li>
+    <li><strong>Bank too steep:</strong> Lose altitude in tight turns when the thermal is actually wide and flat.</li>
+    <li><strong>Hesitation:</strong> The pilot questions whether it is "really" a thermal. By the time they decide, the wing is back in sink.</li>
+  </ul>
+
+  <h2>Centering the Core</h2>
+
+  <p>You are now in a thermal turning in circles. The next skill is staying in the strongest lift - the "core" - rather than orbiting around the edges.</p>
+
+  <h3>Reading climb rate through the circle</h3>
+
+  <p>As you turn, your vario reads different climb rates at different points in the circle. The point where lift is strongest is where the core sits relative to your turn.</p>
+
+  <ul>
+    <li><strong>Strong lift at the back of your turn (you just passed through it):</strong> The core is behind you. Tighten your turn or reverse the turn for a moment to bring you back into it.</li>
+    <li><strong>Strong lift at the front of your turn (you are flying into it):</strong> The core is ahead. Open your bank slightly to extend toward it.</li>
+    <li><strong>Strong lift on the inside of your turn:</strong> Your circle is too wide. Tighten the bank.</li>
+    <li><strong>Strong lift on the outside of your turn:</strong> Your circle is too tight or you are wrong-side. Open the bank or reverse direction.</li>
+  </ul>
+
+  <h3>The "shift the circle" technique</h3>
+
+  <p>Once you identify where the core is relative to your turn, you do not stop turning - you shift the entire circle toward the lift.</p>
+
+  <p>If the strongest lift is at the back of your turn (3 o'clock position if you are turning right), you shift the circle by:</p>
+
+  <ol>
+    <li>Continuing your turn at current bank for one revolution.</li>
+    <li>Identifying where the strongest lift is now.</li>
+    <li>If still off-center, opening the bank briefly when you are flying away from the core (extends you in that direction), then tightening when flying back through the core.</li>
+    <li>Repeating until the lift is consistent through the entire circle.</li>
+  </ol>
+
+  <p>This sounds complicated reading it. In practice, with radio coaching, it takes a few thermals to start clicking. Without coaching, it takes hundreds of thermals.</p>
+
+  <h2>Bank Angle and Thermal Size</h2>
+
+  <p>Different thermals require different bank angles:</p>
+
+  <ul>
+    <li><strong>Small, strong thermals (under 100 meters diameter):</strong> 45 to 60 degree bank. Tight turns to stay in the small core.</li>
+    <li><strong>Medium thermals (100 to 200 meters):</strong> 30 to 45 degree bank.</li>
+    <li><strong>Large thermals (over 200 meters):</strong> 20 to 35 degree bank. Wider turns.</li>
+    <li><strong>Weak, broken lift:</strong> 15 to 25 degree bank, often called "figure-8 thermalling" - working back and forth through patchy lift.</li>
+  </ul>
+
+  <p>The principle is to match your turn radius to the thermal's diameter. Too tight in a wide thermal wastes altitude. Too flat in a small thermal flies you out.</p>
+
+  <h2>Reading Lift Through the Climb</h2>
+
+  <p>A thermal is not uniform from base to top. Climb rate varies as you ascend. Strong pilots read these changes and adjust:</p>
+
+  <ul>
+    <li><strong>Strengthening climb:</strong> The thermal is well-organized and feeding strongly. Stay in it.</li>
+    <li><strong>Weakening climb:</strong> You are reaching the top, the thermal is dying, or you are drifting out of the core. Investigate, adjust, or leave.</li>
+    <li><strong>Pulsing lift:</strong> Strong, weak, strong, weak. Often indicates a wind-deformed thermal or convergence. Adjust circle position.</li>
+    <li><strong>Sudden zero:</strong> You have flown out of the lift. Open the turn briefly, find the lift again, re-center.</li>
+  </ul>
+
+  <h2>Drift and Wind</h2>
+
+  <p>Thermals drift downwind as they rise. A thermal that triggered 1km upwind is overhead now and will be 1km downwind in a few minutes. The trigger on the ground is often the most important reference for finding the next thermal - the air above is constantly moving.</p>
+
+  <p>In strong wind, you may need to crab into the wind while thermalling to stay over the trigger. In light wind, drift is minimal and you can climb in a steady column.</p>
+
+  <p>Reading drift is one of the most useful XC skills. Once you can predict where the next thermal will be based on the trigger you just used, your cross-country range expands dramatically. This is exactly what we teach in our <a href="/paragliding-clinics-mexico/mexico-cross-country-xc-paragliding-clinics/">XC clinic</a>.</p>
+
+  <h2>Thermalling With Other Pilots</h2>
+
+  <p>Multi-pilot thermals (gaggles) are common at popular sites. Etiquette and right-of-way rules:</p>
+
+  <ul>
+    <li><strong>The first pilot in the thermal sets the turn direction.</strong> Everyone else turns the same way.</li>
+    <li><strong>Right of way is by altitude:</strong> Lower pilot has right of way.</li>
+    <li><strong>Maintain visual on every pilot you are sharing the thermal with.</strong> Do not lose track of anyone above or below you.</li>
+    <li><strong>Adjust your turn to maintain spacing:</strong> Open the bank slightly to give space to a pilot below; tighten if a pilot above is converging.</li>
+    <li><strong>Leave the thermal cleanly:</strong> Roll out of your turn predictably, do not cut across other pilots.</li>
+  </ul>
+
+  <p>Bad gaggle behavior is how mid-air collisions happen. Most pilots who fly busy sites learn this etiquette quickly because the consequences are immediate.</p>
+
+  <h2>When to Leave a Thermal</h2>
+
+  <p>Climbing is good. Climbing forever is not the goal. Knowing when to leave is its own skill:</p>
+
+  <ul>
+    <li><strong>Cloudbase reached:</strong> You cannot legally climb into the cloud. Time to leave for the next one.</li>
+    <li><strong>Climb rate has dropped significantly:</strong> A thermal that was 4 m/s and is now 1 m/s might be dying. Check whether to push through to top or leave for fresher lift.</li>
+    <li><strong>You see a stronger thermal nearby:</strong> Pilots climbing faster nearby probably found a better core. Consider transitioning.</li>
+    <li><strong>You have enough altitude for your goal:</strong> If you are XC-ing to a destination, you might not need to top out. Leave when you have enough.</li>
+    <li><strong>The gaggle is too crowded:</strong> Sometimes a thermal becomes more dangerous than productive.</li>
+  </ul>
+
+  <h2>How to Actually Develop Thermalling Skill</h2>
+
+  <p>You cannot learn thermalling from articles. You learn it through:</p>
+
+  <ol>
+    <li><strong>Time in thermals.</strong> The single biggest variable. Pilots who spend 50 hours in thermals thermal better than pilots who spend 5.</li>
+    <li><strong>Coaching.</strong> Someone who can see what your wing is doing and tell you what to fix in real time. Radio-guided instruction compresses years of trial-and-error into weeks.</li>
+    <li><strong>Vario logging and review.</strong> Looking at your tracks after a flight shows you patterns you cannot feel in the air. Where did you fly through cores? Where did you fall out? Where did you climb fastest?</li>
+    <li><strong>Consistency.</strong> Flying the same site over multiple days lets you build pattern recognition - "this is where the morning thermals always trigger" - that takes years to develop at a site you fly twice a year.</li>
+  </ol>
+
+  <h2>The Best Way to Learn Thermalling Fast</h2>
+
+  <p>Most US pilots learn thermalling slowly because they fly inconsistent home sites in unpredictable conditions, with no coaching, and few flights per week. Five years to develop solid thermalling is normal under those constraints.</p>
+
+  <p>The fastest way to learn thermalling is to combine three things: a site with consistent thermal cycles, daily flying for a week or more, and radio coaching from an instructor who can see your wing and call your turns.</p>
+
+  <p>This is exactly what our <a href="/paragliding-clinics-mexico/paragliding-thermalling-clinic-mexico/">thermalling clinic in Valle de Bravo</a> is built around. The Hair Dryer thermal cycle fires at 10 AM almost every day. The thermals are moderate-strength, well-organized, and forgiving. Damien is on the radio coaching every climb. By the end of a 5-day clinic, most pilots leave climbing more consistently than they did after years at home.</p>
+
+  <p>Read more about why <a href="/paragliding-valle-de-bravo/">Valle de Bravo</a> is the best place in the Americas to learn thermalling, or see what to expect as a P2 pilot in our <a href="/valle-de-bravo-p2-pilots/">guide for P2 pilots flying Valle de Bravo</a>.</p>
+
+  <h2>Common Thermalling Questions Pilots Ask Damien</h2>
+
+  <p><strong>"Why can't I find thermals at my home site?"</strong> Most home sites have weak or scattered thermals. Travel to a strong site for two weeks. Your thermal-finding instinct calibrates to whatever conditions you fly most. Strong consistent thermals teach you what to feel for; weak scattered thermals do not.</p>
+
+  <p><strong>"Should I get a better vario?"</strong> Probably not. A $200 vario beeps when you go up. Fancy varios add features that matter at the P3+ level (airspace, route planning, wind direction) but do not improve your thermalling skill. Spend the money on a clinic instead.</p>
+
+  <p><strong>"How do I know which way to turn when I hit lift?"</strong> Watch the wing tips. If the right tip rises and the left drops, lift is on the right side. If both rise evenly, you are entering centered - turn either way. Weight-shift plus brake commits the turn fast.</p>
+
+  <p><strong>"Should I follow other pilots into thermals?"</strong> Yes, especially when you are learning. A pilot climbing consistently has found lift. Join from below or beside, follow the gaggle direction, and use them as a reference for where the core is.</p>
+
+  <h2>Ready to Develop Real Thermalling Skill?</h2>
+
+  <p>If you are stuck thermalling at your home site, the answer is almost never "more time at home." The answer is to find a site with the right conditions and the right instruction, and put in concentrated time.</p>
+
+  <p>Our <a href="/paragliding-clinics-mexico/paragliding-thermalling-clinic-mexico/">thermalling clinic</a> in Valle de Bravo is built specifically for pilots who want to break through this skill. Five days of multi-flight days, daily ground school, evening flight reviews, and radio-guided coaching in the most consistent thermal conditions in the Americas.</p>
+
+  <p>Have questions about your thermalling progression, whether you are ready for a clinic, or how to plan your trip? <a href="/contact/">Reach out to Damien</a> for honest guidance based on 25+ years of teaching thermalling to pilots at every level.</p>
 </BlogPostLayout>
