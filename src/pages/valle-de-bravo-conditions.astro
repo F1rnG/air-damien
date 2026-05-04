@@ -340,17 +340,58 @@ const guideLinks = [
           <div class="holfuy-data__hero">
             <div class="holfuy-compass" aria-hidden="true">
               <svg viewBox="0 0 120 120" class="holfuy-compass__svg">
-                <circle cx="60" cy="60" r="54" class="holfuy-compass__ring" />
-                <text x="60" y="14" class="holfuy-compass__cardinal">N</text>
-                <text x="60" y="114" class="holfuy-compass__cardinal">S</text>
-                <text x="10" y="64" class="holfuy-compass__cardinal">W</text>
-                <text x="110" y="64" class="holfuy-compass__cardinal">E</text>
-                <g class="holfuy-compass__arrow" data-holfuy-compass-arrow>
-                  <path d="M60 18 L52 54 L60 48 L68 54 Z" />
+                <!-- Compass face -->
+                <circle cx="60" cy="60" r="56" class="holfuy-compass__face" />
+
+                <!-- Tick marks every 15 degrees: cardinals long, intercardinals medium, others short -->
+                <g class="holfuy-compass__ticks">
+                  {Array.from({ length: 24 }, (_, i) => {
+                    const deg = i * 15;
+                    const isCardinal = deg % 90 === 0;
+                    const isInter = deg % 45 === 0 && !isCardinal;
+                    const innerY = isCardinal ? 14 : isInter ? 12 : 9;
+                    const cls = isCardinal
+                      ? 'holfuy-compass__tick holfuy-compass__tick--cardinal'
+                      : isInter
+                        ? 'holfuy-compass__tick holfuy-compass__tick--inter'
+                        : 'holfuy-compass__tick';
+                    return (
+                      <line
+                        x1="60"
+                        y1="4"
+                        x2="60"
+                        y2={innerY}
+                        transform={`rotate(${deg} 60 60)`}
+                        class={cls}
+                      />
+                    );
+                  })}
                 </g>
-                <circle cx="60" cy="60" r="6" class="holfuy-compass__hub" />
+
+                <!-- Cardinal direction labels (positioned just inside the ring) -->
+                <text x="60" y="22" class="holfuy-compass__cardinal">N</text>
+                <text x="103" y="62" class="holfuy-compass__cardinal">E</text>
+                <text x="60" y="102" class="holfuy-compass__cardinal">S</text>
+                <text x="17" y="62" class="holfuy-compass__cardinal">W</text>
+
+                <!-- Trail of recent readings (drawn by JS from owind history) -->
+                <g class="holfuy-compass__trail" data-holfuy-compass-trail></g>
+
+                <!-- Wind direction needle: orange tip points FROM where wind is coming;
+                     darker tail points the opposite way for visual balance. -->
+                <g class="holfuy-compass__arrow" data-holfuy-compass-arrow>
+                  <path class="holfuy-compass__arrow-tip" d="M60 14 L56.5 60 L63.5 60 Z" />
+                  <path class="holfuy-compass__arrow-tail" d="M60 106 L56.5 60 L63.5 60 Z" />
+                </g>
+
+                <!-- Center hub -->
+                <circle cx="60" cy="60" r="5.5" class="holfuy-compass__hub" />
+                <circle cx="60" cy="60" r="2" class="holfuy-compass__hub-inner" />
               </svg>
-              <span class="holfuy-compass__label" data-holfuy-dir>--</span>
+              <div class="holfuy-compass__readout">
+                <span class="holfuy-compass__deg" data-holfuy-deg>--°</span>
+                <span class="holfuy-compass__label" data-holfuy-dir>--</span>
+              </div>
             </div>
 
             <div class="holfuy-readout">
@@ -1344,11 +1385,34 @@ const guideLinks = [
       }
       arrow.style.opacity = '1';
       // SVG arrow points up (toward N). Holfuy direction is the bearing
-      // the wind is coming FROM. Rotating by `deg` makes the arrow point
-      // toward that bearing on the compass face - i.e., where the wind is
-      // coming from. (Pilots read compass arrows as "wind FROM that direction".)
+      // the wind is coming FROM. Rotating by `deg` makes the orange tip
+      // point toward that bearing on the compass face.
       arrow.style.transform = `rotate(${deg}deg)`;
-      arrow.style.transformOrigin = '60px 60px';
+    }
+
+    function renderCompassTrail(readings) {
+      const trailG = document.querySelector('[data-holfuy-compass-trail]');
+      if (!trailG) return;
+      if (!readings || readings.length < 2) {
+        trailG.innerHTML = '';
+        return;
+      }
+      // Show up to 3 prior readings (everything except the newest, which
+      // is represented by the arrow). Older = more transparent.
+      const prior = readings.slice(0, -1).slice(-3);
+      const html = prior.map((r, i) => {
+        if (!r || !Number.isFinite(r.directionDeg)) return '';
+        const ratio = (i + 1) / (prior.length + 1); // 0 < ratio <= 1, newer = bigger
+        const opacity = (0.18 + ratio * 0.42).toFixed(2);
+        const radius = 47 + ratio * 1.5;
+        const rad = r.directionDeg * Math.PI / 180;
+        // Same SVG mapping the arrow uses: 0 deg = up (north), 90 deg = right (east).
+        const x = 60 + radius * Math.sin(rad);
+        const y = 60 - radius * Math.cos(rad);
+        const dotR = 1.5 + ratio * 0.6;
+        return `<circle class="holfuy-compass__trail-dot" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${dotR.toFixed(1)}" opacity="${opacity}" />`;
+      }).join('');
+      trailG.innerHTML = html;
     }
 
     function renderSparkline(readings) {
@@ -1477,6 +1541,15 @@ const guideLinks = [
         ? latestReading.directionDeg
         : dirToDegrees(wind.directionLabel);
       holfuyDirArrow(preciseDeg);
+      renderCompassTrail(recent);
+
+      // Degree readout below the compass
+      const degEl = document.querySelector('[data-holfuy-deg]');
+      if (degEl) {
+        degEl.textContent = Number.isFinite(preciseDeg)
+          ? `${Math.round(preciseDeg)}°`
+          : '--°';
+      }
 
       // Trend summary + sparkline
       const trend = data.trend;
@@ -2028,50 +2101,102 @@ const guideLinks = [
   .holfuy-compass {
     position: relative;
     width: 200px;
-    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 0 auto;
   }
 
   .holfuy-compass__svg {
-    width: 100%;
-    height: 100%;
+    width: 200px;
+    height: 200px;
     overflow: visible;
   }
 
-  .holfuy-compass__ring {
-    fill: var(--color-bg-warm, #f9f7f3);
+  .holfuy-compass__face {
+    fill: #ffffff;
     stroke: var(--color-border, #d8d4e0);
-    stroke-width: 1.5;
+    stroke-width: 1;
+    filter: drop-shadow(0 2px 6px rgba(42, 32, 80, 0.07));
+  }
+
+  .holfuy-compass__tick {
+    stroke: rgba(90, 85, 112, 0.35);
+    stroke-width: 0.6;
+    stroke-linecap: round;
+  }
+
+  .holfuy-compass__tick--inter {
+    stroke: rgba(90, 85, 112, 0.6);
+    stroke-width: 1;
+  }
+
+  .holfuy-compass__tick--cardinal {
+    stroke: var(--color-text, #2a2050);
+    stroke-width: 1.4;
   }
 
   .holfuy-compass__cardinal {
     text-anchor: middle;
     dominant-baseline: middle;
-    fill: var(--color-text-body, #5a5570);
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 0.05em;
+    fill: var(--color-text, #2a2050);
+    font-size: 9.5px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+  }
+
+  .holfuy-compass__trail-dot {
+    fill: var(--color-accent, #e07730);
   }
 
   .holfuy-compass__arrow {
-    fill: var(--color-accent, #e07730);
     transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-    filter: drop-shadow(0 2px 4px rgba(224, 119, 48, 0.35));
+    transform-origin: 60px 60px;
+  }
+
+  .holfuy-compass__arrow-tip {
+    fill: var(--color-accent, #e07730);
+    filter: drop-shadow(0 1px 2px rgba(224, 119, 48, 0.4));
+  }
+
+  .holfuy-compass__arrow-tail {
+    fill: var(--color-primary, #3b3160);
+    opacity: 0.55;
   }
 
   .holfuy-compass__hub {
+    fill: #ffffff;
+    stroke: var(--color-primary, #3b3160);
+    stroke-width: 1.5;
+  }
+
+  .holfuy-compass__hub-inner {
     fill: var(--color-primary, #3b3160);
   }
 
-  .holfuy-compass__label {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, calc(-50% + 22px));
-    font-size: 1.05rem;
+  .holfuy-compass__readout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.05rem;
+    margin-top: 0.5rem;
+    line-height: 1.05;
+  }
+
+  .holfuy-compass__deg {
+    font-size: 1.45rem;
     font-weight: 900;
     color: var(--color-text, #2a2050);
-    letter-spacing: 0.05em;
+    letter-spacing: 0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .holfuy-compass__label {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: var(--color-text-body, #5a5570);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
   }
 
   .holfuy-readout__label {
@@ -2311,8 +2436,16 @@ const guideLinks = [
 
     /* Smaller compass on mobile so it does not dominate the screen */
     .holfuy-compass {
-      width: 150px;
-      height: 150px;
+      width: 160px;
+    }
+
+    .holfuy-compass__svg {
+      width: 160px;
+      height: 160px;
+    }
+
+    .holfuy-compass__deg {
+      font-size: 1.2rem;
     }
 
     .holfuy-readout__value {
