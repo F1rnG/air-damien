@@ -343,6 +343,18 @@ const guideLinks = [
                 <!-- Compass face -->
                 <circle cx="60" cy="60" r="56" class="holfuy-compass__face" />
 
+                <!-- El Penon faces S to SW. Flyable window is roughly
+                     165 deg to 285 deg (SSE through W). The two sector paths
+                     below render that as a static green "good wind" arc and
+                     a dim "tail wind / over the back" arc, like other paragliding
+                     wind-direction indicators. Rendered before the ticks so
+                     tick marks stay visible on top. -->
+                <!-- DAMIEN TO VERIFY: exact flyable window for El Penon. Current
+                     range 165-285 deg covers SSE through W with a 60 deg buffer
+                     either side of the SW launch direction. -->
+                <path class="holfuy-compass__sector holfuy-compass__sector--good" d="M 74.23 113.13 A 55 55 0 0 1 6.87 45.77 L 12.67 47.32 A 49 49 0 0 0 72.68 107.33 Z" />
+                <path class="holfuy-compass__sector holfuy-compass__sector--bad" d="M 6.87 45.77 A 55 55 0 1 1 74.23 113.13 L 72.68 107.33 A 49 49 0 1 0 12.67 47.32 Z" />
+
                 <!-- Tick marks every 15 degrees: cardinals long, intercardinals medium, others short -->
                 <g class="holfuy-compass__ticks">
                   {Array.from({ length: 24 }, (_, i) => {
@@ -1551,6 +1563,19 @@ const guideLinks = [
           : '--°';
       }
 
+      // Flag whether the current wind is inside the flyable window so
+      // CSS can highlight the arrow tip + tag the readout color. Window
+      // is 165-285 deg (SSE through W) for El Penon's S-SW launch.
+      const compassEl = document.querySelector('.holfuy-compass');
+      if (compassEl) {
+        if (Number.isFinite(preciseDeg)) {
+          const inFlyable = preciseDeg >= 165 && preciseDeg <= 285;
+          compassEl.dataset.windWindow = inFlyable ? 'good' : 'bad';
+        } else {
+          delete compassEl.dataset.windWindow;
+        }
+      }
+
       // Trend summary + sparkline
       const trend = data.trend;
       const summary = trendCopy(trend);
@@ -2120,6 +2145,16 @@ const guideLinks = [
     filter: drop-shadow(0 2px 6px rgba(42, 32, 80, 0.07));
   }
 
+  /* Wind window sectors: static, indicates which directions the launch
+     can be flown from. Green = flyable, dim red = unflyable / over the back. */
+  .holfuy-compass__sector--good {
+    fill: rgba(45, 122, 79, 0.32);
+  }
+
+  .holfuy-compass__sector--bad {
+    fill: rgba(184, 60, 60, 0.16);
+  }
+
   .holfuy-compass__tick {
     stroke: rgba(90, 85, 112, 0.35);
     stroke-width: 0.6;
@@ -2157,6 +2192,15 @@ const guideLinks = [
   .holfuy-compass__arrow-tip {
     fill: var(--color-accent, #e07730);
     filter: drop-shadow(0 1px 2px rgba(224, 119, 48, 0.4));
+    transition: fill 0.4s ease;
+  }
+
+  /* When wind is from the back / outside the flyable window, the arrow tip
+     turns red as a warning. The colored sectors already show the window;
+     this just calls extra attention to "current wind is from the bad side". */
+  .holfuy-compass[data-wind-window="bad"] .holfuy-compass__arrow-tip {
+    fill: #b83c3c;
+    filter: drop-shadow(0 1px 2px rgba(184, 60, 60, 0.45));
   }
 
   .holfuy-compass__arrow-tail {
