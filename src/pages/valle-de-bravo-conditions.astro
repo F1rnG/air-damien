@@ -1967,11 +1967,18 @@ const guideLinks = [
 
   /* Webcam */
   .holfuy-camera {
+    margin-top: 1.5rem;
     margin-bottom: 1.25rem;
     border-radius: 12px;
     overflow: hidden;
     background: #1a1428;
     box-shadow: 0 10px 28px rgba(42, 32, 80, 0.18);
+  }
+
+  /* When the data block above is hidden (loading or fallback),
+     drop the top margin so the camera sits right under the header. */
+  .holfuy-data[hidden] + .holfuy-camera {
+    margin-top: 0;
   }
 
   .holfuy-camera__frame {
