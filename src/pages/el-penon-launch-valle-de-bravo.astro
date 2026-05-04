@@ -101,7 +101,7 @@ const faqSchema = {
       name: 'Where do you land at El Penon?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Two primary landing zones: the Piano LZ (about 1.5 miles from launch, named for its piano-key shape) and the Beach LZ at Marina Nacional 202 on Lake Avandaro (19.183792, -100.127785). Both are large, easy approaches for visiting pilots. The Piano is the default LZ for retrieve-supported flights; the Beach is closer to town and where the local flying community gathers.'
+        text: 'Two primary landing zones. The Piano LZ is the standard LZ for most flights from El Penon, about 1.7 miles (2.7 km) SSW of launch in the valley below. The Beach LZ is in Valle de Bravo town at Marina Nacional 202 on the lakefront (19.183792, -100.127785), about 8.7 miles (14 km) NNW across Lake Avándaro - it is where the local flying community gathers and is reached on longer flights and late-afternoon glass-off sessions.'
       }
     },
     {
@@ -157,7 +157,7 @@ const mapPoints = [
     lat: 19.041882,
     lng: -100.104940,
     coords: '19.041882, -100.104940',
-    detail: 'Large landing zone roughly 1.5 miles from launch, named for its piano-key shape.',
+    detail: 'Standard LZ for most El Penon flights. About 1.7 miles (2.7 km) SSW of launch in the valley below, named for its piano-key shape.',
     type: 'piano'
   },
   {
@@ -165,7 +165,7 @@ const mapPoints = [
     lat: 19.183792,
     lng: -100.127785,
     coords: '19.183792, -100.127785',
-    detail: 'Lakefront landing area in town at Marina Nacional 202.',
+    detail: 'Lakefront LZ in Valle de Bravo town at Marina Nacional 202, about 8.7 miles (14 km) NNW across Lake Avándaro from launch.',
     type: 'beach'
   }
 ];
@@ -248,7 +248,7 @@ const mapPointsJSON = JSON.stringify(mapPoints);
       <div class="section-intro">
         <p class="eyebrow">Map and access</p>
         <h2 id="map-heading">Map</h2>
-        <p>El Penon sits above Valle de Bravo, with Lake Avandaro and the main landing zones below. The launch is roughly 1.5 miles from the Piano LZ and a similar distance from the Beach LZ at the lakefront.</p>
+        <p>El Penon is the volcanic peak south of Lake Avándaro, with the launch on its rim. The Piano LZ sits about 1.7 miles (2.7 km) SSW of launch in the valley below - this is the standard LZ for most flights. The Beach LZ at the lakefront in Valle de Bravo town is roughly 8.7 miles (14 km) NNW across the lake; pilots reach it on longer routes and late-afternoon glass-off sessions, not as a typical bowl-flight LZ.</p>
       </div>
 
       <div class="map-layout">
@@ -371,38 +371,42 @@ const mapPointsJSON = JSON.stringify(mapPoints);
       <div class="section-intro">
         <p class="eyebrow">Landing zones</p>
         <h2 id="landing-zones-heading">Landing Zones</h2>
-        <p>El Penon has two primary landing zones, both genuinely large by paragliding standards. Most flights end at the Piano LZ; the Beach LZ near town is the alternate, and is where the local flying community gathers. Land-outs into the surrounding valley are not common but are manageable when they happen - the terrain is generally open farmland.</p>
+        <p>El Penon has two primary landing zones, both genuinely large by paragliding standards. Most flights end at the Piano LZ - it is in the valley about 1.7 miles SSW of launch and is where retrieve picks you up after a typical morning flight. The Beach LZ in Valle de Bravo town is roughly 8.7 miles NNW across Lake Avándaro - it is where the local flying community gathers and is reached on longer flights and late-afternoon glass-off sessions, not as a typical bowl-flight LZ. Land-outs into the surrounding valley are not common but are manageable when they happen - the terrain is generally open farmland.</p>
       </div>
 
       <div class="lz-grid">
         <article class="lz-card">
-          <h3>Beach LZ / Aterrizaje Parapente Paragliding Landing</h3>
+          <h3>Piano LZ <span class="lz-card__tag">Standard LZ</span></h3>
           <dl>
             <div>
-              <dt>Address</dt>
-              <dd>Marina Nacional 202, Sin Nombre, Valle de Bravo, Mexico</dd>
-            </div>
-            <div>
-              <dt>Coordinates</dt>
-              <dd>19.183792, -100.127785</dd>
-            </div>
-          </dl>
-          <p>The Beach LZ is a lakefront landing area near town and the lake itself. It is the location listed in the Air Damien site footer as our Valle de Bravo landing reference. Late-afternoon glass-off sessions often end here. Wind in the late afternoon tends to come off the lake, which sets up clean approaches into the wind.</p>
-        </article>
-
-        <article class="lz-card">
-          <h3>Piano LZ</h3>
-          <dl>
-            <div>
-              <dt>Location</dt>
-              <dd>Approximately 1.5 miles from launch</dd>
+              <dt>Distance from launch</dt>
+              <dd>About 1.7 miles (2.7 km) SSW</dd>
             </div>
             <div>
               <dt>Coordinates</dt>
               <dd>19.041882, -100.104940</dd>
             </div>
           </dl>
-          <p>Piano LZ is the main landing zone for El Penon, named for its piano-key shape when viewed from the air. It is a large flat field with good approach options from multiple directions, and it is where the retrieve vehicle picks pilots up after a typical morning flight. From the air it is impossible to miss - you can see it clearly from anywhere in the Fish Bowl. Land-out anxiety, which is real at most US sites with tight LZs, is essentially absent here. Confirm current access, approach notes, and any local restrictions during your daily site briefing.</p>
+          <p>Piano LZ is the main landing zone for El Penon, named for its piano-key shape when viewed from the air. It sits in the valley below the launch, on the same side of Lake Avándaro as the volcano. It is a large flat field with good approach options from multiple directions, and it is where the retrieve vehicle picks pilots up after a typical morning flight. From the air it is impossible to miss - you can see it clearly from anywhere in the Fish Bowl. Land-out anxiety, which is real at most US sites with tight LZs, is essentially absent here.</p>
+        </article>
+
+        <article class="lz-card">
+          <h3>Beach LZ <span class="lz-card__tag lz-card__tag--alt">In-town / glass-off</span></h3>
+          <dl>
+            <div>
+              <dt>Distance from launch</dt>
+              <dd>About 8.7 miles (14 km) NNW</dd>
+            </div>
+            <div>
+              <dt>Address</dt>
+              <dd>Marina Nacional 202, Valle de Bravo, Mexico</dd>
+            </div>
+            <div>
+              <dt>Coordinates</dt>
+              <dd>19.183792, -100.127785</dd>
+            </div>
+          </dl>
+          <p>The Beach LZ is a lakefront landing area in Valle de Bravo town, on the north shore of Lake Avándaro - across the lake from launch. This is where the local flying community gathers and is the address listed in the Air Damien site footer. It is reached on longer flights, XC routes, and late-afternoon glass-off sessions when conditions allow flying across or around the lake. Wind in the late afternoon tends to come off the lake, which sets up clean approaches into the wind.</p>
         </article>
       </div>
 
@@ -802,6 +806,27 @@ const mapPointsJSON = JSON.stringify(mapPoints);
 
   .lz-card h3 {
     margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .lz-card__tag {
+    display: inline-block;
+    padding: 0.18rem 0.6rem;
+    background: rgba(45, 122, 79, 0.14);
+    color: #1f5a37;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .lz-card__tag--alt {
+    background: rgba(59, 49, 96, 0.12);
+    color: var(--color-primary, #3b3160);
   }
 
   .lz-card p {
