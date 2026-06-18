@@ -1,29 +1,259 @@
 ---
 import BlogPostLayout from '../layouts/BlogPostLayout.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
 
 const relatedPosts = [
-  { title: "How to launch a paraglider?", url: "/how-to-launch-a-paraglider/", description: "Learn to launch a paraglider by reading this guide from a USHPA Advanced Instructor with over 25 years of experience.", date: "2023-07-10", readingTime: "7 min read" },
-  { title: "How dangerous is paragliding?", url: "/how-dangerous-is-paragliding/", description: "The short answer is paragliding is extremely safe when practiced with proper training and equipment.", date: "2023-06-05", readingTime: "10 min read" },
-  { title: "How long does it take to learn paragliding?", url: "/how-long-does-it-take-to-learn-paragliding/", description: "The short answer is a week of dedicated training to get your basic certification.", date: "2023-06-20", readingTime: "16 min read" },
+  {
+    title: "How to launch a paraglider",
+    url: "/how-to-launch-a-paraglider/",
+    description: "Forward and reverse launch techniques, wind reading, and the most common mistakes.",
+    date: "2023-07-10",
+    readingTime: "12 min read",
+  },
+  {
+    title: "How long does it take to learn paragliding?",
+    url: "/how-long-does-it-take-to-learn-paragliding/",
+    description: "Realistic timelines from first lesson to your P2 rating.",
+    date: "2023-06-20",
+    readingTime: "11 min read",
+  },
+  {
+    title: "How dangerous is paragliding?",
+    url: "/how-dangerous-is-paragliding/",
+    description: "Honest look at the risks, statistics, and what makes the sport safer.",
+    date: "2023-06-05",
+    readingTime: "12 min read",
+  },
 ];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do you land a paraglider?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "To land a paraglider, plan a standard aircraft-style approach pattern - downwind, base, and final - with the final leg into the wind. On final approach, fly with hands at half brake, eyes on your target landing zone. About one body-length above the ground, apply full brakes (the flare) to bleed off airspeed and touch down running. The flare timing is the most important part of the landing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When do you flare on a paraglider?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Flare when you are approximately one body-length (5 to 7 feet) above the ground. Apply both brakes smoothly and progressively to about 80 to 100 percent. Flaring too early causes the wing to balloon and drop you; flaring too late means you touch down at full flying speed. The timing is learned through repetition under instructor coaching."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the standard landing approach pattern?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The standard paraglider landing approach is a three-leg pattern: downwind (flying with the wind, parallel to your target), base (perpendicular turn at 90 degrees, losing altitude), and final (turning into the wind for the actual landing). This is the same pattern small aircraft use and gives you predictable altitude management and a final approach into the wind."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should you do if you are too high on final?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If you are too high on final approach, do not turn back into the wind - that risks low-altitude maneuvering. Instead, S-turn left and right to bleed altitude while staying generally aligned with your target. Each S-turn loses 50 to 100 feet without compromising your final approach line. Big-ears and speedbar are advanced options for fast altitude loss."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you land in light wind versus strong wind?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In light wind (under 5 mph), expect a faster groundspeed touchdown and run out the landing. Flare authoritatively and run several steps. In stronger wind (10 to 15 mph), groundspeed is slower but you must turn the wing immediately after touchdown to prevent it from dragging you. Pull one brake fully to collapse the wing on the ground."
+      }
+    }
+  ]
+};
 ---
 
 <BlogPostLayout
-  title="How to land a paraglider?"
-  description="Learn the top tricks and tips to landing a paraglider from an USHPA Advanced Instructor. Understand flair timing, and what to do if things go wrong."
+  title="How to Land a Paraglider: Approaches, Flare, and Conditions"
+  description="A clean paraglider landing is built on the approach, not the flare. Here is how to plan a landing pattern, time the flare, handle different wind conditions, and avoid the most common mistakes."
   canonicalUrl="https://airdamien.com/how-to-land-a-paraglider/"
   datePublished="2023-07-25"
-  readingTime="9 min read"
-  wordCount={2233}
+  dateModified="2026-04-29"
+  readingTime="11 min read"
+  wordCount={2300}
   relatedPosts={relatedPosts}
   featuredImage="/images/landing 1.jpg"
-  featuredImageAlt="Paraglider pilot approaching landing at El Penon"
+  featuredImageAlt="Paraglider pilot on final approach to the landing zone"
 >
-  <p>Learn the top tricks and tips to landing a paraglider from an USHPA Advanced Instructor. Understand flair timing, and what to do if things go wrong.</p>
+  <SchemaMarkup schema={faqSchema} />
 
-  <p>Full article content to be added by the site owner.</p>
+  <h2>Landing Starts With the Approach</h2>
 
-  <p>Practice your landings at El Penon's oversized LZ. <a href="/paragliding-valle-de-bravo/">Learn about Valle de Bravo</a> or <a href="/contact/">book a session</a> with Damien.</p>
+  <p>Most newer pilots think landing is about the flare - that magical moment when you pull the brakes and touch down. The flare matters, but it is the easiest part of a landing. The hard part is everything that comes before it.</p>
 
-  <p>For expert paragliding instruction in Valle de Bravo, Mexico or at the Point of the Mountain in Utah, <a href="/contact/">contact Air Damien</a> to book your session with a USHPA Advanced Instructor with over 25 years of experience.</p>
+  <p>A clean landing is built in the approach. If your approach is good - right altitude at the right place, into the wind, on a stable line - the flare almost takes care of itself. If your approach is bad, no amount of skill at the bottom can save it.</p>
+
+  <p>This guide covers the standard approach pattern, how to manage altitude, when and how to flare, and how to handle the conditions that newer pilots find most intimidating.</p>
+
+  <h2>The Standard Approach Pattern</h2>
+
+  <p>Paragliders use the same three-leg landing pattern as small aircraft: downwind, base, and final. This is universal and works at every site you will ever fly.</p>
+
+  <h3>Downwind leg</h3>
+
+  <p>You fly parallel to your target landing zone, with the wind at your back. Groundspeed is fast - you are flying with the wind. The downwind leg is where you assess the LZ, look for other pilots, and start planning your altitude for the rest of the pattern.</p>
+
+  <p>You should arrive at the start of the downwind leg with enough altitude to complete the pattern - typically 200 to 400 feet above the LZ for a standard approach.</p>
+
+  <h3>Base leg</h3>
+
+  <p>At the appropriate point past the downwind end of the LZ, turn 90 degrees toward the LZ. This is the base leg. You are now perpendicular to the wind, descending toward your final turn point.</p>
+
+  <p>The length of the base leg depends on your altitude - longer base leg if you are high, shorter if you are low. This is your last chance to adjust altitude before final.</p>
+
+  <h3>Final leg</h3>
+
+  <p>Turn another 90 degrees so you are now flying directly into the wind toward your touchdown point. This is final approach. From here, you commit to the landing - no more 180-degree turns.</p>
+
+  <p>Final approach is where you set up the flare. Hands at half brake (or wherever your wing flies most efficiently), eyes on your target, body relaxed, ready to react.</p>
+
+  <h2>Setting Up the Pattern</h2>
+
+  <p>The trick to a good pattern is starting it at the right altitude in the right place. Two principles to internalize:</p>
+
+  <h3>The "key position"</h3>
+
+  <p>The key position is the point in space where you turn from downwind onto base. At a typical LZ with light wind, this is roughly 250 feet AGL (above ground level), abeam your touchdown point and offset 100 to 200 meters laterally. As wind speed increases, you move the key position closer to your touchdown point because the wind pushes you back during the base and final legs.</p>
+
+  <p>If you arrive at the key position too high, fly past it and S-turn to lose altitude before turning base. If you arrive too low, turn base immediately and accept a shorter final.</p>
+
+  <h3>Reading the wind from the air</h3>
+
+  <p>You read wind direction and speed by watching:</p>
+
+  <ul>
+    <li><strong>Smoke and dust:</strong> Direct wind direction indicators on the ground.</li>
+    <li><strong>Other pilots:</strong> Watch their groundspeed and approach angles.</li>
+    <li><strong>Wind streamers:</strong> Most established LZs have permanent wind socks or streamers.</li>
+    <li><strong>Lake or water surface:</strong> Ripples show direction; intensity shows strength.</li>
+    <li><strong>Tree movement:</strong> Leaves rustling versus branches moving versus whole trees swaying tells you 5 vs 10 vs 20 mph.</li>
+    <li><strong>Your own track:</strong> Compare your heading to your actual ground track. The difference is your drift, which tells you wind direction and strength.</li>
+  </ul>
+
+  <p>Reading wind from the air is a skill you build over hundreds of flights. At a consistent site like <a href="/paragliding-valle-de-bravo/">Valle de Bravo</a>, the wind patterns are so predictable that pilots learn to read them quickly. Sites with shifty winds take much longer to develop instinct for.</p>
+
+  <h2>The Flare</h2>
+
+  <p>The flare is the controlled deceleration that puts you on your feet at walking speed instead of flying speed. Three things need to be right:</p>
+
+  <h3>Altitude when you start the flare</h3>
+
+  <p>About one body-length above the ground - 5 to 7 feet for an average pilot. Too high and the wing balloons up, runs out of energy, and drops you with a thud. Too low and you touch down still flying.</p>
+
+  <h3>Brake input</h3>
+
+  <p>Both brakes pulled smoothly and progressively to roughly 80 to 100 percent. The wing pitches up and slows you. Apply too suddenly and you risk a dynamic stall; apply too gently and you do not slow enough.</p>
+
+  <h3>Body position</h3>
+
+  <p>You stand up out of your harness during the flare so your feet are below you, ready to absorb the touchdown. Run if you have any forward momentum at all. Trying to land standing still is a recipe for falling backward.</p>
+
+  <p>Timing the flare is what separates clean landings from rough ones. It is learned almost entirely by repetition. The fastest way to develop flare timing is to do many landings in a short period - which is exactly what a multi-day flying trip provides.</p>
+
+  <h2>Handling Different Wind Conditions</h2>
+
+  <h3>Light wind landing (under 5 mph)</h3>
+
+  <p>Light wind means high groundspeed at touchdown. Run it out. Plan for a final that is shorter than usual because your descent rate matches your groundspeed - you arrive faster.</p>
+
+  <p>Flare authoritatively and run 5 to 10 steps after touchdown. The wing will likely come down on top of you - turn around quickly and gather it, then walk it off the LZ.</p>
+
+  <h3>Moderate wind landing (5 to 12 mph)</h3>
+
+  <p>This is the easiest wind condition to land in. Groundspeed is moderate, you have plenty of time to set up the approach, and the flare timing is forgiving. Most of the landings you do will be in this range.</p>
+
+  <h3>Strong wind landing (12 to 20 mph)</h3>
+
+  <p>Groundspeed is slow - you may be barely moving forward, or even moving backward at full brakes. Plan a flatter approach because vertical descent rate matters more than horizontal speed.</p>
+
+  <p>The danger in strong wind is being dragged after touchdown. Pull one brake fully to collapse the wing immediately, or - if you have been trained to do it - do a B-line stall on touchdown. Get the wing flat on the ground before it can pull you.</p>
+
+  <h3>Very strong wind landing (over 20 mph)</h3>
+
+  <p>You should rarely be flying in conditions where this is your landing scenario. If you are, plan for backwards groundspeed at full speedbar, look for the most sheltered LZ available, and have a plan to immediately collapse the wing on touchdown. This is advanced-pilot territory.</p>
+
+  <h2>Common Landing Mistakes</h2>
+
+  <p>The mistakes are predictable. The fix is almost always more time on the wing in good conditions.</p>
+
+  <h3>Flaring too early</h3>
+
+  <p>The most common newer-pilot error. The pilot sees the ground rushing up, panics, and flares from 15 or 20 feet. The wing climbs, slows to a stall, and the pilot drops the last several feet. Flares should happen at one body-length, not when the ground "feels close."</p>
+
+  <h3>Flaring too late</h3>
+
+  <p>Less common but more painful. The pilot waits, waits, waits - and touches down at full flying speed. They land hard and tumble. Flaring is not optional. It is the standard final step of every landing.</p>
+
+  <h3>Turning back to the LZ</h3>
+
+  <p>You are on final, you realize you are too far short. Newer pilots sometimes try to turn 180 and re-approach. This is one of the most dangerous things you can do near the ground - low-altitude turns lose altitude fast and stall the wing easily. The right answer is to land short. Pick the safest spot you can reach and land there.</p>
+
+  <h3>Not flying the wing all the way to the ground</h3>
+
+  <p>The wing is still flying until you are on the ground. Some pilots relax their inputs in the last few feet and let the wing surge or yaw. Keep flying actively until your feet are planted and you have collapsed the wing.</p>
+
+  <h3>Dropping the brakes after touchdown</h3>
+
+  <p>Letting go of the brakes after touchdown lets the wing fly forward over your head and either drag you or pull you backward. Hold the brakes through touchdown, then immediately turn around and pull one brake to collapse the wing.</p>
+
+  <h3>Trying to land "softly" without running</h3>
+
+  <p>If you have any forward groundspeed, you must run. Trying to plant your feet still is how pilots fall, sprain ankles, and break wrists. Run it out.</p>
+
+  <h2>Specific Techniques</h2>
+
+  <h3>Big-ears</h3>
+
+  <p>If you are too high and need to lose altitude quickly, "big-ears" is the standard technique. Pull both outer A-lines down to fold in the wing tips. The wing now has less area, descends faster, and is more stable. Release the lines to recover full flight before flaring.</p>
+
+  <p>Big-ears combined with speedbar gives you very fast vertical descent. This is taught in your P2 program but is also a skill that benefits from clinic-level practice.</p>
+
+  <h3>S-turns</h3>
+
+  <p>Coordinated turns left and right while staying on a generally aligned path. Each turn loses 50 to 100 feet of altitude. The most common technique for managing altitude on final approach.</p>
+
+  <h3>Top-landing</h3>
+
+  <p>Landing back at launch instead of at the LZ. Used when conditions allow ridge soaring at the launch elevation. Top-landing is a skill taught at the P3 level - it requires precise altitude control and good wind reading. Not for newer pilots.</p>
+
+  <h3>Spot landing</h3>
+
+  <p>Landing within a small target area, typically a circle 5 to 10 meters across. Spot landings are a P3 requirement and a skill worth practicing on every landing. Pick a target on every approach, even if the LZ is huge.</p>
+
+  <h2>Where to Practice Landings</h2>
+
+  <p>You build landing skill through repetition in conditions that let you practice without consequence. Three things make a landing zone good for learning:</p>
+
+  <ol>
+    <li><strong>Size.</strong> Bigger LZs let you abort an approach and try again, set up multiple patterns, and not panic if you misjudge altitude.</li>
+    <li><strong>Predictable wind.</strong> A site with consistent wind patterns lets you build pattern reading, not just hope the conditions stay similar.</li>
+    <li><strong>Multiple flights per day.</strong> The fastest way to learn landings is to do many of them in a short window.</li>
+  </ol>
+
+  <p>This is exactly what a multi-day trip to a consistent site provides. The Piano LZ at <a href="/paragliding-valle-de-bravo/">Valle de Bravo</a> is one of the largest landing zones in paragliding - over 1,000 feet long, flat, with predictable wind. P2 pilots routinely log 10 to 15 landings per week there, which is more landing practice than they would get in 6 months at most home sites.</p>
+
+  <h2>Landing in Mexico vs. Your Home Site</h2>
+
+  <p>Most US pilots train at sites with smaller, more challenging LZs and inconsistent wind. They land "successfully" but with constant low-grade stress about whether they will fit.</p>
+
+  <p>Coming to a forgiving LZ for the first time is a revelation. Pilots who have been struggling with their landings at home suddenly relax, fly cleaner approaches, and start nailing their flares. They take that confidence home with them. Read more about what to expect in our <a href="/valle-de-bravo-p2-pilots/">guide for P2 pilots flying Valle de Bravo</a>.</p>
+
+  <h2>Building Real Landing Skills</h2>
+
+  <p>Reading about landings is useful background. Becoming a pilot who lands cleanly every time happens through hundreds of repetitions in good conditions, with someone giving you feedback after each one.</p>
+
+  <p>Our <a href="/paragliding-clinics-mexico/paragliding-thermalling-clinic-mexico/">thermalling clinic</a> in Valle de Bravo includes daily ground school, multiple flights per day, evening flight reviews on tracklog, and radio coaching on every approach. Pilots routinely fly 12 to 18 patterns over the course of a week-long clinic - more than most pilots fly in 6 months at home. The result is a step-change in landing confidence that holds up at every site you fly afterward.</p>
+
+  <p>Have specific questions about landing technique, an LZ you find intimidating, or whether you are ready for guided instruction? <a href="/contact/">Contact Damien</a> for honest guidance from a USHPA Advanced Instructor with 25+ years of teaching pilots how to actually land cleanly.</p>
 </BlogPostLayout>

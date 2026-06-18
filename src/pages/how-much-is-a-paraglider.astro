@@ -1,47 +1,301 @@
 ---
 import BlogPostLayout from '../layouts/BlogPostLayout.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
 
 const relatedPosts = [
   {
     title: "Do you need a license to fly a paraglider?",
     url: "/do-you-need-a-license-to-fly-a-paraglider/",
-    description: "The short answer is no for certain air sports...",
+    description: "USHPA ratings, what they let you do, and how to get certified.",
     date: "2023-05-20",
-    readingTime: "8 min read",
+    readingTime: "9 min read",
   },
   {
     title: "How long does it take to learn paragliding?",
     url: "/how-long-does-it-take-to-learn-paragliding/",
-    description: "The short answer is a week...",
+    description: "Realistic timelines from first lesson to your P2 rating.",
     date: "2023-06-20",
-    readingTime: "16 min read",
+    readingTime: "11 min read",
   },
   {
-    title: "How to launch a paraglider?",
-    url: "/how-to-launch-a-paraglider/",
-    description: "Learn to launch a paraglider by reading this guide...",
-    date: "2023-07-10",
-    readingTime: "7 min read",
+    title: "How much does a Mexico paragliding trip cost?",
+    url: "/paragliding-trip-mexico-cost/",
+    description: "Full budget breakdown for a paragliding trip to Valle de Bravo.",
+    date: "2026-01-05",
+    readingTime: "8 min read",
   },
 ];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does a paraglider cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A complete paraglider setup costs $5,500 to $9,000 for new gear, or $2,500 to $4,500 for a quality used kit. The wing alone runs $3,500 to $5,500 new. A full kit includes wing, harness, reserve parachute, helmet, vario, and radio."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does a paraglider wing cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A new EN-A or EN-B paraglider wing costs $3,500 to $5,500. EN-C wings run $4,500 to $5,500. EN-D and competition wings cost $5,500 to $7,500. Used wings in good condition with low hours sell for 40 to 60 percent of new price."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I buy a new or used paraglider?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Buy new for your wing if your budget allows. Wings degrade with sun exposure and use, and a used wing without a recent trim check or porosity test is a gamble. Buy used for harness, helmet, and vario - these wear less and cost much more new."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does a paraglider last?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A typical paraglider wing lasts 250 to 400 flight hours or 7 to 10 years of recreational use, whichever comes first. Heavy UV exposure, frequent ground handling, and saltwater shorten lifespan. Annual trim checks and porosity tests determine retirement."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the cheapest way to start paragliding?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Take lessons from a USHPA-certified school first. Most schools rent gear during training so you can learn before you buy. Once you have your P2 rating, buy a used harness, reserve, helmet, and vario, then invest in a new wing matched to your skill level."
+      }
+    }
+  ]
+};
 ---
 
 <BlogPostLayout
-  title="How much is a paraglider?"
-  description="The short answer is a paraglider costs between $2,500 and $4,500 depending on the quality of the equipment and the specific model."
+  title="How Much Is a Paraglider? Complete 2026 Cost Breakdown"
+  description="A complete paraglider setup costs $5,500 to $9,000 new, or $2,500 to $4,500 used. Here is the full breakdown - wing, harness, reserve, helmet, vario, radio - plus hidden costs."
   canonicalUrl="https://airdamien.com/how-much-is-a-paraglider/"
   datePublished="2023-05-01"
-  readingTime="6 min read"
-  wordCount={1385}
+  dateModified="2026-04-29"
+  readingTime="11 min read"
+  wordCount={2400}
   relatedPosts={relatedPosts}
   featuredImage="/images/paraglider_wing-scaled.jpg"
-  featuredImageAlt="Paraglider wing laid out on the ground"
+  featuredImageAlt="Paraglider wing laid out on the ground ready for launch"
 >
-  <p>The short answer is a paraglider costs between $2,500 and $4,500 depending on the quality of the equipment and the specific model.</p>
+  <SchemaMarkup schema={faqSchema} />
 
-  <p>Full article content to be added by the site owner.</p>
+  <h2>The Quick Numbers</h2>
 
-  <p>Got your gear? All you need now is the trip. <a href="/tours/">Explore our Mexico packages</a> or see <a href="/what-to-pack-paragliding-valle-de-bravo/">what to pack</a> for Valle de Bravo.</p>
+  <p>Here is what a complete, ready-to-fly setup actually costs in 2026:</p>
 
-  <p>For expert paragliding instruction in Valle de Bravo, Mexico or at the Point of the Mountain in Utah, <a href="/contact/">contact Air Damien</a> to book your session with a USHPA Advanced Instructor with over 25 years of experience.</p>
+  <ul>
+    <li><strong>New entry-level kit (EN-A or low-B):</strong> $5,500 to $7,500</li>
+    <li><strong>New intermediate kit (EN-B or low-C):</strong> $6,500 to $8,500</li>
+    <li><strong>New advanced kit (EN-C, EN-D):</strong> $8,000 to $11,000</li>
+    <li><strong>Quality used kit (1-3 seasons old):</strong> $2,500 to $4,500</li>
+    <li><strong>Budget used kit (be careful):</strong> $1,500 to $2,500</li>
+  </ul>
+
+  <p>Those numbers cover wing, harness, reserve parachute, helmet, vario, and radio - everything you need to legally and safely fly. They do not include lessons (budget another $2,000 to $3,500 for your USHPA P2 rating) or ongoing costs like club dues and insurance, which we cover below.</p>
+
+  <h2>Wing: $3,500 to $7,500</h2>
+
+  <p>The wing is your single biggest expense and the piece of gear most worth buying new. Wings are made of coated nylon that degrades with UV exposure, and used wings vary wildly in remaining lifespan depending on how the previous owner stored and flew them.</p>
+
+  <h3>Wing prices by certification class</h3>
+
+  <ul>
+    <li><strong>EN-A (beginner):</strong> $3,500 to $4,500. Maximum stability, designed to recover from collapses on its own. What you fly during your first 50 to 100 hours.</li>
+    <li><strong>EN-B (intermediate):</strong> $3,800 to $5,500. The largest category and where most pilots spend most of their flying career. Low-B wings are docile, high-B wings are sportier.</li>
+    <li><strong>EN-C (advanced):</strong> $4,800 to $5,800. Higher performance, less forgiving. Appropriate for pilots with serious thermalling and SIV experience.</li>
+    <li><strong>EN-D / CCC (expert / competition):</strong> $5,500 to $7,500. Demand active piloting and advanced recovery skills. A wing class for experienced cross-country and competition pilots.</li>
+  </ul>
+
+  <p>Major brands - Ozone, Advance, Niviuk, Skywalk, Gin, BGD, UP, Nova - sit in similar price bands. Differences come down to handling characteristics, glide performance, and brand support.</p>
+
+  <h3>Wing sizes and how they affect price</h3>
+
+  <p>Wings are sized by area in square meters and rated for a specific weight range. Smaller wings cost the same as larger ones, but you cannot fly outside your wing's certified weight range. If you are between sizes, talk to your instructor before you buy. We have detailed thoughts on appropriate wing selection in our guide to the <a href="/p2-to-p3-paragliding-progression/">P2 to P3 progression</a>.</p>
+
+  <h2>Harness: $800 to $2,500</h2>
+
+  <p>Your harness is where you sit, where your reserve lives, and where you carry your radio, vario, water, and supplies. Two main categories matter for your first purchase:</p>
+
+  <ul>
+    <li><strong>Training / sit-up harness:</strong> $800 to $1,200. What schools use for instruction. Comfortable, predictable, and sized for ground handling and short flights. Good for your P1 and early P2 days.</li>
+    <li><strong>Pod / cocoon harness:</strong> $1,500 to $2,500. Aerodynamic, designed for long thermal and cross-country flights. Has a foot pod that wraps your legs to reduce drag. What you want once you start flying for hours at a time.</li>
+  </ul>
+
+  <p>You can fly your training harness all the way to your P3 rating without issue. Most pilots upgrade to a pod harness when they start serious thermal and XC flying - typically the same time they start thinking about a guided trip to <a href="/paragliding-valle-de-bravo/">Valle de Bravo</a> or <a href="/paragliding-roldanillo-colombia/">Roldanillo, Colombia</a>.</p>
+
+  <p>A used harness is a reasonable purchase if it has been inspected. Check the buckles, the foam back protection, and the reserve container for any signs of damage or chemical exposure.</p>
+
+  <h2>Reserve Parachute: $700 to $1,400</h2>
+
+  <p>Your reserve is the parachute you throw if your wing becomes unflyable. You hope to never use it. You also need to inspect and repack it every six to twelve months, depending on the manufacturer.</p>
+
+  <p>Reserve types:</p>
+
+  <ul>
+    <li><strong>Round / classic:</strong> $700 to $900. Simple, reliable, descends straight down at 5 to 6 m/s.</li>
+    <li><strong>Square / cruciform:</strong> $900 to $1,200. Slightly slower descent rate, less swinging.</li>
+    <li><strong>Rogallo / steerable:</strong> $1,100 to $1,400. Allows limited steering after deployment. More expensive and more complex - generally not for first-time buyers.</li>
+  </ul>
+
+  <p>Buy your reserve new if at all possible. A used reserve with unknown history is a piece of life-safety equipment you do not want to gamble on. Always have a certified rigger pack a reserve before you fly with it.</p>
+
+  <h2>Helmet: $150 to $400</h2>
+
+  <p>Open-face helmets cost $150 to $250. Full-face helmets run $250 to $400. We recommend full-face for thermal and cross-country flying because the sun protection alone is worth it during long flights at altitude. Read our <a href="/what-to-pack-paragliding-valle-de-bravo/">Valle de Bravo packing guide</a> for more on gear selection for high-altitude flying.</p>
+
+  <h2>Vario / Flight Instrument: $200 to $1,500</h2>
+
+  <p>Your vario tells you whether you are climbing or descending and at what rate. Modern flight instruments do much more - GPS tracking, airspace warnings, route planning, and turnpoint navigation for competition.</p>
+
+  <ul>
+    <li><strong>Basic vario:</strong> $200 to $400. Climb and sink rate, altitude. Plenty for your first season.</li>
+    <li><strong>GPS vario:</strong> $400 to $800. Adds GPS, basic flight logging, and sometimes wind direction.</li>
+    <li><strong>Full flight computer:</strong> $800 to $1,500. Color screen, airspace, route planning, live tracking via cell or satellite. What competition and serious XC pilots fly.</li>
+  </ul>
+
+  <p>For your first year, a $200 vario is fine. Once you start flying thermals seriously, the larger screen and GPS logging of an $800 instrument pays for itself in faster learning - especially during a structured <a href="/paragliding-clinics-mexico/paragliding-thermalling-clinic-mexico/">thermalling clinic</a> where you and your instructor review every flight.</p>
+
+  <h2>Radio: $100 to $400</h2>
+
+  <p>A dual-band VHF radio lets your instructor coach you in the air, lets you coordinate with other pilots, and is mandatory at most flying sites. Plan to spend $150 to $250 for a quality handheld with a paragliding-friendly headset and PTT.</p>
+
+  <p>This is the cheapest piece of gear that has the biggest impact on your safety and learning. A radio is what makes <a href="/radio-guided-paragliding-instruction/">radio-guided instruction</a> possible - and being talked through your first thermals by an experienced instructor is the fastest way to actually learn to thermal.</p>
+
+  <h2>Other Gear: $200 to $500</h2>
+
+  <p>Items that are easy to forget when budgeting:</p>
+
+  <ul>
+    <li><strong>Flight gloves:</strong> $40 to $80. Thin enough to feel the brakes, warm enough for altitude.</li>
+    <li><strong>Sturdy boots:</strong> $100 to $200. Hiking-style boots with ankle support.</li>
+    <li><strong>Concertina bag:</strong> $80 to $150. The folded inner bag that protects your wing during transport.</li>
+    <li><strong>Wing bag / backpack:</strong> Often included with the wing. Replacement bags run $100 to $250.</li>
+    <li><strong>Sunglasses:</strong> $50 to $200. Polarized recommended for high-altitude flying.</li>
+    <li><strong>USB battery pack:</strong> $30 to $60. For charging your vario, phone, and radio between flights.</li>
+  </ul>
+
+  <h2>Total Starter Kit: New vs. Used</h2>
+
+  <p>Here is what a fully outfitted P2 pilot actually spends:</p>
+
+  <h3>New beginner setup</h3>
+
+  <ul>
+    <li>EN-A wing: $4,000</li>
+    <li>Training harness: $1,000</li>
+    <li>Round reserve: $800</li>
+    <li>Full-face helmet: $300</li>
+    <li>Basic vario: $300</li>
+    <li>Radio with headset: $250</li>
+    <li>Other gear: $400</li>
+    <li><strong>Total: $7,050</strong></li>
+  </ul>
+
+  <h3>Quality used setup</h3>
+
+  <ul>
+    <li>EN-A wing (1-2 seasons, certified inspection): $1,800</li>
+    <li>Used training harness: $500</li>
+    <li>New reserve (do not buy used): $800</li>
+    <li>New helmet: $300</li>
+    <li>Used vario: $150</li>
+    <li>Used radio: $150</li>
+    <li>Other gear: $300</li>
+    <li><strong>Total: $4,000</strong></li>
+  </ul>
+
+  <p>You can spend less by going further into the used market, but the wing and the reserve are the two pieces where short-term savings can cost you a lot in safety or premature replacement.</p>
+
+  <h2>New vs. Used: What to Buy Where</h2>
+
+  <p>After 25+ years of buying, flying, and inspecting paragliding gear, here is our honest guidance:</p>
+
+  <h3>Buy new</h3>
+
+  <ul>
+    <li><strong>Wing.</strong> If your budget can stretch, this is where it pays off. New wings have full porosity, predictable handling, and a clear age. You also get the manufacturer's warranty and a wing whose history you know.</li>
+    <li><strong>Reserve parachute.</strong> Always. Used reserves are gambling with your life on equipment whose history you cannot verify.</li>
+    <li><strong>Helmet.</strong> A helmet that has been in any kind of impact - even one you cannot see - has compromised foam. Buy your own and treat it like a motorcycle helmet.</li>
+  </ul>
+
+  <h3>Buy used</h3>
+
+  <ul>
+    <li><strong>Harness.</strong> Harnesses last a long time. A used harness from a smoker-free, garage-stored owner is essentially as good as new. Inspect the buckles, the back protection foam, and the reserve container.</li>
+    <li><strong>Vario.</strong> Modern flight instruments hold their value but also depreciate predictably. A two-year-old GPS vario at 60 percent of new price is a great deal.</li>
+    <li><strong>Radio.</strong> VHF radios do not really age. A clean used unit at half price is fine.</li>
+  </ul>
+
+  <h2>Where to Buy</h2>
+
+  <p>Three main channels for new and used gear:</p>
+
+  <ul>
+    <li><strong>USHPA-certified dealers:</strong> Buy from a school or dealer who can size, fit, and trim your wing for your weight. The best option for first-time buyers. The added support is worth the lack of price discount.</li>
+    <li><strong>Manufacturer direct or factory pro shops:</strong> Sometimes you can buy direct, especially for high-end wings. Less hand-holding but solid pricing.</li>
+    <li><strong>Used marketplaces:</strong> The USHPA Classifieds, Paraglider Trader, Paragliding Forum classifieds, and regional Facebook groups. Buyer beware - always inspect before paying, and ideally have your instructor sight the wing first.</li>
+  </ul>
+
+  <h3>Red flags on used gear</h3>
+
+  <ul>
+    <li>No serial number or hidden serial number (might be stolen)</li>
+    <li>Seller cannot tell you total flight hours or recent porosity test results</li>
+    <li>Wing has been stored compressed, wet, or in a hot car or attic</li>
+    <li>Reserve has not been repacked in over 12 months</li>
+    <li>Price is dramatically below market - usually means a problem</li>
+  </ul>
+
+  <h2>Hidden Costs of Paragliding</h2>
+
+  <p>Beyond the gear itself, plan to spend on:</p>
+
+  <ul>
+    <li><strong>Lessons / P2 rating:</strong> $2,000 to $3,500 for a USHPA P2 program. We cover this in detail in our guide on <a href="/how-long-does-it-take-to-learn-paragliding/">how long it takes to learn paragliding</a>.</li>
+    <li><strong>USHPA membership:</strong> $99/year, mandatory for flying USHPA-insured sites in the US. See our explanation in <a href="/do-you-need-a-license-to-fly-a-paraglider/">do you need a license to fly a paraglider</a>.</li>
+    <li><strong>Local club membership:</strong> $30 to $150/year per site. Required at most flying sites including El Penon in Valle de Bravo.</li>
+    <li><strong>Annual reserve repack:</strong> $50 to $100, plus shipping if you mail it to a rigger.</li>
+    <li><strong>Annual wing inspection:</strong> $100 to $200 for a full porosity, trim, and line check.</li>
+    <li><strong>Travel insurance with med-evac:</strong> $50 to $200 per international trip. Strongly recommended - we explain why in <a href="/is-paragliding-in-mexico-safe/">is paragliding in Mexico safe</a>.</li>
+    <li><strong>SIV / safety training:</strong> $800 to $1,500 for a 3 to 4-day clinic. Worth doing before flying advanced wings or competition.</li>
+  </ul>
+
+  <h2>When to Upgrade Your Wing</h2>
+
+  <p>Your first wing should match where you are flying now, not where you hope to fly someday. Most pilots upgrade their first wing in one of three situations:</p>
+
+  <ol>
+    <li><strong>You have outgrown its weight range.</strong> Lost or gained significant weight, or you started carrying a pod harness with extra ballast.</li>
+    <li><strong>You have outgrown its performance.</strong> 100+ hours of comfortable thermalling and you want better glide or climb. Move from EN-A to a docile EN-B.</li>
+    <li><strong>The wing has aged out.</strong> 250 to 400 flight hours, or 7+ years, or it failed a porosity test. Time for a new one regardless of how it feels.</li>
+  </ol>
+
+  <p>Resist the urge to buy too much wing. Pilots crash hot wings far more often than docile ones. The right wing for you is the one matched to your current skills and recent airtime, not the one you saw a comp pilot flying on YouTube.</p>
+
+  <h2>Where Not to Skimp</h2>
+
+  <p>Cheap gear is fine in many areas. Cheap gear is not fine in three:</p>
+
+  <ul>
+    <li><strong>Reserve parachute.</strong> The only piece of gear whose entire job is to save your life when everything else has failed.</li>
+    <li><strong>Helmet.</strong> Spend the extra $100 for a quality full-face. Your face and brain are not where to optimize for cost.</li>
+    <li><strong>Lessons.</strong> Skipping lessons or learning from a non-certified friend is the most expensive decision you can make in this sport. Find a USHPA-certified school. We are happy to help you find one - <a href="/contact/">reach out</a>.</li>
+  </ul>
+
+  <h2>Plan Your Next Steps</h2>
+
+  <p>Once your gear is sorted, the question becomes: where do you fly it? Your home site is a great place to log hours. But the best place in the Americas to actually develop your thermal and cross-country skills is Valle de Bravo, Mexico - where the conditions are forgiving enough for newer pilots and powerful enough that experienced pilots come back year after year.</p>
+
+  <p>If you are still building your kit and skills, read our <a href="/paragliding-trip-mexico-cost/">Mexico paragliding trip cost guide</a> and our breakdown of the <a href="/best-paragliding-destinations-from-us/">best paragliding destinations from the US</a>. When you are ready to come fly with us, the <a href="/tours/10-day-paraglide-mexico-package/">10 Day Mexico Package</a> includes all logistics, accommodation, food, and daily radio-guided instruction.</p>
+
+  <p>Have questions about gear selection or a specific wing you are considering? <a href="/contact/">Contact Damien</a> for honest advice based on 25+ years of flying, teaching, and watching pilots make good and bad gear decisions.</p>
 </BlogPostLayout>
