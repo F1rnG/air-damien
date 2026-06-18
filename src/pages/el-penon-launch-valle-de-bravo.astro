@@ -1,0 +1,916 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
+
+const pageTitle = "El Penon Site Guide: Paragliding at Valle de Bravo | Air Damien";
+const pageDescription = "The complete site guide to El Penon, the primary paragliding launch at Valle de Bravo. Location, elevation, terrain, the Hair Dryer thermal cycle, landing zones, and what makes it one of the best launches in the world.";
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://airdamien.com/' },
+  { name: 'Valle de Bravo Guide', url: 'https://airdamien.com/paragliding-valle-de-bravo/' },
+  { name: 'El Penon Site Guide', url: 'https://airdamien.com/el-penon-launch-valle-de-bravo/' }
+];
+
+const placeSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Place',
+  name: 'El Penon Launch',
+  description: pageDescription,
+  url: 'https://airdamien.com/el-penon-launch-valle-de-bravo/',
+  image: 'https://airdamien.com/images/el%20penon.jpg',
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 19.061997,
+    longitude: -100.090997
+  },
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Valle de Bravo',
+    addressRegion: 'State of Mexico',
+    addressCountry: 'MX'
+  },
+  containedInPlace: {
+    '@type': 'Place',
+    name: 'Valle de Bravo'
+  }
+};
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: "El Penon Site Guide: Paragliding at Valle de Bravo",
+  description: pageDescription,
+  url: 'https://airdamien.com/el-penon-launch-valle-de-bravo/',
+  image: 'https://airdamien.com/images/el%20penon.jpg',
+  datePublished: '2026-05-03',
+  dateModified: '2026-05-03',
+  author: {
+    '@type': 'Person',
+    name: 'Damien Mitchell',
+    url: 'https://airdamien.com/about-us/',
+    jobTitle: 'USHPA Advanced Instructor'
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Air Damien',
+    url: 'https://airdamien.com',
+    logo: { '@type': 'ImageObject', url: 'https://airdamien.com/images/logo.png' }
+  },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://airdamien.com/el-penon-launch-valle-de-bravo/' }
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Where is El Penon launch?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'El Penon is the primary paragliding launch above Valle de Bravo, in the State of Mexico, roughly two hours west of Mexico City. It sits at approximately 7,600 ft / 2,316m ASL on the rim of an ancient volcanic caldera overlooking Lake Avandaro and the town of Valle de Bravo. The drive from town takes about 30-40 minutes on a paved mountain road.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'What rating do I need to fly El Penon?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'P2 (USHPA Novice) is the practical minimum. With guided instruction and radio coaching, P2 pilots fly El Penon safely and routinely use the trip as a thermalling-skill accelerator. Local club rules restrict mid-day flying in the strongest conditions to P4 pilots and above. International pilots use the IPPI 3+ equivalent.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'How big is the El Penon launch area?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The launch is wide and forgiving by mountain-launch standards. Multiple pilots can lay out wings and set up at once without crowding. The terrain drops away cleanly, so even in light conditions you can get off the ground without drama. There is also room to abort safely if a launch comes up wrong.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'What direction does El Penon launch face?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'El Penon faces generally south to southwest. The dominant flyable wind comes from this direction during peak season, lining up with the daily thermal cycle. Cross-wind days are uncommon during November-March; when they happen, the experienced call is usually to wait for the wind to clock around.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'Where do you land at El Penon?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Two primary landing zones. The Piano LZ is the standard LZ for most flights from El Penon, about 1.7 miles (2.7 km) SSW of launch in the valley below. The Beach LZ is in Valle de Bravo town at Marina Nacional 202 on the lakefront (19.183792, -100.127785), about 8.7 miles (14 km) NNW across Lake Avándaro - it is where the local flying community gathers and is reached on longer flights and late-afternoon glass-off sessions.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'When does the Hair Dryer start at El Penon?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'During peak season (November through March), the Hair Dryer thermal cycle kicks on with remarkable consistency around 10:00 AM. The dark volcanic rock heats fast in the morning sun and produces strong, well-organized thermals. The window typically runs through early-to-mid afternoon. November and February tend toward the later end; December tends to fire slightly earlier.'
+      }
+    }
+  ]
+};
+
+const photos = [
+  {
+    src: '/images/el penon.jpg',
+    alt: 'El Penon launch terrain in Valle de Bravo',
+    caption: 'El Penon launch terrain'
+  },
+  {
+    src: '/images/val6.jpg',
+    alt: 'Paraglider flying above the volcanic ridges near El Penon',
+    caption: 'Volcanic ridges and launch area'
+  },
+  {
+    src: '/images/cross.jpg',
+    alt: 'The cross above El Penon overlooking Valle de Bravo',
+    caption: 'The view from the upper terrain'
+  },
+  {
+    src: '/images/landing 1.jpg',
+    alt: 'Pilot landing in Valle de Bravo',
+    caption: 'Landing practice in Valle de Bravo'
+  },
+  {
+    src: '/images/valle 1.jpg',
+    alt: 'Lake Avandaro and Valle de Bravo town',
+    caption: 'Lake Avandaro and town'
+  }
+];
+
+const mapPoints = [
+  {
+    name: 'El Penon launch',
+    lat: 19.061997,
+    lng: -100.090997,
+    coords: '19.061997, -100.090997',
+    detail: 'Primary Valle de Bravo mountain launch, approximately 7,600 ft / 2,316m ASL.',
+    type: 'launch'
+  },
+  {
+    name: 'Piano LZ',
+    lat: 19.041882,
+    lng: -100.104940,
+    coords: '19.041882, -100.104940',
+    detail: 'Standard LZ for most El Penon flights. About 1.7 miles (2.7 km) SSW of launch in the valley below, named for its piano-key shape.',
+    type: 'piano'
+  },
+  {
+    name: 'Beach LZ / Aterrizaje Parapente',
+    lat: 19.183792,
+    lng: -100.127785,
+    coords: '19.183792, -100.127785',
+    detail: 'Lakefront LZ in Valle de Bravo town at Marina Nacional 202, about 8.7 miles (14 km) NNW across Lake Avándaro from launch.',
+    type: 'beach'
+  }
+];
+
+const mapPointsJSON = JSON.stringify(mapPoints);
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalUrl="https://airdamien.com/el-penon-launch-valle-de-bravo/"
+>
+  <SchemaMarkup schema={placeSchema} />
+  <SchemaMarkup schema={articleSchema} />
+  <SchemaMarkup schema={faqSchema} />
+
+  <section class="launch-hero">
+    <img class="launch-hero__bg" src="/images/el penon.jpg" alt="El Penon launch site in Valle de Bravo" width="1920" height="1280" loading="eager" />
+    <div class="launch-hero__overlay"></div>
+    <div class="launch-hero__content">
+      <p class="eyebrow">Site guide</p>
+      <h1>El Penon Site Guide</h1>
+      <p>The complete pilot's site guide to El Penon - location, terrain, landing zones, the Hair Dryer thermal cycle, and what 25+ years of flying this site has taught me about getting the most out of it.</p>
+    </div>
+  </section>
+
+  <Breadcrumbs items={breadcrumbs} />
+
+  <div class="container author-wrap">
+    <div class="author-card">
+      <img src="/images/damion.jpg" alt="Damien Mitchell" width="56" height="56" class="author-card__avatar" />
+      <div class="author-card__info">
+        <a href="/about-us/" class="author-card__name">Damien Mitchell</a>
+        <span class="author-card__title">USHPA Advanced Instructor</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="section section--white overview-section" aria-labelledby="overview-heading">
+    <div class="container guide-grid">
+      <div class="guide-copy">
+        <p class="eyebrow">Site overview</p>
+        <h2 id="overview-heading">Overview</h2>
+        <p class="lead">El Penon is the primary paragliding launch at Valle de Bravo and one of the best-known mountain thermal sites in North America.</p>
+        <p>The launch sits at approximately 7,600 ft / 2,316m ASL above Valle de Bravo. El Penon means "the big rock" in Spanish, a fitting name for a volcanic peak on the rim of an ancient caldera overlooking Lake Avandaro and the town below.</p>
+        <p>I have flown this site for 25+ years - more than 10,000 flights - and run guided trips here every winter. What makes El Penon special is not one feature but the combination: a wide forgiving launch, consistent thermal cycles, oversized landing zones, predictable wind patterns, and a town you actually want to spend time in. Most launches optimize for one of those. El Penon optimizes for all of them, which is why pilots from around the world keep coming back.</p>
+        <p>For visiting pilots, El Penon is both a big-mountain launch and a repeatable learning environment. Volcanic ridges, rock faces, valley terrain, and lake-influenced air combine into a flying area with a reliable daily rhythm. The site rewards repetition - by day three of a trip, the air starts to feel familiar; by day seven, you are reading conditions that would have looked random on day one. For the full site picture see our <a href="/paragliding-valle-de-bravo/">Valle de Bravo paragliding guide</a>.</p>
+      </div>
+
+      <aside class="fact-panel" aria-label="El Penon quick facts">
+        <h3>Quick Reference</h3>
+        <dl>
+          <div>
+            <dt>Launch</dt>
+            <dd>El Penon</dd>
+          </div>
+          <div>
+            <dt>Area</dt>
+            <dd>Valle de Bravo, Mexico</dd>
+          </div>
+          <div>
+            <dt>Elevation</dt>
+            <dd>Approx. 7,600 ft / 2,316m ASL</dd>
+          </div>
+          <div>
+            <dt>Coordinates</dt>
+            <dd>19.061997, -100.090997</dd>
+          </div>
+          <div>
+            <dt>Primary LZs</dt>
+            <dd>Piano LZ and Beach LZ</dd>
+          </div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section--cream map-section" aria-labelledby="map-heading">
+    <div class="container">
+      <div class="section-intro">
+        <p class="eyebrow">Map and access</p>
+        <h2 id="map-heading">Map</h2>
+        <p>El Penon is the volcanic peak south of Lake Avándaro, with the launch on its rim. The Piano LZ sits about 1.7 miles (2.7 km) SSW of launch in the valley below - this is the standard LZ for most flights. The Beach LZ at the lakefront in Valle de Bravo town is roughly 8.7 miles (14 km) NNW across the lake; pilots reach it on longer routes and late-afternoon glass-off sessions, not as a typical bowl-flight LZ.</p>
+      </div>
+
+      <div class="map-layout">
+        <div
+          id="el-penon-map"
+          class="map-frame"
+          role="application"
+          aria-label="Interactive map of El Penon launch and landing zones"
+          data-map-points={mapPointsJSON}
+        >
+          <noscript>
+            <iframe
+              title="OpenStreetMap centered on El Penon launch"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=-100.155%2C19.030%2C-100.070%2C19.200&amp;layer=mapnik&amp;marker=19.061997%2C-100.090997"
+              loading="lazy"
+            ></iframe>
+          </noscript>
+        </div>
+
+        <div class="map-points">
+          {mapPoints.map((point) => (
+            <article class="map-point">
+              <h3>{point.name}</h3>
+              <p class="map-point__coords"><a href={`https://www.google.com/maps/search/?api=1&query=${point.lat},${point.lng}`} target="_blank" rel="noopener noreferrer">{point.coords}</a></p>
+              <p>{point.detail}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Fragment slot="head">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  </Fragment>
+
+  <script
+    is:inline
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+
+  <script is:inline>
+    (function () {
+      const container = document.getElementById('el-penon-map');
+      if (!container || typeof L === 'undefined') return;
+
+      const points = JSON.parse(container.dataset.mapPoints || '[]');
+      if (!points.length) return;
+
+      const map = L.map(container, { scrollWheelZoom: false });
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 18
+      }).addTo(map);
+
+      const colors = { launch: '#e07730', piano: '#3b3160', beach: '#2d7a4f' };
+
+      const bounds = [];
+      points.forEach((p) => {
+        const color = colors[p.type] || '#e07730';
+        const icon = L.divIcon({
+          className: 'el-penon-marker',
+          html: '<span class="el-penon-marker__pin" style="background:' + color + '"></span><span class="el-penon-marker__label">' + p.name + '</span>',
+          iconSize: [180, 40],
+          iconAnchor: [12, 36]
+        });
+        L.marker([p.lat, p.lng], { icon: icon, title: p.name })
+          .addTo(map)
+          .bindPopup(
+            '<strong>' + p.name + '</strong><br />' +
+            '<span style="color:#5a5570">' + p.coords + '</span><br />' +
+            p.detail
+          );
+        bounds.push([p.lat, p.lng]);
+      });
+
+      map.fitBounds(bounds, { padding: [40, 40] });
+    })();
+  </script>
+
+  <section class="section section--white" aria-labelledby="flying-area-heading">
+    <div class="container reference-body">
+      <p class="eyebrow">The flying area</p>
+      <h2 id="flying-area-heading">The Fish Bowl</h2>
+      <p>The primary flying area in front of launch is commonly known as the Fish Bowl. It is an amphitheater-like piece of volcanic terrain where pilots work lift in view of launch, the lake, and the valley floor. Calling it a bowl is accurate - the slopes wrap around you as you fly, with the lake at the bottom and the launch ridge above. You can see almost the entire flying day from anywhere inside it.</p>
+      <p>The landscape includes volcanic ridges, rock faces, exposed dark stone, and open valley terrain falling toward Lake Avandaro. The shape of the terrain gives visiting pilots clear visual references for where they are relative to launch and the LZs - even on your first flight, you do not get lost.</p>
+      <p>What the Fish Bowl teaches you is how to read terrain for thermal triggers. Dark rock heats fast and produces predictable lift. Spines and ridgelines focus rising air into climbable cores. The lake creates a temperature differential that drives the daily cycle. Pilots who put in three or four flights here start to understand thermal generation in a way that their home sites never quite teach. We cover the underlying skill in our guide on <a href="/thermal-in-paragliding-techniques-and-tips/">thermalling techniques</a>.</p>
+      <p>This page stays general on route details. Specific thermal triggers, terrain-feature names ("The Rock," "the spine," "the mesas"), and cross-country lines should come from your local briefing on the day. Conditions change site-to-site and season-to-season, and the right answer for a strong December day is different from the right answer for a softer March day.</p>
+      <!-- DAMIEN TO VERIFY: Specific names of terrain features such as spines, walls, mesas, The Rock, and other local route references. -->
+    </div>
+  </section>
+
+  <section class="section section--cream" aria-labelledby="hair-dryer-heading">
+    <div class="container reference-body">
+      <p class="eyebrow">Daily thermal cycle</p>
+      <h2 id="hair-dryer-heading">The Hair Dryer</h2>
+      <p>The Hair Dryer is what locals call El Penon's daily thermal cycle. Around 10:00 AM during peak season, the dark volcanic rock has absorbed enough morning sun that a sustained column of warm air starts rising from the south face. Pilots gather, look at watches, see the wind start cycling up the slope, and within fifteen minutes the first launches are off. By 10:30 the sky has paragliders climbing in clean lift.</p>
+      <p>The reliability comes from physics. Dark volcanic rock heats faster than the surrounding green valley floor. The lake stays cooler than the land, creating a thermal differential that pulls air up the slope. The geometry of the terrain - bowl-shaped, with the launch on the rim - focuses that rising air into a predictable corridor. None of this is random. It is the same cycle, day after day, with small variations for season and weather.</p>
+      <p>Average climb rates during peak season are 2-4 m/s, with stronger cores possible mid-day. Cloudbase typically sits at 10,000-12,000 feet ASL during November-January. The thermal window runs 4-5 hours on a typical day, which is enough for two flights and an afternoon rest. For the full month-by-month breakdown, see our <a href="/valle-de-bravo-conditions/">Valle de Bravo conditions page</a>.</p>
+      <p>For pilots flying with Air Damien, the important part is not memorizing the clock. It is learning how I read the actual day: how the wind at launch is behaving, where cumulus is starting to develop, what the spacing looks like between thermals, and how the air feels in the first inflations of the morning. The clock gives you the rough time. The actual cycle is read from the ground and the air. That reading is one of the things radio-coached flying transfers fastest - see <a href="/radio-guided-paragliding-instruction/">how radio-guided instruction works</a>.</p>
+      <!-- DAMIEN TO VERIFY: Exact Hair Dryer timing, typical thermal strengths, and how the cycle varies by season. -->
+    </div>
+  </section>
+
+  <section class="section section--white" aria-labelledby="first-flight-heading">
+    <div class="container reference-body">
+      <p class="eyebrow">First-flight narrative</p>
+      <h2 id="first-flight-heading">What Your First Flight Off El Penon Feels Like</h2>
+      <p>You arrive at launch around 9:30. The air is cool, the sun is climbing, and the first cycles are starting to feel up the slope. You walk through your pre-flight - wing laid out, lines clear, harness on, helmet, radio check. Damien is there talking through the briefing: today's wind, today's cycle, what the morning has been doing, where you are flying first.</p>
+      <p>Maybe 10:05. The wind has been steady for a few minutes. You step into the A-risers, the wing comes up clean, and you start running. Three or four steps and the rocks drop away below you. You sit back into the harness. The lake spreads out below you in every direction, the town looks like a model on the shore, and the air is doing nothing - smooth, quiet, no surprises.</p>
+      <p>Then the air starts moving. Around the spine to your right, the wing pitches back slightly. Brakes load up. The vario beeps. You bank into the lift the way you have practiced a hundred times at your home site, and for the first time in your flying career you are climbing in a textbook thermal. Two hundred feet, three hundred, eight hundred. The radio is talking to you - tighter turn, hold that bank, you are in the core - and you keep climbing.</p>
+      <p>Forty minutes later you are still in the air, three thousand feet above launch, looking down at the volcano you took off from. That is the moment most pilots remember from their first El Penon flight. The launch was forgiving, the thermal was readable, and the radio coaching put you in the right place. You did the actual flying. The site delivered the rest.</p>
+    </div>
+  </section>
+
+  <section class="section section--white" aria-labelledby="landing-zones-heading">
+    <div class="container">
+      <div class="section-intro">
+        <p class="eyebrow">Landing zones</p>
+        <h2 id="landing-zones-heading">Landing Zones</h2>
+        <p>El Penon has two primary landing zones, both genuinely large by paragliding standards. Most flights end at the Piano LZ - it is in the valley about 1.7 miles SSW of launch and is where retrieve picks you up after a typical morning flight. The Beach LZ in Valle de Bravo town is roughly 8.7 miles NNW across Lake Avándaro - it is where the local flying community gathers and is reached on longer flights and late-afternoon glass-off sessions, not as a typical bowl-flight LZ. Land-outs into the surrounding valley are not common but are manageable when they happen - the terrain is generally open farmland.</p>
+      </div>
+
+      <div class="lz-grid">
+        <article class="lz-card">
+          <h3>Piano LZ <span class="lz-card__tag">Standard LZ</span></h3>
+          <dl>
+            <div>
+              <dt>Distance from launch</dt>
+              <dd>About 1.7 miles (2.7 km) SSW</dd>
+            </div>
+            <div>
+              <dt>Coordinates</dt>
+              <dd>19.041882, -100.104940</dd>
+            </div>
+          </dl>
+          <p>Piano LZ is the main landing zone for El Penon, named for its piano-key shape when viewed from the air. It sits in the valley below the launch, on the same side of Lake Avándaro as the volcano. It is a large flat field with good approach options from multiple directions, and it is where the retrieve vehicle picks pilots up after a typical morning flight. From the air it is impossible to miss - you can see it clearly from anywhere in the Fish Bowl. Land-out anxiety, which is real at most US sites with tight LZs, is essentially absent here.</p>
+        </article>
+
+        <article class="lz-card">
+          <h3>Beach LZ <span class="lz-card__tag lz-card__tag--alt">In-town / glass-off</span></h3>
+          <dl>
+            <div>
+              <dt>Distance from launch</dt>
+              <dd>About 8.7 miles (14 km) NNW</dd>
+            </div>
+            <div>
+              <dt>Address</dt>
+              <dd>Marina Nacional 202, Valle de Bravo, Mexico</dd>
+            </div>
+            <div>
+              <dt>Coordinates</dt>
+              <dd>19.183792, -100.127785</dd>
+            </div>
+          </dl>
+          <p>The Beach LZ is a lakefront landing area in Valle de Bravo town, on the north shore of Lake Avándaro - across the lake from launch. This is where the local flying community gathers and is the address listed in the Air Damien site footer. It is reached on longer flights, XC routes, and late-afternoon glass-off sessions when conditions allow flying across or around the lake. Wind in the late afternoon tends to come off the lake, which sets up clean approaches into the wind.</p>
+        </article>
+      </div>
+
+      <p class="lz-note">For pilots used to threading approaches into smaller LZs at home, the Beach and Piano feel almost luxuriously oversized. This is one of the things returning pilots talk about - landing stress drops, and you can focus on flare timing and pattern flying rather than worrying about whether you will fit. We cover landing skills in detail in our guide on <a href="/how-to-land-a-paraglider/">how to land a paraglider</a>.</p>
+      <!-- DAMIEN TO VERIFY: Any other LZs, LZ rules, restricted areas, and current approach requirements. -->
+    </div>
+  </section>
+
+  <section class="section section--cream" aria-labelledby="pilot-requirements-heading">
+    <div class="container reference-body">
+      <p class="eyebrow">Pilot requirements</p>
+      <h2 id="pilot-requirements-heading">Who Can Fly Here</h2>
+      <p>El Penon is a mountain thermal site, and like any mountain site it has rules and rating expectations. The short answer: P2 pilots are welcome with guided instruction, P3+ pilots can fly independently after a site introduction, and mid-day flying in the strongest conditions is restricted to P4 and above.</p>
+      <p><strong>P2 pilots:</strong> El Penon is one of the friendliest mountain launches in the world for pilots at this level. The launch is wide and forgiving, the LZs are oversized, and the thermals are moderate enough to learn in safely. With radio coaching and a structured trip, P2 pilots routinely use El Penon to break through into real thermal flying. We wrote up exactly what to expect in our <a href="/valle-de-bravo-p2-pilots/">guide for P2 pilots flying Valle de Bravo</a>.</p>
+      <p><strong>P3 pilots:</strong> This is where the site really opens up. P3 pilots can fly mid-day cycles, work XC fundamentals along the spine and into the surrounding terrain, and start flying their first cross-country routes. Most pilots use Valle as a stepping stone in their <a href="/p2-to-p3-paragliding-progression/">P2 to P3 progression</a>.</p>
+      <p><strong>P4+ pilots:</strong> El Penon at peak power is a real flying site. The strongest cycles, the longest XC days, the convergence flying - all of it opens up at this level. Many of the experienced pilots who come back year after year are P4s pursuing competitive distance or comp prep. For pure XC ambition, also look at our <a href="/paragliding-roldanillo-colombia/">Roldanillo guide</a> - the next step up.</p>
+      <p><strong>USHPA rating recognized.</strong> International pilots use the IPPI 3+ equivalent. Local club membership is required at El Penon and is handled at intake; for visitors flying with Air Damien, this is included.</p>
+      <p><strong>If you fly with Air Damien, Damien handles all local coordination and logistics.</strong> Club paperwork, daily access, and the daily briefing are all built into the trip. For pilots considering whether they are ready, see <a href="/do-you-need-a-license-to-fly-a-paraglider/">do you need a license to fly a paraglider</a> for the rating system overview.</p>
+      <!-- DAMIEN TO VERIFY: Local club rules, membership requirements, time-of-day restrictions by rating, and any fees. -->
+    </div>
+  </section>
+
+  <section class="section section--white" aria-labelledby="common-mistakes-heading">
+    <div class="container reference-body">
+      <p class="eyebrow">Visiting-pilot mistakes</p>
+      <h2 id="common-mistakes-heading">Common Mistakes Visiting Pilots Make at El Penon</h2>
+      <p>After teaching here for 25+ years, the patterns are predictable. If you are flying El Penon for the first time, these are the things to watch out for:</p>
+      <ul>
+        <li><strong>Underestimating altitude.</strong> The launch is at 7,600 ft. Wings perform differently in thinner air - faster takeoff speeds, slower turn response, longer glide. Pilots used to sea-level coastal flying sometimes feel a wing surging more than they expect during the launch run. Account for it. Run harder.</li>
+        <li><strong>Launching in the wrong cycle.</strong> The Hair Dryer is a cycle, not a steady wind. Launch on a steady up-slope cycle, not on a peak gust. New pilots sometimes wait too long for the "perfect" cycle and end up rushing a launch in late-cycle pressure. Patience plus discipline - if the cycle dies, wait for the next one.</li>
+        <li><strong>Fixating on the launch corridor.</strong> Launching at El Penon means committing forward. Pilots who look back, hesitate, or try to "fix" a launch on the run end up tangled or low. Once your wing is overhead and clean, run until you fly.</li>
+        <li><strong>Treating mid-day cycles as evening cycles.</strong> Mid-day at El Penon is strong. Pilots used to softer afternoon coastal lift sometimes underestimate just how active the air is at noon. The local club restricts mid-day flying for a reason - take it seriously.</li>
+        <li><strong>Skipping the morning briefing.</strong> Even experienced pilots benefit from local context: today's wind, where the cycle is firing, what the cumulus development is doing, where to focus first. Walking onto launch without that context is leaving free skill on the table.</li>
+        <li><strong>Underdressing for morning launches.</strong> 50F at 7,600 ft with wind on the slope feels like 35F. Bring a real fleece and gloves for the launch period; you can shed layers later. See our <a href="/what-to-pack-paragliding-valle-de-bravo/">complete packing guide</a>.</li>
+      </ul>
+      <p>None of these are exotic. They are the same mistakes I have watched pilots make for decades. The fix is awareness, a good briefing, and treating the first day or two as orientation rather than performance flying.</p>
+    </div>
+  </section>
+
+  <section class="section section--cream" aria-labelledby="getting-to-launch-heading">
+    <div class="container reference-body">
+      <p class="eyebrow">Access and logistics</p>
+      <h2 id="getting-to-launch-heading">Getting to Launch</h2>
+      <p>From the town of Valle de Bravo, the drive to El Penon launch takes approximately 30-40 minutes on a winding paved mountain road. The route climbs about 2,500 feet from the lake to launch. A standard passenger vehicle can make it; higher clearance is more comfortable but not necessary.</p>
+      <p>Air Damien trips include daily shuttle to launch and back. Pilots can focus on the weather, the briefing, and the flying plan rather than driving an unfamiliar mountain road in the dark before sunrise. Independent pilots should arrange transport with the local flying club or a private driver - rental cars work but parking at launch can be tight on busy mornings.</p>
+      <p>Retrieve from the LZs is similarly handled. Air Damien runs retrieve vehicles for all guided trips, including XC retrieve when pilots fly distance. Independent pilots should pre-arrange retrieve with the local community before launching - getting back from the Piano LZ is about a 25-minute drive, and being stranded with packed gear is a real possibility for first-time visitors.</p>
+      <p>For full travel logistics from the US - flights, ground transport, money, SIM cards - see our <a href="/valle-de-bravo-travel-guide-paragliders/">Valle de Bravo travel guide for paragliders</a>.</p>
+      <!-- DAMIEN TO VERIFY: Road conditions, drive time from town, parking situation, and any access restrictions. -->
+    </div>
+  </section>
+
+  <section class="section section--white" aria-labelledby="comparisons-heading">
+    <div class="container reference-body">
+      <p class="eyebrow">How El Penon compares</p>
+      <h2 id="comparisons-heading">El Penon vs Other Major Launches</h2>
+      <p>Pilots evaluating El Penon usually have other big-mountain launches in mind. Quick comparisons:</p>
+      <ul>
+        <li><strong>vs Pico da Ibituruna (Brazil):</strong> Pico is one of the most iconic launches in the world - a granite peak rising 3,000+ feet above a city. Bigger view, softer thermals, longer travel from the US. El Penon has more consistent thermal cycles and is more accessible. See <a href="/paragliding-governador-valadares-brazil/">our GV guide</a>.</li>
+        <li><strong>vs El Aguila / Roldanillo (Colombia):</strong> Roldanillo is the XC distance site - 4-8 m/s thermals, 100km+ routes, world-class XC potential. El Penon's thermals are moderate by comparison. Roldanillo demands P3+ skills and active air management. <a href="/valle-de-bravo-vs-roldanillo-paragliding/">Read the side-by-side comparison</a>.</li>
+        <li><strong>vs Babadag / Oludeniz (Turkey):</strong> Oludeniz is a coastal soaring site with a dramatic Mediterranean LZ. Different style of flying - more ridge-based, less thermal. Heavily used for tandem tourism. Better suited to a pilot looking for vacation+flying than serious progression. <a href="/valle-de-bravo-vs-oludeniz-paragliding/">See the comparison</a>.</li>
+        <li><strong>vs Bir Billing (India):</strong> Bir is the Asian flying capital, with World Cup heritage and very strong thermals in the Himalayan foothills. Long travel from the US, lower cost on the ground, more committing terrain. El Penon is the closer, more forgiving option for North American pilots. See our <a href="/best-paragliding-destinations-from-us/">destinations guide</a>.</li>
+        <li><strong>vs Val di Fassa / Dolomites (Italy):</strong> The Dolomites offer alpine flying with the most dramatic mountain scenery on earth. Different season (summer), different style (alpine). Pilots often combine winter El Penon trips with summer Dolomites trips. <a href="/paragliding-dolomites-italy/">Our Italy guide</a>.</li>
+      </ul>
+      <p>If you have to pick one international flying site to start with as a US pilot, the answer is almost always El Penon. The combination of accessibility, conditions, and forgiveness is what makes it the default first international trip for North American pilots. The case for that trip in general is in <a href="/why-fly-internationally-paragliding/">why every paraglider should fly internationally at least once</a>.</p>
+    </div>
+  </section>
+
+  <section class="section section--cream" aria-labelledby="photos-heading">
+    <div class="container">
+      <div class="section-intro">
+        <p class="eyebrow">Photos</p>
+        <h2 id="photos-heading">Photos from El Penon and Valle de Bravo</h2>
+        <p>A few images from the launch area, flying terrain, views, and landing environment. For more, see our <a href="/gallery/">photo gallery</a>.</p>
+      </div>
+
+      <div class="photo-grid">
+        {photos.map((photo) => (
+          <figure class="photo-card">
+            <img src={photo.src} alt={photo.alt} width="800" height="600" loading="lazy" />
+            <figcaption>{photo.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--purple launch-cta" aria-labelledby="launch-cta-heading">
+    <div class="container">
+      <div class="launch-cta__content">
+        <h2 id="launch-cta-heading">Ready to Fly El Penon?</h2>
+        <p>Air Damien offers guided trips and clinics at Valle de Bravo with daily instruction, transport to launch, and everything handled.</p>
+        <div class="launch-cta__buttons">
+          <a href="/tours/10-day-paraglide-mexico-package/" class="btn btn--primary">10-day Mexico package</a>
+          <a href="/paragliding-clinics-mexico/paragliding-thermalling-clinic-mexico/" class="btn btn--outline">Thermalling clinic</a>
+          <a href="/tours/custom-paragliding-trip-mexico/" class="btn btn--outline">Custom trip</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .launch-hero {
+    position: relative;
+    min-height: 64vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .launch-hero__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .launch-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(42, 32, 80, 0.08), rgba(42, 32, 80, 0.88));
+  }
+
+  .launch-hero__content {
+    position: relative;
+    z-index: 1;
+    max-width: 880px;
+    padding: calc(var(--nav-height) + 3rem) 1.5rem 4rem;
+  }
+
+  .launch-hero h1,
+  .launch-hero p {
+    color: #ffffff;
+  }
+
+  .launch-hero h1 {
+    margin-bottom: 1rem;
+    font-size: clamp(2rem, 4.4vw, 3.45rem);
+  }
+
+  .launch-hero p:not(.eyebrow) {
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: 1.15rem;
+    line-height: 1.7;
+  }
+
+  .eyebrow {
+    margin-bottom: 0.65rem;
+    color: var(--color-accent, #e07730);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .author-wrap {
+    max-width: 980px;
+  }
+
+  .author-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--color-bg-warm, #f9f7f3);
+    border-left: 4px solid var(--color-accent, #e07730);
+    border-radius: 8px;
+    margin: 1.5rem 0 0;
+  }
+
+  .author-card__avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color-accent, #e07730);
+    flex-shrink: 0;
+  }
+
+  .author-card__info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .author-card__name {
+    color: var(--color-text, #2a2050);
+    font-weight: 600;
+  }
+
+  .author-card__title {
+    color: var(--color-accent, #e07730);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .guide-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+
+  .guide-copy,
+  .reference-body,
+  .section-intro {
+    max-width: 820px;
+  }
+
+  .lead {
+    color: var(--color-text, #2a2050);
+    font-size: 1.18rem;
+    font-weight: 600;
+    line-height: 1.75;
+  }
+
+  .guide-copy p,
+  .reference-body p,
+  .section-intro p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .guide-copy h2,
+  .reference-body h2,
+  .section-intro h2 {
+    margin-bottom: 1rem;
+  }
+
+  .fact-panel,
+  .map-point,
+  .lz-card,
+  .photo-card {
+    border: 1px solid var(--color-border, #d8d4e0);
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 10px 28px rgba(42, 32, 80, 0.08);
+  }
+
+  .fact-panel {
+    padding: 1.4rem;
+  }
+
+  .fact-panel h3 {
+    margin-bottom: 1rem;
+  }
+
+  .fact-panel dl,
+  .lz-card dl {
+    display: grid;
+    gap: 0.85rem;
+    margin: 0;
+  }
+
+  .fact-panel dl div,
+  .lz-card dl div {
+    border-bottom: 1px solid var(--color-border, #d8d4e0);
+    padding-bottom: 0.75rem;
+  }
+
+  .fact-panel dt,
+  .lz-card dt {
+    color: var(--color-text-body, #5a5570);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .fact-panel dd,
+  .lz-card dd {
+    color: var(--color-text, #2a2050);
+    font-weight: 700;
+  }
+
+  .lz-note {
+    margin-top: 1.5rem;
+    padding: 1rem 1.25rem;
+    background: var(--color-bg-warm, #f9f7f3);
+    border-left: 4px solid var(--color-accent, #e07730);
+    border-radius: 0 8px 8px 0;
+    color: var(--color-text-body, #5a5570);
+    line-height: 1.7;
+  }
+
+  .lz-note a {
+    color: var(--color-accent, #e07730);
+    font-weight: 600;
+  }
+
+  .map-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.7fr);
+    gap: 1.25rem;
+    align-items: stretch;
+  }
+
+  .map-frame {
+    position: relative;
+    min-height: 520px;
+    overflow: hidden;
+    border: 1px solid var(--color-border, #d8d4e0);
+    border-radius: 8px;
+    background: var(--color-bg-lavender, #f4f2fa);
+    box-shadow: 0 16px 36px rgba(42, 32, 80, 0.13);
+  }
+
+  .map-frame iframe,
+  .map-frame :global(.leaflet-container) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 8px;
+  }
+
+  /* Custom Leaflet marker pin + label */
+  :global(.el-penon-marker) {
+    position: relative;
+  }
+
+  :global(.el-penon-marker__pin) {
+    display: block;
+    width: 18px;
+    height: 18px;
+    border: 3px solid #ffffff;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    box-shadow: 0 4px 12px rgba(42, 32, 80, 0.35);
+  }
+
+  :global(.el-penon-marker__label) {
+    position: absolute;
+    left: 24px;
+    top: -2px;
+    border-radius: 4px;
+    background: rgba(42, 32, 80, 0.92);
+    color: #ffffff;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.72rem;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+
+  :global(.leaflet-popup-content-wrapper) {
+    border-radius: 8px;
+    box-shadow: 0 10px 24px rgba(42, 32, 80, 0.2);
+  }
+
+  :global(.leaflet-popup-content) {
+    margin: 0.85rem 1rem;
+    line-height: 1.55;
+    font-size: 0.9rem;
+  }
+
+  .map-points {
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .map-point {
+    padding: 1rem;
+  }
+
+  .map-point h3 {
+    margin-bottom: 0.35rem;
+    font-size: 1.05rem;
+  }
+
+  .map-point__coords {
+    margin-bottom: 0.35rem;
+    color: var(--color-accent, #e07730);
+    font-weight: 800;
+  }
+
+  .map-point p:last-child {
+    margin-bottom: 0;
+    line-height: 1.55;
+  }
+
+  .lz-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .lz-card {
+    padding: 1.35rem;
+  }
+
+  .lz-card h3 {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .lz-card__tag {
+    display: inline-block;
+    padding: 0.18rem 0.6rem;
+    background: rgba(45, 122, 79, 0.14);
+    color: #1f5a37;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .lz-card__tag--alt {
+    background: rgba(59, 49, 96, 0.12);
+    color: var(--color-primary, #3b3160);
+  }
+
+  .lz-card p {
+    margin: 1rem 0 0;
+    line-height: 1.7;
+  }
+
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+
+  .photo-card {
+    overflow: hidden;
+  }
+
+  .photo-card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .photo-card figcaption {
+    padding: 0.8rem;
+    color: var(--color-text, #2a2050);
+    font-size: 0.86rem;
+    font-weight: 800;
+  }
+
+  .launch-cta {
+    text-align: center;
+  }
+
+  .launch-cta__content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .launch-cta h2 {
+    margin-bottom: 0.75rem;
+  }
+
+  .launch-cta p {
+    color: var(--color-text-on-dark-muted, #c4b8e0);
+    font-size: 1.1rem;
+    line-height: 1.75;
+  }
+
+  .launch-cta__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.85rem;
+    margin-top: 1.5rem;
+  }
+
+  @media (max-width: 980px) {
+    .guide-grid,
+    .map-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .photo-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 720px) {
+    .launch-hero {
+      min-height: 66vh;
+    }
+
+    .map-frame {
+      min-height: 420px;
+    }
+
+    .map-pin span {
+      font-size: 0.68rem;
+    }
+
+    .lz-grid,
+    .photo-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
