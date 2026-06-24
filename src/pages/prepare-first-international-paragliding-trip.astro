@@ -1,0 +1,338 @@
+---
+import BlogPostLayout from '../layouts/BlogPostLayout.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
+
+const relatedPosts = [
+  {
+    title: "What to Pack for a Paragliding Trip to Valle de Bravo",
+    url: "/what-to-pack-paragliding-valle-de-bravo/",
+    description: "The complete packing list - flying gear, clothing, travel essentials.",
+    date: "2025-11-05",
+    readingTime: "7 min read",
+  },
+  {
+    title: "Valle de Bravo Travel Guide for Paragliders",
+    url: "/valle-de-bravo-travel-guide-paragliders/",
+    description: "Flights, ground transport, money, SIM cards, customs - the full logistics layer.",
+    date: "2026-01-10",
+    readingTime: "10 min read",
+  },
+  {
+    title: "Is Paragliding in Mexico Safe?",
+    url: "/is-paragliding-in-mexico-safe/",
+    description: "Travel insurance, medical care, and the honest reality of flying internationally.",
+    date: "2026-01-05",
+    readingTime: "10 min read",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How far in advance should I prepare for an international paragliding trip?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Three months out is the right time to choose your destination, book your flights, and check your passport. Two months out, inspect your wing and get your reserve repacked. One month out, start getting current at your home site and build basic fitness. Two weeks out, sort money, phone, and insurance. The week before, pack and confirm logistics. Pilots who start preparing one or two weeks before departure invariably scramble."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need travel insurance for a paragliding trip abroad?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Most standard travel insurance excludes paragliding as an extreme or aviation sport. You need a policy that explicitly covers paragliding, including medical treatment abroad and emergency evacuation. Specialty providers like DAN (Divers Alert Network) and Global Rescue offer adventure-sport policies that cover paragliding. Read the fine print before purchasing. Plan to spend $50 to $200 for a 10-day trip depending on coverage level."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I get my paragliding gear on a plane?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Paragliders travel well as checked luggage. A full kit - wing, harness, reserve - fits in a standard paragliding bag at roughly 12 to 18 kg, well under the typical 23 kg (50 lb) airline weight limit. Carry on your radio (lithium batteries should not be checked), helmet (or risk it getting crushed in checked), vario, and other electronics. Bring your reserve repack documentation in case airline staff ask. Most airlines do not charge extra for paragliding equipment when it fits standard checked baggage parameters."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How current do I need to be before flying internationally?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Get at least 5 to 10 flights in during the month before your trip. Focus on launches (forward and reverse), thermal centering, and landing precision. If you have not flown in the last six weeks, you are out of currency for an international trip - book a refresher lesson at your home site or a few warm-up flights before traveling. Rusty pilots showing up to a new site in stronger conditions is a common accident pattern, not a confident-pilot story."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When should I get my reserve repacked before a trip?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Within the past 6 to 12 months of your trip departure. Most manufacturers recommend a repack at least annually. If yours is overdue, get it repacked before you go - this is non-negotiable. If your reserve is more than 8 years old, consider replacing it entirely. A reserve that does not open when you need it is not a reserve."
+      }
+    }
+  ]
+};
+---
+
+<BlogPostLayout
+  title="How to Prepare for Your First International Paragliding Trip | Air Damien"
+  description="A complete preparation guide for your first paragliding trip abroad. Gear, fitness, currency, logistics, mental preparation, and everything to do before you board the plane."
+  canonicalUrl="https://airdamien.com/prepare-first-international-paragliding-trip/"
+  datePublished="2026-06-18"
+  dateModified="2026-06-18"
+  readingTime="16 min read"
+  wordCount={3200}
+  relatedPosts={relatedPosts}
+  featuredImage="/images/van2.jpg"
+  featuredImageAlt="Pilots loading gear into the shuttle vehicle before heading to launch"
+>
+  <SchemaMarkup schema={faqSchema} />
+
+  <h2>The Short Answer</h2>
+
+  <p>Preparing for your first international paragliding trip is not complicated, but it does require more planning than a domestic flying weekend. You need your gear inspected and travel-ready, your body prepared for altitude and heat, your paperwork sorted, your finances set up for international use, and your flying skills current. This guide covers everything to do in the weeks and months before your trip so you arrive ready to fly, not scrambling to sort out problems on day one.</p>
+
+  <p>The framework is simple: start three months out with the big decisions, move to gear preparation at two months, build physical and mental readiness at one month, and finish logistics in the final two weeks. Pilots who follow that arc show up calm, current, and confident. Pilots who start preparing one or two weeks before departure invariably scramble.</p>
+
+  <h2>3 Months Before: The Big Decisions</h2>
+
+  <h3>Choose your destination</h3>
+
+  <p>If you are reading this on Air Damien, you probably already have Valle de Bravo in mind. Worth saying anyway: Mexico is the easiest first international paragliding destination for US pilots. Short flight (4 to 5 hours from US hubs), no visa, same time zone as much of the US, consistent thermal conditions for 5+ months of the year, established infrastructure, English widely spoken in tourism, and a guided-trip operator with 25+ years at the site.</p>
+
+  <p>Roldanillo, Colombia and Governador Valadares, Brazil are excellent next steps once you have an international trip under your belt and stronger XC skills. The Italian Dolomites are a different style (summer alpine flying) that pairs well with a winter Valle de Bravo trip. For the full picture and skill-based recommendations, see our guide to the <a href="/best-paragliding-destinations-from-us/">best paragliding destinations from the US</a>.</p>
+
+  <p>Match the destination to your current rating and goals. P2 pilots should not pick Roldanillo for their first international trip - the thermals are too strong and the site demands real XC skills. Read <a href="/valle-de-bravo-p2-pilots/">Valle de Bravo for P2 pilots</a> if you want the honest take on whether you are ready for a particular site.</p>
+
+  <h3>Book your trip</h3>
+
+  <p>Guided trips fill during peak season. For Mexico that means November through March. December and January spots fill first because of the holiday calendar overlap. If your dates are flexible, late November and February are quieter than mid-December and early January with the same conditions. <a href="/tours/10-day-paraglide-mexico-package/">Book the 10 Day Package</a> or <a href="/tours/custom-paragliding-trip-mexico/">build a custom trip</a> as soon as you have your dates - waiting until the month before usually means taking whatever is left.</p>
+
+  <p>If you are going solo, that is the norm in paragliding travel - see our <a href="/solo-paragliding-trip-mexico/">guide to solo paragliding trips to Mexico</a> for the honest read on what to expect. If you are bringing a non-flying partner, Valle de Bravo handles that better than most destinations - see <a href="/paragliding-trip-mexico-non-flying-partner/">bringing a non-flying partner to Valle de Bravo</a>.</p>
+
+  <h3>Book your flights</h3>
+
+  <p>For Valle de Bravo, fly into Mexico City (MEX) or Toluca (TLC). MEX has more flight options and better prices from most US cities; TLC is closer to Valle de Bravo and cuts about an hour off the ground transfer. Either works.</p>
+
+  <p>Book early for better prices. Three months out is a sweet spot for cost. Use a flight tracker or set alerts. Avoid red-eyes if you can - arriving exhausted at altitude on day zero is not how you want to start. Arrange your arrival to align with the pickup window that Air Damien provides; check with us if your dates have flexibility.</p>
+
+  <h3>Check your passport</h3>
+
+  <p>Your passport must be valid for at least six months beyond your travel date. This is the requirement for most countries and you do not want to discover at check-in that yours expires in five months and you are not flying anywhere.</p>
+
+  <p>If you need to renew, standard US passport processing is currently 6 to 8 weeks - longer in peak summer. Do this now, not later. Expedited service is available for an extra fee if you wait too long.</p>
+
+  <p>Take a photo of your passport and store it somewhere you can access from your phone. Email it to yourself, save it to your cloud drive, or both. If you lose the physical passport on the trip, that copy will speed up the embassy process.</p>
+
+  <h3>Check visa requirements</h3>
+
+  <p>US passport holders do not need a visa for Mexico, Colombia, Brazil, or most EU countries for stays under 90 to 180 days depending on the country. Mexico in particular is straightforward - you complete an FMM (immigration form) on arrival, which most airlines hand out on the plane. No visa application, no embassy paperwork.</p>
+
+  <p>Always check the current requirements for your specific destination - rules change. The US State Department travel pages are the authoritative source.</p>
+
+  <h2>2 Months Before: Gear Preparation</h2>
+
+  <h3>Wing inspection</h3>
+
+  <p>When was your last line check? If it has been more than two years or 200 flights, get one done before this trip. Line trim drift is real and a wing that has been flown a lot can pitch and turn differently than it did new. A pre-trip inspection catches that before you discover it on launch in unfamiliar thermals.</p>
+
+  <p>If your wing is older - 6+ years, 300+ flights - get a porosity test. A porous wing at altitude in active thermals does not behave the way a fresh wing does. You do not want to find out at 12,000 ft over Valle that your wing is sinking faster than your buddy on the same line.</p>
+
+  <p>Visual inspection you can do yourself: look for tears or repairs along the leading edge, check the brake handles for wear, inspect line attachment points for any fraying, check the risers for damage, verify hardware is intact and rust-free. If anything looks wrong, get it to a rigger before the trip.</p>
+
+  <h3>If you are thinking about a new wing - decide now</h3>
+
+  <p>Do not show up to an international site on a wing you have three flights on. The most predictable cause of trouble is a brand-new wing flown for the first time in unfamiliar conditions. Either commit to a new wing two months out so you have time to log 20+ flights on it before the trip, or fly your current wing and upgrade after the trip.</p>
+
+  <h3>Reserve repack</h3>
+
+  <p>When was your reserve last repacked? Most manufacturers recommend every 6 to 12 months. Get it repacked before the trip. This is non-negotiable. Carry your repack documentation - some airlines and some sites will ask.</p>
+
+  <p>If your reserve is old (8+ years), consider replacing it. The fabric ages, the materials degrade, the deployment characteristics drift. A reserve that does not open when you need it is not a reserve. Buying new reserves is one of the few places we recommend against the used market.</p>
+
+  <h3>Harness</h3>
+
+  <p>Check all buckles, straps, and connection points. Verify your speed system runs cleanly through the pulleys and that the brummel hooks engage properly. Make sure your reserve handle is accessible from your normal harness position and that the safety pin is correctly set.</p>
+
+  <p>If you are flying a pod harness for the first time on this trip, get reps with it at your home site first. Speed-bar feel and weight-shift response differ from a sit-up harness and you do not want to discover that mid-thermal on day one.</p>
+
+  <h3>Radio</h3>
+
+  <p>You need a dual-band VHF radio for almost any guided international site. Confirm the frequency used at your destination - Air Damien uses 144.445 MHz in Valle de Bravo. Make sure your radio actually works (test it before you pack), batteries hold charge through a full day, you have a way to charge it overnight, and you have a spare battery or charging cable.</p>
+
+  <p>If you have never used radio coaching in flight, it changes the entire experience - we wrote about it in <a href="/radio-guided-paragliding-instruction/">radio-guided paragliding instruction</a>. Show up with a working radio and a way to wear it that does not interfere with looking around or operating brakes.</p>
+
+  <h3>Instruments</h3>
+
+  <p>Vario charged and tested. GPS if you use one, with destination waypoints loaded if you have access to them. Phone mount if you fly with a flight app like XCTrack, FlyMe, or SeeYou. Download offline maps for the area in case you land out without cell service. The Open Topo Maps overlay for Valle de Bravo is worth having pre-loaded.</p>
+
+  <h3>Packing your gear for air travel</h3>
+
+  <p>Paragliders travel well as checked luggage. A full kit - wing, harness, reserve - fits in a standard paragliding bag at roughly 12 to 18 kg, comfortably under the typical 23 kg / 50 lb checked-bag weight limit. Common questions and answers:</p>
+
+  <ul>
+    <li><strong>Helmet:</strong> carry on or pack carefully. Hard helmets can crack in checked bags during rough handling. We carry ours on.</li>
+    <li><strong>Radio:</strong> carry on. Lithium batteries are not allowed in checked luggage on most carriers, and your radio battery is lithium.</li>
+    <li><strong>Vario and other electronics:</strong> carry on. Same lithium battery rule, plus you do not want them broken by a baggage handler.</li>
+    <li><strong>Reserve:</strong> packed inside the harness or wing bag, fine in checked. Carry your repack documentation.</li>
+    <li><strong>Weight limits:</strong> verify with your specific airline. Most allow 23 kg (50 lbs) checked. Some allow more for sports equipment but require advance notice.</li>
+    <li><strong>Number of bags:</strong> some pilots use one large checked bag for gear plus a personal bag carry-on. Others split into two checked bags. Single-bag travel is simpler if you can fit it.</li>
+    <li><strong>Compression bag:</strong> bring a stuff sack for your wing to keep it compact during transport.</li>
+  </ul>
+
+  <p>For the full packing checklist including clothing and personal items, see our <a href="/what-to-pack-paragliding-valle-de-bravo/">Valle de Bravo packing guide</a>.</p>
+
+  <h2>1 Month Before: Physical and Mental Preparation</h2>
+
+  <h3>Physical fitness</h3>
+
+  <p>International flying trips are more physically demanding than weekend flying at your home site. You may fly twice a day for 7 to 10 days straight. You are at altitude. The sun is intense. You are walking from launch setup to retrieve all day. Pilots who arrive in poor general fitness are gassed by day three.</p>
+
+  <p>Focus on:</p>
+
+  <ul>
+    <li><strong>Cardio</strong> - 3 to 4 sessions per week of any kind of sustained aerobic effort. This matters most for altitude. Launch at El Penon is 7,600 ft. Town is 5,900 ft. You will feel the thin air the first day.</li>
+    <li><strong>Core and shoulder strength</strong> - long flights in a harness load your core and shoulders. Pilots who never train end the week with a sore neck and tired shoulders. Some basic pull-ups, push-ups, planks, and overhead presses 2 to 3 times per week make a real difference.</li>
+    <li><strong>Hiking fitness</strong> - some sites involve hiking to launch. Valle de Bravo's main launch is driven to, but bring boots in case you do alternate sites.</li>
+    <li><strong>Neck flexibility</strong> - you spend a lot of hours looking up at your wing, looking around for traffic, looking down for the LZ. Stretch your neck and upper back in the weeks before the trip.</li>
+  </ul>
+
+  <p>Do not start a new training program right before the trip. Just maintain general fitness. Showing up sore and stiff from a brand-new workout routine is worse than just showing up rested.</p>
+
+  <p>Start hydrating in the weeks before the trip. Altitude plus sun plus physical activity is a dehydration recipe and most US pilots arrive under-hydrated.</p>
+
+  <h3>Get current</h3>
+
+  <p>If you have not flown in the last 4 to 6 weeks, you are out of currency for an international trip. Get flights in at your home site before you go. You do not want your first flight in a month to be at an unfamiliar site in stronger conditions - that is a textbook accident setup, not a confident-pilot story.</p>
+
+  <p>Aim for at least 5 to 10 flights in the month before departure. Focus on:</p>
+
+  <ul>
+    <li>Forward and reverse launches in a range of conditions</li>
+    <li>Thermal centering - find and stay in cores instead of orbiting</li>
+    <li>Active piloting in turbulence</li>
+    <li>Landing pattern precision</li>
+    <li>Speedbar use and a few asymmetric collapses if your skills include them</li>
+  </ul>
+
+  <p>If you are rusty, book a refresher lesson with your local instructor. Spend an hour kiting your wing one weekend. Take a day off work to log a few solid flights instead of one rushed evening flight a week. Show up current. Your first flight in Mexico should not be a rust-shaking flight.</p>
+
+  <h3>Ground school review</h3>
+
+  <p>Brush up on the basics that you have not actively studied in a while:</p>
+
+  <ul>
+    <li>Thermal theory - trigger sources, cycle timing, why thermals form and drift</li>
+    <li>Cloud reading - cumulus development, base height estimation</li>
+    <li>XC decision-making basics - go/no-go calls, glide ratios, retrieve planning</li>
+    <li>Emergency procedures - when to throw your reserve, how to handle a collapse at altitude, spin recovery, deep stall recognition</li>
+    <li>The specific site you are visiting - wind patterns, thermal triggers, LZ locations, known hazards, club rules</li>
+  </ul>
+
+  <p>If your guide provides pre-trip reading or site briefings, actually read them. Show up to the first ground school session having done the homework. The instructor can move faster and dig deeper when you arrive prepared.</p>
+
+  <p>For Valle de Bravo specifically, the <a href="/paragliding-valle-de-bravo/">complete Valle de Bravo guide</a> covers the site, the launches, the LZs, the thermal cycle, and the rules. Read it before you go.</p>
+
+  <h3>Mental preparation</h3>
+
+  <p>Flying at a new site is mentally different from your home site. You do not know the terrain. You do not know the thermal triggers. You do not know the local quirks. That is okay. That is what the instructor is for. Show up ready to learn, not ready to perform.</p>
+
+  <p>Set realistic expectations. Day one is orientation, not record-setting. You will fly conservatively at first and build from there. By day three or four the site starts to make sense. By day six you are reading conditions you would not have noticed on day one. That is the typical arc, not a guaranteed schedule.</p>
+
+  <p>Accept that you will make mistakes. The debrief process is where the real growth happens. Pilots who treat every flight as a performance try to hide their mistakes and learn slowly. Pilots who treat every flight as a learning opportunity, including their mistakes, grow fast.</p>
+
+  <p>If you are nervous, that is fine. Nervous pilots who listen to their instructor fly safely. Overconfident pilots are the ones who get into trouble. Being a little nervous on day one means you are taking it seriously.</p>
+
+  <h2>2 Weeks Before: Logistics</h2>
+
+  <h3>Money</h3>
+
+  <p>Notify your bank and credit card companies that you are traveling internationally. Most cards will freeze for "suspicious activity" if they see a sudden charge in Mexico without notice. The travel-notice process takes five minutes online or by phone.</p>
+
+  <p>Set up your money tools:</p>
+
+  <ul>
+    <li><strong>Credit cards:</strong> bring at least one card with no foreign transaction fees if you have one. Capital One, Chase Sapphire, and many others offer this.</li>
+    <li><strong>Cash:</strong> Mexican pesos. ATMs at the airport are convenient and usually offer better rates than airport exchange counters. Plan to take out enough for the first few days of small purchases.</li>
+    <li><strong>Backup card:</strong> bring a second card stored separately. If your primary card gets lost or compromised, you are not stuck.</li>
+  </ul>
+
+  <p>Critical for Mexico: bring a credit card with a decent limit. Mexican hospitals require upfront payment for any medical treatment before discharge. Your US insurance will reimburse you, but you need to pay first. This is not a scare tactic - it is practical advice. Most pilots never use the credit card for medical purposes, but the one time you need it, you really need it.</p>
+
+  <p>For the full picture on cost - what you spend day to day in Valle de Bravo - see <a href="/paragliding-trip-mexico-cost/">how much does a paragliding trip to Mexico cost</a>.</p>
+
+  <h3>Phone and communication</h3>
+
+  <ul>
+    <li>Check if your phone plan includes Mexico roaming. Most US carriers now include it on standard plans, but some still charge per day. Confirm yours before you fly.</li>
+    <li>If your plan does not include Mexico, buy a local SIM at the airport or activate an eSIM before departure. Airalo, Holafly, and similar services offer easy eSIM options.</li>
+    <li>Download offline maps for the destination area. Google Maps allows offline downloads. Maps.me is a good backup.</li>
+    <li>Download a translation app if you do not speak the local language. Google Translate offers offline language packs.</li>
+    <li>Save important numbers: your guide's phone (Air Damien: 801-244-4791), local emergency number (911 works in Mexico), your airline, your embassy, your insurance company's international assistance line.</li>
+  </ul>
+
+  <h3>Travel insurance</h3>
+
+  <p>If you have not purchased it yet, do it now. Some policies require purchase within a window of booking, so check the fine print on yours.</p>
+
+  <p>What it should cover:</p>
+
+  <ul>
+    <li>Medical treatment abroad (the big one)</li>
+    <li>Emergency evacuation (the really big one - air evacuation can cost $50,000+)</li>
+    <li>Trip cancellation and interruption</li>
+    <li>Lost or damaged gear (some policies exclude sports equipment - read carefully)</li>
+  </ul>
+
+  <p>Most standard travel insurance excludes "extreme sports" or "aviation activities" - which usually includes paragliding. You need a policy that explicitly covers paragliding. Options that consistently cover it include:</p>
+
+  <ul>
+    <li>DAN (Divers Alert Network) - adventure-sport policies that cover paragliding</li>
+    <li>Global Rescue - emergency evacuation and medical assistance</li>
+    <li>World Nomads - check the specific plan and country combination</li>
+    <li>Specialty paragliding-specific policies (search "paragliding insurance" for current options)</li>
+  </ul>
+
+  <p>Carry your insurance card and policy number with you. Save a digital copy on your phone. Email a copy to yourself. Tell someone at home where to find it. We cover insurance and the broader medical picture in more depth in <a href="/is-paragliding-in-mexico-safe/">is paragliding in Mexico safe</a>.</p>
+
+  <h3>Packing</h3>
+
+  <p>Use the checklist from our <a href="/what-to-pack-paragliding-valle-de-bravo/">Valle de Bravo packing guide</a>. Pack two to three days before departure, not the night before. You will forget something if you rush.</p>
+
+  <p>Lay out all your flying gear in one spot and all your personal items in another. Check each item against the list. The most common forgotten items are: vario charger, radio earpiece, sunglasses, prescription medications, copies of insurance documents.</p>
+
+  <p>Put critical items in your carry-on: passport, wallet, phone, medications, radio, instruments, helmet if you can fit it, and one change of clothes. If your checked bag gets lost, you can still function for a day while it catches up.</p>
+
+  <h2>The Day Before Departure</h2>
+
+  <ul>
+    <li>Confirm your flight times and check in online (saves 15+ minutes at the airport).</li>
+    <li>Confirm your airport pickup arrangement with your guide. Send your flight number and arrival time again if there is any chance of confusion.</li>
+    <li>Charge all devices: phone, radio, vario, battery packs. Pack chargers and cables in your carry-on.</li>
+    <li>Double-check passport, wallet, insurance documents.</li>
+    <li>Leave a copy of your itinerary with someone at home - dates, hotel address, your guide's phone number.</li>
+    <li>Set an out-of-office on your email if needed. Tell work you are off-grid.</li>
+    <li>Get a good night's sleep. You are about to have the flying trip of your life.</li>
+  </ul>
+
+  <h2>On Arrival</h2>
+
+  <p>A few things that make the first day smooth:</p>
+
+  <ul>
+    <li>Clear customs and immigration. For Mexico, have your return flight info accessible - immigration sometimes asks. The FMM form gets handed out on the plane and you complete it before landing.</li>
+    <li>Meet your pickup. Air Damien clients are met at the arrivals hall by name.</li>
+    <li>Start hydrating immediately. The drive to Valle de Bravo takes 2 to 3 hours and you arrive at altitude. Water now beats water tomorrow.</li>
+    <li>Do not try to fly the day you arrive. Spend the evening settling in, attending the briefing, and resting. Your first flight is tomorrow. Pilots who push to fly on arrival day are tired, dehydrated, and not adjusted to altitude - it is a bad first impression of a site.</li>
+  </ul>
+
+  <h2>The Preparation Is the Boring Part</h2>
+
+  <p>The flying is the reward. Pilots who do the preparation arrive ready to fly and spend the trip getting better. Pilots who skip the preparation arrive scrambling and spend the first two days fixing problems they should have handled at home.</p>
+
+  <p>Use this guide as a checklist. Start three months out. Move through the phases. You will arrive in Valle de Bravo current, equipped, and mentally ready.</p>
+
+  <p>If you have not booked yet, the <a href="/tours/10-day-paraglide-mexico-package/">10 Day Mexico Package</a> is the standard option and the one we recommend for first international trips - long enough for the breakthrough to land, short enough to schedule. If 10 days does not fit, <a href="/tours/custom-paragliding-trip-mexico/">build a custom trip</a> around your dates. For pilots specifically working on thermal skill, the <a href="/paragliding-clinics-mexico/paragliding-thermalling-clinic-mexico/">thermalling clinic</a> is a focused 5-day version.</p>
+
+  <p>Questions about your specific situation? Call Damien at <strong><a href="tel:+18012444791">801-244-4791</a></strong> or <a href="/contact/">contact us</a>. The preparation is the boring part - we will help you through it.</p>
+</BlogPostLayout>
